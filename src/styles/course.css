@@ -22,11 +22,13 @@
 
 :root {
   /* A wider page column than the theme's 48rem: this course's pages carry
-     80-column disassembly and four-column comparison tables. */
-  --at-content-width: 60rem;
+     80-column disassembly and four-column comparison tables. The theme puts an
+     18px root on the page, so these are 1044px and 612px respectively. */
+  --at-content-width: 58rem;
 
-  /* The reading measure for prose inside that column. */
-  --sc-measure: 42rem;
+  /* The reading measure for prose inside that column — about 70 characters at
+     the theme's body size, against the ~95 the full column would give. */
+  --sc-measure: 34rem;
 
   --sc-hairline: 1px solid var(--at-divider);
   --sc-rule: 1px solid var(--at-border);
@@ -46,15 +48,26 @@
 /* --- measure ------------------------------------------------------------ */
 
 /* Prose gets the narrow measure; evidence keeps the whole column. Applied to
-   the direct children of the content column only, so anything inside a pane
-   or a grid is laid out by its own component. */
+   the direct children of the content column and of a numbered section — which
+   is where most of a week's prose actually sits — so anything inside a pane, a
+   figure caption or a grid is laid out by its own component instead. */
 .at-main > :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6),
-.at-main > .at-callout {
+.at-main > .at-callout,
+.sc-section > :is(p, ul, ol, dl, blockquote, h2, h3, h4, h5, h6),
+.sc-section > .at-callout,
+.spec-list > :is(p, ul),
+.spec-list > h2 {
   max-width: var(--sc-measure);
 }
 
+/* A heading that opens a section still wants the section's own top rhythm, not
+   the measure's. */
+.sc-section > h2 {
+  max-width: calc(var(--sc-measure) + 6rem);
+}
+
 .at-main > .lead {
-  max-width: 34rem;
+  max-width: 30rem;
   font-size: 1.3125rem;
   line-height: 1.45;
 }
@@ -70,7 +83,7 @@
    heading rather than in the text flow. Falls back to an inline prefix below
    the breakpoint where that gutter exists. */
 .sc-section {
-  margin-block-start: var(--at-spacing-2xl);
+  margin-block-start: 3.25rem;
 }
 
 .sc-section > h2 {
@@ -724,7 +737,7 @@
 
 .sc-weekhead__question {
   margin-block: 0;
-  max-inline-size: 34rem;
+  max-inline-size: 30rem;
   font-size: 1.25rem;
   line-height: 1.45;
   color: var(--at-text);
