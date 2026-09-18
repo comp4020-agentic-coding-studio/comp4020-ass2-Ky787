@@ -36,27 +36,47 @@ export const slopCourseMetaSchema = z
         message: "must not be after endDate",
       });
     }
+  })
+  // The teaching programme is twelve weekly studios plus four spine lectures,
+  // and both are dated content. Assert the window can actually hold them, so a
+  // change to the record fails here rather than in `spec/`.
+  .superRefine((course, ctx) => {
+    const weeks = (Date.parse(course.endDate) - Date.parse(course.startDate)) / 604_800_000;
+    if (weeks < 12) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["endDate"],
+        message: `teaching period is ${weeks.toFixed(1)} weeks; twelve dated weeks will not fit`,
+      });
+    }
   });
 
 // The single source of truth for the course record. The generated homepage,
 // navigation label and /api/index.json all read this object.
-// Replace every placeholder value, but keep the shape: the catalogue ingests
-// this API contract when the course is published.
 //
-// The code's last three digits were assigned to this repo when it was
-// provisioned, and no other course in the cohort has them. Change the first
-// digit to your course's level (and `level` to match); keep the other three.
-// STARTER_CONTENT: replace this course record, then remove this comment.
+// The code's last three digits (445) were assigned to this repo when it was
+// provisioned. The leading 8 is the level: the prerequisites below assume C,
+// unsigned arithmetic and introductory architecture, which puts this at
+// introductory postgraduate rather than first-year.
 export const courseMeta = slopCourseMetaSchema.parse({
-  code: "SLOP1445",
-  title: "Course Title Goes Here",
+  code: "SLOP8445",
+  title: "Seeing Through Obfuscated Code",
   session: "Semester 1",
   year: 2027,
-  level: 1,
+  level: 8,
   startDate: "2027-02-22",
   endDate: "2027-05-28",
   description:
-    "One concise paragraph explaining what this course is, who it is for, " +
-    "and why somebody would choose to spend a semester taking it.",
-  tags: ["replace me"],
+    "Obfuscation, assembly, and recovering program semantics. Twelve weeks on how much of a " +
+    "program's meaning survives a change of representation — and on why a deobfuscated result " +
+    "that looks cleaner is not yet a result that is correct.",
+  tags: ["reverse engineering", "program semantics", "compilers"],
 }) satisfies CourseMetaInput;
+
+/** The subtitle, carried separately so the 300-character record stays prose. */
+export const courseSubtitle = "Obfuscation, assembly, and recovering program semantics";
+
+/** The question the twelve weeks answer together. */
+export const courseQuestion =
+  "How much program meaning survives a change of representation, and which deobfuscation " +
+  "methods generalise beyond one implementation?";

@@ -1,0 +1,117 @@
+0000000140001030 <demo_substitution>:
+140001030: 48 83 ec 28                 	subq	$0x28, %rsp
+140001034: 89 4c 24 24                 	movl	%ecx, 0x24(%rsp)
+140001038: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+14000103c: 05 01 01 01 01              	addl	$0x1010101, %eax        # imm = 0x1010101
+140001041: 89 04 24                    	movl	%eax, (%rsp)
+140001044: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+140001048: 05 02 02 02 02              	addl	$0x2020202, %eax        # imm = 0x2020202
+14000104d: 89 44 24 04                 	movl	%eax, 0x4(%rsp)
+140001051: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+140001055: 05 03 03 03 03              	addl	$0x3030303, %eax        # imm = 0x3030303
+14000105a: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+14000105e: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+140001062: 05 04 04 04 04              	addl	$0x4040404, %eax        # imm = 0x4040404
+140001067: 89 44 24 0c                 	movl	%eax, 0xc(%rsp)
+14000106b: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+14000106f: 05 05 05 05 05              	addl	$0x5050505, %eax        # imm = 0x5050505
+140001074: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+140001078: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+14000107c: 05 06 06 06 06              	addl	$0x6060606, %eax        # imm = 0x6060606
+140001081: 89 44 24 14                 	movl	%eax, 0x14(%rsp)
+140001085: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+140001089: 05 07 07 07 07              	addl	$0x7070707, %eax        # imm = 0x7070707
+14000108e: 89 44 24 18                 	movl	%eax, 0x18(%rsp)
+140001092: 8b 44 24 24                 	movl	0x24(%rsp), %eax
+140001096: 05 08 08 08 08              	addl	$0x8080808, %eax        # imm = 0x8080808
+14000109b: 89 44 24 1c                 	movl	%eax, 0x1c(%rsp)
+14000109f: 8b 04 24                    	movl	(%rsp), %eax
+1400010a2: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010a7: 89 04 24                    	movl	%eax, (%rsp)
+1400010aa: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400010ae: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010b3: 89 44 24 04                 	movl	%eax, 0x4(%rsp)
+1400010b7: 8b 44 24 08                 	movl	0x8(%rsp), %eax
+1400010bb: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010c0: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+1400010c4: 8b 44 24 0c                 	movl	0xc(%rsp), %eax
+1400010c8: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010cd: 89 44 24 0c                 	movl	%eax, 0xc(%rsp)
+1400010d1: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+1400010d5: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010da: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400010de: 8b 44 24 14                 	movl	0x14(%rsp), %eax
+1400010e2: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010e7: 89 44 24 14                 	movl	%eax, 0x14(%rsp)
+1400010eb: 8b 44 24 18                 	movl	0x18(%rsp), %eax
+1400010ef: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400010f4: 89 44 24 18                 	movl	%eax, 0x18(%rsp)
+1400010f8: 8b 44 24 1c                 	movl	0x1c(%rsp), %eax
+1400010fc: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+140001101: 89 44 24 1c                 	movl	%eax, 0x1c(%rsp)
+140001105: 8b 04 24                    	movl	(%rsp), %eax
+140001108: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+14000110d: 89 04 24                    	movl	%eax, (%rsp)
+140001110: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+140001114: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001119: 89 44 24 04                 	movl	%eax, 0x4(%rsp)
+14000111d: 8b 44 24 08                 	movl	0x8(%rsp), %eax
+140001121: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001126: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+14000112a: 8b 44 24 0c                 	movl	0xc(%rsp), %eax
+14000112e: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001133: 89 44 24 0c                 	movl	%eax, 0xc(%rsp)
+140001137: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+14000113b: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001140: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+140001144: 8b 44 24 14                 	movl	0x14(%rsp), %eax
+140001148: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+14000114d: 89 44 24 14                 	movl	%eax, 0x14(%rsp)
+140001151: 8b 44 24 18                 	movl	0x18(%rsp), %eax
+140001155: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+14000115a: 89 44 24 18                 	movl	%eax, 0x18(%rsp)
+14000115e: 8b 44 24 1c                 	movl	0x1c(%rsp), %eax
+140001162: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001167: 89 44 24 1c                 	movl	%eax, 0x1c(%rsp)
+14000116b: 8b 04 24                    	movl	(%rsp), %eax
+14000116e: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+140001173: 89 04 24                    	movl	%eax, (%rsp)
+140001176: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+14000117a: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+14000117f: 89 44 24 04                 	movl	%eax, 0x4(%rsp)
+140001183: 8b 44 24 08                 	movl	0x8(%rsp), %eax
+140001187: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+14000118c: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+140001190: 8b 44 24 0c                 	movl	0xc(%rsp), %eax
+140001194: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+140001199: 89 44 24 0c                 	movl	%eax, 0xc(%rsp)
+14000119d: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+1400011a1: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+1400011a6: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400011aa: 8b 44 24 14                 	movl	0x14(%rsp), %eax
+1400011ae: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+1400011b3: 89 44 24 14                 	movl	%eax, 0x14(%rsp)
+1400011b7: 8b 44 24 18                 	movl	0x18(%rsp), %eax
+1400011bb: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+1400011c0: 89 44 24 18                 	movl	%eax, 0x18(%rsp)
+1400011c4: 8b 44 24 1c                 	movl	0x1c(%rsp), %eax
+1400011c8: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+1400011cd: 89 44 24 1c                 	movl	%eax, 0x1c(%rsp)
+1400011d1: 8b 04 24                    	movl	(%rsp), %eax
+1400011d4: 8b 4c 24 04                 	movl	0x4(%rsp), %ecx
+1400011d8: 31 c8                       	xorl	%ecx, %eax
+1400011da: 8b 4c 24 08                 	movl	0x8(%rsp), %ecx
+1400011de: 31 c8                       	xorl	%ecx, %eax
+1400011e0: 8b 4c 24 0c                 	movl	0xc(%rsp), %ecx
+1400011e4: 31 c8                       	xorl	%ecx, %eax
+1400011e6: 8b 4c 24 10                 	movl	0x10(%rsp), %ecx
+1400011ea: 31 c8                       	xorl	%ecx, %eax
+1400011ec: 8b 4c 24 14                 	movl	0x14(%rsp), %ecx
+1400011f0: 31 c8                       	xorl	%ecx, %eax
+1400011f2: 8b 4c 24 18                 	movl	0x18(%rsp), %ecx
+1400011f6: 31 c8                       	xorl	%ecx, %eax
+1400011f8: 8b 4c 24 1c                 	movl	0x1c(%rsp), %ecx
+1400011fc: 31 c8                       	xorl	%ecx, %eax
+1400011fe: 48 83 c4 28                 	addq	$0x28, %rsp
+140001202: c3                          	retq
+140001203: 66 66 66 66 2e 0f 1f 84 00 00 00 00 00      	nopw	%cs:(%rax,%rax)

@@ -1,0 +1,55 @@
+---
+// A code excerpt sliced out of a published research artefact while the site
+// builds. The pane foot states the file, the line range and the file's
+// SHA-256, and links the verbatim original — so a reader can check that the
+// listing above was not retyped, trimmed misleadingly, or invented.
+import Code from "astro-theme-university/components/Code.astro";
+import {
+  evidenceInfo,
+  evidenceName,
+  evidenceUrl,
+  excerpt,
+  formatBytes,
+  shortHash,
+  type ExcerptOptions,
+} from "../lib/evidence";
+
+interface Props extends ExcerptOptions {
+  /** Manifest id, e.g. `assets/ir/s01_ollvm_sub/target_function.ll`. */
+  id: string;
+  lang?: string;
+  /** Pane title. Defaults to the artefact's filename. */
+  title?: string;
+  /** What to look at in this excerpt. */
+  note?: string;
+  class?: string;
+}
+
+const { id, lang = "text", title, note, class: className, ...slice } = Astro.props;
+const text = excerpt(id, slice);
+const info = evidenceInfo(id);
+const lastLine = text.firstLine + text.text.split("\n").length - 1;
+const range = text.partial
+  ? `lines ${text.firstLine}–${lastLine} of ${text.totalLines}`
+  : `${text.totalLines} lines`;
+---
+
+<figure class:list={["sc-pane", className]}>
+  <div class="sc-pane__head">
+    <p class="sc-pane__title">{title ?? evidenceName(id)}</p>
+    {note && <span class="sc-pane__note">{note}</span>}
+  </div>
+  <div class="sc-pane__body">
+    <Code code={text.text} lang={lang as never} />
+  </div>
+  <figcaption class="sc-pane__foot">
+    <span>{range}</span>
+    <span>sha256 {shortHash(id)}…</span>
+    <span>
+      <a href={evidenceUrl(id)}>
+        open {evidenceName(id)}
+      </a>
+      ({formatBytes(info.bytes)})
+    </span>
+  </figcaption>
+</figure>

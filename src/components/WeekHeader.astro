@@ -1,0 +1,30 @@
+---
+// A week's standing header: where it sits in the argument, when it runs, what
+// teaching shape it takes, and the one question it answers.
+import { withBase } from "astro-theme-university/url";
+import { blockForWeek } from "../lib/course";
+import { formatCourseDate } from "../lib/dates";
+
+interface Props {
+  week: number;
+  date: Date;
+  /** The teaching shape of this week, e.g. "Side-by-side diff". */
+  mode?: string;
+  /** The week's driving question. */
+  question?: string;
+}
+
+const { week, date, mode, question } = Astro.props;
+const block = blockForWeek(week);
+---
+
+<div class="sc-weekhead">
+  <p class="sc-weekhead__meta">
+    <span class="sc-label">
+      Block {block.numeral} · <a href={withBase("/sessions/#block-" + block.id)}>{block.title}</a>
+    </span>
+    <span class="sc-label">Studio {formatCourseDate(date)}</span>
+    {mode && <span class="sc-label">Shape: {mode}</span>}
+  </p>
+  {question && <p class="sc-weekhead__question">{question}</p>}
+</div>

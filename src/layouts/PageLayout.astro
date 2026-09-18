@@ -1,8 +1,21 @@
 ---
-import MdxPageLayout from "astro-theme-university/layouts/MdxPageLayout.astro";
-import { siteConfig } from "../site-config";
+/**
+ * The layout the theme's `defaultLayout` option points markdown and MDX pages
+ * at. It unwraps frontmatter and hands it to CourseLayout, so an `.mdx` page
+ * and an `.astro` page produce the same page furniture.
+ */
+import CourseLayout from "./CourseLayout.astro";
+
+const { frontmatter, ...direct } = Astro.props;
+const props = (frontmatter ?? direct) as Record<string, unknown>;
+const { title, description, kicker, ...rest } = props as {
+  title: string;
+  description?: string;
+  kicker?: string;
+  [key: string]: unknown;
+};
 ---
 
-<MdxPageLayout siteConfig={siteConfig} {...Astro.props}>
+<CourseLayout title={title} description={description} kicker={kicker} {...rest}>
   <slot />
-</MdxPageLayout>
+</CourseLayout>

@@ -1,0 +1,222 @@
+---
+title: What is obfuscation?
+description:
+  Five tools, one program, and a definition strong enough to be useful — which
+  means a definition that tells you what evidence would show whether anything
+  happened.
+week: 2
+date: 2027-03-03
+mode: Lane audit
+question: An obfuscator ran and exited zero. What has it actually done, and what would show that?
+teachers:
+  - tomas-wrenn
+spec:
+  - you have finished week 1's studio and can point at one operation in all three representations
+  - you can state what `-O0` means to a compiler, and what it does not mean
+  - you have skimmed the claim boundaries page and know why it exists
+related:
+  - lectures/spine-01
+---
+
+import Badge from "../../components/Badge.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+
+A working definition, and then five hours of trouble with it.
+
+> **Obfuscation** is a transformation applied to a program that is intended to
+> preserve its observable behaviour while making some specific analysis of it
+> more expensive.
+
+Everything interesting is in the two vague words. *Which* analysis, and
+*preserve* according to whom. This week is about turning both into questions
+with answers you can check.
+
+<section class="sc-section">
+
+## Which analysis, and at which representation
+
+An obfuscator does not make a program "harder". It makes one particular way of
+looking at the program harder, and it does that at one particular point in the
+pipeline. Week 1 gave you the four points. Here is what each choice commits the
+tool to:
+
+<LectureTable id="01_transformation_layers" class="sc-wide" />
+
+The consequence is the reason week 5 exists. A transformation applied to C
+source has to get past the entire native compiler. One applied to LLVM IR has
+to get past instruction selection. One applied to a linked binary has nothing
+after it — no optimiser will undo it, and no optimiser will fix it either.
+
+</section>
+
+<section class="sc-section">
+
+## The five lanes this course uses
+
+Four compilers and one post-link rewriter were tested. Their exact identities
+are recorded, because "OLLVM" is a family of implementations spanning a decade
+and results do not transfer between them for free:
+
+<EvidenceCode
+  id="assets/evidence/matrix/compiler_inventory.json"
+  lang="json"
+  title="compiler_inventory.json — the toolchains behind every number on this site"
+  note="identity, not marketing"
+  fromMatch={/"polaris":/}
+  take={6}
+  class="sc-wide"
+/>
+
+<LectureTable id="02_obfuscator_snapshot" class="sc-wide" />
+
+Sixty-eight planned build conditions were produced from the frozen source.
+All sixty-eight linked as Windows x64 executables, ran, printed the six
+expected values and exited zero. That matters for a reason that is easy to skip
+past: it means every specimen you will read this semester is a program that
+*worked*. When something goes wrong later in the course, the obfuscator is not
+the suspect.
+
+</section>
+
+<section class="sc-section">
+
+## The lane that does not run
+
+:::error[Static evidence only]
+BinProtect applied all four of its transformations to both an `-O0` and an
+`-O2` input and returned exit code 0 for all eight invocations. Not one of the
+eight protected executables is valid at runtime: seven terminate with access
+violation `0xC0000005`, and the eighth produced no output and was killed after
+fifteen seconds. Every protected file's stdout is empty. The two clean inputs
+printed all six values and exited 0.
+
+Nothing on this site presents a BinProtect protected binary as a working
+sample, and none is published here. Its transformations are real and visible in
+the output files; its outputs are evidence about structure and about nothing
+else.
+:::
+
+This is the first of several places where the course's habit of separating
+outcomes earns its keep. "The tool exited zero and its transformations are
+plainly visible in the output" and "the tool produced a working protected
+program" are different claims, and here the first is true and the second is
+false eight times out of eight.
+
+It is also a warning about reading a tool's own description of itself. Upstream
+capability descriptions do not override a local runtime failure, and a local
+runtime failure on one program does not prove the tool never works. Both halves
+of that are needed.
+
+</section>
+
+<section class="sc-section">
+
+## Targeting: what the tool was told to transform
+
+You would like to say "the obfuscator transformed *this function*". For two of
+the four compilers tested, that turned out not to be available.
+
+Annotation-only pilots were run first: mark one function with
+`__attribute__((annotate("sub")))`, build, and check that only it changed. On
+the tested OLLVM-16 and Hikari builds, the annotated target compiled *and was
+not transformed*. In OLLVM-16's case the legacy annotation reader did not
+recognise the opaque-pointer representation this front end emits. The retained
+matrix therefore uses global switches — `-mllvm -sub`, `-enable-subobf` and
+their siblings — which transform everything eligible in the module.
+
+Polaris's selective targeting did work, with suffix annotations paired to its
+pass pipelines.
+
+The measurement consequence is precise and small. Target-function measurements
+stay isolated, because they are taken from the named function's own bytes. But
+other functions in the same binary may also have been transformed, so nothing
+here supports a claim about *function-isolated treatment*, and nothing here
+proves annotation support is impossible in some other build of these
+compilers.
+
+<Numbers
+  items={[
+    { value: "68 / 68", label: "planned build conditions that linked, ran and printed SHOWCASE PASS", sourceId: "assets/reports/showcase_matrix_v1.md" },
+    { value: "0 / 8", label: "BinProtect protected outputs valid at runtime", sourceId: "assets/reports/binprotect_validation.md" },
+    { value: "4", label: "compilers with recorded hash and revision behind every claim", sourceId: "assets/evidence/matrix/compiler_inventory.json" },
+    { value: "2 of 4", label: "compilers where annotation-only targeting silently did nothing", sourceId: "assets/reports/showcase_matrix_v1.md" },
+  ]}
+/>
+
+</section>
+
+<section class="sc-section">
+
+## What "more complicated" looks like
+
+<Screenshot
+  id="assets/ida/demo_substitution2_1.jpg"
+  alt="Two function graphs side by side in a disassembler, each a single tall basic block. The right-hand block is several times taller than the left. Individual instructions are not legible at this zoom."
+  crop
+>
+  The same function before and after one arithmetic transformation, at a zoom
+  where no instruction is readable. Both are a *single basic block* — the
+  control flow is identical and all the growth is inside one straight line of
+  code. Nothing here ranks one tool against another, and nothing here is a
+  measurement: the retained instruction counts come from the disassembly, not
+  from the height of a rectangle.
+</Screenshot>
+
+Keep this image in mind for two reasons. It is the honest reason obfuscation
+works — someone has to read that — and it is a trap, because block count and
+expression size are independent, and in week 6 you will meet a transformation
+that explodes the graph while barely touching the arithmetic.
+
+</section>
+
+<Ledger
+  establishes={[
+    "Obfuscation is applied at a specific representation, and that choice determines what stands between the transformation and the final binary.",
+    "Across the retained matrix, all 68 planned conditions produced working Windows x64 executables from the frozen source.",
+    "All eight tested BinProtect protected outputs failed at runtime — seven access violations and one hang — so they are static-analysis evidence only.",
+    "On the tested OLLVM-16 and Hikari builds, annotation-only targeting compiled without transforming the target; the retained builds used global switches.",
+  ]}
+  withholds={[
+    "Any ranking of the five tools by strength. Different techniques on one 483-line program is not a benchmark.",
+    "That BinProtect cannot produce valid output generally — only that it did not on this program, in this build, in these eight conditions.",
+    "That annotation-based targeting is impossible in other builds of these compilers.",
+    "That a taller graph or a longer listing is a measure of anything. The counts come from the disassembly.",
+  ]}
+  sources={[
+    { label: "Matrix scope from", id: "assets/reports/showcase_matrix_v1.md" },
+    { label: "Runtime failures from", id: "assets/reports/binprotect_validation.md" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: audit the five lanes
+
+In pairs, build a five-row table of your own. One row per tool, and these
+columns: the representation it transforms, what it takes as input, what it
+emits, and **what the retained evidence establishes about its output's
+validity**.
+
+Then answer two questions in writing:
+
+1. Which of the five lanes cannot be used for a runnable exercise in this
+   course, and what exactly is the evidence for that? Quote the number.
+2. Pick any row and write the sentence that would be an overclaim. Then write
+   the version that is supported. This is the skill A1 marks.
+
+<FileList
+  items={[
+    { id: "assets/tables/research/obfuscators.md", what: "the corrected obfuscator comparison, with its qualifications" },
+    { id: "assets/evidence/matrix/compiler_inventory.json", what: "exact compiler paths, versions and hashes" },
+    { id: "assets/reports/showcase_matrix_v1.md", what: "the matrix: build method, targeting pilots, O0 comparison" },
+    { id: "assets/reports/binprotect_validation.md", what: "the eight invalid protected outputs, in detail" },
+    { id: "CLAIMS_AND_CAVEATS.md", what: "the safe formulation and the overclaim, side by side, for every result" },
+  ]}
+/>
+
+</section>

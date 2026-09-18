@@ -1,0 +1,153 @@
+---
+title: Same program, four stories
+description: Spine lecture 1 of SLOP8445 — representation, and why a compiler is already an obfuscator
+---
+
+{/* _class: impact */}
+
+# Same program, four stories
+
+SLOP8445 · Spine lecture 1 · Block I
+
+```notes
+- do not start with obfuscation. Start with the compiler.
+- the room needs to leave believing that "bigger listing" is not a finding
+```
+
+---
+
+## One file, all semester
+
+```c
+value[0] = input + 0x01010101u;
+value[0] ^= 0x12345678u;
+value[0] += 0x1337u;
+value[0] -= 0x1111u;
+```
+
+483 lines of C. Six exported functions. Six expected 32-bit answers, checked
+by the program itself.
+
+Frozen before any build: `39FEF0BB…906B99D2`
+
+```notes
+- hash re-checked before every one of the 68 builds
+- so no difference between two binaries can be a difference in the program
+```
+
+---
+
+## Four descriptions of one addition
+
+| Representation | What it says |
+| --- | --- |
+| C source | `input + 0x01010101u` |
+| LLVM IR | load, `add`, `getelementptr`, `store volatile` |
+| x64 | `mov`, `add`, `mov` — three instructions |
+| recovered CFG | one basic block, no edges |
+
+All four are true at the same time.
+
+---
+
+## Four numbers for the size of one function
+
+- **155** LLVM IR instructions
+- **115** x64 machine instructions
+- **467** bytes, prologue to return
+- **51** machine instructions at `-O1`
+
+Nothing was obfuscated. Nothing was hidden.
+
+```notes
+- the O0->O1 halving is the argument reload the backend stops doing
+- ask: which of these four would you put in a paper? all of them, with the convention
+```
+
+---
+
+{/* _class: impact */}
+
+## The compiler got there first
+
+---
+
+## Where a transformation can be applied
+
+| Layer | What follows it |
+| --- | --- |
+| C source | the entire native compiler |
+| LLVM IR | LLVM optimisation, then instruction selection |
+| x86 backend | nothing in IR metrics will see it |
+| linked binary | nothing at all |
+
+The layer decides what survives. Week 5 measures it.
+
+---
+
+## The habit
+
+Before saying what a listing means, say:
+
+1. which **representation**
+2. at which **optimisation level**
+3. against which **comparator**
+4. counted by which **convention**
+
+```notes
+- four questions, asked in that order, all semester
+- most of the wrong claims in this field skip 3 and 4
+```
+
+---
+
+## Landmarks, not proofs
+
+```asm
+14000103c: 05 01 01 01 01   addl $0x1010101, %eax
+1400010a2: 35 78 56 34 12   xorl $0x12345678, %eax
+```
+
+`0x12345678` is how you find the same computation again.
+
+It is **not** evidence that the operation around it still does what the source
+said.
+
+```notes
+- from week 3 on, frequently it will not
+```
+
+---
+
+## What the corpus is not
+
+- no allocator traffic, no threads, no exceptions
+- exported, non-inlined targets with memorable constants
+- volatile inputs so nothing folds to a constant
+- Windows x64 PE only
+
+A controlled specimen. **Not** a model of production software.
+
+```notes
+- say this out loud in the first hour, not in week 12
+```
+
+---
+
+## Block I
+
+- **Week 1** — one addition, three representations, four numbers
+- **Week 2** — five tools, one of which produced eight broken binaries
+- **Week 3** — the oldest trick, undone by the backend
+
+---
+
+{/* _class: impact */}
+
+## A bigger listing tells you almost nothing
+
+The whole course is about what does tell you something.
+
+```notes
+- end here. Do not preview the failures yet; week 10 needs them fresh
+```

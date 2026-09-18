@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="920" viewBox="0 0 2400 920" role="img">
+  <rect width="2400" height="920" fill="#0c0d10"/>
+  <g>
+<text x="1180" y="95.6" fill="#f4efe6" fill-opacity="0.5" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="16.38" letter-spacing="2.52">CLEAN  ·  demo_substitution  ·  O0</text>
+<line x1="1180" y1="112.6" x2="1516" y2="112.6" stroke="#f4efe6" stroke-opacity="0.16" stroke-width="1"/>
+<text x="1180" y="150" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">48 83 EC 28</text>
+<text x="1180" y="184" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 4C 24 24</text>
+<text x="1180" y="218" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="252" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 01 01 01 01</text>
+<text x="1180" y="286" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 04 24</text>
+<text x="1180" y="320" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="354" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 02 02 02 02</text>
+<text x="1180" y="388" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 44 24 04</text>
+<text x="1180" y="422" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="456" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 03 03 03 03</text>
+<text x="1180" y="490" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 44 24 08</text>
+<text x="1180" y="524" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="558" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 04 04 04 04</text>
+<text x="1180" y="592" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 44 24 0C</text>
+<text x="1180" y="626" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="660" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 05 05 05 05</text>
+<text x="1180" y="694" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 44 24 10</text>
+<text x="1180" y="728" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="762" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 06 06 06 06</text>
+<text x="1180" y="796" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">89 44 24 14</text>
+<text x="1180" y="830" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">8B 44 24 24</text>
+<text x="1180" y="864" fill="#c98f2a" fill-opacity="0.68" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="21" xml:space="preserve">05 07 07 07 07</text>
+<text x="1740" y="102" fill="#f4efe6" fill-opacity="0.5" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="14.82" letter-spacing="2.28">SUB  ·  same function  ·  O0</text>
+<line x1="1740" y1="117" x2="2044" y2="117" stroke="#f4efe6" stroke-opacity="0.16" stroke-width="1"/>
+<text x="1740" y="150" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">48 83 EC 28</text>
+<text x="1740" y="180" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">89 4C 24 24</text>
+<text x="1740" y="210" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">8B 44 24 24</text>
+<text x="1740" y="240" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">05 B7 65 E8 06</text>
+<text x="1740" y="270" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">05 01 01 01 01</text>
+<text x="1740" y="300" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">2D B7 65 E8 06</text>
+<text x="1740" y="330" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">89 04 24</text>
+<text x="1740" y="360" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">8B 44 24 24</text>
+<text x="1740" y="390" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">2D CB E4 38 84</text>
+<text x="1740" y="420" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">05 02 02 02 02</text>
+<text x="1740" y="450" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">05 CB E4 38 84</text>
+<text x="1740" y="480" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">89 44 24 04</text>
+<text x="1740" y="510" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">8B 44 24 24</text>
+<text x="1740" y="540" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">31 C9</text>
+<text x="1740" y="570" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">81 E9 03 03 03 03</text>
+<text x="1740" y="600" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">29 C8</text>
+<text x="1740" y="630" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">89 44 24 08</text>
+<text x="1740" y="660" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">8B 44 24 24</text>
+<text x="1740" y="690" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">31 C9</text>
+<text x="1740" y="720" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">81 E9 04 04 04 04</text>
+<text x="1740" y="750" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">29 C8</text>
+<text x="1740" y="780" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">89 44 24 0C</text>
+<text x="1740" y="810" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">8B 44 24 24</text>
+<text x="1740" y="840" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">31 C9</text>
+<text x="1740" y="870" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">29 C1</text>
+<text x="1740" y="900" fill="#c98f2a" fill-opacity="0.44" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="19" xml:space="preserve">31 C0</text>
+
+  <rect x="1167" y="776.9" width="291.2" height="119.60000000000001" fill="#e8b04a" fill-opacity="0.09" stroke="#e8b04a" stroke-opacity="0.5" stroke-width="1"/>
+  <text x="1180" y="812" fill="#e8b04a" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="26" xml:space="preserve">0F 85 05 00 00 00</text>
+  <text x="1180" y="860.1" fill="#f4efe6" font-family="ui-monospace, 'DejaVu Sans Mono', monospace" font-size="26" xml:space="preserve">E9 06 00 00 00 90</text>
+  </g>
+  <line x1="1120" y1="0" x2="1120" y2="920" stroke="#c98f2a" stroke-opacity="0.28" stroke-width="2"/>
+</svg>

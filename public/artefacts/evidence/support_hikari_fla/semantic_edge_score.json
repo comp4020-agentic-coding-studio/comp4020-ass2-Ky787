@@ -1,0 +1,14 @@
+{
+  "id": "hikari-fla-O0",
+  "family": "hikari",
+  "optimization": "O0",
+  "mode": "stock",
+  "true_edges": 28,
+  "recovered_edges": 28,
+  "true_positive": 28,
+  "false_positive": 0,
+  "unresolved": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "unit": "Retained IR/C state-region successor pairs including synthetic entry; not raw CFG edges; no conditional polarity proof"
+}

@@ -1,0 +1,38 @@
+---
+// A table parsed out of one of the handoff's authoritative markdown documents.
+import type { MarkdownTable } from "../lib/mdtable";
+
+interface Props {
+  table: MarkdownTable;
+  /** Turn the first column into row headers. */
+  rowHeaders?: boolean;
+  caption?: string;
+  class?: string;
+}
+
+const { table, rowHeaders = true, caption, class: className } = Astro.props;
+---
+
+<div class:list={["at-table-wrap", className]}>
+  <table>
+    {caption && <caption class="sc-label" style="text-align: start; padding-block-end: 0.5rem;">{caption}</caption>}
+    <thead>
+      <tr>{table.columns.map((column) => <th scope="col" set:html={column} />)}</tr>
+    </thead>
+    <tbody>
+      {
+        table.rows.map((row) => (
+          <tr>
+            {row.map((cell, index) =>
+              rowHeaders && index === 0 ? (
+                <th scope="row" set:html={cell} />
+              ) : (
+                <td set:html={cell} />
+              ),
+            )}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

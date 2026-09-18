@@ -1,0 +1,86 @@
+---
+import Callout from "astro-theme-university/components/Callout.astro";
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import SourceTable from "../../components/SourceTable.astro";
+import { evidenceUrl } from "../../lib/evidence";
+import { markdownTable } from "../../lib/mdtable";
+
+// This page is the research package's claim-boundary table, parsed from the
+// authoritative document at build time rather than retyped. If the document
+// changes, the page changes; if the table empties, the spec test fails.
+const boundaries = markdownTable("CLAIMS_AND_CAVEATS.md");
+---
+
+<CourseLayout
+  title="What we do and do not claim"
+  kicker="Reference"
+  description="Every empirical statement on this site, paired with the overclaim it is
+    routinely confused with. This page is the research package's own boundary table,
+    rendered — not summarised."
+>
+  <p>
+    A course built on twenty-one specimens and one 483-line program can say a
+    lot of true things and almost no general ones. The distinction is not
+    modesty, it is the subject: the two most instructive results here are a
+    rewrite that looks correct and is not, and a lift that verifies and
+    miscomputes. Both would have been reported as successes by anyone willing to
+    describe their evidence loosely.
+  </p>
+
+  <p>
+    So the left column below is what the evidence supports. The middle column is
+    the sentence people write instead — deliberately included, because
+    recognising your own draft in it is the point. The right column is the
+    evidence and the qualification.
+  </p>
+
+  <Callout type="warning">
+    <p>
+      <strong>This page is generated.</strong> The {boundaries.rows.length} rows
+      come from{" "}
+      <a href={evidenceUrl("CLAIMS_AND_CAVEATS.md")}>CLAIMS_AND_CAVEATS.md</a> in
+      the research package, parsed while the site builds. Nothing here is a
+      paraphrase. Where a row's evidence link points at an artefact this site
+      publishes, it is a link; where it points at something held back, the text
+      stays and the link does not.
+    </p>
+  </Callout>
+
+  <SourceTable table={boundaries} rowHeaders={false} class="sc-wide" />
+
+  <h2>The scope checklist</h2>
+  <p>
+    The same document ends with the checklist every page here was written
+    against, and the one A1, A2 and the capstone are marked against:
+  </p>
+  <ul>
+    <li>name the specimen and the optimisation level;</li>
+    <li>identify the representation and the metric convention;</li>
+    <li>link the retained evidence;</li>
+    <li>state the relevant input and state assumptions;</li>
+    <li>distinguish SAT, UNSAT and UNKNOWN;</li>
+    <li>
+      say whether an executable was actually produced, and whether it was
+      validated.
+    </li>
+  </ul>
+
+  <h2>Four things this site will never say</h2>
+  <ol>
+    <li>
+      That the Polaris flattening rewrite worked. It produces a smaller graph
+      and the wrong answer, and it is on this site as a failure.
+    </li>
+    <li>
+      That a smaller control-flow graph is evidence of correct deobfuscation.
+    </li>
+    <li>
+      That verifier-valid LLVM IR is evidence of a faithful lift. One retained
+      lift is verifier-clean and wrong on 3,917 of 4,118 inputs.
+    </li>
+    <li>
+      That a BinProtect protected output is a working sample. All eight tested
+      outputs crashed or hung.
+    </li>
+  </ol>
+</CourseLayout>

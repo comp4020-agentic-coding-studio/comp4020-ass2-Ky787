@@ -1,18 +1,32 @@
 ---
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
-import SessionsGrid from "../../components/SessionsGrid.astro";
-import { sessionLabels, siteConfig } from "../../site-config";
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import Outcomes from "../../components/Outcomes.astro";
+import WeeksGrid from "../../components/WeeksGrid.astro";
+import { courseQuestion } from "../../course-config";
 ---
 
-<ContentLayout
-  title={sessionLabels.plural}
-  description={`The twelve-week teaching schedule: what happens in each ${sessionLabels.singular.toLowerCase()}, what to prepare, and what leaves the room.`}
-  {...siteConfig}
+<CourseLayout
+  title="Twelve weeks"
+  kicker="Teaching programme"
+  description="One argument in four blocks. Each week takes the same small C program a step
+    further from its source and asks what is left of its meaning."
 >
   <p>
-    The internal collection and URL stay <code>sessions</code>. Set the visible
-    singular and plural names once in <code>src/site-config.ts</code> and use
-    the language your course deserves everywhere readers see it.
+    The course runs a two-hour studio every week, and a spine lecture at the start of each
+    block. Weeks are cumulative: week 10 is only legible because week 9 built the dispatcher,
+    and week 9 is only legible because week 6 separated a genuine branch from an injected one.
+    If you are dipping in, read the block claim first.
   </p>
-  <SessionsGrid />
-</ContentLayout>
+
+  <p><strong>The question the twelve weeks answer together:</strong> {courseQuestion}</p>
+
+  <h2>Four words we keep apart</h2>
+  <p>
+    Almost every wrong conclusion in this field is one of these four being mistaken for
+    another. They are the vocabulary of every week, every ledger and every marking rubric
+    here.
+  </p>
+  <Outcomes />
+
+  <WeeksGrid />
+</CourseLayout>

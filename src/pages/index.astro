@@ -1,68 +1,151 @@
 ---
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
-import heroImage from "../assets/images/hero-home.avif";
-import { courseMeta } from "../course-config";
-import { sessionLabels, siteConfig } from "../site-config";
-
-// STARTER_CONTENT: replace the hero artwork and its alt text below, then
-// remove this comment.
+import { withBase } from "astro-theme-university/url";
+import ArgumentArc from "../components/ArgumentArc.astro";
+import EvidenceCode from "../components/EvidenceCode.astro";
+import Ledger from "../components/Ledger.astro";
+import Numbers from "../components/Numbers.astro";
+import Outcomes from "../components/Outcomes.astro";
+import CourseLayout from "../layouts/CourseLayout.astro";
+import heroImage from "../assets/images/hero-home.svg";
+import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
 ---
 
-<ContentLayout
+<CourseLayout
   title={`${courseMeta.code}: ${courseMeta.title}`}
-  description={courseMeta.description}
+  documentTitle={`${courseMeta.code} ${courseMeta.title} — Slop University`}
+  metaDescription={courseMeta.description}
   heroImage={heroImage}
-  heroImageAlt="A lecture theatre reduced to flat gold and black shapes, rows of seats sweeping past the frame, in a two-ink risograph print"
-  {...siteConfig}
+  heroImageAlt="Two columns of hexadecimal machine-code bytes in gold on near-black. The left column is a short regular sequence; the right is three times longer and irregular. One six-byte row is highlighted in both."
 >
-  <ul class="course-tags" aria-label="Course tags">
+  <p class="lead">{courseSubtitle}</p>
+
+  <ul class="sc-tags" aria-label="Course tags">
     {courseMeta.tags.map((tag) => <li>{tag}</li>)}
   </ul>
 
-  <!-- STARTER_CONTENT: replace the authored page below, then remove this comment. -->
-  <h2>What you will do</h2>
   <p>
-    Say what a student spends their time on — the making, reading, arguing or
-    measuring that fills the weeks. Name the artefact they walk out with.
+    Here are two listings of the same function. One is four times longer than
+    the other, and they compute the same value. Here are two more: one is
+    smaller and more readable than the other, and it computes the wrong answer.
+    Telling those two situations apart is the entire subject.
   </p>
 
-  <h2>Who it is for</h2>
   <p>
-    Say who this is aimed at and what they need to already know. Be specific
-    enough that someone can rule themselves in or out without emailing you.
+    Over twelve weeks this course follows one 483-line C program through
+    obfuscation, compilation, disassembly, graph recovery, symbolic execution,
+    binary rewriting and lifting — and asks, at every step, what survived and
+    how you would know. The evidence is real: sixty-eight builds, twenty-one
+    retained executables, frozen solver queries, and two results that look like
+    successes and are not.
   </p>
 
-  <h2>Where to go next</h2>
-  <CardGrid columns={2}>
-    <Card title={sessionLabels.plural} href="/sessions/">
-      <p>The weekly schedule and what happens in each teaching session.</p>
-    </Card>
-    <Card title="Assessment" href="/assessments/">
-      <p>What is marked, what it is worth, and when it is due.</p>
-    </Card>
-    <Card title="People" href="/people/">
-      <p>Who teaches the course and how to reach them.</p>
-    </Card>
-  </CardGrid>
-</ContentLayout>
+  <p><strong>The question, for twelve weeks:</strong> {courseQuestion}</p>
 
-<style>
-  .course-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-block: 0 2rem;
-    padding: 0;
-    list-style: none;
-  }
+  <section class="sc-section">
+    <h2>The thing you will keep meeting</h2>
+    <p>
+      A stock unflattener was pointed at a flattened function. It exited zero,
+      wrote a valid executable, and took the control-flow graph from 56 blocks
+      to 10 — the largest simplification anywhere in this corpus.
+    </p>
+    <EvidenceCode
+      id="assets/evidence/s05_polaris_fla_wrong/output_runtime_stdout.txt"
+      lang="text"
+      title="what the smaller, cleaner, valid executable actually prints"
+      note="expected DBEFFCE7"
+      class="sc-wide"
+    />
+    <p>
+      Four legitimate <code>switch</code> alternatives from the original C were
+      grouped under one incoming state and emitted one after another, so all
+      four now run. Nothing about the graph says so. Nothing about the file
+      says so. One test vector says so immediately.
+    </p>
+    <p>
+      <a href={withBase("/sessions/week-10/")}>Week 10 takes it apart.</a>
+    </p>
+  </section>
 
-  .course-tags li {
-    padding: 0.25rem 0.65rem;
-    border-radius: 999px;
-    color: var(--at-text-secondary);
-    background: var(--at-bg-alt);
-    font-size: 0.9rem;
-  }
-</style>
+  <section class="sc-section">
+    <h2>What you will be able to do</h2>
+    <p>
+      By week 12 you should be able to take an unfamiliar obfuscated function,
+      choose an approach and say why, work across more than one representation,
+      validate whatever you conclude at the level you claimed it, and state the
+      boundary of your own result without being asked. Concretely, you will be
+      able to explain:
+    </p>
+    <ul>
+      <li>why source, IR and machine code can tell different stories about one function;</li>
+      <li>how compiler optimisation can weaken, erase or preserve an obfuscation;</li>
+      <li>how mixed Boolean-arithmetic is simplified, and what a simplification proves;</li>
+      <li>what makes an opaque predicate different from an ordinary path-dependent branch;</li>
+      <li>how symbolic execution and an SMT solver prove a branch direction impossible;</li>
+      <li>how such a proof becomes six changed bytes in a working executable;</li>
+      <li>why control-flow flattening hides successor relationships rather than values;</li>
+      <li>why an unflattener succeeds on one implementation and fails on its close relative;</li>
+      <li>why valid-looking deobfuscation output still has to be validated semantically;</li>
+      <li>and where generic methods succeed, against where a representation-specific assumption is still doing the work.</li>
+    </ul>
+    <Outcomes />
+  </section>
+
+  <section class="sc-section">
+    <h2>The argument, in four blocks</h2>
+    <ArgumentArc />
+  </section>
+
+  <section class="sc-section">
+    <h2>What it is built on</h2>
+    <Numbers
+      items={[
+        { value: "68 / 68", label: "build conditions from one frozen source that linked, ran and passed their own checks", sourceId: "assets/reports/showcase_matrix_v1.md" },
+        { value: "38", label: "injected opaque gates proved one-sided across two unrelated obfuscators", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+        { value: "9,189", label: "differential test triples on the rewritten binaries, with zero mismatches", sourceId: "assets/evidence/s03_ollvm_bcf/validation.json" },
+        { value: "3,917", label: "of 4,118 inputs miscomputed by a lift whose LLVM IR verifies cleanly", sourceId: "assets/evidence/s01_ollvm_sub/mergen/semantic_result.json" },
+      ]}
+    />
+    <Ledger
+      title="What this corpus is and is not"
+      establishes={[
+        "Bounded, reproducible results about twenty-one specimens built from one frozen 483-line program, each with a matched clean comparator at a stated optimisation level.",
+        "Two transfers that worked across unrelated implementations, and two failures that were caught only by execution.",
+        "A complete evidence trail: every number on this site resolves to a published file with a recorded hash.",
+      ]}
+      withholds={[
+        "A benchmark. Different techniques applied to one small C program do not rank five tools against each other.",
+        "A model of production software. No threads, no allocator traffic, no exceptions, no packing — and every target exported and non-inlined on purpose.",
+        "A claim that semantic methods solve obfuscation. The course's strongest result is thirty-eight branches in two binaries.",
+      ]}
+      sources={[{ label: "Scope and boundaries:", href: "/claims/", text: "what we do and do not claim" }]}
+    />
+  </section>
+
+  <section class="sc-section">
+    <h2>Where to go next</h2>
+    <div class="sc-cards">
+      <CardGrid columns={3}>
+        <Card title="The twelve weeks" href="/sessions/">
+          <p>The teaching programme, in four blocks, with the claim each block establishes.</p>
+        </Card>
+        <Card title="Assessment" href="/assessments/">
+          <p>Three pieces, 25 / 30 / 45, no exam. A quarter of each is what you decline to conclude.</p>
+        </Card>
+        <Card title="Evidence and provenance" href="/evidence/">
+          <p>Every artefact the course cites, byte-identical, with its hash — and the two images we will not publish.</p>
+        </Card>
+        <Card title="Four spine lectures" href="/lectures/">
+          <p>Weeks 1, 4, 7 and 10, each with the deck it was delivered from.</p>
+        </Card>
+        <Card title="Tools" href="/tools/">
+          <p>What each tool produces, and whether it ever produced a working rewritten binary here.</p>
+        </Card>
+        <Card title="Course information" href="/policies/">
+          <p>Prerequisites, the lab rules, the read-only route, and how marking works.</p>
+        </Card>
+      </CardGrid>
+    </div>
+  </section>
+</CourseLayout>

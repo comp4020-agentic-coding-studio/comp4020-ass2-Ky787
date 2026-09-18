@@ -1,0 +1,64 @@
+---
+/**
+ * Every page on this site renders through here.
+ *
+ * It sits on the theme's BaseLayout rather than ContentLayout for two reasons:
+ * a page's document title should name the course (`Week 7 — SLOP8445`) while
+ * its heading stays the heading, and every page needs the enlarge-on-click
+ * layer, because the evidence this course teaches from is full of graphs and
+ * disassembler views that cannot be read at page width.
+ */
+import type { ImageMetadata } from "astro";
+import BaseLayout from "astro-theme-university/layouts/BaseLayout.astro";
+import ZoomLayer from "../components/ZoomLayer.astro";
+import { withBase } from "astro-theme-university/url";
+import { courseMeta } from "../course-config";
+import { footerLinks, siteConfig } from "../site-config";
+import "../styles/course.css";
+
+interface Props {
+  /** The page heading. */
+  title: string;
+  /** The `<title>` element. Defaults to the heading plus the course code. */
+  documentTitle?: string;
+  /** Small line above the heading — the week number, the block, the kicker. */
+  kicker?: string;
+  /** Lead paragraph, and the page's meta description. */
+  description?: string;
+  /** Meta description, when the lead is longer than one wants in a snippet. */
+  metaDescription?: string;
+  heroImage?: ImageMetadata;
+  heroImageAlt?: string;
+  socialImage?: string | ImageMetadata;
+  socialImageAlt?: string;
+  unlisted?: boolean;
+}
+
+const {
+  title,
+  documentTitle,
+  kicker,
+  description,
+  metaDescription,
+  heroImage,
+  heroImageAlt,
+  ...rest
+} = Astro.props;
+---
+
+<BaseLayout
+  title={documentTitle ?? `${title} — ${courseMeta.code} ${courseMeta.title}`}
+  description={metaDescription ?? description}
+  {...siteConfig}
+  {...rest}
+  legalLinks={footerLinks.map((link) => ({ text: link.text, href: withBase(link.href) }))}
+  heroTitle={heroImage ? title : undefined}
+  heroImage={heroImage}
+  heroImageAlt={heroImageAlt}
+>
+  {!heroImage && kicker && <p class="sc-kicker">{kicker}</p>}
+  {!heroImage && <h1>{title}</h1>}
+  {description && <p class="lead">{description}</p>}
+  <slot />
+  <ZoomLayer />
+</BaseLayout>

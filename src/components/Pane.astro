@@ -1,0 +1,27 @@
+---
+// A labelled evidence pane: what it is on top, where it came from underneath.
+interface Props {
+  title: string;
+  /** What to look at, shown beside the title. */
+  note?: string;
+  /** Extra classes, e.g. `sc-wide`. */
+  class?: string;
+}
+
+const { title, note, class: className } = Astro.props;
+---
+
+<figure class:list={["sc-pane", className]}>
+  <div class="sc-pane__head">
+    <p class="sc-pane__title">{title}</p>
+    {note && <span class="sc-pane__note">{note}</span>}
+  </div>
+  <div class="sc-pane__body"><slot /></div>
+  {
+    Astro.slots.has("foot") && (
+      <figcaption class="sc-pane__foot">
+        <slot name="foot" />
+      </figcaption>
+    )
+  }
+</figure>

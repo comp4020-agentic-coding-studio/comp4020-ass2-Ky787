@@ -1,0 +1,14 @@
+{
+  "id": "ollvm16-fla-O0",
+  "family": "ollvm16",
+  "optimization": "O0",
+  "mode": "stock",
+  "true_edges": 25,
+  "recovered_edges": 25,
+  "true_positive": 25,
+  "false_positive": 0,
+  "unresolved": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "unit": "Retained IR/C state-region successor pairs including synthetic entry; not raw CFG edges; no conditional polarity proof"
+}

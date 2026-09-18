@@ -1,0 +1,116 @@
+---
+import Callout from "astro-theme-university/components/Callout.astro";
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import SourceTable from "../../components/SourceTable.astro";
+import { withBase } from "astro-theme-university/url";
+import { evidenceUrl } from "../../lib/evidence";
+import { markdownTables } from "../../lib/mdtable";
+
+// TOOL_CATALOG.md carries three tables: obfuscators, semantic analysis and
+// deobfuscation, and manual inspection tools.
+const [obfuscators, deobfuscators, manual] = markdownTables("TOOL_CATALOG.md");
+---
+
+<CourseLayout
+  title="Tools, and what each one actually produced"
+  kicker="Reference"
+  description="A catalogue organised around one column: did this tool produce a working
+    rewritten binary of the original specimen? For most of them the answer is no, and that
+    is not a criticism."
+>
+  <p>
+    Tool catalogues usually list capabilities. This one lists <em>outputs</em>,
+    because the difference between an expression, a proof, a graph, a lifted
+    module and a rewritten executable is the difference this course exists to
+    teach. A tool that emits a simpler expression has done something valuable
+    and has not deobfuscated a binary, and saying so is not a complaint about
+    the tool.
+  </p>
+
+  <Callout type="info">
+    <p>
+      The three tables below are rendered from{" "}
+      <a href={evidenceUrl("TOOL_CATALOG.md")}>TOOL_CATALOG.md</a> in the
+      research package. The last column of each is the one to read first.
+    </p>
+  </Callout>
+
+  <section class="sc-section">
+    <h2>Obfuscators</h2>
+    <p>
+      Four compilers and one post-link rewriter. Note that "working rewritten
+      binary?" here asks about <em>deobfuscation</em> of the original specimen —
+      an obfuscator producing a valid obfuscated program is the input to this
+      course, not an output of it.
+    </p>
+    {obfuscators && <SourceTable table={obfuscators} class="sc-wide" />}
+  </section>
+
+  <section class="sc-section">
+    <h2>Semantic analysis and deobfuscation</h2>
+    <p>
+      Read the "strongest limitation" column beside the "strongest result"
+      column. Every row on this site has both, and a page that shows you one
+      without the other is not finished.
+    </p>
+    {deobfuscators && <SourceTable table={deobfuscators} class="sc-wide" />}
+  </section>
+
+  <section class="sc-section">
+    <h2>Manual inspection</h2>
+    <p>
+      No core exercise in this course requires a paid decompiler or a
+      commercial binary-analysis platform. Every lab has a route that works
+      from the supplied source, IR, text disassembly, result files and SVGs —
+      on Linux, offline. A disassembler makes some of them faster and none of
+      them possible.
+    </p>
+    {manual && <SourceTable table={manual} class="sc-wide" />}
+  </section>
+
+  <section class="sc-section">
+    <h2>What each workflow emits</h2>
+    <p>
+      The same question, as a single table: given an input, what comes out, and
+      what is the boundary on it?
+    </p>
+    <LectureTable id="06_deobfuscation_outputs" class="sc-wide" />
+  </section>
+
+  <section class="sc-section">
+    <h2>Two names that collide</h2>
+    <p>
+      <strong>Triton</strong> in this course is Jonathan Salwan's dynamic
+      binary-analysis and SMT framework. It is not the GPU kernel compiler of
+      the same name, and searching for the wrong one will waste an afternoon.
+    </p>
+    <p>
+      <strong>Virtualization</strong> in this course means translating protected
+      behaviour into custom bytecode run by an embedded interpreter. It does not
+      mean the Windows virtual machine the lab runs in. No
+      virtualization or devirtualization experiment was performed in this
+      corpus, so week 12 treats it as an endpoint the course can point at and
+      cannot measure.
+    </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>Lab access and the execution boundary</h2>
+    <p>
+      All twenty-one specimens are Windows x64 PE files. Reading them — source,
+      IR, disassembly, graphs, result files — works on any platform, and that
+      is the route every core exercise uses. Executing or debugging them needs
+      the course's Windows x64 lab image. No Wine or Linux-rebuild equivalence
+      is claimed: a Linux rebuild would be a different specimen with a
+      different ABI and different lowering, and it must not be silently
+      substituted for these results.
+    </p>
+    <p>
+      See <a href={evidenceUrl("BINARY_GUIDE.md")}>BINARY_GUIDE.md</a> for the
+      per-specimen execution status, and{" "}
+      <a href={withBase("/evidence/")}>the evidence page</a> for why no executable is
+      downloadable from this site.
+    </p>
+  </section>
+</CourseLayout>

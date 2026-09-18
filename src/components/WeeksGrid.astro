@@ -1,0 +1,58 @@
+---
+// The twelve weeks as cards, grouped under the four blocks, on the weeks
+// index. The block's claim sits above its three weeks so the index reads as
+// one argument rather than a list of twelve topics.
+import { getPublishedCollection } from "astro-course-university/content";
+import Card from "astro-theme-university/components/Card.astro";
+import CardGrid from "astro-theme-university/components/CardGrid.astro";
+import { withBase } from "astro-theme-university/url";
+import { BLOCKS } from "../lib/course";
+import { formatCourseDate } from "../lib/dates";
+
+const sessions = await getPublishedCollection("sessions");
+const byWeek = new Map(sessions.map((session) => [session.data.week, session]));
+const lectures = await getPublishedCollection("lectures");
+const lectureById = new Map(lectures.map((lecture) => [lecture.id, lecture]));
+---
+
+{
+  BLOCKS.map((block) => {
+    const lecture = lectureById.get(block.lecture);
+    return (
+      <section class="sc-section" id={`block-${block.id}`} aria-labelledby={`block-${block.id}-h`}>
+        <h2 id={`block-${block.id}-h`}>
+          <span class="sc-kicker">Block {block.numeral}</span>
+          {block.title}
+        </h2>
+        <p>{block.claim}</p>
+        {lecture && (
+          <p>
+            Opens with the spine lecture{" "}
+            <a href={withBase(`/lectures/${lecture.id}/`)}>{lecture.data.title}</a>.
+          </p>
+        )}
+        <div class="sc-cards">
+          <CardGrid columns={3}>
+            {block.weeks.map((week) => {
+              const session = byWeek.get(week);
+              if (!session) return null;
+              const question = (session.data as { question?: string }).question;
+              return (
+                <Card
+                  headingLevel="h3"
+                  title={`Week ${week}. ${session.data.title}`}
+                  href={`/sessions/${session.id}/`}
+                >
+                  <p>{question ?? session.data.description}</p>
+                  <p>
+                    <small>{formatCourseDate(session.data.date)}</small>
+                  </p>
+                </Card>
+              );
+            })}
+          </CardGrid>
+        </div>
+      </section>
+    );
+  })
+}

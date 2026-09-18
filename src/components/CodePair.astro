@@ -1,0 +1,20 @@
+---
+// Two evidence panes, side by side above 900px and stacked below it, with one
+// caption underneath that says what the comparison is for.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["sc-pair", className]}>
+  <slot />
+  {
+    Astro.slots.has("caption") && (
+      <p class="sc-pair__caption">
+        <slot name="caption" />
+      </p>
+    )
+  }
+</div>

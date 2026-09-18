@@ -1,0 +1,56 @@
+---
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import Outcomes from "../../components/Outcomes.astro";
+import SourceTable from "../../components/SourceTable.astro";
+import { evidenceUrl } from "../../lib/evidence";
+import { markdownTable } from "../../lib/mdtable";
+
+const terms = markdownTable("TERMINOLOGY.md");
+---
+
+<CourseLayout
+  title="Glossary"
+  kicker="Reference"
+  description="Course shorthand, with the qualification attached. Several of these
+    definitions exist mainly to stop a word from meaning two things in one sentence."
+>
+  <p>
+    Read the second half of each definition. Most of the trouble in this field
+    is not in the concepts but in the places where a term quietly changes scope
+    — a basic block that one tool splits at calls and another does not, an
+    UNSAT that holds under a path prefix and is then quoted as an invariant.
+  </p>
+
+  <h2>Four outcomes, before anything else</h2>
+  <p>
+    These four are the course's working vocabulary. They appear on every week
+    page, in every ledger, and in all three assessment rubrics, and almost
+    every wrong conclusion in this field is one of them being read as another.
+  </p>
+  <Outcomes />
+
+  <h2>Terms</h2>
+  <p>
+    The {terms.rows.length} definitions below are the research package's own, rendered
+    from{" "}
+    <a href={evidenceUrl("TERMINOLOGY.md")}>TERMINOLOGY.md</a> while the site
+    builds.
+  </p>
+  <SourceTable table={terms} class="sc-wide" />
+
+  <h2>Two notes on numbers</h2>
+  <p>
+    <strong>Width.</strong> Most arithmetic claims in this corpus concern
+    <code>uint32</code> values modulo 2<sup>32</sup>. An identity checked over the
+    integers is not the same claim, and the difference is not academic —
+    wraparound is where several of these transformations hide.
+  </p>
+  <p>
+    <strong>Convention.</strong> Two different control-flow-graph conventions
+    appear in this course's evidence. The dedicated PE-byte audit used for the
+    branch-rewriting study does not split blocks at calls and treats
+    <code>ret</code> as terminal. The Miasm recursive graphs used for the
+    unflattening study do split at calls. Counts from the two are not
+    interchangeable, and every page that quotes one says which.
+  </p>
+</CourseLayout>

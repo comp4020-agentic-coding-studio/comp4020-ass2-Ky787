@@ -1,0 +1,154 @@
+---
+title: Something always simplifies it for you
+description: Spine lecture 2 of SLOP8445 — arithmetic obfuscation, and the three different things that reduce it
+---
+
+{/* _class: impact */}
+
+# Something always simplifies it for you
+
+SLOP8445 · Spine lecture 2 · Block II
+
+```notes
+- the point of the block: three mechanisms, and crediting the wrong one is the classic error
+```
+
+---
+
+## Three things reduce obfuscated arithmetic
+
+1. **The algebra** — a simpler equivalent exists, and a solver can prove it
+2. **The compiler backend** — instruction selection recognises an addition
+3. **You** — by reading, which leaves no artefact anyone can check
+
+Only one of these produces evidence.
+
+---
+
+## Nine operations for one addition
+
+```llvm
+%6  = xor i32 %5, -1          ; ~(x ^ 0x01010101)
+%7  = mul i32 42, %6
+%8  = add i32 -1128481603, %7
+%9  = mul i32 1, %4
+%10 = add i32 %8, %9
+%11 = add i32 %10, 1145324680
+%12 = add i32 %11, -68
+%15 = mul i32 -42, %14        ; %14 == %6
+%16 = add i32 %12, %15
+```
+
+---
+
+## …is an addition
+
+`%7` and `%15` cancel: `42·A − 42·A = 0`
+
+```text
+−1128481603 + 1145324680 − 68  =  16843009  =  0x01010101
+```
+
+Everything else is `1 · x`.
+
+```notes
+- have the room do the constant fold. It takes 40 seconds and it lands
+- note shl edx, 0x0 in the machine code: multiply by one, lowered, not removed
+```
+
+---
+
+## Same function. Four answers to "did it survive?"
+
+| Treatment | O0 | Higher |
+| --- | --- | --- |
+| classic SUB | 311 instr | all 24 ops back at O1 |
+| another SUB | 213 instr | **identical to clean** at O1 |
+| linear MBA | 678 instr | survives selection at O0 |
+| source-level encoding | 426 instr | 226 vs clean 106 at `/Ox` |
+
+The deciding variable is *where it was applied*.
+
+---
+
+{/* _class: impact */}
+
+## The measurement is the experiment
+
+---
+
+## What a simplifier claims
+
+Three expressions, two obligations:
+
+- **input** — lifted from the machine code
+- **candidate** — what the tool proposes
+- **expected** — the known original (only in a study)
+
+```text
+input ≢ candidate   →  is it sound?
+candidate ≢ expected →  did it recover?
+```
+
+---
+
+## The scoreboard, isolated sites
+
+- **10 / 12** recovered, both 32-bit obligations UNSAT
+- **2** returned SMT UNKNOWN
+
+```json
+"input_to_candidate":   { "result": "unknown", "reason_unknown": "timeout" },
+"candidate_to_expected": { "result": "unsat" },
+"classification": "SMT UNKNOWN",
+"recovered": false
+```
+
+The candidate was right. It is still not accepted.
+
+```notes
+- this slide is the whole lecture if they only remember one
+- UNKNOWN is the absence of an answer, not a weak yes
+```
+
+---
+
+## The scoreboard, composed expressions
+
+- **44 / 48** whole-function expressions extracted
+- **0 / 20** obfuscated return expressions completely recovered
+- largest proved reduction: **305 → 79** AST nodes
+- the source formula is **12** nodes
+
+Local success does not compose.
+
+---
+
+## Before you credit a simplifier
+
+> Was the expression already canonical *before* the tool ran?
+
+The retained study records that field per site, on purpose.
+
+```notes
+- some native expressions were recognisable before msynth ran
+- crediting those as recovery is the embarrassing failure mode
+```
+
+---
+
+## Block II
+
+- **Week 4** — MBA, and what a proof of equivalence covers
+- **Week 5** — optimisation level as a variable, not a nuisance
+- **Week 6** — a branch the programmer wrote vs one a tool injected
+
+A1 is due at the end of week 5.
+
+---
+
+{/* _class: impact */}
+
+## Shorter is not proved
+
+Proved is proved, under a stated width, for a stated pair.

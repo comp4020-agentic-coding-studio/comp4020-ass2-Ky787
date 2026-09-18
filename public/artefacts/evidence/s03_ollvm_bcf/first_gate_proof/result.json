@@ -1,0 +1,82 @@
+{
+  "id": 0,
+  "branch_va": "0x140001667",
+  "branch_rva": "0x1667",
+  "instruction": "jne 0x140001672",
+  "prefix_constraints": 0,
+  "prefix_trace": [],
+  "condition": "(= ref!108 (_ bv0 1))",
+  "prefix": "(= (_ bv1 1) (_ bv1 1))",
+  "queries": {
+    "true": {
+      "status": "SAT",
+      "solver_reported_ms": 3,
+      "wall_ms": 15.608299989253283,
+      "model": {
+        "g_140089018_4": 0,
+        "g_14008901c_4": 0
+      }
+    },
+    "false": {
+      "status": "UNSAT",
+      "solver_reported_ms": 3,
+      "wall_ms": 13.061899997410364,
+      "model": {}
+    }
+  },
+  "unrestricted_queries": {
+    "true": {
+      "status": "SAT",
+      "solver_reported_ms": 3,
+      "wall_ms": 12.928199997986667,
+      "model": {
+        "g_140089018_4": 0,
+        "g_14008901c_4": 0
+      }
+    },
+    "false": {
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 12.632500001927838,
+      "model": {}
+    }
+  },
+  "metrics": {
+    "ast_unique_nodes": 46,
+    "ast_reference_expanded_depth": 20,
+    "symbolic_variables": [
+      "g_140089018_4",
+      "g_14008901c_4"
+    ],
+    "symbolic_variable_count": 2,
+    "contributing_expressions": {
+      "108": "Zero flag",
+      "103": "TEST operation",
+      "89": "Overflow flag",
+      "86": "CMP operation",
+      "91": "Sign flag",
+      "82": "Zero flag",
+      "76": "CMP operation",
+      "68": "Extended part - AND operation",
+      "63": "Extended part - IMUL operation",
+      "54": "Extended part - SUB operation"
+    }
+  },
+  "evidence": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_triton\\ollvm16\\o0\\predicate_0000",
+  "seed": {
+    "x": 4919,
+    "y": 305419896
+  },
+  "globals": {
+    "g_14008901c_4": {
+      "address": 5369270300,
+      "size": 4,
+      "variable_id": 2
+    },
+    "g_140089018_4": {
+      "address": 5369270296,
+      "size": 4,
+      "variable_id": 3
+    }
+  }
+}

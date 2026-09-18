@@ -1,0 +1,35 @@
+---
+// A recovered control-flow graph, as the SVG the analysis produced.
+//
+// These are rendered at whatever size the graph needs — some are metres wide
+// — so the page shows a cropped preview and the reader opens the real thing.
+// The convention line matters: block counts are only comparable within one
+// recovery convention, and the research package uses two.
+import { evidenceName, evidenceUrl } from "../lib/evidence";
+
+interface Props {
+  /** Manifest id under `assets/cfg/`. */
+  id: string;
+  alt: string;
+  /** The counting convention these numbers belong to. */
+  convention?: string;
+  crop?: boolean;
+  class?: string;
+}
+
+const { id, alt, convention, crop = true, class: className } = Astro.props;
+const url = evidenceUrl(id);
+---
+
+<figure class:list={["sc-figure", { "sc-figure--crop": crop }, className]}>
+  <a class="sc-figure__frame" href={url} data-zoom data-zoom-label={alt}>
+    <img src={url} alt={alt} loading="lazy" decoding="async" />
+  </a>
+  <figcaption>
+    <slot />
+    <span class="sc-figure__meta">
+      {convention && <span>{convention}</span>}
+      <span><a href={url}>{evidenceName(id)}</a> — open for the full graph</span>
+    </span>
+  </figcaption>
+</figure>

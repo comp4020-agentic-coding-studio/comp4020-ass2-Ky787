@@ -1,0 +1,42 @@
+{
+  "inputs": 4118,
+  "native": [
+    {
+      "label": "clean",
+      "mismatches": 0
+    },
+    {
+      "label": "input",
+      "mismatches": 0
+    }
+  ],
+  "stages": [
+    {
+      "stage": "raw",
+      "cases": 4118,
+      "mismatches": 0,
+      "first_mismatches": []
+    },
+    {
+      "stage": "raw_O2",
+      "cases": 4118,
+      "mismatches": 0,
+      "first_mismatches": []
+    },
+    {
+      "stage": "internal",
+      "cases": 4118,
+      "mismatches": 0,
+      "first_mismatches": []
+    },
+    {
+      "stage": "internal_O2",
+      "cases": 4118,
+      "mismatches": 0,
+      "first_mismatches": []
+    }
+  ],
+  "tested_equivalence_only": true,
+  "side_effect_equivalence_not_claimed": true,
+  "note": "Unchanged emitted body; no fixed-address stores/calls removed. Direct native export calls in DONT_RESOLVE_DLL_REFERENCES mappings; no PE entrypoint invocation."
+}

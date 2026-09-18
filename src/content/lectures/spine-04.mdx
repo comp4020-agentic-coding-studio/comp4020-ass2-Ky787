@@ -1,0 +1,73 @@
+---
+title: The smaller graph problem
+description:
+  Two results in this corpus look like successes and are not. Both were caught
+  by running the program; neither would have been caught by looking at the
+  output. That is the course's conclusion, and this is where it gets argued.
+week: 10
+date: 2027-05-12
+block: 4
+covers: [10, 11, 12]
+slides: /decks/spine-04/
+teachers:
+  - rasha-oyelaran
+  - petra-kovac
+related:
+  - sessions/week-10
+  - sessions/week-11
+  - sessions/week-12
+  - assessments/capstone-unfamiliar-binary
+---
+
+## The argument
+
+The last block is one sentence with two pieces of evidence behind it: **a
+cleaner-looking result is not a correct result, and nothing about its
+appearance will tell you which it is.**
+
+The first piece of evidence. A stock unflattener is pointed at a flattened
+function. It succeeds — exit code 0, patch generated, executable written. The
+graph drops from 56 blocks to 10, which is the most dramatic simplification
+anywhere in this corpus, and the file is a valid PE with the same size, the
+same sections and the same exports. It computes the wrong answer. Four
+legitimate `switch` alternatives from the original C were grouped under a single
+incoming state and emitted one after another, so all four now run in sequence.
+The program prints `F9CD8332` where it should print `DBEFFCE7` and exits 1.
+
+The second piece. A whole-function lifter is pointed at a valid, passing native
+binary and produces LLVM IR. The IR verifies. It recompiles. It is smaller and
+more readable than the machine code it came from. It miscomputes 3,917 of 4,118
+inputs, at every one of four optimisation stages, because the raw lift folded
+`(~A & B) | (A & C)` into a select on the strength of known-bits extrema that do
+not actually prove `A` is all-zeros or all-ones. `A = 1, B = 0, C = 2` is enough
+to break it.
+
+Neither failure is exotic. Both tools are reasonable tools. Both failures are
+invisible in the output and obvious the first time you execute a test vector.
+
+## What survived the corpus
+
+Not everything is negative, and the pattern in what transferred is the thing to
+take away.
+
+What generalised across implementations: the semantic branch proof plus a
+separate layout-preserving patcher, which worked on two unrelated obfuscators;
+selected local arithmetic recovery, where every accepted candidate had an
+independent equivalence proof; and stock unflattening from one LLVM-family
+implementation to a related one, where the dispatcher and state assumptions
+happened to hold.
+
+What did not: a fixed seed as a reconstruction key; local expression recovery as
+evidence about whole functions; an `-O0` result as evidence about `-O2`; a
+mathematical opaque identity under machine-width overflow; and an
+initialised-state invariant as a claim about arbitrary entry state.
+
+The methods that travelled carried an explicit model of state and a separate
+validation step. The methods that did not travel recognised a shape.
+
+## Where this ends
+
+Week 10 audits the incorrect rewrite and the discovery failure beside it. Week
+11 does the same for lifting, with one passing case and one failing case from
+the same tool on the same day. Week 12 asks what you would choose, and why, and
+what you would have to check — which is the capstone.

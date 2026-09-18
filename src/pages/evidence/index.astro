@@ -1,0 +1,214 @@
+---
+import Callout from "astro-theme-university/components/Callout.astro";
+import { withBase } from "astro-theme-university/url";
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import Numbers from "../../components/Numbers.astro";
+import SpecimenTable from "../../components/SpecimenTable.astro";
+import { HELD_IMAGES, allEvidence } from "../../lib/evidence-manifest";
+import { evidenceInfo, evidenceUrl, formatBytes } from "../../lib/evidence";
+
+const totalBytes = allEvidence.reduce((sum, id) => sum + evidenceInfo(id).bytes, 0);
+---
+
+<CourseLayout
+  title="Evidence and provenance"
+  kicker="Reference"
+  description="Where every number on this site comes from, what the corpus is, what it is
+    not, and the two images this course refuses to publish."
+>
+  <p>
+    This course teaches from one curated research package. Every claim on every
+    week page resolves to a file in it, and every one of those files is
+    published here byte-for-byte — not retyped, not tidied, not summarised. The
+    snippets you see inside week pages are sliced out of these same files while
+    the site builds, so a listing on a page and the artefact behind it cannot
+    drift apart.
+  </p>
+
+  <Numbers
+    items={[
+      { value: String(allEvidence.length), label: "artefacts published verbatim, with their SHA-256 recorded", source: "artefacts/published-evidence.json" },
+      { value: formatBytes(totalBytes), label: "of source, IR, disassembly, graphs, solver queries and result files", source: "sum of the published set" },
+      { value: "21", label: "retained Windows x64 specimens, catalogued here and distributed through the lab", sourceId: "BINARY_INDEX.json" },
+      { value: "0", label: "executables downloadable from this site — deliberately", source: "see the execution boundary below" },
+    ]}
+  />
+
+  <section class="sc-section">
+    <h2>The frozen source</h2>
+    <p>
+      One 483-line C file underlies the entire corpus. It was frozen — hash
+      recorded — before any build, and re-checked before every one of the
+      sixty-eight builds in the comparison matrix. That is the fact that makes
+      the rest of the course possible: no difference between two specimens can
+      be a difference in the program.
+    </p>
+    <EvidenceCode
+      id="assets/source/SHOWCASE_VERSION.txt"
+      lang="text"
+      title="SHOWCASE_VERSION.txt"
+      note="the identity every build was checked against"
+      class="sc-wide"
+    />
+    <p>
+      The same hash is recorded independently in the matrix report, the
+      BinProtect report and the corpus description, and the copy this site
+      publishes hashes to{" "}
+      <code>{evidenceInfo("assets/source/showcase.c").sha256.slice(0, 16)}…</code> —
+      which is how you can tell nothing was edited in transit.
+    </p>
+    <p>
+      Its six exported targets each exist for a reason:
+      <code>demo_substitution</code> has twenty-four repeated arithmetic sites,
+      <code>demo_bogus_control_flow</code> has four genuine source conditions
+      with memorable constants, <code>demo_flattening</code> has an
+      if/else, a four-iteration loop and a four-way switch that reconverges, and
+      <code>demo_calls</code>, <code>demo_data</code> and
+      <code>demo_combined</code> cover calls, string and table data, and a mixed
+      case. The program prints its six answers and checks them itself, which is
+      what makes "did this build work?" a question with a one-line answer.
+    </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>The specimens</h2>
+    <p>
+      Twenty-one executables, all Windows x64 PE. The retained runtime column is
+      inherited from the original experiments and was not re-run during
+      curation; the lab column is the course's own rule about what you may
+      execute.
+    </p>
+    <SpecimenTable />
+    <p>
+      One row is the reason the last column exists. The file named
+      <code>INCORRECT_DEOBFUSCATION_DO_NOT_USE_AS_WORKING_BINARY.exe</code> is a
+      structurally valid PE, produced by a real tool that exited zero, which
+      returns the wrong answer. It is kept, under that name, as negative
+      evidence. It is not a broken build to be fixed and it is not to be
+      executed as a working program.
+    </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>The execution boundary</h2>
+    <Callout type="warning">
+      <p>
+        <strong>No executable is downloadable from this site.</strong> Obfuscated
+        Windows binaries do not belong on a public web page, one of these
+        specimens must never be a click away from looking runnable, and a
+        course site is not a distribution channel. The specimens live on the
+        lab image; this page publishes the identity you need to confirm that the
+        file in front of you is the right one.
+      </p>
+    </Callout>
+    <p>
+      Reading works anywhere. Source, IR, generated C, exact disassembly,
+      recovered graphs, solver queries and every result file are published here
+      and are enough for every core exercise in the course, offline, on any
+      platform. Execution and debugging need the Windows x64 lab image. No Wine
+      route is supported and no Linux rebuild is equivalent — a rebuild would be
+      a different specimen with a different ABI and different lowering.
+    </p>
+    <p>
+      No PDB or MAP file is included anywhere, on purpose. Navigate by export
+      name or by loaded base plus RVA. For a rewritten specimen, decline the
+      original PDB if a debugger offers it: the RSDS identifier can survive
+      patching while the instruction mappings inside the rewritten function go
+      stale, which is one of the four traps week 12 collects.
+    </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>Two images on publication hold</h2>
+    <p>
+      Twenty-five disassembler screenshots were supplied with the package and
+      all twenty-five were inspected. Two of them have visible content that
+      contradicts their filename, and this site does not display either:
+    </p>
+    <ul>
+      {
+        HELD_IMAGES.map((name) => (
+          <li>
+            <code>{name}</code>
+          </li>
+        ))
+      }
+    </ul>
+    <p>
+      The first is labelled as one obfuscator's rewrite; its visible right pane
+      carries state constants and a branch target that match a different
+      family's rewritten graph. The second is named for the arithmetic target
+      and both of its visible pane titles say <code>demo_flattening</code>.
+    </p>
+    <p>
+      Neither was renamed, deleted or quietly repurposed. They stay in the
+      package with their holds recorded in{" "}
+      <a href={evidenceUrl("VISUAL_INDEX.md")}>VISUAL_INDEX.md</a>, and this
+      course uses the alternatives the index recommends instead. A filename is a
+      claim about provenance like any other, and a course that teaches you to
+      check the analyst's evidence should check its own.
+    </p>
+    <p>
+      There is also evidence the package simply does not contain: no confirmed
+      screenshot of the arithmetic target under source-level encoding, and no
+      screenshot of any lifted IR. Week 5 and week 11 use the retained
+      disassembly and the retained IR text instead of an illustration, and say
+      so.
+    </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>Reading the artefacts</h2>
+    <p>
+      Three things about these files routinely confuse people on first contact,
+      and none of them is a defect.
+    </p>
+    <p>
+      <strong>Two graph conventions.</strong> The branch-rewriting study used a
+      dedicated PE-byte audit that does not split blocks at calls and treats
+      <code>ret</code> as terminal. The unflattening study used Miasm's
+      recursive graphs, which do split at calls. A block count from one is not
+      comparable with a block count from the other, and every page that quotes
+      one names it.
+    </p>
+    <p>
+      <strong>Three disassembly flavours.</strong> The retained listings were
+      dumped at different times with different settings. Some are AT&T order
+      with a byte column, some are Intel order with a byte column, and some are
+      Intel order with the bytes packed. Read the operand order before comparing
+      two listings — it is the cheapest provenance lesson available.
+    </p>
+    <p>
+      <strong>Windows paths inside the files.</strong> Result files and reports
+      carry absolute <code>E:\Workspace\…</code> paths from the machine the
+      experiments ran on. They are provenance, not instructions, and the
+      research tree they point at is deliberately not bundled.
+    </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>Start here</h2>
+    <FileList
+      items={[
+        { id: "CLAIMS_AND_CAVEATS.md", what: "every result, its safe formulation and the overclaim beside it" },
+        { id: "BEST_EVIDENCE_BY_TOPIC.md", what: "topic to artefact, with the matched comparator for each" },
+        { id: "BINARY_GUIDE.md", what: "per-specimen runtime status, execution rule and export RVAs" },
+        { id: "VISUAL_INDEX.md", what: "all 25 screenshots, what is visible in each, and the two holds" },
+        { id: "EXPERIMENTAL_CORPUS.md", what: "why this program, these functions and these constants" },
+        { id: "assets/reports/FINAL_RESEARCH_OVERVIEW.md", what: "the whole study in thirteen sections, including what did not generalise" },
+        { id: "assets/tables/research/selected_metrics.md", what: "every headline number with its convention and provenance" },
+        { id: "VALIDATION_REPORT.md", what: "the curation QA: 298 assets hash-checked, holds recorded, limits stated" },
+      ]}
+    />
+    <p>
+      The complete published set, with a SHA-256 for each entry, is at{" "}
+      <a href={withBase("/artefacts/published-evidence.json")}>
+        published-evidence.json
+      </a>. The seventeen full research reports are under{" "}
+      <code>/artefacts/reports/</code> and are linked from the week that
+      uses them.
+    </p>
+  </section>
+</CourseLayout>

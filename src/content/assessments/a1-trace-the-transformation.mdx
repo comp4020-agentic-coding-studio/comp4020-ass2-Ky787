@@ -1,0 +1,113 @@
+---
+title: "A1 — Trace the transformation"
+label: A1
+description:
+  Follow one operation from C to IR to x64 across a clean/obfuscated pair you
+  have not seen, and write down what you established and what you did not.
+week: 5
+due: 2027-03-26T17:00:00+11:00
+weight: 25
+marking:
+  mode: weighted
+  criteria:
+    - name: Accurate tracing across the three representations
+      weight: 35
+    - name: Correct comparator, convention and optimisation level
+      weight: 25
+    - name: What the evidence does not establish
+      weight: 25
+    - name: Citation and legibility
+      weight: 15
+spec:
+  - submitted as a single PDF by the deadline, with every claim citing a file and a line or address
+  - one named operation is located in the source, the post-pass IR and the disassembly, with line numbers or addresses given for each
+  - the comparator is a clean build of the same compiler family at the same optimisation level, and the submission says so
+  - every count states its representation and its counting convention
+  - the submission contains a section listing what it does not establish, and that section is not padding
+  - the arithmetic identity claimed is checked modulo 2^32, not over the integers
+related:
+  - sessions/week-03
+  - sessions/week-04
+  - a2-recover-the-semantics
+---
+
+import Outcomes from "../../components/Outcomes.astro";
+
+## The brief
+
+> You are given a clean binary and an obfuscated binary built from the same
+> frozen source, plus the compiler IR for both. Pick one arithmetic operation.
+> Say what happened to it, in three representations, and say what you have not
+> shown.
+
+Everything you need was demonstrated in weeks 1 to 4 on specimens you have
+already read. What makes this an assessment rather than an exercise is that
+your pair is one you have not seen, and that half the marks are for the part
+most people skip.
+
+## What you are given
+
+A private bundle in the course lab, containing:
+
+- the frozen `showcase.c` you already have;
+- one clean build and one obfuscated build of it, as post-pass LLVM IR and as
+  exact disassembly of the named target function;
+- the build command for each, including the optimisation level, the pass
+  selection and the seed;
+- the retained runtime output of both binaries.
+
+Your pair is drawn from the same corpus this course teaches from, but it is not
+one of the specimens on this site. Which tool produced it is stated in the
+bundle — this is not a guessing game, and identifying the vendor earns nothing.
+
+## What you submit
+
+One PDF, four to six pages, in this order:
+
+1. **The operation.** Which source operation you chose, and where it is: file
+   and line in the C, value name in the IR, address in the disassembly.
+2. **The transformation.** What the pass did, as algebra. If it is an identity,
+   state it and verify it modulo 2³². If some of the emitted computation is
+   dead, say which and how you know.
+3. **The backend.** What changed between the post-pass IR and the machine code.
+   This section is where most of the interesting findings are.
+4. **The measurement.** Any counts you quote, each with its representation, its
+   convention and the comparator you took it against. A count without all three
+   is worth nothing here.
+5. **What this does not establish.** At least four statements, each one a
+   plausible conclusion that your evidence does *not* support, with one
+   sentence on why not. Generic disclaimers do not count; these must be about
+   your specimen.
+
+No tool is required beyond a text editor. If you use a disassembler, a
+decompiler or a simplifier, say which and at what version, and treat its output
+as a claim you now have to support rather than as a result.
+
+## How it is marked
+
+The four criteria below are applied to the submission as a whole. The one worth
+dwelling on is the third, because it is unusual and it is deliberate.
+
+Twenty-five per cent of this assignment is for correctly refusing to conclude
+things. A submission that traces the operation flawlessly and then asserts that
+the obfuscation "makes the binary hard to analyse" has lost those marks: it has
+not measured difficulty, it has measured length. A submission that traces the
+operation adequately and then explains precisely why its own instruction count
+is not a difficulty measure, why its `-O0` finding says nothing about `-O2`,
+and which of its numbers are not comparable to each other, will do well.
+
+These are the four outcomes you are being asked to keep apart:
+
+<Outcomes />
+
+For this assignment you are working entirely in the first two columns. Nothing
+in A1 involves producing a binary or validating one at runtime, and a
+submission that claims otherwise has confused the categories.
+
+## Extensions and integrity
+
+Extensions are arranged before the deadline, through the convenor — see
+[course information](/policies/). Collaboration on *reading* the specimens is
+encouraged and normal; the written analysis is individual. If you discussed a
+finding with someone, name them. Declaring collaboration has never cost anyone
+a mark in this course, and not declaring it is the one thing that will.

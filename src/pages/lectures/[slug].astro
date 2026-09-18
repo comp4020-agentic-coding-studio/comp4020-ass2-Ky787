@@ -2,11 +2,12 @@
 import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
 import RelatedContent from "astro-course-university/components/RelatedContent.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import { withBase } from "astro-theme-university/url";
 import TeachingTeam from "../../components/TeachingTeam.astro";
+import WeekRail from "../../components/WeekRail.astro";
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import { BLOCKS } from "../../lib/course";
 import { formatCourseDate } from "../../lib/dates";
-import { graphCollections, siteConfig } from "../../site-config";
 
 export async function getStaticPaths() {
   const lectures = await getPublishedCollection("lectures");
@@ -15,13 +16,52 @@ export async function getStaticPaths() {
 
 const { lecture } = Astro.props;
 const { Content } = await render(lecture);
-const title = `Week ${lecture.data.week}: ${lecture.data.title}`;
+const block = BLOCKS.find((candidate) => candidate.id === lecture.data.block);
+const sessions = await getPublishedCollection("sessions");
+const byWeek = new Map(sessions.map((session) => [session.data.week, session]));
+const covered = lecture.data.covers
+  .map((week: number) => byWeek.get(week))
+  .filter((session): session is NonNullable<typeof session> => session !== undefined);
 ---
 
-<ContentLayout title={title} description={lecture.data.description} {...siteConfig}>
-  <p><strong>{formatCourseDate(lecture.data.date)}</strong></p>
-  {lecture.data.slides && <p><a href={withBase(lecture.data.slides)}>Open the slides</a></p>}
+<CourseLayout
+  title={lecture.data.title}
+  documentTitle={`${lecture.data.title} — SLOP8445 spine lecture ${lecture.data.block}`}
+  kicker={`Spine lecture ${lecture.data.block}${block ? ` · Opens Block ${block.numeral} ${block.title}` : ""}`}
+  description={lecture.data.description}
+>
+  <p class="sc-weekhead__meta">
+    <span class="sc-label">Delivered {formatCourseDate(lecture.data.date)}, week {lecture.data.week}</span>
+    <span class="sc-label">
+      Covers weeks {lecture.data.covers.join(", ")}
+    </span>
+  </p>
+
+  <p>
+    <a class="at-button" href={withBase(lecture.data.slides)}>Open the slides</a>
+  </p>
+
   <Content />
+
+  {
+    covered.length > 0 && (
+      <section class="sc-section">
+        <h2>The weeks this opens</h2>
+        <ul>
+          {covered.map((session) => (
+            <li>
+              <a href={withBase(`/sessions/${session.id}/`)}>
+                Week {session.data.week}. {session.data.title}
+              </a>{" "}
+              — {(session.data as { question?: string }).question}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
   <TeachingTeam teachers={lecture.data.teachers} />
-  <RelatedContent entry={lecture} collections={graphCollections} />
-</ContentLayout>
+  <RelatedContent entry={lecture} collections={["sessions", "assessments", "lectures", "people"]} />
+  <WeekRail current={lecture.data.week} />
+</CourseLayout>

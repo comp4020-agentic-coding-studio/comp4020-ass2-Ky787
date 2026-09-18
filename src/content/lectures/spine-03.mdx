@@ -1,0 +1,73 @@
+---
+title: What a proof is worth
+description:
+  A solver can show that a branch has only one reachable outcome. Turning that
+  into a working executable takes a separate tool, and neither step is the
+  same as knowing the program is still correct.
+week: 7
+date: 2027-04-21
+block: 3
+covers: [7, 8, 9]
+slides: /decks/spine-03/
+teachers:
+  - rasha-oyelaran
+related:
+  - sessions/week-07
+  - sessions/week-08
+  - sessions/week-09
+  - assessments/a2-recover-the-semantics
+---
+
+## The argument
+
+Here is the best result in this course, stated as carefully as it deserves.
+
+A generic symbolic-execution harness, working on actual x64 semantics with
+writable globals left symbolic, proved that thirty-eight injected opaque gates
+across two unrelated obfuscator implementations each had exactly one reachable
+outcome. It did that without recognising either implementation's pattern.
+Genuine source branches in the same functions stayed two-sided, which is the
+control that makes the result mean anything. Then a *separate* program consumed
+those frozen proofs, checked the bytes it was about to change, and replaced a
+six-byte conditional jump with an unconditional jump plus a padding byte. The
+rewritten executables produce the right answers on 9,189 differential test
+triples with zero mismatches.
+
+That is four distinct achievements, and the block exists to keep them apart:
+
+1. a solver returned UNSAT for one direction of one branch under a stated path
+   prefix and memory model;
+2. that result was turned into changed bytes by different code, with its own
+   preconditions;
+3. the changed file still loads, exports the same symbols and occupies the same
+   bytes;
+4. the program answered correctly on the inputs that were run.
+
+Step 1 does not imply step 4. Nine thousand passing tests do not imply
+correctness for all inputs. And none of it touched the function that the next
+block is about.
+
+## What the proof actually said
+
+The frozen example is one gate at RVA `0x1667`. Two globals are symbolic; the
+predicate computes `y * (y - 1) & 1` and compares `x` against `10`. The taken
+direction is satisfiable — the solver returns a model with both globals zero.
+The fall-through direction is unsatisfiable. Under that path prefix, and under
+that memory model, one edge of that branch cannot be taken.
+
+Read the qualifier twice. "Under that path prefix" is doing work. A path-local
+UNSAT is not a global invariant, and the course will show you a case where the
+same workflow yields nothing at all — three Tigress gates, zero proofs — until
+a captured initialised program state is imported, at which point it yields
+three out of three. Same solver. Same technique. The difference is an
+assumption about the world.
+
+## Where this block ends
+
+Week 7 is the solver and its vocabulary — SAT, UNSAT, UNKNOWN, and what a model
+is a model *of*. Week 8 is the six bytes, and the audit that shows reachable
+blocks falling from 70 to 37 while the file keeps every one of its original
+instructions. Week 9 changes the subject to control-flow flattening, where the
+thing being hidden is not a branch's value but which block runs next.
+
+A2 is due at the end of week 9 and is built from this block's evidence.

@@ -1,0 +1,164 @@
+---
+title: The smaller graph problem
+description: Spine lecture 4 of SLOP8445 — two results that look like successes, and what actually generalised
+---
+
+{/* _class: impact */}
+
+# The smaller graph problem
+
+SLOP8445 · Spine lecture 4 · Block IV
+
+```notes
+- Petra co-presents this one. The two failures are the argument
+- do not soften them. They were kept on purpose
+```
+
+---
+
+## A success, by every visible measure
+
+- stock unflattener, exit code 0
+- patch generated, executable written
+- **56 blocks → 10 blocks**
+- same file size, same sections, same exports
+- valid PE
+
+The most dramatic simplification in the corpus.
+
+---
+
+## It computes the wrong answer
+
+```text
+expected   FLA = DBEFFCE7      SHOWCASE PASS
+actual     FLA = F9CD8332      SHOWCASE FAIL: 1 mismatches
+```
+
+exit 1
+
+```notes
+- pause here. Let the room look at the two hex values
+```
+
+---
+
+## Why
+
+The source has a four-way `switch`. Its four cases were grouped under **one**
+incoming state, then emitted in sequence:
+
+```text
+0x140001348:  xor 0x22222222
+              sub 0x3333
+              add 0x4444
+              add 0x11111111
+              xor 0xCAFEBABE
+```
+
+All four alternatives now run. Every time.
+
+---
+
+## The score said so, quietly
+
+| Case | Successor pairs | Outcome |
+| --- | --- | --- |
+| implementation A | 25 / 25 | working rewrite |
+| implementation B | 28 / 28 | working rewrite |
+| implementation C | 14 / 22, +1 false | **wrong answer** |
+| implementation D | discovery failed | no output |
+
+14 out of 22 was visible before anyone ran the binary.
+
+```notes
+- ask: would you have run it? Most people say yes and most people would not have
+```
+
+---
+
+{/* _class: impact */}
+
+## Second failure. Different tool. Same shape.
+
+---
+
+## Verifier-valid LLVM IR
+
+- whole-function lift of a **passing** native binary
+- 17 cases, 68 modules, all verifier-clean and recompilable
+- smaller and more readable than the machine code
+- **3,917 of 4,118 inputs miscomputed** — at all four stages
+
+At `x = 0`: expected `0x08083808`, actual `0`.
+
+---
+
+## The cause is one fold
+
+```text
+(~A & B) | (A & C)   →   select(A, C, B)
+```
+
+Justified by known-bits extrema: an unconstrained integer has those extrema
+too, which does **not** prove `A` is all-zeros or all-ones.
+
+`A = 1, B = 0, C = 2` → bitwise gives 0, the select gives 2.
+
+```notes
+- the error is in the raw lift, so ordinary O2 neither caused it nor can fix it
+- the native input passes. Do not blame the obfuscator
+```
+
+---
+
+## What generalised
+
+- semantic branch proof + a **separate** layout-preserving patcher — across two unrelated implementations
+- local arithmetic recovery, each candidate independently proved
+- stock unflattening from one LLVM-family implementation to a related one
+
+All three carry an explicit model and a separate validation step.
+
+---
+
+## What did not
+
+- a fixed seed as a reconstruction key
+- local expression recovery as evidence about a whole function
+- an `-O0` result as evidence about `-O2`
+- a mathematical identity under machine-width overflow
+- an initialised-state invariant as a claim about arbitrary state
+
+These recognise a shape.
+
+---
+
+## Four traps
+
+| Tempting | Counterexample |
+| --- | --- |
+| smaller CFG = correct | 56 → 10 blocks, wrong value |
+| valid IR = faithful lift | 3,917 / 4,118 mismatches |
+| 6 discovered blocks = 6 blocks | reference has 38 |
+| matching PDB ID = valid map | RSDS survives, mappings go stale |
+
+---
+
+## Block IV
+
+- **Week 10** — the audit: the wrong rewrite and the discovery failure
+- **Week 11** — one tool, one day, one pass and one fail
+- **Week 12** — what would you choose, and what would you check?
+
+The capstone is due at the end of week 12.
+
+---
+
+{/* _class: impact */}
+
+## Validate at the level of the claim
+
+Expression. Graph. Lifted function. Executable.
+
+Not one of them substitutes for another.

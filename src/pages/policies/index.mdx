@@ -1,14 +1,150 @@
 ---
-title: Policies and support
+title: Course information
+kicker: SLOP8445
 description:
-  The course-wide rules for late work, extensions, academic integrity and
-  getting help.
+  Prerequisites, what the lab is and is not, the rules about running the
+  specimens, and the policies an assessment brief links to instead of
+  restating.
 ---
 
-# Policies and support
+## Who this is for
 
-{/* STARTER_CONTENT: replace this policy page, then remove this comment. */}
+Upper-level undergraduate or introductory postgraduate, in systems or security.
+You do not need prior experience of symbolic program analysis; SSA, SMT,
+symbolic execution and lifting are all introduced in the course. You do need to
+arrive able to read code.
 
-Replace this page. Course-wide rules live here so an assessment brief can link
-to one place; a course with no rules worth a page can delete it, along with its
-entry in `src/site-config.ts`.
+**Assumed before week 1:**
+
+- C functions, pointers, arrays, control flow, and unsigned integer arithmetic;
+- binary and hexadecimal notation, bitwise operators, and basic modular
+  arithmetic;
+- introductory architecture: registers, memory, the stack, calls, and
+  conditional branches;
+- comfort at a command line, and enough Python to read a short script. You will
+  not be asked to write one.
+
+**Explicitly not assumed:** compiler implementation experience, theorem
+proving, or any prior reverse engineering.
+
+If you can read `showcase.c` and predict what `demo_substitution(0x1337)`
+returns, you are ready. If you cannot, week 1's studio is where to say so.
+
+## Teaching pattern
+
+Twelve two-hour studios, one per week, on Wednesdays. Four spine lectures, in
+weeks 1, 4, 7 and 10, each opening a block of three weeks.
+
+Studios are where the work happens: you read the evidence, disagree about what
+it shows, and leave having written down one thing you could not conclude.
+Attendance is not marked. It is also not optional in any practical sense —
+reading someone else's notes about a disassembly listing transfers almost
+nothing.
+
+There is a two-week teaching break after week 6. A2 and the capstone are both
+set before it, deliberately, so that the break is usable.
+
+## The lab, and the rule about running things
+
+The course provides a Windows x64 image containing the twenty-one retained
+specimens, a disassembler, and the analysis tools used in the studios.
+
+**Every core exercise has a read-only route.** Source, LLVM IR, generated C,
+exact disassembly, recovered control-flow graphs, solver queries and result
+files are all published on this site and are sufficient to complete the
+studios, A1 and A2 on any platform, offline, with a text editor. No paid
+decompiler and no commercial binary-analysis platform is required for anything
+that carries marks.
+
+Execution and debugging need the lab image. The rules there are short:
+
+1. **Run only what the [evidence page](/evidence/) marks runnable.** One
+   specimen is an explicitly incorrect rewrite, kept as negative evidence. It
+   is for inspection.
+2. **Run them in the lab image, not on your own machine.** These are obfuscated
+   Windows binaries. Endpoint protection will sometimes take an interest in
+   them, and that is the correct behaviour.
+3. **If a launch is blocked, it stays blocked.** Do not disable or work around
+   endpoint protection. A blocked launch is not permission to bypass anything;
+   tell the tutor and use the read-only route.
+4. **Decline the original PDB when a debugger offers it for a rewritten
+   specimen.** The identifier survives patching; the instruction mappings
+   inside a rewritten function do not.
+5. **Navigate by export name or by loaded base plus RVA.** No PDB or MAP file
+   is supplied, on purpose, and address-space layout randomisation will move
+   preferred addresses.
+
+Nothing on this site is a distribution channel for executables, and the corpus
+is not licensed for redistribution outside the course.
+
+## Legal and ethical scope
+
+This is a course in program analysis, taught on a 483-line demonstration
+program written for the purpose. It is not a course in defeating software
+protection you do not own, and the skills in it do not come with permission to
+use them on anything.
+
+Two practical lines:
+
+- Analyse only software you own, software licensed to you for that purpose, or
+  the course corpus. If a piece of work needs a sample from elsewhere, clear it
+  with the convenor first.
+- The corpus contains no malware. If you bring a sample that might, do not —
+  bring the question to the convenor instead.
+
+## Assessment rules
+
+Three assessments, 25% + 30% + 45%. No exam. Full briefs on the
+[assessment page](/assessments/).
+
+**Extensions** are arranged with the convenor before the deadline, and are
+granted routinely for the ordinary reasons when asked for in time. Work
+submitted late without an extension is not accepted.
+
+**Collaboration** on reading the evidence is encouraged. The written analysis
+is individual. Declare collaboration and name the people; this has never cost
+anyone a mark.
+
+**Tool use** must be declared with the tool's version, and tool output is
+treated as a claim you now have to support rather than as a result. This is not
+a technicality bolted on for integrity's sake — it is the same standard the
+course applies to its own evidence, and two of the results you will study are
+there because somebody applied it and somebody else had not.
+
+**Generative tools** are allowed for drafting prose and are useless for the
+part that is marked. Every claim in a submission has to cite a file and a line
+or an address, and a fabricated citation is treated as academic misconduct
+rather than as a mistake.
+
+**Marks** are returned within two weeks of a deadline, with written feedback
+against each criterion. Remarking is available on request to the convenor
+within a week of release.
+
+## Accessibility
+
+The course's evidence is mostly text, which helps. Two known problems and what
+is done about them:
+
+- **Control-flow graphs.** Several are several metres wide at natural size.
+  Every one on this site is published as SVG — so it scales and its text is
+  real text — with a described caption, and the numbers quoted beside it come
+  from the result files rather than from the picture. Where a graph carries the
+  argument, the argument is also in prose.
+- **Disassembler screenshots.** These are raster images of somebody else's tool
+  and cannot be made into text. Each has alt text describing what is visible,
+  each can be enlarged in place or opened at full resolution, and — this is the
+  important part — no claim on this site rests on one. They illustrate; the
+  result files establish.
+
+Colour is never the only signal: every verdict on this site carries a word
+(PASS, WRONG, UNSAT, STATIC ONLY) and a shape as well as a colour.
+
+If something here does not work with your setup, email the convenor. That
+includes the lab image.
+
+## Feedback on the course
+
+The two negative results this course is built around were kept because someone
+decided a failure was more useful than a tidy story. The same applies to the
+course: if a week does not work, the useful thing is to say which part and why,
+in the studio or by email.

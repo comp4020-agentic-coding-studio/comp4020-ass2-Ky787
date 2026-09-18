@@ -1,0 +1,42 @@
+---
+// Key figures with their provenance attached. Every value on this site that a
+// student might quote back carries the file it came from.
+import { evidenceName, evidenceUrl } from "../lib/evidence";
+
+interface NumberItem {
+  value: string;
+  label: string;
+  /** Prose provenance, when there is no single file to link. */
+  source?: string;
+  /** Manifest id, rendered as a link to the artefact. */
+  sourceId?: string;
+}
+
+interface Props {
+  items: NumberItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<dl class:list={["sc-numbers", className]}>
+  {
+    items.map((item) => (
+      <div class="sc-number">
+        <dt class="visually-hidden">{item.label}</dt>
+        <dd style="margin: 0;">
+          <span class="sc-number__value">{item.value}</span>
+          <span class="sc-number__label">{item.label}</span>
+          <span class="sc-number__source">
+            {item.sourceId ? (
+              <a href={evidenceUrl(item.sourceId)}>{evidenceName(item.sourceId)}</a>
+            ) : (
+              item.source
+            )}
+          </span>
+        </dd>
+      </div>
+    ))
+  }
+</dl>

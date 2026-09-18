@@ -1,0 +1,19 @@
+---
+// A verdict, in the one vocabulary the whole site uses. Tones come from the
+// research package's own row tones (pass / fail / partial / info / neutral) so
+// a negative result is never rendered as a positive one by accident.
+import type { Tone } from "../lib/tables";
+
+interface Props {
+  tone?: Tone;
+  /** Optional longer text for assistive technology, e.g. "PASS" -> "passed". */
+  label?: string;
+}
+
+const { tone = "neutral", label } = Astro.props;
+---
+
+<span class:list={["sc-badge", `sc-badge--${tone}`]}>
+  {label && <span class="visually-hidden">{label}: </span>}
+  <slot />
+</span>

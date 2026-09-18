@@ -1,0 +1,28 @@
+---
+// One proof obligation and the status the solver actually returned.
+import Badge from "./Badge.astro";
+import type { Tone } from "../lib/tables";
+
+interface Props {
+  /** The obligation, e.g. "P ∧ ¬C". */
+  obligation: string;
+  /** SAT / UNSAT / UNKNOWN, with the tone it deserves. */
+  status: string;
+  tone?: Tone;
+  /** What the status means here. */
+  reading?: string;
+}
+
+const { obligation, status, tone = "neutral", reading } = Astro.props;
+---
+
+<div class="sc-query">
+  <div class="sc-query__head">
+    <p class="sc-query__obligation">{obligation}</p>
+    <Badge tone={tone}>{status}</Badge>
+  </div>
+  <div class="sc-query__body">
+    <slot />
+    {reading && <p><strong>Reading:</strong> {reading}</p>}
+  </div>
+</div>

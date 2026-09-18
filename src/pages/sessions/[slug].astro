@@ -3,10 +3,11 @@ import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
 import RelatedContent from "astro-course-university/components/RelatedContent.astro";
 import SpecList from "astro-course-university/components/SpecList.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
 import TeachingTeam from "../../components/TeachingTeam.astro";
-import { formatCourseDate } from "../../lib/dates";
-import { graphCollections, sessionLabels, siteConfig } from "../../site-config";
+import WeekHeader from "../../components/WeekHeader.astro";
+import WeekRail from "../../components/WeekRail.astro";
+import CourseLayout from "../../layouts/CourseLayout.astro";
+import { blockForWeek } from "../../lib/course";
 
 export async function getStaticPaths() {
   const sessions = await getPublishedCollection("sessions");
@@ -15,19 +16,24 @@ export async function getStaticPaths() {
 
 const { session } = Astro.props;
 const { Content } = await render(session);
+const week = session.data.week;
+const block = blockForWeek(week);
+const extra = session.data as { question?: string; mode?: string };
 ---
 
-<ContentLayout
-  title={`Week ${session.data.week} ${sessionLabels.singular}: ${session.data.title}`}
+<CourseLayout
+  title={session.data.title}
+  documentTitle={`Week ${week}: ${session.data.title} — SLOP8445`}
+  kicker={`Week ${String(week).padStart(2, "0")} · Block ${block.numeral} ${block.title}`}
   description={session.data.description}
-  {...siteConfig}
 >
-  <p><strong>{formatCourseDate(session.data.date)}</strong></p>
+  <WeekHeader week={week} date={session.data.date} mode={extra.mode} question={extra.question} />
   <Content />
-  <SpecList spec={session.data.spec}>
-    What you bring to the session. Written so a reader can tell whether it has
-    been met without asking you.
+  <SpecList spec={session.data.spec} heading="Come to the studio with">
+    The studio assumes you have done these. Each is written so you can tell
+    whether you have, without asking.
   </SpecList>
   <TeachingTeam teachers={session.data.teachers} />
-  <RelatedContent entry={session} collections={graphCollections} />
-</ContentLayout>
+  <RelatedContent entry={session} collections={["sessions", "assessments", "lectures", "people"]} />
+  <WeekRail current={week} />
+</CourseLayout>

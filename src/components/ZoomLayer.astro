@@ -1,0 +1,66 @@
+---
+// Enlarge-on-click for the evidence figures.
+//
+// Every figure frame is already a plain link to the verbatim full-resolution
+// artefact, so with no JavaScript a click opens the real file — which is the
+// behaviour the research package asks for anyway. This layer upgrades that
+// click to an in-page viewer that scrolls at natural size, because a 4,900pt
+// control-flow graph is unreadable scaled to fit and useless as a thumbnail.
+---
+
+<dialog class="sc-zoom" id="sc-zoom" aria-labelledby="sc-zoom-title">
+  <div class="sc-zoom__bar">
+    <p class="sc-zoom__title" id="sc-zoom-title">Enlarged evidence</p>
+    <a class="at-button at-button--outline at-button--small" id="sc-zoom-full" href="#">
+      Open the file
+    </a>
+    <button class="at-button at-button--small" id="sc-zoom-close" type="button">Close</button>
+  </div>
+  <div class="sc-zoom__scroll" id="sc-zoom-scroll"></div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("sc-zoom") as HTMLDialogElement | null;
+  const scroll = document.getElementById("sc-zoom-scroll");
+  const title = document.getElementById("sc-zoom-title");
+  const full = document.getElementById("sc-zoom-full") as HTMLAnchorElement | null;
+  const close = document.getElementById("sc-zoom-close");
+
+  if (dialog && scroll && title && full && close) {
+    const open = (trigger: HTMLAnchorElement): void => {
+      const img = trigger.querySelector("img");
+      const label = trigger.dataset.zoomLabel ?? img?.alt ?? "Enlarged evidence";
+      title.textContent = label;
+      full.href = trigger.href;
+      scroll.replaceChildren();
+      const enlarged = document.createElement("img");
+      // The frame shows a width-capped derivative; the viewer shows the
+      // artefact itself, at the size the tool rendered it.
+      enlarged.src = trigger.href;
+      enlarged.alt = img?.alt ?? label;
+      const width = trigger.dataset.zoomWidth;
+      const height = trigger.dataset.zoomHeight;
+      if (width) enlarged.width = Number(width);
+      if (height) enlarged.height = Number(height);
+      scroll.append(enlarged);
+      dialog.showModal();
+      scroll.scrollTo({ top: 0, left: 0 });
+    };
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as Element | null;
+      const trigger = target?.closest<HTMLAnchorElement>("a[data-zoom]");
+      if (!trigger) return;
+      // Let a modified click (new tab, download) do the normal thing.
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      open(trigger);
+    });
+
+    close.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => scroll.replaceChildren());
+  }
+</script>

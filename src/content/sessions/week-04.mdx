@@ -1,0 +1,287 @@
+---
+title: MBA and semantic simplification
+description:
+  Mixed Boolean-arithmetic, the tools that reduce it, and the difference
+  between a shorter expression and a proved one. The honest scoreboard is in
+  here.
+week: 4
+date: 2027-03-17
+mode: Claim audit
+question: A simplifier returned a shorter expression. What exactly has been proved, and by what?
+teachers:
+  - rasha-oyelaran
+spec:
+  - you can evaluate `~(x ^ k)` and `(~x) ^ k` and say whether they are the same
+  - you know what SAT, UNSAT and UNKNOWN mean as answers to a question
+  - you can say what `modulo 2³²` changes about an algebraic identity
+related:
+  - lectures/spine-02
+  - assessments/a1-trace-the-transformation
+---
+
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Queries from "../../components/Queries.astro";
+import Query from "../../components/Query.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Last week's substitution was an identity with a cancelling constant. This week
+the same source line becomes a nine-term expression mixing multiplication,
+XOR and complement — and it is still an identity, still with a cancelling
+structure, just one you have to do some work to see.
+
+<Specimen
+  title="This week's specimen"
+  fields={[
+    ["Tool", "Polaris LLVM16, linear MBA pass, <code>-mllvm -passes=mba -mllvm -rng-seed=123456</code>"],
+    ["Target", "<code>demo_substitution</code>, all 24 sites transformed"],
+    ["Reproducibility", "the seed is <em>not</em> sufficient: two fresh same-command runs gave different IR hashes. The retained artefact is the specimen"],
+    ["Native size", "115 clean → 678 MBA instructions, one straight-line block"],
+  ]}
+  verdict={{ tone: "pass", text: "PASS", label: "retained runtime status" }}
+/>
+
+<section class="sc-section">
+
+## One addition, nine terms
+
+<EvidenceCode
+  id="assets/ir/s02_polaris_mba/target_function.ll"
+  lang="llvm"
+  title="Polaris MBA IR — site 0, the whole expression"
+  note="this computes input + 0x01010101"
+  from={5}
+  to={19}
+  class="sc-wide"
+/>
+
+Work it through, because the semester's central habit starts here — do the
+arithmetic yourself before believing a tool about it.
+
+`%6` is `~(x ^ 0x01010101)`. `%14` is `(~x) ^ 0x01010101`, which is *the same
+value*: complement and XOR commute. So `%7 = 42 · %6` and `%15 = −42 · %6`
+cancel exactly. `%9` is `1 · x`. What is left is a constant fold:
+
+```text
+−1128481603  +  1145324680  −  68   =   16843009   =   0x01010101
+```
+
+The expression is `x + 0x01010101`, spelled in nine operations, and every
+choice in it — the 42, the split constants, the pointless multiply by one — is
+noise placed to make the cancellation non-obvious.
+
+Now the machine code the same expression became:
+
+<EvidenceCode
+  id="assets/evidence/s02_polaris_mba/demo_substitution_disassembly.txt"
+  lang="asm"
+  title="Polaris MBA x64 — site 0 at RVA 0x1030"
+  note="fourteen instructions for one add"
+  fromMatch={/<demo_substitution>:/}
+  take={19}
+  class="sc-wide"
+/>
+
+The backend kept all of it. `imul eax, eax, 0x2a` is the multiply by 42;
+`shl edx, 0x0` is the multiply by one, lowered to a shift by zero and then not
+removed. This is the opposite of last week's result: at `-O0` the arithmetic
+survived instruction selection completely.
+
+:::warning[Bit width is part of the semantics]
+Every value here is `uint32`, so every identity is an identity *modulo 2³²*.
+`−1128481603 + 1145324680 − 68` is a 32-bit wraparound computation. An
+identity you check over the integers can be false over 32-bit values, and one
+that is false over the integers can be true over them. Never drop the width
+when you write the obligation down.
+:::
+
+</section>
+
+<section class="sc-section">
+
+## What a simplifier is actually claiming
+
+A simplification workflow has three expressions, not two: the **input** lifted
+from the machine code, the **candidate** the tool proposes, and — only in a
+controlled study like this one — the **expected** expression from the known
+source. Two separate equivalence obligations follow, and they answer different
+questions.
+
+<Queries>
+  <Query
+    obligation="input ≢ candidate"
+    status="UNSAT"
+    tone="pass"
+    reading="No 32-bit input makes the two disagree, so the candidate is a sound replacement for what was in the binary."
+  >
+    The query that matters in practice, because it is the only one available
+    when you do not have the source.
+  </Query>
+  <Query
+    obligation="candidate ≢ expected"
+    status="UNSAT"
+    tone="info"
+    reading="The candidate is the original operation, not merely something equivalent to the obfuscated code."
+  >
+    Available only in a study with ground truth. It measures the *recovery*,
+    not the soundness.
+  </Query>
+</Queries>
+
+Here is one accepted recovery, verbatim from the retained results:
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json"
+    lang="json"
+    title="the site, before"
+    note="lifted input and the known original"
+    from={3}
+    to={10}
+  />
+  <EvidenceCode
+    id="assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json"
+    lang="json"
+    title="the two obligations, and the verdict"
+    note="both UNSAT — accepted"
+    from={28}
+    to={45}
+  />
+  <span slot="caption">
+    A nine-node input reduced to `(x ^ 0x12345678)` in 0.147 s, with both
+    32-bit obligations discharged. Note `already_canonical_before_msynth:
+    false` — the study records it explicitly, because an expression that was
+    already simple before the tool ran must not be counted as a recovery.
+  </span>
+</CodePair>
+
+And here is the one that matters more, because it is the one people report
+wrongly:
+
+<EvidenceCode
+  id="assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json"
+  lang="json"
+  title="the same workflow, a different site"
+  note="candidate → expected is UNSAT; input → candidate timed out"
+  from={420}
+  to={441}
+  class="sc-wide"
+/>
+
+Read that carefully. The candidate *was* the right answer — the
+candidate-to-expected query is UNSAT. The soundness query hit its ten-second
+budget and returned `unknown`. So the recovery is **not accepted**, and it is
+recorded as `SMT UNKNOWN`, not as a success with an asterisk.
+
+<Badge tone="partial">UNKNOWN</Badge> is not a weak yes. It is the absence of
+an answer. A workflow that treats it as a yes is a workflow that will one day
+accept something false.
+
+</section>
+
+<section class="sc-section">
+
+## The scoreboard
+
+<Numbers
+  items={[
+    { value: "10 / 12", label: "isolated repeated sites recovered with both 32-bit obligations proved", sourceId: "assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json" },
+    { value: "2", label: "candidates left SMT UNKNOWN, both from the MBA specimen", sourceId: "assets/evidence/complex_arithmetic_v1_summaries/smt_overview.json" },
+    { value: "0 / 20", label: "composed whole-function return expressions completely recovered", sourceId: "assets/reports/complex_arithmetic_deobfuscation.md" },
+    { value: "305 → 79", label: "largest proved partial reduction, in AST nodes — against a 12-node source formula", sourceId: "assets/reports/complex_arithmetic_deobfuscation.md" },
+  ]}
+/>
+
+The first two numbers are the good news, and they are about *isolated sites*:
+one operation, one variable, a known shape. The second two are what happens
+when the operations feed each other.
+
+A second frozen probe was built for exactly this — four small branchless
+`uint32` functions of four to ten operations, where intermediates are consumed
+by later operations. Machine expressions were extracted for 44 of 48
+build/function cases; the four that failed hit a preregistered AST size guard
+on carry-flag expressions and never reached the simplifier, so they are
+extraction limits and not simplifier failures. Of the twenty obfuscated
+complete return expressions that *were* extracted, the fixed algebraic and
+oracle configurations completely recovered **none**. They did produce proved
+partial reductions, the largest being 305 AST nodes down to 79 — a 74%
+reduction that is still six times the size of the twelve-node source formula.
+
+So: local success, no composition. That is the honest shape of the result, and
+it is why the course does not describe expression simplification as a solved
+problem.
+
+<LectureTable id="06_deobfuscation_outputs" class="sc-wide" />
+
+</section>
+
+<section class="sc-section">
+
+## What it looks like in a disassembler
+
+<Screenshot
+  id="assets/ida/demo_substitution2_2.jpg"
+  alt="A disassembler diff close-up. The left pane shows simple mov, add and xor instructions with small immediates. The right pane is dense with imul, xor, and, or and add instructions carrying large 32-bit constants, with no branches."
+>
+  The reason a one-block function can be expensive: nothing here is
+  structurally difficult, and the symbolic expression for the whole function is
+  enormous. Correctness of any simplification of it comes from the retained
+  equivalence proofs, not from this picture.
+</Screenshot>
+
+</section>
+
+<Ledger
+  establishes={[
+    "Linear MBA expanded all 24 sites of this specimen with a distinct operator tree at each, taking the native target from 115 to 678 instructions, and survived instruction selection at <code>-O0</code>.",
+    "Ten of twelve isolated repeated sites were recovered with both 32-bit equivalence obligations discharged; two returned SMT UNKNOWN and were not accepted.",
+    "In the composed-expression probe, no complete recovery occurred among the 20 extracted obfuscated return expressions, while proved partial reductions did — up to 305→79 AST nodes.",
+  ]}
+  withholds={[
+    "That composed MBA is impossible to simplify. The result is about these tools in these fixed configurations and budgets.",
+    "That UNKNOWN means equivalent. In one retained case the candidate was in fact correct and the soundness query still timed out.",
+    "That any of this produced a rewritten executable. Nothing in this week's workflow emits a binary — expressions and proof records only.",
+    "That four Polaris extraction failures are simplifier failures. They hit an AST size guard before the simplifier ran.",
+  ]}
+  sources={[
+    { label: "Synthesis results from", id: "assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json" },
+    { label: "Composition results from", id: "assets/reports/complex_arithmetic_deobfuscation.md" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: audit one accepted recovery and one UNKNOWN
+
+1. Take site 0 from the MBA IR above and prove on paper that it equals
+   `x + 0x01010101` modulo 2³². State every step where the width matters.
+2. Open `synthesis_expansion.json` and find the two UNKNOWN records. For each,
+   write the two obligations, the status of each, and one sentence on what is
+   and is not known about that site.
+3. Find a record where `already_canonical_before_msynth` is relevant and
+   explain why the study bothers to record that field.
+4. In the composed-expression results, find the 305→79 reduction. Then state
+   what you would still have to do before using the 79-node expression in an
+   argument about the program.
+
+**A1 is due at the end of next week.** Steps 1 and 2 are the shape of its two
+main sections.
+
+<FileList
+  items={[
+    { id: "assets/ir/s02_polaris_mba/target_function.ll", what: "the full MBA IR for all 24 sites" },
+    { id: "assets/evidence/s02_polaris_mba/demo_substitution_disassembly.txt", what: "678 instructions of native MBA" },
+    { id: "assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json", what: "all 12 expansion records, with both SMT obligations each" },
+    { id: "assets/evidence/complex_arithmetic_v1_summaries/smt_overview.json", what: "every solver status in the probe, counted" },
+    { id: "assets/source/substitution_complex.c", what: "the composed-expression probe source, frozen separately" },
+    { id: "assets/reports/complex_arithmetic_deobfuscation.md", what: "the full composition study, including what failed" },
+  ]}
+/>
+
+</section>

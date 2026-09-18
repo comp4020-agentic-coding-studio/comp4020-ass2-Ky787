@@ -1,0 +1,1010 @@
+[
+  {
+    "path": "assets/binaries/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "description": "baselines/ollvm16",
+    "sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1400",
+        "preferred_va": "0x140001400"
+      },
+      "demo_combined": {
+        "rva": "0x1510",
+        "preferred_va": "0x140001510"
+      },
+      "demo_data": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_flattening": {
+        "rva": "0x12d0",
+        "preferred_va": "0x1400012d0"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/baselines/polaris/polaris_clean_O0.exe",
+    "description": "baselines/polaris",
+    "sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1400",
+        "preferred_va": "0x140001400"
+      },
+      "demo_combined": {
+        "rva": "0x1510",
+        "preferred_va": "0x140001510"
+      },
+      "demo_data": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_flattening": {
+        "rva": "0x12d0",
+        "preferred_va": "0x1400012d0"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/baselines/tigress/tigress_clean_O0.exe",
+    "description": "baselines/tigress",
+    "sha256": "4E366B3192FAD752CF026A5551ADB72AF68C6AB80404BC6642B0B2A27ED73765",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1460",
+        "preferred_va": "0x140001460"
+      },
+      "demo_calls": {
+        "rva": "0x15f0",
+        "preferred_va": "0x1400015f0"
+      },
+      "demo_combined": {
+        "rva": "0x1700",
+        "preferred_va": "0x140001700"
+      },
+      "demo_data": {
+        "rva": "0x1630",
+        "preferred_va": "0x140001630"
+      },
+      "demo_flattening": {
+        "rva": "0x1500",
+        "preferred_va": "0x140001500"
+      },
+      "demo_substitution": {
+        "rva": "0x1060",
+        "preferred_va": "0x140001060"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1040",
+        "preferred_va": "0x140001040"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s01_ollvm_sub/original/ollvm16_sub_O0.exe",
+    "description": "s01_ollvm_sub",
+    "sha256": "1219EFD932F81930556039CC0221AB757D8F9BA28A5036E5551D2C83BD69A65E",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1520",
+        "preferred_va": "0x140001520"
+      },
+      "demo_calls": {
+        "rva": "0x1880",
+        "preferred_va": "0x140001880"
+      },
+      "demo_combined": {
+        "rva": "0x1a20",
+        "preferred_va": "0x140001a20"
+      },
+      "demo_data": {
+        "rva": "0x18c0",
+        "preferred_va": "0x1400018c0"
+      },
+      "demo_flattening": {
+        "rva": "0x1670",
+        "preferred_va": "0x140001670"
+      },
+      "demo_substitution": {
+        "rva": "0x1070",
+        "preferred_va": "0x140001070"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1050",
+        "preferred_va": "0x140001050"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s02_polaris_mba/original/polaris_mba_O0.exe",
+    "description": "s02_polaris_mba",
+    "sha256": "48A7750AAAD7E6CC7E0F9638D9278CF7864882D4BA95D0C3222596BC6879AEF5",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1a70",
+        "preferred_va": "0x140001a70"
+      },
+      "demo_calls": {
+        "rva": "0x1c60",
+        "preferred_va": "0x140001c60"
+      },
+      "demo_combined": {
+        "rva": "0x1d70",
+        "preferred_va": "0x140001d70"
+      },
+      "demo_data": {
+        "rva": "0x1ca0",
+        "preferred_va": "0x140001ca0"
+      },
+      "demo_flattening": {
+        "rva": "0x1b30",
+        "preferred_va": "0x140001b30"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s03_ollvm_bcf/original/ollvm16_bcf_O0.exe",
+    "description": "s03_ollvm_bcf",
+    "sha256": "3ED20E83BE53F28FAF64D1A1CFBC2FEB323B83EC35CCEE0FAF8D85AD7905285F",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1630",
+        "preferred_va": "0x140001630"
+      },
+      "demo_calls": {
+        "rva": "0x25e0",
+        "preferred_va": "0x1400025e0"
+      },
+      "demo_combined": {
+        "rva": "0x2f10",
+        "preferred_va": "0x140002f10"
+      },
+      "demo_data": {
+        "rva": "0x2760",
+        "preferred_va": "0x140002760"
+      },
+      "demo_flattening": {
+        "rva": "0x1cc0",
+        "preferred_va": "0x140001cc0"
+      },
+      "demo_substitution": {
+        "rva": "0x1240",
+        "preferred_va": "0x140001240"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1180",
+        "preferred_va": "0x140001180"
+      },
+      "step_xor_12345678": {
+        "rva": "0x10c0",
+        "preferred_va": "0x1400010c0"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s03_ollvm_bcf/rewritten/ollvm16_bcf_O0_triton_rewritten.exe",
+    "description": "s03_ollvm_bcf",
+    "sha256": "15BF8731CD94663F5E0691983F1616969E28675E89B8595371DDBCBA51EA906A",
+    "correctness_status": "PASS — retained canonical and native differential validation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1630",
+        "preferred_va": "0x140001630"
+      },
+      "demo_calls": {
+        "rva": "0x25e0",
+        "preferred_va": "0x1400025e0"
+      },
+      "demo_combined": {
+        "rva": "0x2f10",
+        "preferred_va": "0x140002f10"
+      },
+      "demo_data": {
+        "rva": "0x2760",
+        "preferred_va": "0x140002760"
+      },
+      "demo_flattening": {
+        "rva": "0x1cc0",
+        "preferred_va": "0x140001cc0"
+      },
+      "demo_substitution": {
+        "rva": "0x1240",
+        "preferred_va": "0x140001240"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1180",
+        "preferred_va": "0x140001180"
+      },
+      "step_xor_12345678": {
+        "rva": "0x10c0",
+        "preferred_va": "0x1400010c0"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s07_polaris_bcf/original/polaris_bcf_O0.exe",
+    "description": "s07_polaris_bcf",
+    "sha256": "859F3F4303CF59BB6437EEAC4DCC6894A9E4F6D47665C87B80C0F5A6634009F0",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x17a0",
+        "preferred_va": "0x1400017a0"
+      },
+      "demo_combined": {
+        "rva": "0x18b0",
+        "preferred_va": "0x1400018b0"
+      },
+      "demo_data": {
+        "rva": "0x17e0",
+        "preferred_va": "0x1400017e0"
+      },
+      "demo_flattening": {
+        "rva": "0x1670",
+        "preferred_va": "0x140001670"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s07_polaris_bcf/rewritten/polaris_bcf_O0_triton_rewritten.exe",
+    "description": "s07_polaris_bcf",
+    "sha256": "6E5C2E7D5AB299766F5157B65E4202AEE5DA8BBEDF6A9AB6BF1BBD5F74E61A8A",
+    "correctness_status": "PASS — retained canonical and native differential validation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x17a0",
+        "preferred_va": "0x1400017a0"
+      },
+      "demo_combined": {
+        "rva": "0x18b0",
+        "preferred_va": "0x1400018b0"
+      },
+      "demo_data": {
+        "rva": "0x17e0",
+        "preferred_va": "0x1400017e0"
+      },
+      "demo_flattening": {
+        "rva": "0x1670",
+        "preferred_va": "0x140001670"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s04_ollvm_fla/original/ollvm16_fla_O0.exe",
+    "description": "s04_ollvm_fla",
+    "sha256": "239D02B425E749CF2AEC01BBA297E9077A1773850DE04585D655A0E0C941EFB3",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x17e0",
+        "preferred_va": "0x1400017e0"
+      },
+      "demo_combined": {
+        "rva": "0x1a90",
+        "preferred_va": "0x140001a90"
+      },
+      "demo_data": {
+        "rva": "0x1820",
+        "preferred_va": "0x140001820"
+      },
+      "demo_flattening": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s04_ollvm_fla/rewritten/ollvm16_fla_O0_stock_unflattened.exe",
+    "description": "s04_ollvm_fla",
+    "sha256": "FCF8827FF1E7A3B81FB6F0E005FF9BB0342F79C6785AC802DF0639C8C2F90E9B",
+    "correctness_status": "PASS — retained stock rewrite canonical runtime and successor oracle",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x17e0",
+        "preferred_va": "0x1400017e0"
+      },
+      "demo_combined": {
+        "rva": "0x1a90",
+        "preferred_va": "0x140001a90"
+      },
+      "demo_data": {
+        "rva": "0x1820",
+        "preferred_va": "0x140001820"
+      },
+      "demo_flattening": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s05_polaris_fla_wrong/original/polaris_fla_O0.exe",
+    "description": "s05_polaris_fla_wrong",
+    "sha256": "37DF40569659D91229FED35BD4626F68E4E08836D3D5679D684A4C971ACA9D18",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1600",
+        "preferred_va": "0x140001600"
+      },
+      "demo_combined": {
+        "rva": "0x1710",
+        "preferred_va": "0x140001710"
+      },
+      "demo_data": {
+        "rva": "0x1640",
+        "preferred_va": "0x140001640"
+      },
+      "demo_flattening": {
+        "rva": "0x12d0",
+        "preferred_va": "0x1400012d0"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s05_polaris_fla_wrong/rewritten/INCORRECT_DEOBFUSCATION_DO_NOT_USE_AS_WORKING_BINARY.exe",
+    "description": "s05_polaris_fla_wrong",
+    "sha256": "B5128151069B2F3CC34BBC3E2E63FE1C82040F3C82F95FDE3D77292A5ADD93EA",
+    "correctness_status": "WRONG — Polaris FLA rewrite; static negative example, not a working program",
+    "safe_to_execute": "NO — incorrect deobfuscation; inspect only",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1600",
+        "preferred_va": "0x140001600"
+      },
+      "demo_combined": {
+        "rva": "0x1710",
+        "preferred_va": "0x140001710"
+      },
+      "demo_data": {
+        "rva": "0x1640",
+        "preferred_va": "0x140001640"
+      },
+      "demo_flattening": {
+        "rva": "0x12d0",
+        "preferred_va": "0x1400012d0"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s06_tigress_arithmetic/original/tigress_encode_arithmetic_O0.exe",
+    "description": "s06_tigress_arithmetic",
+    "sha256": "DBC1B4078560F18E682BD2C7E0763BA067202B69C23CA321056D234703BF4E2D",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1110",
+        "preferred_va": "0x140001110"
+      },
+      "demo_calls": {
+        "rva": "0x20c0",
+        "preferred_va": "0x1400020c0"
+      },
+      "demo_combined": {
+        "rva": "0x2110",
+        "preferred_va": "0x140002110"
+      },
+      "demo_data": {
+        "rva": "0x1fe0",
+        "preferred_va": "0x140001fe0"
+      },
+      "demo_flattening": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "demo_substitution": {
+        "rva": "0x11d0",
+        "preferred_va": "0x1400011d0"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1880",
+        "preferred_va": "0x140001880"
+      },
+      "step_xor_12345678": {
+        "rva": "0x11b0",
+        "preferred_va": "0x1400011b0"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s06_tigress_arithmetic/optimized/tigress_encode_arithmetic_Ox.exe",
+    "description": "s06_tigress_arithmetic",
+    "sha256": "72AE9EF9630618A644C94BD303B37FDF61285DBFF29738AB67599F2294D9C9D4",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1110",
+        "preferred_va": "0x140001110"
+      },
+      "demo_calls": {
+        "rva": "0x18c0",
+        "preferred_va": "0x1400018c0"
+      },
+      "demo_combined": {
+        "rva": "0x18f0",
+        "preferred_va": "0x1400018f0"
+      },
+      "demo_data": {
+        "rva": "0x1700",
+        "preferred_va": "0x140001700"
+      },
+      "demo_flattening": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "demo_substitution": {
+        "rva": "0x11a0",
+        "preferred_va": "0x1400011a0"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1500",
+        "preferred_va": "0x140001500"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1180",
+        "preferred_va": "0x140001180"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/s08_tigress_flatten/original/tigress_flatten_O0.exe",
+    "description": "s08_tigress_flatten",
+    "sha256": "4201A5095EFE5D367C7A261ED612F108CEE85AEBA7D002E6B2831F1E43F0549F",
+    "correctness_status": "PASS — retained original canonical runtime; not rerun during curation",
+    "safe_to_execute": "YES — retained normal-run validation; local research use",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x12c0",
+        "preferred_va": "0x1400012c0"
+      },
+      "demo_calls": {
+        "rva": "0x1fd0",
+        "preferred_va": "0x140001fd0"
+      },
+      "demo_combined": {
+        "rva": "0x2020",
+        "preferred_va": "0x140002020"
+      },
+      "demo_data": {
+        "rva": "0x1ef0",
+        "preferred_va": "0x140001ef0"
+      },
+      "demo_flattening": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "demo_substitution": {
+        "rva": "0x1380",
+        "preferred_va": "0x140001380"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1790",
+        "preferred_va": "0x140001790"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1360",
+        "preferred_va": "0x140001360"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/baselines/tigress_Ox/showcase.exe",
+    "description": "tigress clean O3",
+    "sha256": "E96777D3A2A3572354218C293EAF0B2D3862C53E8C2A5FE444A1A885B287E289",
+    "correctness_status": "PASS — retained canonical run; not rerun",
+    "safe_to_execute": "YES — optional Windows x64 research execution; retained checks only",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x11f0",
+        "preferred_va": "0x1400011f0"
+      },
+      "demo_calls": {
+        "rva": "0x1330",
+        "preferred_va": "0x140001330"
+      },
+      "demo_combined": {
+        "rva": "0x1500",
+        "preferred_va": "0x140001500"
+      },
+      "demo_data": {
+        "rva": "0x1360",
+        "preferred_va": "0x140001360"
+      },
+      "demo_flattening": {
+        "rva": "0x1250",
+        "preferred_va": "0x140001250"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/baselines/hikari/showcase.exe",
+    "description": "hikari clean O0",
+    "sha256": "1FCACD6A48C87E4679C78EF5BE503410979DBD9557ECE5F880B6ED7E92D698C8",
+    "correctness_status": "PASS — retained canonical run; not rerun",
+    "safe_to_execute": "YES — optional Windows x64 research execution; retained checks only",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1400",
+        "preferred_va": "0x140001400"
+      },
+      "demo_combined": {
+        "rva": "0x1510",
+        "preferred_va": "0x140001510"
+      },
+      "demo_data": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_flattening": {
+        "rva": "0x12d0",
+        "preferred_va": "0x1400012d0"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/support_hikari_fla/original/showcase.exe",
+    "description": "hikari fla O0",
+    "sha256": "E7817F325DA3915EE278664746E45ECE95694C151D90D9AA10B62CB7E851792D",
+    "correctness_status": "PASS — retained canonical run; not rerun",
+    "safe_to_execute": "YES — optional Windows x64 research execution; retained checks only",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1820",
+        "preferred_va": "0x140001820"
+      },
+      "demo_combined": {
+        "rva": "0x1af0",
+        "preferred_va": "0x140001af0"
+      },
+      "demo_data": {
+        "rva": "0x1860",
+        "preferred_va": "0x140001860"
+      },
+      "demo_flattening": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/support_tigress_opaque/original/showcase.exe",
+    "description": "tigress add_opaque O0",
+    "sha256": "EC0422510CB401B0EC004A32961F45F5D9A399EA9EB021F4B16A38B6FE8052BE",
+    "correctness_status": "PASS — retained canonical run; not rerun",
+    "safe_to_execute": "YES — optional Windows x64 research execution; retained checks only",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1110",
+        "preferred_va": "0x140001110"
+      },
+      "demo_calls": {
+        "rva": "0x2460",
+        "preferred_va": "0x140002460"
+      },
+      "demo_combined": {
+        "rva": "0x1f00",
+        "preferred_va": "0x140001f00"
+      },
+      "demo_data": {
+        "rva": "0x1e20",
+        "preferred_va": "0x140001e20"
+      },
+      "demo_flattening": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "demo_substitution": {
+        "rva": "0x2050",
+        "preferred_va": "0x140002050"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x12e0",
+        "preferred_va": "0x1400012e0"
+      },
+      "step_xor_12345678": {
+        "rva": "0x12c0",
+        "preferred_va": "0x1400012c0"
+      }
+    }
+  },
+  {
+    "path": "assets/binaries/support_hikari_fla/rewritten/stock_rewritten.exe",
+    "description": "Hikari FLA O0 stock rewrite",
+    "sha256": "74FAC943439AA2616BA2D1288DEB21D579D7E9A01B3B7E574B560753A7256320",
+    "correctness_status": "PASS — retained canonical output/exit; 28/28 successor pairs",
+    "safe_to_execute": "YES — optional Windows x64 research execution; no unwind guarantee",
+    "pdb_policy": "No PDB packaged. Use exports/RVAs. Original internal PDB mappings are stale for rewritten functions.",
+    "machine": "AMD64",
+    "image_base": "0x140000000",
+    "exports": {
+      "demo_bogus_control_flow": {
+        "rva": "0x1210",
+        "preferred_va": "0x140001210"
+      },
+      "demo_calls": {
+        "rva": "0x1820",
+        "preferred_va": "0x140001820"
+      },
+      "demo_combined": {
+        "rva": "0x1af0",
+        "preferred_va": "0x140001af0"
+      },
+      "demo_data": {
+        "rva": "0x1860",
+        "preferred_va": "0x140001860"
+      },
+      "demo_flattening": {
+        "rva": "0x1440",
+        "preferred_va": "0x140001440"
+      },
+      "demo_substitution": {
+        "rva": "0x1030",
+        "preferred_va": "0x140001030"
+      },
+      "step_add_1337": {
+        "rva": "0x1000",
+        "preferred_va": "0x140001000"
+      },
+      "step_sub_1111": {
+        "rva": "0x1020",
+        "preferred_va": "0x140001020"
+      },
+      "step_xor_12345678": {
+        "rva": "0x1010",
+        "preferred_va": "0x140001010"
+      }
+    }
+  }
+]

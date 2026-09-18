@@ -32,6 +32,15 @@ const holisticMarking = z.object({
 });
 
 export const collections = {
+  // One entry per teaching week. Two fields are required here that the starter
+  // schema did not have, and both exist to stop this course turning into
+  // twelve interchangeable pages:
+  //
+  //   `question` — the single thing the week answers. Writing one forces the
+  //   week to have a point, and the point is what the week page leads with.
+  //   `mode` — the teaching shape (a side-by-side diff, a solver walkthrough,
+  //   a failure audit). Naming it makes a repeated shape visible to the
+  //   author, and `spec/curriculum.test.ts` refuses a shape used too often.
   sessions: defineCollection({
     loader: courseNodeLoader("sessions"),
     schema: courseNodeSchema
@@ -39,6 +48,8 @@ export const collections = {
         week: weekSchema,
         date: z.coerce.date(),
         teachers: teacherRefs.optional(),
+        question: z.string().trim().min(20).max(220),
+        mode: z.string().trim().min(3).max(44),
       })
       .loose(),
   }),
@@ -50,11 +61,19 @@ export const collections = {
         week: weekSchema,
         due: z.coerce.date(),
         weight: z.coerce.number().positive().max(100),
-        marking: z.discriminatedUnion("mode", [weightedMarking, holisticMarking]).optional(),
+        /** Short label used in navigation and cross-references: A1, A2, Capstone. */
+        label: z.string().trim().min(2).max(12),
+        // Not optional here. A brief that does not say how it is judged is
+        // half a brief, and this course marks reasoning rather than output,
+        // which is exactly the case where students need it written down.
+        marking: z.discriminatedUnion("mode", [weightedMarking, holisticMarking]),
       })
       .loose(),
   }),
 
+  // Four spine lectures, one per block, each opening the argument its three
+  // weeks carry. `slides` is required: a lecture on this site exists as a
+  // page *and* as the deck that was delivered from it.
   lectures: defineCollection({
     loader: courseNodeLoader("lectures"),
     schema: courseNodeSchema
@@ -62,10 +81,11 @@ export const collections = {
         week: weekSchema,
         date: z.coerce.date(),
         teachers: teacherRefs.optional(),
+        block: z.coerce.number().int().min(1).max(4),
+        covers: z.array(weekSchema).min(1),
         slides: z
           .string()
-          .regex(/^\/decks\/[a-z0-9-]+\/$/)
-          .optional(),
+          .regex(/^\/decks\/[a-z0-9-]+\/$/),
       })
       .loose(),
   }),

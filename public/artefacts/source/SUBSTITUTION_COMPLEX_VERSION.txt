@@ -1,0 +1,38 @@
+COMPLEX ARITHMETIC PROBE VERSION 1.0
+Freeze status: FROZEN after clean runtime, structural, and SMT validation.
+Validation date: 2026-09-17 (Australia/Sydney)
+Source: src/probes/substitution_complex.c
+Source SHA-256: 026AA69530C711ACC856C62A21852ABC0F536D7784717C9EBDC48252BCA47F37
+
+Canonical uint32_t inputs:
+x = 0x00001337
+y = 0x12345678
+
+Independently verified expected uint32_t outputs:
+complex_constants = 0x30166557
+complex_variables = 0xFFFFFDB0
+complex_mixed     = 0x301653CD
+expression_tree   = 0x278DEEBC
+Final output: COMPLEX ARITHMETIC PASS
+Exit status: 0
+
+Required clean validation compilers:
+MSVC 19.51.36248 x64: /Od /Ob0
+Clang 22.1.3 x86_64-pc-windows-msvc: -O0
+MSYS2 UCRT64 MinGW-w64 GCC 16.2.0 Rev3: -O0
+All passed 10 fixed input pairs (40 output comparisons each).
+
+Additional matched clean baselines:
+OLLVM-16 Clang 16.0.6; Hikari Clang 15.0.0; Polaris Clang 16.0.6.
+All six compilers preserve separate exported/noinline functions.
+LLVM frontends preserve the intended 4, 5, 6, and 10 arithmetic/Boolean operations.
+Miasm recovers all 24 clean complete-function expressions; all source checks UNSAT.
+
+Independent reference model:
+scripts/deobfuscation/complex_arithmetic/model.py
+Validation evidence:
+results/complex_arithmetic_v1/clean
+results/deobfuscation/complex_arithmetic_v1/preregistration/freeze.json
+
+This is a separate dataset. The original showcase and repeated-site experiment
+remain frozen and unchanged. Do not modify this source during v1 experiments.

@@ -1,0 +1,77 @@
+---
+// One of the twelve lecture comparison tables, rendered from the research
+// package's structured rows.
+//
+// The package ships each of these as an SVG and a PNG too. Those are reference
+// artefacts with a fixed width and a hardcoded white background; a raster of a
+// table is also unselectable, unsearchable and unreadable at 390px. So the
+// rows are rendered as a real table and the original figure is linked beside
+// it, which is what LECTURE_TABLE_INDEX.md recommends.
+import Badge from "./Badge.astro";
+import { cellText, cellTone, lectureTable } from "../lib/tables";
+
+interface Props {
+  /** Table id, e.g. `09_unflattening_outcomes`. */
+  id: string;
+  /** Hide the table's own title when the surrounding heading already says it. */
+  headless?: boolean;
+  class?: string;
+}
+
+const { id, headless = false, class: className } = Astro.props;
+const table = lectureTable(id);
+
+/** Rows arrive as "PASS\nSelected originals": verdict first, then the detail. */
+function split(text: string): { head: string; rest: string | undefined } {
+  const [head, ...rest] = text.split("\n");
+  return { head: head ?? "", rest: rest.length > 0 ? rest.join(" ") : undefined };
+}
+---
+
+<section class:list={["sc-table", className]} aria-labelledby={`table-${table.id}`}>
+  {
+    !headless && (
+      <div class="sc-table__head">
+        <span class="sc-table__number">Table {String(table.number).padStart(2, "0")}</span>
+        <h3 class="sc-table__title" id={`table-${table.id}`}>
+          {table.title}
+        </h3>
+        {table.subtitle && <p class="sc-table__subtitle">{table.subtitle}</p>}
+      </div>
+    )
+  }
+  {headless && <h3 class="visually-hidden" id={`table-${table.id}`}>{table.title}</h3>}
+  <div class="at-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          {table.columns.map((column) => <th scope="col">{column}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          table.rows.map((row) => (
+            <tr>
+              {row.map((cell, index) => {
+                const tone = cellTone(cell);
+                const { head, rest } = split(cellText(cell));
+                const Tag = index === 0 ? "th" : "td";
+                return (
+                  <Tag scope={index === 0 ? "row" : undefined}>
+                    {tone ? <Badge tone={tone}>{head}</Badge> : head}
+                    {rest && <span class="sc-table__cell-note">{rest}</span>}
+                  </Tag>
+                );
+              })}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  {table.takeaway && <p class="sc-table__takeaway">{table.takeaway}</p>}
+  <p class="sc-table__foot">
+    {table.note && <span>{table.note}</span>}
+    <span><a href={table.figure}>Open the original lecture figure (SVG)</a></span>
+  </p>
+</section>

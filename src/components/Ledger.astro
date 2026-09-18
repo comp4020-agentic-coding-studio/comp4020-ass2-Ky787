@@ -1,0 +1,73 @@
+---
+// The course's signature block, and the reason it exists: every piece of
+// evidence on this site is filed with what it establishes AND what it does
+// not. Both columns are required props, so a page cannot quietly ship the
+// happy half.
+//
+// Item text is authored HTML so `<code>` and `<em>` work, but links belong in
+// `sources`, where the component applies the base path. A raw `href` inside a
+// `set:html` string builds fine and 404s on the deployed site, which is
+// exactly the class of mistake the build's link check catches — once.
+import { evidenceName, evidenceUrl } from "../lib/evidence";
+import { withBase } from "astro-theme-university/url";
+
+interface Source {
+  /** Prose before the link, e.g. "Counts as stated in". */
+  label?: string;
+  /** Manifest id — linked, and labelled with the artefact's filename. */
+  id?: string;
+  /** Internal page path, base applied. Requires `text`. */
+  href?: string;
+  /** Link text for an `href`, or trailing prose when neither is set. */
+  text?: string;
+}
+
+interface Props {
+  /** What the evidence above supports. */
+  establishes: string[];
+  /** What it does not support — including the tempting reading. */
+  withholds: string[];
+  /** Optional heading, when a page has more than one ledger. */
+  title?: string;
+  /** Where the boundary comes from. */
+  sources?: Source[];
+}
+
+const { establishes, withholds, title, sources = [] } = Astro.props;
+
+if (establishes.length === 0 || withholds.length === 0) {
+  throw new Error("a ledger needs both columns filled in — that is the whole point of it");
+}
+---
+
+<aside class="sc-ledger" aria-label={title ?? "What this evidence does and does not establish"}>
+  {title && <p class="sc-kicker">{title}</p>}
+  <div class="sc-ledger__grid">
+    <div class="sc-ledger__col sc-ledger__col--yes">
+      <h3 class="sc-ledger__heading">This establishes</h3>
+      <ul>
+        {establishes.map((item) => <li set:html={item} />)}
+      </ul>
+    </div>
+    <div class="sc-ledger__col sc-ledger__col--no">
+      <h3 class="sc-ledger__heading">This does not establish</h3>
+      <ul>
+        {withholds.map((item) => <li set:html={item} />)}
+      </ul>
+    </div>
+  </div>
+  {
+    sources.length > 0 && (
+      <p class="sc-pane__foot" style="border-block-start: 0; padding-inline: 0;">
+        {sources.map((source) => (
+          <span>
+            {source.label && `${source.label} `}
+            {source.id && <a href={evidenceUrl(source.id)}>{source.text ?? evidenceName(source.id)}</a>}
+            {source.href && <a href={withBase(source.href)}>{source.text ?? source.href}</a>}
+            {!source.id && !source.href && source.text}
+          </span>
+        ))}
+      </p>
+    )
+  }
+</aside>

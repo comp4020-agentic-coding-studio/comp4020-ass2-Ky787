@@ -1,0 +1,46 @@
+---
+// An IDA or Diaphora view from the research package.
+//
+// A screenshot shows what a tool displayed. It does not establish a block
+// count, a solver status or semantic equivalence, so every one of these
+// carries that line and the pane's numbers come from the retained result
+// files instead.
+import { evidenceName, evidenceUrl, screenshot } from "../lib/evidence";
+
+interface Props {
+  /** Manifest id under `assets/ida/`. */
+  id: string;
+  /** What is visible, for readers who cannot see it. */
+  alt: string;
+  /** Crop the preview to a fixed height (for very tall graph views). */
+  crop?: boolean;
+  class?: string;
+}
+
+const { id, alt, crop = false, class: className } = Astro.props;
+const shot = screenshot(id);
+---
+
+<figure class:list={["sc-figure", { "sc-figure--crop": crop }, className]}>
+  <a
+    class="sc-figure__frame"
+    href={shot.full}
+    data-zoom
+    data-zoom-label={alt}
+    data-zoom-width={shot.fullWidth}
+    data-zoom-height={shot.fullHeight}
+  >
+    <picture>
+      <source srcset={shot.avif} type="image/avif" />
+      <img src={shot.jpg} alt={alt} width={shot.width} height={shot.height} loading="lazy" decoding="async" />
+    </picture>
+  </a>
+  <figcaption>
+    <slot />
+    <span class="sc-figure__meta">
+      <span>analysis view — not correctness evidence</span>
+      <span>{shot.fullWidth}×{shot.fullHeight}</span>
+      <span><a href={evidenceUrl(id)}>{evidenceName(id)}</a></span>
+    </span>
+  </figcaption>
+</figure>

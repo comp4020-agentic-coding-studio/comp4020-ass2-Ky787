@@ -1,0 +1,70 @@
+---
+title: Something always simplifies it for you
+description:
+  Three different things reduce obfuscated arithmetic — the algebra, the
+  compiler backend, and your own reading — and confusing them is how people
+  come to believe a simplifier recovered something it never touched.
+week: 4
+date: 2027-03-17
+block: 2
+covers: [4, 5, 6]
+slides: /decks/spine-02/
+teachers:
+  - rasha-oyelaran
+  - tomas-wrenn
+related:
+  - sessions/week-04
+  - sessions/week-05
+  - sessions/week-06
+---
+
+## The argument
+
+Obfuscated arithmetic gets simpler on its way to you, and usually not because
+of anything you did.
+
+Three separate mechanisms are at work, and the whole block is about telling
+them apart. The **algebra** can be reduced: a mixed Boolean-arithmetic
+expression has a simpler equivalent, and a synthesiser plus a solver can
+sometimes find it and prove it. The **compiler backend** reduces it: an
+obfuscator that expanded an addition into four IR operations still has
+instruction selection to get past, and instruction selection is very good at
+recognising an addition. And **you** reduce it, by reading the listing, which
+feels like analysis and produces no artefact anyone can check.
+
+The reason this matters is a specific, embarrassing failure mode. If a native
+expression was *already* canonical before your simplifier ran, and your
+simplifier reports it as simple, you have learned nothing about your
+simplifier. The retained arithmetic study is careful about this and says so:
+some expressions were recognisable before the tool ran, and those must not be
+credited as recovered semantics.
+
+## The numbers that frame the block
+
+On the exact same target function, `demo_substitution`, at `-O0`:
+
+- classic substitution grows the native body from 115 to 311 instructions, and
+  by `-O1` all twenty-four of the intended operations are back as plain machine
+  instructions;
+- one implementation's substitution disappears entirely by `-O1` — the measured
+  target matches the clean target;
+- linear MBA grows the same body to 678 instructions with a distinct operator
+  tree at every site;
+- and a source-level arithmetic encoding still sits at 226 instructions against
+  a matched clean 106 after the most aggressive optimisation the study ran.
+
+Same function. Same source. Four completely different answers to "did this
+survive?", and the deciding variable is mostly *where the transformation was
+applied*, not how clever it was.
+
+## Where this block ends
+
+Week 4 is expression recovery and its honest scoreboard: ten of twelve isolated
+sites recovered with proofs, two returned UNKNOWN, and not one of twenty
+composed whole-function expressions completely recovered. Week 5 makes
+optimisation level a variable rather than a nuisance. Week 6 moves from
+arithmetic to control flow and introduces the distinction the whole second half
+of the course runs on — a branch the programmer wrote, versus a branch an
+obfuscator injected.
+
+A1 is due at the end of week 5, and it is the tracing exercise from this block.

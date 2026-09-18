@@ -1,0 +1,226 @@
+---
+title: From C to machine code
+description:
+  One computation, four truthful descriptions of it, and the beginning of a
+  habit — saying which description you are looking at before you say what it
+  means.
+week: 1
+date: 2027-02-24
+mode: Representation ladder
+question: If the source, the IR and the machine code disagree about how complicated a program is, which one is wrong?
+teachers:
+  - rasha-oyelaran
+spec:
+  - you can read `showcase.c` and predict what `demo_substitution(0x1337)` returns
+  - you can name what `mov`, `add`, `xor` and `sub` do to a 32-bit register
+  - you have the course evidence bundle open in an editor, not a browser tab
+related:
+  - lectures/spine-01
+---
+
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Nothing is obfuscated this week. That is deliberate: you cannot tell what an
+obfuscator did to a program until you can tell what a *compiler* did to it,
+and the compiler already did a great deal.
+
+We will spend the whole semester on one small C file. It is worth meeting it
+properly.
+
+<Specimen
+  title="The frozen showcase"
+  fields={[
+    ["Source", "<code>showcase.c</code>, 483 lines, frozen before any build"],
+    ["SHA-256", "<code>39FEF0BB…906B99D2</code>, re-checked before every build in the matrix"],
+    ["Targets", "six exported, non-inlined functions; this week's is <code>demo_substitution</code>"],
+    ["Compiler", "OLLVM-16 (Clang 16.0.6), <code>-O0</code>, no obfuscation passes enabled"],
+    ["Platform", "Windows x64 PE. Reading works anywhere; running needs the lab image"],
+  ]}
+  verdict={{ tone: "pass", text: "runtime PASS", label: "retained runtime status" }}
+/>
+
+<section class="sc-section">
+
+## One addition, three ways
+
+Here is a single line of the program, and the same line after the front end has
+had it. Read them as two descriptions of one event, not as an original and a
+copy.
+
+<CodePair>
+  <EvidenceCode
+    id="assets/source/showcase.c"
+    lang="c"
+    title="showcase.c — demo_substitution, first eight sites"
+    note="what the author wrote"
+    fromMatch={/^    value\[0\] = input \+ 0x01010101u;$/}
+    take={8}
+    dedent={4}
+  />
+  <EvidenceCode
+    id="assets/ir/baselines/ollvm16/demo_substitution.ll"
+    lang="llvm"
+    title="clean LLVM IR — the same first two sites"
+    note="what the front end emitted"
+    from={2}
+    to={13}
+  />
+  <span slot="caption">
+    Two lines of C became a stack allocation, a load, an `add`, a
+    `getelementptr` and a `store volatile` — per site. The IR is not more
+    complicated because anything was hidden; it is more complicated because it
+    is more explicit. `volatile` is the reason the stores survive at all: the
+    source declares `value[8]` volatile precisely so the optimiser cannot fold
+    the whole function into its answer.
+  </span>
+</CodePair>
+
+Now the third description. The same eight additions, after instruction
+selection, in the linked executable:
+
+<EvidenceCode
+  id="assets/evidence/baselines/ollvm16/demo_substitution_disassembly.txt"
+  lang="asm"
+  title="clean x64 — demo_substitution at RVA 0x1030"
+  note="what the machine will execute"
+  fromMatch={/<demo_substitution>:/}
+  take={10}
+  class="sc-wide"
+/>
+
+Each site is three instructions: reload the argument, add the immediate, store
+the slot. The constant you wrote is sitting in the instruction stream in
+little-endian order — `05 01 01 01 01` is `add eax, 0x01010101` — and that is
+the first useful fact about machine code for an analyst. Constants are
+landmarks. They are how you find the same computation again after someone has
+rearranged everything around it.
+
+:::warning[A landmark is not a proof]
+Finding `0x12345678` in a binary tells you where to look. It does not tell you
+that the operation around it is still the one the source wrote, and from week 3
+onward it frequently will not be.
+:::
+
+</section>
+
+<section class="sc-section">
+
+## The counts do not agree, and that is the point
+
+The same target function, measured three ways in the retained matrix:
+
+<Numbers
+  items={[
+    { value: "155", label: "LLVM IR instructions in the clean target", source: "showcase_matrix_v1 — O0 comparison table" },
+    { value: "115", label: "x64 machine instructions in the same function", source: "showcase_matrix_v1 — O0 comparison table" },
+    { value: "467", label: "bytes of machine code, prologue to return", source: "showcase_matrix_v1 — O0 comparison table" },
+    { value: "51", label: "machine instructions for the same function at O1", sourceId: "assets/reports/optimization_survival.md" },
+  ]}
+/>
+
+One function; four numbers, all correct. The IR count is higher than the
+machine count because IR spells out addressing that one x64 instruction does
+for free. The O1 count is less than half the O0 count because at `-O0` the
+compiler reloads the argument from the stack for every single site and at `-O1`
+it stops.
+
+This is the measurement discipline the rest of the course depends on. Whenever
+you see a number about a program, three questions come before believing it:
+which representation, which convention, and against which comparator at which
+optimisation level.
+
+</section>
+
+<section class="sc-section">
+
+## Where an obfuscator can get in
+
+Four places, and the choice determines what happens to the transformation
+afterwards.
+
+<LectureTable id="01_transformation_layers" class="sc-wide" />
+
+The last column is the one to hold on to. A source-level transformation has to
+survive the entire compiler after it; an IR-level transformation has to survive
+instruction selection; a post-link transformation has no optimiser after it at
+all. In week 5 we will find that this difference decides whether some
+transformations exist in the final binary.
+
+</section>
+
+<section class="sc-section">
+
+## What a disassembler shows you
+
+<Screenshot
+  id="assets/ida/demo_substitution1_2.jpg"
+  alt="A side-by-side disassembler diff. The left pane shows a regular sequence of add instructions with the immediates 0x1010101 through 0x8080808 and repeated xor 12345678h. The right pane shows a longer, irregular sequence containing cancelling constants, negations and subtractions."
+>
+  Left pane: the clean `demo_substitution` you have been reading, in a graph
+  view. Ignore the right pane for now — it is next week's material, and this
+  week it is here only so you can see what "the same function" can look like.
+</Screenshot>
+
+Use the left pane. Find the eight `add` instructions, find the eight
+`xor 12345678h`, and notice that they are as regular in the disassembler as
+they were in the source. A clean `-O0` build is nearly a transliteration of the
+C, which is exactly why it makes a usable comparator and a poor model of real
+software.
+
+</section>
+
+<Ledger
+  establishes={[
+    "One compiled function has several descriptions — source, IR, machine code — that differ in size and in shape while describing the same computation.",
+    "The clean <code>-O0</code> target for <code>demo_substitution</code> is 155 IR instructions and 115 machine instructions, measured in the retained matrix with the conventions it states.",
+    "Memorable constants survive clean compilation into the instruction stream and can be used to navigate.",
+  ]}
+  withholds={[
+    "That IR instruction counts and machine instruction counts can be compared to each other, or that either is a measure of how hard a function is to understand.",
+    "That a constant found in a binary is still doing the job the source gave it.",
+    "Anything at all about obfuscation, which has not happened yet.",
+  ]}
+  sources={[
+    { label: "Counts as stated in", id: "assets/reports/showcase_matrix_v1.md" },
+    { label: "Boundaries per", href: "/claims/", text: "the claim boundaries" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: find a constant, then follow its meaning
+
+Working from the four files below, and nothing else:
+
+1. Pick one of the eight XOR sites. Locate it in the C, in the IR, and in the
+   disassembly. Write down the line or address of each.
+2. Say what the compiler added around it that the author did not write, and why
+   each addition is there.
+3. `demo_substitution` contains more than twenty-four operations. Twenty-four
+   of them are the repeated sites the corpus was designed around; the rest are
+   setup and the final reduction. Mark which is which, and say how you decided.
+4. One sentence, to be repeated all semester: *what would have to be true for
+   my answer to step 1 to be wrong?*
+
+Bring the answers to step 3 and step 4. Step 3 is where people disagree, and
+the disagreement is the useful part — the corpus documentation says "twenty-four
+sites" and does not mean "twenty-four instructions".
+
+<FileList
+  items={[
+    { id: "assets/source/showcase.c", what: "the frozen source, all six targets" },
+    { id: "assets/ir/baselines/ollvm16/demo_substitution.ll", what: "clean LLVM IR for this week's target" },
+    { id: "assets/evidence/baselines/ollvm16/demo_substitution_disassembly.txt", what: "clean x64 disassembly of the same function" },
+    { id: "assets/evidence/baselines/ollvm16/run_stdout.txt", what: "what the clean executable prints — the six canonical answers" },
+  ]}
+/>
+
+</section>

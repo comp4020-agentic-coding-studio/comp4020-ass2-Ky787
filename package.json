@@ -11,7 +11,9 @@
     "check": "pnpm typecheck && pnpm test",
     "check:evidence": "node scripts/check-evidence.ts",
     "test": "pnpm build && vitest run spec",
-    "test:template": "vitest run scripts"
+    "test:template": "vitest run scripts",
+    "artefacts": "node scripts/sync-evidence.ts",
+    "artwork": "node scripts/make-artwork.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.0",

@@ -1,0 +1,51 @@
+---
+// The whole semester, on every week page. Twelve weeks grouped under the four
+// blocks they belong to, so a reader who lands on week 9 from a search result
+// can see what argument week 9 is part of and where it sits in it.
+import { getPublishedCollection } from "astro-course-university/content";
+import { withBase } from "astro-theme-university/url";
+import { BLOCKS } from "../lib/course";
+
+interface Props {
+  /** The week currently being read, marked as the current page. */
+  current?: number;
+}
+
+const { current } = Astro.props;
+const sessions = await getPublishedCollection("sessions");
+const byWeek = new Map(sessions.map((session) => [session.data.week, session]));
+---
+
+<nav class="sc-rail" aria-label="All twelve teaching weeks">
+  <div class="sc-rail__blocks">
+    {
+      BLOCKS.map((block) => (
+        <div class="sc-rail__block">
+          <span class="sc-rail__block-name">
+            Block {block.numeral} · {block.title}
+          </span>
+          <ol>
+            {block.weeks.map((week) => {
+              const session = byWeek.get(week);
+              return (
+                <li>
+                  {session ? (
+                    <a
+                      href={withBase(`/sessions/${session.id}/`)}
+                      aria-current={week === current ? "page" : undefined}
+                    >
+                      <span class="sc-rail__n">{String(week).padStart(2, "0")}</span>
+                      <span>{session.data.title}</span>
+                    </a>
+                  ) : (
+                    <span class="sc-rail__n">{String(week).padStart(2, "0")}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ))
+    }
+  </div>
+</nav>

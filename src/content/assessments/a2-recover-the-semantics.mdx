@@ -1,0 +1,112 @@
+---
+title: "A2 — Recover the semantics"
+label: A2
+description:
+  Given a flattened or gated function, a recovered graph and a set of solver
+  results, decide what has been established — and defend the boundary you draw.
+week: 9
+due: 2027-05-07T17:00:00+10:00
+weight: 30
+marking:
+  mode: weighted
+  criteria:
+    - name: Proof obligations, stated correctly and in scope
+      weight: 30
+    - name: Reasoning from the graph and the solver record
+      weight: 25
+    - name: Assumptions, state and coverage boundaries
+      weight: 25
+    - name: Judgement on the claim you are asked to adjudicate
+      weight: 20
+spec:
+  - submitted as a single PDF by the deadline, with every claim citing a retained file
+  - each branch discussed has its two obligations written out, with the path prefix named
+  - each solver status is reported as SAT, UNSAT or UNKNOWN, and UNKNOWN is never treated as equivalence
+  - the state and memory assumptions the analysis depends on are listed explicitly
+  - block and edge counts name their recovery convention and are not compared across conventions
+  - the submission reaches a verdict on the supplied claim and says what evidence would change it
+related:
+  - sessions/week-06
+  - sessions/week-07
+  - sessions/week-08
+  - lectures/spine-03
+  - capstone-unfamiliar-binary
+---
+
+import Outcomes from "../../components/Outcomes.astro";
+
+## The brief
+
+> Here is a function with opaque control flow, a recovered control-flow graph,
+> a set of frozen solver results, and a one-paragraph claim that somebody has
+> made about it. Decide whether the claim is supported. Show your working.
+
+A1 asked what happened to a program. A2 asks a harder question: what does this
+pile of evidence actually entitle anyone to say?
+
+## What you are given
+
+A bundle containing, for one target function:
+
+- the exact disassembly of the target, and the clean comparator's;
+- a recovered control-flow graph, with its counting convention stated;
+- frozen solver artefacts for several branches — the path prefix, the branch
+  condition, both queries as `.smt2` files, and the recorded status of each;
+- the retained runtime output of the binary;
+- **a claim**, written as an analyst's summary paragraph, which may be
+  supported, partly supported, or wrong.
+
+One of the branches in your bundle is a genuine source condition. Finding it is
+part of the work; a submission that treats every branch as injected has missed
+the control that makes the rest meaningful.
+
+## What you submit
+
+One PDF, six to eight pages:
+
+1. **The function.** What it appears to compute, and the evidence for that.
+2. **Branch by branch.** For each branch you discuss: the path prefix `P`, the
+   condition `C`, the two obligations `P ∧ C` and `P ∧ ¬C`, the recorded status
+   of each, and your classification — one-sided under `P`, two-sided, or
+   undetermined. Quote the file.
+3. **The assumptions.** What the analysis assumed about memory, about globals,
+   and about the initial state. For each assumption, one sentence on what
+   changes if it does not hold.
+4. **The graph.** What the recovered graph tells you and what its convention
+   excludes. If you quote block counts, they must be within one convention.
+5. **The verdict.** Is the supplied claim supported? Answer plainly — yes,
+   partly, or no — then say which specific words in it go beyond the evidence,
+   and what evidence would settle it.
+
+## How it is marked
+
+Two failure modes are worth naming in advance, because they are the ones that
+cost the most marks.
+
+The first is **collapsing a path-local result into a global one**. `UNSAT` for
+`P ∧ ¬C` says that, for states covered by `P` and under the analysis's model,
+that edge is not taken. It does not say the branch is universally opaque. The
+course has a specimen where a workflow yields zero proofs from arbitrary entry
+state and three from three once a captured initialised state is imported —
+same solver, same branches, different assumption. If your submission cannot
+express that distinction, it cannot adjudicate the claim.
+
+The second is **reading the graph as the answer**. A recovered graph is a
+recovery; it is incomplete at indirect jumps by construction, and its block
+count belongs to one convention. Two of this course's specimens exist
+specifically because a smaller graph was wrong.
+
+Marks are for the reasoning, not for agreeing with the marker. A well-argued
+"partly supported, and here is the sentence that is doing the overreaching"
+scores above a correct verdict with thin working.
+
+<Outcomes />
+
+A2 lives in columns one and two, and asks you to say why column four has not
+been reached.
+
+## Extensions and integrity
+
+As for A1: extensions through the convenor before the deadline, discussion of
+the evidence encouraged and declared, written analysis individual. See
+[course information](/policies/).

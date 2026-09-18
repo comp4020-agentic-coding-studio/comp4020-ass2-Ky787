@@ -1,0 +1,223 @@
+---
+title: Instruction substitution
+description:
+  The oldest trick in the book, applied to twenty-four sites, and largely
+  undone by the compiler backend before anyone tried to analyse it.
+week: 3
+date: 2027-03-10
+mode: Side-by-side diff
+question: If the obfuscator expanded every single addition, why can I still see additions in the machine code?
+teachers:
+  - tomas-wrenn
+spec:
+  - you can expand `a + b` into an identity that uses a third constant and cancels it
+  - you can read a four-line SSA chain and say which value is stored
+  - you have week 1's annotated XOR site written down
+related:
+  - lectures/spine-01
+  - assessments/a1-trace-the-transformation
+---
+
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Instruction substitution replaces an operation with a longer sequence that
+computes the same value. For addition, one of the classic identities is
+
+```text
+a + b   ≡   (a + k) + b − k        for any k, modulo 2³²
+```
+
+which is true for every `k`, costs two extra instructions, and means nothing
+to a reader who spots the cancelling constant. That is the whole technique. The
+interesting question is what happens to it on the way to the executable.
+
+<Specimen
+  title="This week's pair"
+  fields={[
+    ["Clean", "OLLVM-16 Clang 16.0.6, <code>-O0</code>, no passes"],
+    ["Treated", "the same compiler with <code>-mllvm -sub -mllvm -aesSeed=00112233445566778899AABBCCDDEEFF</code>"],
+    ["Target", "<code>demo_substitution</code>, eight XOR, eight ADD and eight SUB sites"],
+    ["Scope", "global pass build — other functions in the module were also eligible"],
+  ]}
+  verdict={{ tone: "pass", text: "both PASS", label: "retained runtime status" }}
+/>
+
+<section class="sc-section">
+
+## One site, before and after
+
+<CodePair>
+  <EvidenceCode
+    id="assets/ir/baselines/ollvm16/demo_substitution.ll"
+    lang="llvm"
+    title="clean IR — site 0"
+    note="one add"
+    from={5}
+    to={8}
+  />
+  <EvidenceCode
+    id="assets/ir/s01_ollvm_sub/target_function.ll"
+    lang="llvm"
+    title="substituted IR — the same site"
+    note="the identity, with k = 115893687"
+    from={5}
+    to={11}
+  />
+  <span slot="caption">
+    `%5` adds the cancelling constant, `%6` adds the real one, `%7` subtracts
+    the cancelling constant back out, and `%7` is what gets stored. Note `%8`:
+    the pass also emitted the *original* `add i32 %4, 16843009` and then never
+    used it. The unsubstituted operation is sitting right there in the IR as
+    dead code.
+  </span>
+</CodePair>
+
+Two things follow immediately. First, `k` is different at every site — the
+next one uses `−2076646197`, the one after that uses a zero-subtract form
+entirely — so pattern-matching one template does not find the others. Second,
+the dead `%8` tells you the pass works by adding a substituted computation
+beside the original rather than by editing it in place. Which raises the
+obvious question about what the backend does with a value nobody reads.
+
+</section>
+
+<section class="sc-section">
+
+## The same site, in the executable
+
+<EvidenceCode
+  id="assets/evidence/s01_ollvm_sub/demo_substitution_disassembly.txt"
+  lang="asm"
+  title="substituted x64 — demo_substitution at RVA 0x1070"
+  note="sites 0, 1 and 2"
+  fromMatch={/<demo_substitution>:/}
+  take={16}
+  class="sc-wide"
+/>
+
+The dead operation is gone: instruction selection dropped it, at `-O0`, without
+being asked. What survived is the three-instruction identity — `add` the
+cancelling constant, `add` the real one, `sub` the cancelling constant — and
+`0x1010101` is still sitting in plain sight in the middle of it.
+
+Site 2 used a different template: `xor ecx, ecx` then `sub ecx, 0x3030303` then
+`sub eax, ecx`, which is "subtract the negation", and again the real constant
+is visible.
+
+:::warning[Read the operand order before you compare]
+The two retained listings were dumped in different syntax flavours. The clean
+baseline is AT&T order — `addl $0x1010101, %eax`, source first. The substituted
+target is Intel order — `add eax, 0x1010101`, destination first. Same
+instructions, mirrored operands. This is an artefact of how each dump was
+taken, not of the transformation, and noticing it is the cheapest provenance
+lesson in the course.
+:::
+
+</section>
+
+<section class="sc-section">
+
+## Coverage, diversity and survival are three things
+
+The retained study measures all three separately, and they disagree.
+
+<Numbers
+  items={[
+    { value: "24 / 24", label: "intended sites expanded in OLLVM SUB's O0 IR", sourceId: "assets/reports/showcase_matrix_v1.md" },
+    { value: "9", label: "distinct IR template shapes used across those sites (2 XOR, 4 ADD, 3 SUB)", sourceId: "assets/reports/showcase_matrix_v1.md" },
+    { value: "115 → 311", label: "native instructions in the target, clean to substituted, at O0", sourceId: "assets/tables/research/selected_metrics.md" },
+    { value: "24 / 24", label: "intended native operations recognisable again at O1 and above", sourceId: "assets/reports/optimization_survival.md" },
+  ]}
+/>
+
+**Coverage** is how many sites the pass touched: all of them, here. **Template
+diversity** is how many distinct shapes it used: nine, which is more than one
+and far fewer than twenty-four. **Survival** is what is left in the machine
+code, and this is where it falls apart — the post-pass IR keeps its expanded
+trees at every optimisation level, and the backend selects native immediate
+operations for all twenty-four target sites from `-O1` onward.
+
+The same three measurements on the other two LLVM-family implementations make
+the point harder to dismiss:
+
+- one implementation transformed XOR 2/8, ADD 4/8 and SUB 6/8 at `-O0` — its
+  pass is probabilistic — and by `-O1` its measured target is *identical* to
+  the clean target. Complete loss of the requested treatment.
+- another transformed XOR 8/8, ADD 8/8 but SUB only 3/8, kept structurally
+  non-native IR at `-O1` and above, and still had the backend select native
+  immediate operations for every target site.
+
+<LectureTable id="03_arithmetic_optimization" class="sc-wide" />
+
+</section>
+
+<section class="sc-section">
+
+## What the analyst sees
+
+<Screenshot
+  id="assets/ida/demo_substitution1_2.jpg"
+  alt="A disassembler diff. The left pane is a regular repeating pattern of add and xor instructions with the immediates 0x1010101 upward and 12345678h. The right pane is longer and irregular, containing add and sub pairs with large cancelling constants, xor ecx ecx, negations, and the original small immediates still visible among them."
+>
+  Now use both panes. On the right, find the cancelling constants, then find
+  the real ones among them. The technique's actual cost to an analyst is not
+  difficulty — it is volume, plus the nagging possibility that one of the
+  expansions is not an identity after all.
+</Screenshot>
+
+</section>
+
+<Ledger
+  establishes={[
+    "Classic substitution expanded all 24 intended sites in this specimen's O0 IR, using nine distinct template shapes, and grew the native target from 115 to 311 instructions.",
+    "The pass emits the substituted computation alongside the original, which the backend then drops as dead — visible in the retained IR and absent from the retained disassembly.",
+    "From <code>-O1</code> onward, instruction selection recovers all 24 intended native operations for this target, while the post-pass IR keeps its expanded trees.",
+  ]}
+  withholds={[
+    "That IR expansion produces hard machine code. Here it mostly did not, and that is the week's finding.",
+    "That a simplifier recovered anything. Nothing was simplified this week — the compiler did it, before any analysis ran.",
+    "That these coverage fractions transfer to another program, another seed or another build of the same compiler. The pass in one implementation is probabilistic.",
+    "That 311 versus 115 instructions is a measure of difficulty rather than of size.",
+  ]}
+  sources={[
+    { label: "Templates and coverage from", id: "assets/reports/showcase_matrix_v1.md" },
+    { label: "Survival from", id: "assets/reports/optimization_survival.md" },
+    { label: "Metric definitions from", id: "assets/tables/research/selected_metrics.md" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: follow one operation through the pair
+
+Take one ADD site and one XOR site. For each:
+
+1. Write the identity the pass used, as algebra, and check it holds modulo 2³².
+2. Find the site in the substituted IR and in the substituted disassembly.
+   Note which IR values are dead.
+3. Say what the backend did between those two files.
+4. Then find the same site in the `-O1` metrics and say what is left.
+
+Then the part that carries the marks: write two sentences about what you have
+established, one of which begins "this does not show that". A1 is published
+now and is built from exactly this exercise on a pair you have not seen.
+
+<FileList
+  items={[
+    { id: "assets/ir/baselines/ollvm16/demo_substitution.ll", what: "clean O0 IR — the comparator" },
+    { id: "assets/ir/s01_ollvm_sub/target_function.ll", what: "post-pass substituted IR, all 24 sites" },
+    { id: "assets/evidence/baselines/ollvm16/demo_substitution_disassembly.txt", what: "clean x64, AT&T order" },
+    { id: "assets/evidence/s01_ollvm_sub/demo_substitution_disassembly.txt", what: "substituted x64, Intel order" },
+    { id: "assets/reports/msynth_validation.md", what: "the arithmetic study this week's site classifications come from" },
+  ]}
+/>
+
+</section>

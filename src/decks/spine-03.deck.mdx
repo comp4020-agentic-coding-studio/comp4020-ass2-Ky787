@@ -1,0 +1,180 @@
+---
+title: What a proof is worth
+description: Spine lecture 3 of SLOP8445 — symbolic execution, SMT, and the six bytes a proof turned into
+---
+
+{/* _class: impact */}
+
+# What a proof is worth
+
+SLOP8445 · Spine lecture 3 · Block III
+
+```notes
+- this is the course's best result. Present it as carefully as it deserves
+- four achievements, not one
+```
+
+---
+
+## An injected gate
+
+```asm
+140001640: mov eax, dword ptr [rip + 0x879d6]
+140001646: mov ecx, dword ptr [rip + 0x879cc]
+...
+140001667: jne 0x140001672
+```
+
+Two writable globals. A predicate over them. A conditional jump.
+
+Nothing about this says which way it goes.
+
+---
+
+## The obligation, written down
+
+Path prefix `P`, branch condition `C`:
+
+```text
+P ∧ C      is this direction reachable?
+P ∧ ¬C     is the other one?
+```
+
+Two queries. Three possible answers each: SAT, UNSAT, UNKNOWN.
+
+---
+
+## What the solver returned
+
+```json
+"branch_rva": "0x1667",
+"queries": {
+  "true":  { "status": "SAT",   "model": { "g_140089018_4": 0, "g_14008901c_4": 0 } },
+  "false": { "status": "UNSAT", "model": {} }
+}
+```
+
+One direction has a model. The other has none.
+
+```notes
+- SAT gives you a witness. UNSAT gives you the absence of one, in scope
+- 46 AST nodes, 2 symbolic variables, 3 ms
+```
+
+---
+
+## Read the qualifier twice
+
+> Under path prefix `P`, UNSAT for `P ∧ ¬C` rules out that direction **for
+> states covered by `P` and by the model.**
+
+Not: "this branch is opaque."
+
+```notes
+- a path-local UNSAT is not a global invariant
+- inconsistent assumptions make a proof vacuous, not strong
+```
+
+---
+
+{/* _class: impact */}
+
+## 38 gates. Two unrelated obfuscators. One generic harness.
+
+---
+
+## The transfer result
+
+| Family | Injected gates | Proved | Genuine branches |
+| --- | ---: | ---: | --- |
+| implementation A | 22 | 22 | 4, all two-sided |
+| implementation B | 16 | 16 | 4, all two-sided |
+
+No pattern for either implementation was written down.
+
+The genuine branches staying two-sided is the control.
+
+---
+
+## Same technique, different assumption
+
+| Entry state | Gates proved |
+| --- | --- |
+| arbitrary symbolic globals | **0 / 3** |
+| one captured initialised state | **3 / 3** |
+
+Same solver. Same branches. Same day.
+
+```notes
+- the difference is an assumption about the world, not about the maths
+- this is the slide A2 is built on
+```
+
+---
+
+## From proof to bytes
+
+```text
+before   0F 85 05 00 00 00     jne 0x140001672
+after    E9 06 00 00 00 90     jmp 0x140001672 ; nop
+```
+
+Six bytes. Four of them differ. The destination is unchanged — a shorter
+opcode needs a longer displacement.
+
+22 gates × 4 differing bytes = **88 bytes changed** in a 571,904-byte file.
+
+---
+
+## What the rewrite did and did not do
+
+- reachable blocks: **70 → 37**
+- physical blocks: **70**
+- 33 original blocks now unreachable: 11 clones, 22 stubs
+- predicate arithmetic: **still there**
+- headers, sections, exports, unwind ranges: **identical**
+
+Not a clean binary. A working partial deobfuscation.
+
+---
+
+## And then it was tested
+
+- **4,591** clean / original / rewrite triples
+- **0** mismatches
+- canonical run: `SHOWCASE PASS`, exit 0
+
+Plus 4,598 more on the second implementation.
+
+```notes
+- 9,189 triples total. Which is a lot of inputs and not all inputs
+```
+
+---
+
+## Four achievements, kept apart
+
+1. a solver returned UNSAT, under a stated prefix and model
+2. separate code turned that into changed bytes
+3. the file still loads and exports the same symbols
+4. the program answered correctly on the inputs that were run
+
+**1 does not imply 4.**
+
+---
+
+## Block III
+
+- **Week 7** — the solver, and what a model is a model of
+- **Week 8** — six bytes, and the audit that reconciles 70 with 37
+- **Week 9** — flattening: hiding the successor, not the value
+
+A2 is due at the end of week 9.
+
+---
+
+{/* _class: impact */}
+
+## A proof is worth exactly its assumptions
+
+Write them down or you have not got one.

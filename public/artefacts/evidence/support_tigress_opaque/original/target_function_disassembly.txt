@@ -1,0 +1,123 @@
+0000000140001110 <demo_bogus_control_flow>:
+140001110: 89 54 24 10                 	movl	%edx, 0x10(%rsp)
+140001114: 89 4c 24 08                 	movl	%ecx, 0x8(%rsp)
+140001118: 48 83 ec 28                 	subq	$0x28, %rsp
+14000111c: c7 05 3a 8c 09 00 01 00 00 00       	movl	$0x1, 0x98c3a(%rip) # 0x140099d60
+140001126: c7 04 24 11 11 11 11        	movl	$0x11111111, (%rsp)     # imm = 0x11111111
+14000112d: 81 7c 24 30 37 13 00 00     	cmpl	$0x1337, 0x30(%rsp)     # imm = 0x1337
+140001135: 75 0d                       	jne	0x140001144 <demo_bogus_control_flow+0x34>
+140001137: 8b 04 24                    	movl	(%rsp), %eax
+14000113a: 35 22 22 22 22              	xorl	$0x22222222, %eax       # imm = 0x22222222
+14000113f: 89 04 24                    	movl	%eax, (%rsp)
+140001142: eb 0b                       	jmp	0x14000114f <demo_bogus_control_flow+0x3f>
+140001144: 8b 04 24                    	movl	(%rsp), %eax
+140001147: 05 33 33 00 00              	addl	$0x3333, %eax           # imm = 0x3333
+14000114c: 89 04 24                    	movl	%eax, (%rsp)
+14000114f: 81 7c 24 38 00 00 34 12     	cmpl	$0x12340000, 0x38(%rsp) # imm = 0x12340000
+140001157: 76 0b                       	jbe	0x140001164 <demo_bogus_control_flow+0x54>
+140001159: 8b 04 24                    	movl	(%rsp), %eax
+14000115c: 05 44 44 00 00              	addl	$0x4444, %eax           # imm = 0x4444
+140001161: 89 04 24                    	movl	%eax, (%rsp)
+140001164: 8b 44 24 30                 	movl	0x30(%rsp), %eax
+140001168: 25 ff 00 00 00              	andl	$0xff, %eax
+14000116d: 83 f8 37                    	cmpl	$0x37, %eax
+140001170: 0f 85 fd 00 00 00           	jne	0x140001273 <demo_bogus_control_flow+0x163>
+140001176: 8b 05 1c a0 09 00           	movl	0x9a01c(%rip), %eax     # 0x14009b198
+14000117c: 03 c0                       	addl	%eax, %eax
+14000117e: 8b 0d 14 a0 09 00           	movl	0x9a014(%rip), %ecx     # 0x14009b198
+140001184: 03 c9                       	addl	%ecx, %ecx
+140001186: 8b 15 0c a0 09 00           	movl	0x9a00c(%rip), %edx     # 0x14009b198
+14000118c: 8d 0c 51                    	leal	(%rcx,%rdx,2), %ecx
+14000118f: 8b 15 03 a0 09 00           	movl	0x9a003(%rip), %edx     # 0x14009b198
+140001195: 03 d2                       	addl	%edx, %edx
+140001197: c1 fa 1f                    	sarl	$0x1f, %edx
+14000119a: 23 ca                       	andl	%edx, %ecx
+14000119c: 2b c1                       	subl	%ecx, %eax
+14000119e: 33 d2                       	xorl	%edx, %edx
+1400011a0: b9 0a 00 00 00              	movl	$0xa, %ecx
+1400011a5: f7 f1                       	divl	%ecx
+1400011a7: 8b c2                       	movl	%edx, %eax
+1400011a9: 6b c0 03                    	imull	$0x3, %eax, %eax
+1400011ac: 8b c0                       	movl	%eax, %eax
+1400011ae: 48 8d 0d 6b 9f 09 00        	leaq	0x99f6b(%rip), %rcx     # 0x14009b120
+1400011b5: ba 04 00 00 00              	movl	$0x4, %edx
+1400011ba: 48 6b d2 05                 	imulq	$0x5, %rdx, %rdx
+1400011be: 48 89 54 24 08              	movq	%rdx, 0x8(%rsp)
+1400011c3: 4c 8d 05 56 9f 09 00        	leaq	0x99f56(%rip), %r8      # 0x14009b120
+1400011ca: 33 d2                       	xorl	%edx, %edx
+1400011cc: 8b 04 81                    	movl	(%rcx,%rax,4), %eax
+1400011cf: 48 8b 4c 24 08              	movq	0x8(%rsp), %rcx
+1400011d4: 41 f7 34 08                 	divl	(%r8,%rcx)
+1400011d8: 8b c2                       	movl	%edx, %eax
+1400011da: b9 04 00 00 00              	movl	$0x4, %ecx
+1400011df: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+1400011e3: 48 8d 15 36 9f 09 00        	leaq	0x99f36(%rip), %rdx     # 0x14009b120
+1400011ea: 3b 04 0a                    	cmpl	(%rdx,%rcx), %eax
+1400011ed: 0f 85 80 00 00 00           	jne	0x140001273 <demo_bogus_control_flow+0x163>
+1400011f3: 8b 05 9f 9f 09 00           	movl	0x99f9f(%rip), %eax     # 0x14009b198
+1400011f9: 83 e8 03                    	subl	$0x3, %eax
+1400011fc: c1 f8 1f                    	sarl	$0x1f, %eax
+1400011ff: 8b 0d 93 9f 09 00           	movl	0x99f93(%rip), %ecx     # 0x14009b198
+140001205: 8d 44 01 fd                 	leal	-0x3(%rcx,%rax), %eax
+140001209: 8b 0d 89 9f 09 00           	movl	0x99f89(%rip), %ecx     # 0x14009b198
+14000120f: 83 e9 03                    	subl	$0x3, %ecx
+140001212: c1 f9 1f                    	sarl	$0x1f, %ecx
+140001215: 33 c1                       	xorl	%ecx, %eax
+140001217: 33 d2                       	xorl	%edx, %edx
+140001219: b9 0a 00 00 00              	movl	$0xa, %ecx
+14000121e: f7 f1                       	divl	%ecx
+140001220: 8b c2                       	movl	%edx, %eax
+140001222: 6b c0 03                    	imull	$0x3, %eax, %eax
+140001225: 8b c0                       	movl	%eax, %eax
+140001227: 48 8d 0d f2 9e 09 00        	leaq	0x99ef2(%rip), %rcx     # 0x14009b120
+14000122e: ba 04 00 00 00              	movl	$0x4, %edx
+140001233: 48 6b d2 05                 	imulq	$0x5, %rdx, %rdx
+140001237: 48 89 54 24 10              	movq	%rdx, 0x10(%rsp)
+14000123c: 4c 8d 05 dd 9e 09 00        	leaq	0x99edd(%rip), %r8      # 0x14009b120
+140001243: 33 d2                       	xorl	%edx, %edx
+140001245: 8b 04 81                    	movl	(%rcx,%rax,4), %eax
+140001248: 48 8b 4c 24 10              	movq	0x10(%rsp), %rcx
+14000124d: 41 f7 34 08                 	divl	(%r8,%rcx)
+140001251: 8b c2                       	movl	%edx, %eax
+140001253: b9 04 00 00 00              	movl	$0x4, %ecx
+140001258: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+14000125c: 48 8d 15 bd 9e 09 00        	leaq	0x99ebd(%rip), %rdx     # 0x14009b120
+140001263: 3b 04 0a                    	cmpl	(%rdx,%rcx), %eax
+140001266: 75 0b                       	jne	0x140001273 <demo_bogus_control_flow+0x163>
+140001268: 8b 04 24                    	movl	(%rsp), %eax
+14000126b: 35 55 55 55 55              	xorl	$0x55555555, %eax       # imm = 0x55555555
+140001270: 89 04 24                    	movl	%eax, (%rsp)
+140001273: 8b 44 24 38                 	movl	0x38(%rsp), %eax
+140001277: 83 e0 01                    	andl	$0x1, %eax
+14000127a: 85 c0                       	testl	%eax, %eax
+14000127c: 75 1f                       	jne	0x14000129d <demo_bogus_control_flow+0x18d>
+14000127e: 48 8b 05 1b 9f 09 00        	movq	0x99f1b(%rip), %rax     # 0x14009b1a0
+140001285: 48 39 05 44 9f 09 00        	cmpq	%rax, 0x99f44(%rip)     # 0x14009b1d0
+14000128c: 74 02                       	je	0x140001290 <demo_bogus_control_flow+0x180>
+14000128e: eb 0b                       	jmp	0x14000129b <demo_bogus_control_flow+0x18b>
+140001290: 8b 04 24                    	movl	(%rsp), %eax
+140001293: 2d 66 66 00 00              	subl	$0x6666, %eax           # imm = 0x6666
+140001298: 89 04 24                    	movl	%eax, (%rsp)
+14000129b: eb 0b                       	jmp	0x1400012a8 <demo_bogus_control_flow+0x198>
+14000129d: 8b 04 24                    	movl	(%rsp), %eax
+1400012a0: 05 77 77 00 00              	addl	$0x7777, %eax           # imm = 0x7777
+1400012a5: 89 04 24                    	movl	%eax, (%rsp)
+1400012a8: 8b 04 24                    	movl	(%rsp), %eax
+1400012ab: 48 83 c4 28                 	addq	$0x28, %rsp
+1400012af: c3                          	retq
+1400012b0: cc                          	int3
+1400012b1: cc                          	int3
+1400012b2: cc                          	int3
+1400012b3: cc                          	int3
+1400012b4: cc                          	int3
+1400012b5: cc                          	int3
+1400012b6: cc                          	int3
+1400012b7: cc                          	int3
+1400012b8: cc                          	int3
+1400012b9: cc                          	int3
+1400012ba: cc                          	int3
+1400012bb: cc                          	int3
+1400012bc: cc                          	int3
+1400012bd: cc                          	int3
+1400012be: cc                          	int3
+1400012bf: cc                          	int3

@@ -1,0 +1,32 @@
+---
+// Which exact artefact is on screen. Naming the tool, the flags, the
+// optimisation level, the target function and the retained runtime status is
+// the difference between an observation and an anecdote.
+import Badge from "./Badge.astro";
+import type { Tone } from "../lib/tables";
+
+interface Props {
+  title: string;
+  fields: [string, string][];
+  verdict?: { tone: Tone; text: string; label?: string };
+}
+
+const { title, fields, verdict } = Astro.props;
+---
+
+<aside class="sc-specimen" aria-label={`Specimen: ${title}`}>
+  <p class="sc-specimen__title">
+    {title}
+    {verdict && <> — <Badge tone={verdict.tone} label={verdict.label}>{verdict.text}</Badge></>}
+  </p>
+  <dl>
+    {
+      fields.map(([term, value]) => (
+        <>
+          <dt>{term}</dt>
+          <dd set:html={value} />
+        </>
+      ))
+    }
+  </dl>
+</aside>

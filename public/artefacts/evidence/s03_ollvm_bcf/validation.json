@@ -1,0 +1,188 @@
+{
+  "passed": true,
+  "eligible": 22,
+  "patched": 22,
+  "input_sha256": "3ED20E83BE53F28FAF64D1A1CFBC2FEB323B83EC35CCEE0FAF8D85AD7905285F",
+  "output_sha256": "15BF8731CD94663F5E0691983F1616969E28675E89B8595371DDBCBA51EA906A",
+  "output_path": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_rewrite\\ollvm16_o0\\showcase_ollvm_bcf_deopaque.exe",
+  "canonical_pass": true,
+  "differential_triples": 4591,
+  "native_function_calls": 13773,
+  "mismatches": 0,
+  "feasible_genuine_condition_tuples": [
+    [
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      true
+    ],
+    [
+      false,
+      false,
+      true,
+      false
+    ],
+    [
+      false,
+      false,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      false
+    ],
+    [
+      false,
+      true,
+      false,
+      true
+    ],
+    [
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      false,
+      true,
+      false
+    ],
+    [
+      true,
+      false,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true
+    ]
+  ],
+  "genuine_branch_coverage": "Input-derived source conditions, not hardware instruction-edge tracing; all four both ways and all 12 feasible joint tuples.",
+  "original_blocks_now_unreachable": 33,
+  "new_solver_invocations": 0,
+  "metadata_audit": {
+    "file_size": 571904,
+    "image_size": 598016,
+    "bytes_changed": 88,
+    "approved_patch_window_bytes": 132,
+    "all_other_file_bytes_identical": true,
+    "entire_headers_identical": true,
+    "sections_identical": true,
+    "imports_exports_relocations_exception_debug_directories_and_payloads_identical": true,
+    "target_entry_and_unwind_ranges_identical": true,
+    "target": {
+      "va": 5368714800,
+      "rva": 5680,
+      "end": 5368716468,
+      "boundary": "PE RUNTIME_FUNCTION including chained ranges",
+      "runtime_ranges": [
+        [
+          5680,
+          7348,
+          520200
+        ]
+      ]
+    },
+    "checksum": 0,
+    "certificate_table": [
+      0,
+      0
+    ],
+    "all_data_directories": [
+      [
+        548640,
+        284
+      ],
+      [
+        548924,
+        40
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        565248,
+        20700
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        593920,
+        2040
+      ],
+      [
+        516784,
+        112
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        516464,
+        320
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        471040,
+        704
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "patch_windows_outside_prologue": true,
+    "pdb": "Not copied. Retained original RSDS debug reference is provenance only, not a valid changed-instruction map.",
+    "exception_unwind_correctness_tested": false
+  },
+  "utc": "2026-09-18T00:44:27.920468+00:00"
+}

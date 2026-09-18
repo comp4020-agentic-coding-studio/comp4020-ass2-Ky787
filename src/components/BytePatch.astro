@@ -1,0 +1,37 @@
+---
+// A patch at byte granularity. The whole argument of week 8 is that a proof
+// became these six bytes and nothing else, so the bytes get shown as bytes.
+interface Row {
+  label: string;
+  bytes: string[];
+  /** Indices of bytes that differ from the previous row. */
+  changed?: number[];
+  /** What the bytes decode to. */
+  asm?: string;
+}
+
+interface Props {
+  rows: Row[];
+  class?: string;
+}
+
+const { rows, class: className } = Astro.props;
+---
+
+<div class:list={["sc-bytes", className]}>
+  {
+    rows.map((row) => (
+      <div class="sc-bytes__row">
+        <span class="sc-bytes__label">{row.label}</span>
+        <span class="sc-bytes__cells">
+          {row.bytes.map((byte, index) => (
+            <span class:list={["sc-byte", { "sc-byte--changed": row.changed?.includes(index) }]}>
+              {byte}
+            </span>
+          ))}
+        </span>
+        {row.asm && <span class="sc-bytes__asm">{row.asm}</span>}
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,92 @@
+---
+// The twenty-one retained specimens, from the research package's own index.
+//
+// None of them is downloadable from this site. They are Windows x64
+// executables, one of them is an explicitly incorrect rewrite, and a public
+// web page is the wrong place for either fact to get lost. Students get them
+// through the lab image; what this table publishes is the identity they need
+// in order to check that the file in front of them is the right one.
+import Badge from "./Badge.astro";
+import { evidenceJson } from "../lib/evidence";
+
+interface Export {
+  rva: string;
+  preferred_va: string;
+}
+
+interface Specimen {
+  path: string;
+  description: string;
+  sha256: string;
+  correctness_status: string;
+  safe_to_execute: string;
+  machine: string;
+  exports: Record<string, Export>;
+}
+
+interface Props {
+  /** Only show specimens whose path contains one of these fragments. */
+  filter?: string[];
+}
+
+const { filter } = Astro.props;
+const all = evidenceJson<Specimen[]>("BINARY_INDEX.json");
+const specimens = filter
+  ? all.filter((specimen) => filter.some((fragment) => specimen.path.includes(fragment)))
+  : all;
+
+function verdict(status: string): { tone: "pass" | "fail"; text: string } {
+  return status.startsWith("PASS")
+    ? { tone: "pass", text: "PASS" }
+    : { tone: "fail", text: "WRONG" };
+}
+
+function runnable(status: string): { tone: "pass" | "fail"; text: string } {
+  return status.startsWith("YES")
+    ? { tone: "pass", text: "runnable" }
+    : { tone: "fail", text: "inspect only" };
+}
+
+const filename = (path: string): string => path.split("/").pop() ?? path;
+---
+
+<div class="at-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Specimen</th>
+        <th scope="col">Lane</th>
+        <th scope="col">Retained runtime</th>
+        <th scope="col">In the lab</th>
+        <th scope="col"><code>demo_substitution</code></th>
+        <th scope="col"><code>demo_bogus_control_flow</code></th>
+        <th scope="col"><code>demo_flattening</code></th>
+        <th scope="col">SHA-256</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        specimens.map((specimen) => {
+          const correctness = verdict(specimen.correctness_status);
+          const execution = runnable(specimen.safe_to_execute);
+          return (
+            <tr>
+              <th scope="row"><code>{filename(specimen.path)}</code></th>
+              <td><code>{specimen.description}</code></td>
+              <td>
+                <Badge tone={correctness.tone}>{correctness.text}</Badge>
+              </td>
+              <td>
+                <Badge tone={execution.tone}>{execution.text}</Badge>
+              </td>
+              <td><code>{specimen.exports.demo_substitution?.rva ?? "—"}</code></td>
+              <td><code>{specimen.exports.demo_bogus_control_flow?.rva ?? "—"}</code></td>
+              <td><code>{specimen.exports.demo_flattening?.rva ?? "—"}</code></td>
+              <td><code>{specimen.sha256.slice(0, 12)}…</code></td>
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+</div>

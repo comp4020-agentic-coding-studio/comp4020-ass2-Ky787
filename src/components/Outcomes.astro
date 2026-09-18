@@ -1,0 +1,18 @@
+---
+// Four words this course refuses to let collapse into one another. They appear
+// on the home page, in the glossary, and in every assessment's marking notes.
+import { OUTCOMES } from "../lib/course";
+---
+
+<dl class="sc-outcomes">
+  {
+    OUTCOMES.map((outcome) => (
+      <div class="sc-outcome">
+        <dt class="sc-outcome__name">{outcome.name}</dt>
+        <dd class="sc-outcome__gloss" style="margin: 0;">
+          {outcome.gloss}
+        </dd>
+      </div>
+    ))
+  }
+</dl>

@@ -1,0 +1,39 @@
+140001210: 4883ec10                 sub rsp, 0x10
+140001214: 8954240c                 mov dword ptr [rsp + 0xc], edx
+140001218: 894c2408                 mov dword ptr [rsp + 8], ecx
+14000121c: c744240411111111         mov dword ptr [rsp + 4], 0x11111111
+140001224: 817c240837130000         cmp dword ptr [rsp + 8], 0x1337
+14000122c: 0f8512000000             jne 0x140001244
+140001232: 8b442404                 mov eax, dword ptr [rsp + 4]
+140001236: 3522222222               xor eax, 0x22222222
+14000123b: 89442404                 mov dword ptr [rsp + 4], eax
+14000123f: e90d000000               jmp 0x140001251
+140001244: 8b442404                 mov eax, dword ptr [rsp + 4]
+140001248: 0533330000               add eax, 0x3333
+14000124d: 89442404                 mov dword ptr [rsp + 4], eax
+140001251: 817c240c00003412         cmp dword ptr [rsp + 0xc], 0x12340000
+140001259: 0f860d000000             jbe 0x14000126c
+14000125f: 8b442404                 mov eax, dword ptr [rsp + 4]
+140001263: 0544440000               add eax, 0x4444
+140001268: 89442404                 mov dword ptr [rsp + 4], eax
+14000126c: 8b442408                 mov eax, dword ptr [rsp + 8]
+140001270: 25ff000000               and eax, 0xff
+140001275: 83f837                   cmp eax, 0x37
+140001278: 0f850d000000             jne 0x14000128b
+14000127e: 8b442404                 mov eax, dword ptr [rsp + 4]
+140001282: 3555555555               xor eax, 0x55555555
+140001287: 89442404                 mov dword ptr [rsp + 4], eax
+14000128b: 8b44240c                 mov eax, dword ptr [rsp + 0xc]
+14000128f: 83e001                   and eax, 1
+140001292: 83f800                   cmp eax, 0
+140001295: 0f8512000000             jne 0x1400012ad
+14000129b: 8b442404                 mov eax, dword ptr [rsp + 4]
+14000129f: 2d66660000               sub eax, 0x6666
+1400012a4: 89442404                 mov dword ptr [rsp + 4], eax
+1400012a8: e90d000000               jmp 0x1400012ba
+1400012ad: 8b442404                 mov eax, dword ptr [rsp + 4]
+1400012b1: 0577770000               add eax, 0x7777
+1400012b6: 89442404                 mov dword ptr [rsp + 4], eax
+1400012ba: 8b442404                 mov eax, dword ptr [rsp + 4]
+1400012be: 4883c410                 add rsp, 0x10
+1400012c2: c3                       ret

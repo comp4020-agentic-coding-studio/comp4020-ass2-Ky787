@@ -1,0 +1,68 @@
+---
+title: Same program, four stories
+description:
+  Why a compiler already makes a program harder to read before anyone tries to,
+  and what it means to say that two very different listings are the same
+  function.
+week: 1
+date: 2027-02-24
+block: 1
+covers: [1, 2, 3]
+slides: /decks/spine-01/
+teachers:
+  - rasha-oyelaran
+related:
+  - sessions/week-01
+  - sessions/week-02
+  - sessions/week-03
+---
+
+## The argument
+
+A program does not have one description. It has a source text, at least one
+intermediate representation, a machine-code body, and a control-flow graph that
+somebody's tool recovered from that body — and each of those is a truthful
+description of the same computation while looking nothing like the others.
+
+Obfuscation is, first of all, a decision about *which* of those descriptions to
+change. That decision does more work than the technique does. A transformation
+applied to C source has the whole compiler between it and the binary; one
+applied to LLVM IR has instruction selection between it and the binary; one
+applied to a linked executable has nothing after it at all. By week 5 you will
+have seen a transformation that was completely erased by turning on `-O1`, and
+another that survived every optimisation level the study tested.
+
+So the habit this block is trying to install is small and annoying: before
+saying what a listing means, say what kind of listing it is, at what
+optimisation level, and against which comparator.
+
+## Why one frozen program
+
+Everything in this course happens to one 483-line C file, compiled sixty-eight
+different ways.
+
+That is a real limitation and worth naming out loud in the first hour: `showcase.c`
+is a controlled specimen, not a model of production software. It has no classes,
+no allocator traffic, no threads, no exceptions, and it prints its own answers
+so that any build can be checked against six expected 32-bit values.
+
+What that buys is the thing that makes the rest of the semester possible.
+Because the source was frozen — hash recorded, re-checked before every build —
+no difference between two binaries can be a difference in the program. When the
+machine code changes, a tool changed it. When a count changes, either a tool or
+a convention changed it. Nothing else is available as an explanation, and that
+is a luxury you will not have again.
+
+## What the block covers
+
+Week 1 climbs the ladder: one addition through C, IR and x64, and four correct
+but incomparable numbers for the size of one function. Week 2 asks what
+obfuscation actually is, using five tested implementations — one of which
+produced eight protected binaries that all crash or hang, which is its own
+lesson about reading a tool's own description of itself. Week 3 takes the
+oldest trick in the book, instruction substitution, and finds the compiler
+backend quietly undoing most of it.
+
+By the end of the block you should be able to look at a bigger, uglier listing
+and say precisely what you have learned from the fact that it is bigger and
+uglier, which is: very little.

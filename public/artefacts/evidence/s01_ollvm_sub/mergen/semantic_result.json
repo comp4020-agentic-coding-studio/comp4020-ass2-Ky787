@@ -1,0 +1,606 @@
+{
+  "inputs": 4118,
+  "native": [
+    {
+      "label": "clean",
+      "mismatches": 0
+    },
+    {
+      "label": "input",
+      "mismatches": 0
+    }
+  ],
+  "stages": [
+    {
+      "stage": "raw",
+      "cases": 4118,
+      "mismatches": 3917,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 1,
+          "x": 1,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 2,
+          "x": 2,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 3,
+          "x": 3,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 4,
+          "x": 4,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 5,
+          "x": 5,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 6,
+          "x": 54,
+          "y": 0,
+          "expected": 134756376,
+          "actual": 0
+        },
+        {
+          "index": 7,
+          "x": 55,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 8,
+          "x": 56,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 9,
+          "x": 255,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 10,
+          "x": 256,
+          "y": 0,
+          "expected": 134742024,
+          "actual": 0
+        },
+        {
+          "index": 11,
+          "x": 257,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 12,
+          "x": 4918,
+          "y": 0,
+          "expected": 134742040,
+          "actual": 0
+        },
+        {
+          "index": 13,
+          "x": 4919,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 14,
+          "x": 4920,
+          "y": 0,
+          "expected": 134742072,
+          "actual": 0
+        },
+        {
+          "index": 15,
+          "x": 305397759,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 16,
+          "x": 305397760,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 17,
+          "x": 305397761,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 18,
+          "x": 305419896,
+          "y": 0,
+          "expected": 134744376,
+          "actual": 0
+        },
+        {
+          "index": 19,
+          "x": 2147483647,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        }
+      ]
+    },
+    {
+      "stage": "raw_O2",
+      "cases": 4118,
+      "mismatches": 3917,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 1,
+          "x": 1,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 2,
+          "x": 2,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 3,
+          "x": 3,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 4,
+          "x": 4,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 5,
+          "x": 5,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 6,
+          "x": 54,
+          "y": 0,
+          "expected": 134756376,
+          "actual": 0
+        },
+        {
+          "index": 7,
+          "x": 55,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 8,
+          "x": 56,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 9,
+          "x": 255,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 10,
+          "x": 256,
+          "y": 0,
+          "expected": 134742024,
+          "actual": 0
+        },
+        {
+          "index": 11,
+          "x": 257,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 12,
+          "x": 4918,
+          "y": 0,
+          "expected": 134742040,
+          "actual": 0
+        },
+        {
+          "index": 13,
+          "x": 4919,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 14,
+          "x": 4920,
+          "y": 0,
+          "expected": 134742072,
+          "actual": 0
+        },
+        {
+          "index": 15,
+          "x": 305397759,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 16,
+          "x": 305397760,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 17,
+          "x": 305397761,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 18,
+          "x": 305419896,
+          "y": 0,
+          "expected": 134744376,
+          "actual": 0
+        },
+        {
+          "index": 19,
+          "x": 2147483647,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        }
+      ]
+    },
+    {
+      "stage": "internal",
+      "cases": 4118,
+      "mismatches": 3917,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 1,
+          "x": 1,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 2,
+          "x": 2,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 3,
+          "x": 3,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 4,
+          "x": 4,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 5,
+          "x": 5,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 6,
+          "x": 54,
+          "y": 0,
+          "expected": 134756376,
+          "actual": 0
+        },
+        {
+          "index": 7,
+          "x": 55,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 8,
+          "x": 56,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 9,
+          "x": 255,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 10,
+          "x": 256,
+          "y": 0,
+          "expected": 134742024,
+          "actual": 0
+        },
+        {
+          "index": 11,
+          "x": 257,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 12,
+          "x": 4918,
+          "y": 0,
+          "expected": 134742040,
+          "actual": 0
+        },
+        {
+          "index": 13,
+          "x": 4919,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 14,
+          "x": 4920,
+          "y": 0,
+          "expected": 134742072,
+          "actual": 0
+        },
+        {
+          "index": 15,
+          "x": 305397759,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 16,
+          "x": 305397760,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 17,
+          "x": 305397761,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 18,
+          "x": 305419896,
+          "y": 0,
+          "expected": 134744376,
+          "actual": 0
+        },
+        {
+          "index": 19,
+          "x": 2147483647,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        }
+      ]
+    },
+    {
+      "stage": "internal_O2",
+      "cases": 4118,
+      "mismatches": 3917,
+      "first_mismatches": [
+        {
+          "index": 0,
+          "x": 0,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 1,
+          "x": 1,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 2,
+          "x": 2,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 3,
+          "x": 3,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 4,
+          "x": 4,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 5,
+          "x": 5,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 6,
+          "x": 54,
+          "y": 0,
+          "expected": 134756376,
+          "actual": 0
+        },
+        {
+          "index": 7,
+          "x": 55,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 8,
+          "x": 56,
+          "y": 0,
+          "expected": 134756408,
+          "actual": 0
+        },
+        {
+          "index": 9,
+          "x": 255,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 10,
+          "x": 256,
+          "y": 0,
+          "expected": 134742024,
+          "actual": 0
+        },
+        {
+          "index": 11,
+          "x": 257,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 12,
+          "x": 4918,
+          "y": 0,
+          "expected": 134742040,
+          "actual": 0
+        },
+        {
+          "index": 13,
+          "x": 4919,
+          "y": 0,
+          "expected": 134742016,
+          "actual": 0
+        },
+        {
+          "index": 14,
+          "x": 4920,
+          "y": 0,
+          "expected": 134742072,
+          "actual": 0
+        },
+        {
+          "index": 15,
+          "x": 305397759,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 16,
+          "x": 305397760,
+          "y": 0,
+          "expected": 134756360,
+          "actual": 0
+        },
+        {
+          "index": 17,
+          "x": 305397761,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        },
+        {
+          "index": 18,
+          "x": 305419896,
+          "y": 0,
+          "expected": 134744376,
+          "actual": 0
+        },
+        {
+          "index": 19,
+          "x": 2147483647,
+          "y": 0,
+          "expected": 134756352,
+          "actual": 0
+        }
+      ]
+    }
+  ],
+  "tested_equivalence_only": true,
+  "side_effect_equivalence_not_claimed": true,
+  "note": "Unchanged emitted body; no fixed-address stores/calls removed. Direct native export calls in DONT_RESOLVE_DLL_REFERENCES mappings; no PE entrypoint invocation."
+}

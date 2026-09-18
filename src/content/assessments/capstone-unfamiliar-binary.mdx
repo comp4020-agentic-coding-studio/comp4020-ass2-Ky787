@@ -1,0 +1,145 @@
+---
+title: "Capstone — Seeing through an unfamiliar binary"
+label: Capstone
+description:
+  One sample, withheld identity, every method you have. Choose an approach,
+  justify it, validate whatever you conclude, and state the boundary of your
+  own result.
+week: 12
+due: 2027-05-28T17:00:00+10:00
+weight: 45
+marking:
+  mode: weighted
+  criteria:
+    - name: Method selection, and the reasons given for it
+      weight: 25
+    - name: Analysis across more than one representation
+      weight: 25
+    - name: Validation — what was checked, how, and at what level
+      weight: 25
+    - name: Limitations and what remains unknown
+      weight: 15
+    - name: Provenance and communication
+      weight: 10
+spec:
+  - submitted by the deadline as a report plus the working files needed to follow it
+  - every artefact discussed is identified by filename and SHA-256
+  - at least two representations are used, and the report says why those two
+  - each method used is justified against a stated assumption it depends on
+  - every conclusion names the level it was validated at — expression, graph, lifted function, or executable
+  - the report distinguishes analysis success, semantic proof, a produced binary, and runtime correctness, and does not conflate them
+  - a limitations section states what was not established and what evidence would settle it
+  - no claim of a working rewritten binary is made without a runtime record
+related:
+  - sessions/week-10
+  - sessions/week-11
+  - sessions/week-12
+  - lectures/spine-04
+---
+
+import Outcomes from "../../components/Outcomes.astro";
+
+## The brief
+
+> Here is a binary and a target function. Nobody is going to tell you what was
+> done to it. Find out as much as you can defend, and be exact about where your
+> defence stops.
+
+This is not "implement a deobfuscator". Nobody writes a deobfuscator in three
+weeks, and the course has spent twelve weeks showing you that the hard part is
+not the implementation. The deliverable is a justified analysis.
+
+## What you are given
+
+One sample from the course corpus, with its treatment label and its result
+files withheld, prepared as a teaching derivative. What comes with it:
+
+- the executable and the target function's export name and RVA;
+- a matched clean comparator from the same compiler family at the same
+  optimisation level;
+- the frozen `showcase.c`, so ground truth for the *source* is available even
+  though the treatment is not;
+- lab access to the analysis tools used in the course.
+
+Two things follow from that design, and you should plan around both. Ground
+truth exists, so a conclusion can be checked and a wrong one will be found.
+And the comparator is matched, so "it is bigger than the clean one" is
+available to you immediately and is worth nothing on its own.
+
+Some samples in the pool have a known failure in them. If your sample is one
+of those, finding and localising the failure is the strongest result available
+to you — and reporting a success that is not there is the weakest.
+
+## What you submit
+
+**A report**, ten to fifteen pages, and **a working directory** containing the
+files a marker needs to follow it — extracted expressions, graphs, solver
+queries and their outputs, test vectors, scripts. The report is what is marked;
+the directory is what makes it checkable.
+
+The report needs these parts, in whatever order serves the argument:
+
+- **Provenance.** Every file you touched, with its SHA-256. If you produced a
+  file, say what produced it, at what version, with what flags.
+- **What you chose to do, and why.** Not a tool list. For each method: the
+  question it was chosen to answer, and the assumption it depends on. "Symbolic
+  execution, because the branch outcome may be input-independent, which assumes
+  the memory model covers the globals the predicate reads."
+- **The analysis.** At least two representations. Most good reports use three.
+- **Validation.** For each conclusion: what level it was validated at, and how.
+  An expression proved equivalent under a stated bit width. A successor
+  relation checked against source regions. A rewritten binary executed against
+  test vectors — with the vectors, and the count.
+- **Limitations.** What you could not establish, what you tried that failed,
+  and what evidence would settle each open question. Negative results with
+  their method stated are worth marks here; silence is not.
+
+## How it is marked
+
+Look at the weights. Validation is worth as much as the analysis, and
+limitations are worth more than communication.
+
+That is the course's whole argument turned into a rubric. Two of the results
+you have studied — a rewrite whose graph shrank from 56 blocks to 10 and
+returns the wrong value, and a lift whose IR verifies and miscomputes 3,917 of
+4,118 inputs — would each have passed any review that marked only the analysis
+and the output. Both were caught by the validation step, and only by the
+validation step.
+
+So a report that concludes less and validates what it concludes will outscore a
+report that concludes more. Concretely:
+
+- An unvalidated claim scores nothing under *validation*, and it also costs
+  marks under *limitations*, because a report that does not know which of its
+  claims are unvalidated has not understood its own evidence.
+- "The rewritten binary is correct" requires a runtime record. Not a valid PE
+  header, not a clean graph, not a verifier-clean lift.
+- A cross-tool comparison needs a matched comparator at a matched optimisation
+  level, or it is not a comparison.
+- Naming the obfuscator earns nothing. It is not an analysis result, and in one
+  of the course's specimens the filename was wrong about which binary it
+  showed.
+
+<Outcomes />
+
+A strong capstone says, for every conclusion, which of those four it has
+reached — and notices when it has reached the third without the fourth.
+
+## Scope and timing
+
+Three weeks of work, alongside weeks 10 to 12. The realistic scope for that
+time is **one target function analysed properly**, not a whole binary surveyed.
+Reports that try to cover every export arrive thin, and thinness shows up
+under validation first.
+
+Start with the comparator diff in week 10, choose your methods in week 11, and
+spend week 12 on validation and the limitations section. The limitations
+section is the one markers read first, so write it early and keep adding to it
+rather than composing it the night before.
+
+## Extensions and integrity
+
+Extensions through the convenor before the deadline. The sample is individual.
+Discussing method choice with others is fine and should be declared; handing
+over a recovered expression or a patch is not. See
+[course information](/policies/).
