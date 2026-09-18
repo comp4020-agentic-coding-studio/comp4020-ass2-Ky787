@@ -104,6 +104,11 @@
     "bytes": 13672,
     "lines": 433
   },
+  "assets/ir/s07_polaris_bcf/target_function.ll": {
+    "sha256": "818764340B707EB10E2B00B59FD83FC081C58778D2B9635754C04F014E6958DE",
+    "bytes": 9165,
+    "lines": 291
+  },
   "assets/ir/s04_ollvm_fla/clean_target.ll": {
     "sha256": "CB7EC70FC2237A5196C5E8183A7B3782855499D2C2DE31D1DC80308B511776A6",
     "bytes": 3086,
@@ -178,6 +183,11 @@
     "sha256": "209B18A98213AFD9A1C39D354BBA69608A352441BA9F4B116327593B12E22287",
     "bytes": 141,
     "lines": 8
+  },
+  "assets/evidence/baselines/tigress/demo_substitution_disassembly.txt": {
+    "sha256": "334567CB31C67D41C0B6D2F0AFC934FB542E77DDAB298F6460EC607E803AB338",
+    "bytes": 16601,
+    "lines": 260
   },
   "assets/evidence/baselines/tigress_Ox/target_function_disassembly.txt": {
     "sha256": "6C208FE83EC30A25D8D27824A2D3833FBB5D0CCA67D8F205FEB408CF039759C2",
@@ -289,6 +299,11 @@
     "bytes": 20481,
     "lines": 55
   },
+  "assets/evidence/s03_ollvm_bcf/patch_manifest.json": {
+    "sha256": "6F5508386AEAAEF85888426335A7B184F47BCF60577B65B8600C2B2B8775C7F9",
+    "bytes": 405492,
+    "lines": 9306
+  },
   "assets/evidence/s03_ollvm_bcf/validation.json": {
     "sha256": "1A276194546B002517A958C1E5B959C119524786D8787A272A52489E228E7709",
     "bytes": 3381,
@@ -308,6 +323,21 @@
     "sha256": "209B18A98213AFD9A1C39D354BBA69608A352441BA9F4B116327593B12E22287",
     "bytes": 141,
     "lines": 8
+  },
+  "assets/evidence/s07_polaris_bcf/patch_manifest.json": {
+    "sha256": "00454A0F3B86AA1CC8BAA15C48E204D9DC440C1357655B6BA53AD723390AB3DA",
+    "bytes": 272811,
+    "lines": 6783
+  },
+  "assets/evidence/s07_polaris_bcf/original_target_disassembly.txt": {
+    "sha256": "16C8F9D9EFAB42817D72DFEEF14AF6551A13846706D06DD8FF4DB15FB6920124",
+    "bytes": 15500,
+    "lines": 287
+  },
+  "assets/evidence/s07_polaris_bcf/rewritten_target_disassembly.txt": {
+    "sha256": "CBC37A83C38958C7256CFFB542CC43A00F01CE20026DB8A65DAF0D17AEB6CA01",
+    "bytes": 16156,
+    "lines": 303
   },
   "assets/evidence/s07_polaris_bcf/validation.json": {
     "sha256": "14AC32543364965F40E2D016E2124E924DBD61E05B6FC4A68ABD78D6DBEB3A60",
@@ -333,6 +363,11 @@
     "sha256": "BBAFFC52CC506F7DBF7CE1547EE5C77103EFA6C7BAE7ACB6086BAF0BC7AFCF1E",
     "bytes": 5366,
     "lines": 144
+  },
+  "assets/evidence/s04_ollvm_fla/provenance_region_map.json": {
+    "sha256": "B6A0C3EEE95D3AF956407AC52C4A0574EA5D220536E765D5A72B355A0E7A434A",
+    "bytes": 41363,
+    "lines": 1262
   },
   "assets/evidence/s04_ollvm_fla/stock_result.json": {
     "sha256": "654BC006676525A99CB0A372504DF18B01576134566B3825CA2722B99EFA9B5D",
@@ -384,6 +419,16 @@
     "bytes": 141,
     "lines": 8
   },
+  "assets/evidence/s05_polaris_fla_wrong/provenance_region_map.json": {
+    "sha256": "708AC016FFA2E222568EE8D91FB5FE7EACF28B145667DA4EDB20A65465E13476",
+    "bytes": 33149,
+    "lines": 1020
+  },
+  "assets/evidence/s05_polaris_fla_wrong/instrumentation.json": {
+    "sha256": "4ECD1EC3C545053998448171FF219B9DE31BA73BA189E77FB706DF0C07F5E280",
+    "bytes": 60138,
+    "lines": 2570
+  },
   "assets/evidence/s05_polaris_fla_wrong/stock_result.json": {
     "sha256": "C8A7268D20B1223B3F8A6EDB8C651DE1341FCACE6D1520D76DA0FB08C71654A0",
     "bytes": 3002,
@@ -404,6 +449,11 @@
     "bytes": 155,
     "lines": 8
   },
+  "assets/evidence/support_hikari_fla/original/target_function_disassembly.txt": {
+    "sha256": "EFE16EB62E2DDA81EB1460A40C5B2137591EDBD6E741037E971EC227EE428344",
+    "bytes": 15320,
+    "lines": 205
+  },
   "assets/evidence/support_hikari_fla/stock_result.json": {
     "sha256": "239132A599768602588355307205CC3E1E75B9FFDB240095B408D8359720D0FE",
     "bytes": 2991,
@@ -418,6 +468,11 @@
     "sha256": "25B1944ECBAF8A355E1899A6C979D97823BCDE95965DF162E80DE923E22DE76B",
     "bytes": 2010,
     "lines": 36
+  },
+  "assets/evidence/s08_tigress_flatten/provenance_region_map.json": {
+    "sha256": "8761389371B7B73E7E864657AA3AE2E20FEAF02BB97E1A032B17473AE09E428B",
+    "bytes": 28076,
+    "lines": 869
   },
   "assets/evidence/s08_tigress_flatten/verified_jump_table.json": {
     "sha256": "EDF79939D68CE1376B772EDD3F6099AABFE7AEE43402BE131850585DA3817241",
@@ -454,6 +509,11 @@
     "bytes": 5294,
     "lines": 134
   },
+  "assets/evidence/mergen_summaries/cases.json": {
+    "sha256": "454BFDB6255287E6E58B35FBFF23C4DFF19086925CB9F7E3A988631FB6EF63A4",
+    "bytes": 40354,
+    "lines": 1129
+  },
   "assets/evidence/mergen_summaries/totals.json": {
     "sha256": "F9CE2151585D7267323BE7460BF11770C658BF4E4ED296F38D339EF7B4B025F2",
     "bytes": 256,
@@ -483,6 +543,11 @@
     "sha256": "76E297624D2CCC68E30C8692A799BDFEEC62671140956F359DA8D39876009BF2",
     "bytes": 1804,
     "lines": 27
+  },
+  "assets/evidence/matrix/optimization_metrics.json": {
+    "sha256": "2D6AF9B05BD8950B5C48044311093B3CD428303C1B646D84622F1D872BE5B164",
+    "bytes": 209905,
+    "lines": 5282
   },
   "assets/cfg/s03_ollvm_bcf/clean_entry_reachable.svg": {
     "sha256": "A034B4AFC1CF0BD50006C652D3C324DB78C9AF31F3DC9E5E0C67FD33F7F32CA4",

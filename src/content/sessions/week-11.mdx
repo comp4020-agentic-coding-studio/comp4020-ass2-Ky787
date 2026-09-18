@@ -28,6 +28,7 @@ import FileList from "../../components/FileList.astro";
 import LectureTable from "../../components/LectureTable.astro";
 import Ledger from "../../components/Ledger.astro";
 import Numbers from "../../components/Numbers.astro";
+import Pane from "../../components/Pane.astro";
 import Queries from "../../components/Queries.astro";
 import Query from "../../components/Query.astro";
 import Specimen from "../../components/Specimen.astro";
@@ -75,7 +76,7 @@ well-formedness.
 The stage names matter, because reading them as one chain leads to a wrong
 conclusion about where a bug came from.
 
-<div class="at-table-wrap sc-wide">
+<Pane title="The four retained stages" note="two alternative paths from R, not one chain" class="sc-wide">
   <table>
     <thead>
       <tr>
@@ -90,7 +91,7 @@ conclusion about where a bug came from.
       <tr><th scope="row">M2</th><td>M, plus ordinary LLVM <code>-O2</code></td></tr>
     </tbody>
   </table>
-</div>
+</Pane>
 
 So there are two branches from R — `R → R2` and `R → M → M2` — and they are
 alternatives, not a four-step sequence. If a defect is present in R, it is
@@ -314,6 +315,7 @@ unflattened rewrite of it from week 10:
     { id: "assets/evidence/s02_polaris_mba/mergen/semantic_result.json", what: "the passing case: 4,118 vectors at each stage, zero mismatches" },
     { id: "assets/evidence/s02_polaris_mba/mergen/ir_metrics.json", what: "6,689 → 386 → 375 → 359, with operator histograms" },
     { id: "assets/ir/s02_polaris_mba/mergen/internal_O2.ll", what: "the passing lift's IR — note what is still in it" },
+    { id: "assets/evidence/mergen_summaries/cases.json", what: "all 17 cases: stages, contracts, and why two were not executed" },
     { id: "assets/reports/mergen_validation.md", what: "the study, including the source-level diagnosis of the fold" },
   ]}
 />

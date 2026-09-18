@@ -1,0 +1,204 @@
+0000000140001440 <demo_flattening>:
+140001440: 48 83 ec 20                 	subq	$0x20, %rsp
+140001444: 89 4c 24 14                 	movl	%ecx, 0x14(%rsp)
+140001448: 8b 44 24 14                 	movl	0x14(%rsp), %eax
+14000144c: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+140001450: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+140001454: 83 e0 01                    	andl	$0x1, %eax
+140001457: 89 44 24 18                 	movl	%eax, 0x18(%rsp)
+14000145b: c7 44 24 08 97 50 f8 95     	movl	$0x95f85097, 0x8(%rsp)  # imm = 0x95F85097
+140001463: 8b 44 24 08                 	movl	0x8(%rsp), %eax
+140001467: 89 44 24 04                 	movl	%eax, 0x4(%rsp)
+14000146b: 2d 11 08 db 81              	subl	$0x81db0811, %eax       # imm = 0x81DB0811
+140001470: 0f 84 55 03 00 00           	je	0x1400017cb <demo_flattening+0x38b>
+140001476: e9 00 00 00 00              	jmp	0x14000147b <demo_flattening+0x3b>
+14000147b: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+14000147f: 2d 78 ca cc 85              	subl	$0x85ccca78, %eax       # imm = 0x85CCCA78
+140001484: 0f 84 64 02 00 00           	je	0x1400016ee <demo_flattening+0x2ae>
+14000148a: e9 00 00 00 00              	jmp	0x14000148f <demo_flattening+0x4f>
+14000148f: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+140001493: 2d 50 f8 52 86              	subl	$0x8652f850, %eax       # imm = 0x8652F850
+140001498: 0f 84 75 02 00 00           	je	0x140001713 <demo_flattening+0x2d3>
+14000149e: e9 00 00 00 00              	jmp	0x1400014a3 <demo_flattening+0x63>
+1400014a3: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400014a7: 2d 97 50 f8 95              	subl	$0x95f85097, %eax       # imm = 0x95F85097
+1400014ac: 0f 84 5e 01 00 00           	je	0x140001610 <demo_flattening+0x1d0>
+1400014b2: e9 00 00 00 00              	jmp	0x1400014b7 <demo_flattening+0x77>
+1400014b7: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400014bb: 2d cd 01 47 a7              	subl	$0xa74701cd, %eax       # imm = 0xA74701CD
+1400014c0: 0f 84 eb 02 00 00           	je	0x1400017b1 <demo_flattening+0x371>
+1400014c6: e9 00 00 00 00              	jmp	0x1400014cb <demo_flattening+0x8b>
+1400014cb: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400014cf: 2d 4e ef d1 ac              	subl	$0xacd1ef4e, %eax       # imm = 0xACD1EF4E
+1400014d4: 0f 84 6c 02 00 00           	je	0x140001746 <demo_flattening+0x306>
+1400014da: e9 00 00 00 00              	jmp	0x1400014df <demo_flattening+0x9f>
+1400014df: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400014e3: 2d d8 6b cb bb              	subl	$0xbbcb6bd8, %eax       # imm = 0xBBCB6BD8
+1400014e8: 0f 84 3d 02 00 00           	je	0x14000172b <demo_flattening+0x2eb>
+1400014ee: e9 00 00 00 00              	jmp	0x1400014f3 <demo_flattening+0xb3>
+1400014f3: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400014f7: 2d ee db 26 c6              	subl	$0xc626dbee, %eax       # imm = 0xC626DBEE
+1400014fc: 0f 84 f0 02 00 00           	je	0x1400017f2 <demo_flattening+0x3b2>
+140001502: e9 00 00 00 00              	jmp	0x140001507 <demo_flattening+0xc7>
+140001507: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+14000150b: 2d 1a f4 74 c6              	subl	$0xc674f41a, %eax       # imm = 0xC674F41A
+140001510: 0f 84 ba 01 00 00           	je	0x1400016d0 <demo_flattening+0x290>
+140001516: e9 00 00 00 00              	jmp	0x14000151b <demo_flattening+0xdb>
+14000151b: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+14000151f: 2d d6 5e 3b d2              	subl	$0xd23b5ed6, %eax       # imm = 0xD23B5ED6
+140001524: 0f 84 bb 02 00 00           	je	0x1400017e5 <demo_flattening+0x3a5>
+14000152a: e9 00 00 00 00              	jmp	0x14000152f <demo_flattening+0xef>
+14000152f: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+140001533: 2d ed 6a 99 d4              	subl	$0xd4996aed, %eax       # imm = 0xD4996AED
+140001538: 0f 84 36 01 00 00           	je	0x140001674 <demo_flattening+0x234>
+14000153e: e9 00 00 00 00              	jmp	0x140001543 <demo_flattening+0x103>
+140001543: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+140001547: 2d 44 21 f5 fc              	subl	$0xfcf52144, %eax       # imm = 0xFCF52144
+14000154c: 0f 84 a9 01 00 00           	je	0x1400016fb <demo_flattening+0x2bb>
+140001552: e9 00 00 00 00              	jmp	0x140001557 <demo_flattening+0x117>
+140001557: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+14000155b: 2d 0a 83 e2 14              	subl	$0x14e2830a, %eax       # imm = 0x14E2830A
+140001560: 0f 84 4c 01 00 00           	je	0x1400016b2 <demo_flattening+0x272>
+140001566: e9 00 00 00 00              	jmp	0x14000156b <demo_flattening+0x12b>
+14000156b: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+14000156f: 2d db 0b 6e 1a              	subl	$0x1a6e0bdb, %eax       # imm = 0x1A6E0BDB
+140001574: 0f 84 e5 00 00 00           	je	0x14000165f <demo_flattening+0x21f>
+14000157a: e9 00 00 00 00              	jmp	0x14000157f <demo_flattening+0x13f>
+14000157f: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+140001583: 2d 4e 28 ca 3d              	subl	$0x3dca284e, %eax       # imm = 0x3DCA284E
+140001588: 0f 84 01 01 00 00           	je	0x14000168f <demo_flattening+0x24f>
+14000158e: e9 00 00 00 00              	jmp	0x140001593 <demo_flattening+0x153>
+140001593: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+140001597: 2d eb 96 0d 3e              	subl	$0x3e0d96eb, %eax       # imm = 0x3E0D96EB
+14000159c: 0f 84 a3 00 00 00           	je	0x140001645 <demo_flattening+0x205>
+1400015a2: e9 00 00 00 00              	jmp	0x1400015a7 <demo_flattening+0x167>
+1400015a7: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400015ab: 2d 5c 3f a9 58              	subl	$0x58a93f5c, %eax       # imm = 0x58A93F5C
+1400015b0: 0f 84 e1 01 00 00           	je	0x140001797 <demo_flattening+0x357>
+1400015b6: e9 00 00 00 00              	jmp	0x1400015bb <demo_flattening+0x17b>
+1400015bb: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400015bf: 2d 6e bc 52 66              	subl	$0x6652bc6e, %eax       # imm = 0x6652BC6E
+1400015c4: 0f 84 b2 01 00 00           	je	0x14000177c <demo_flattening+0x33c>
+1400015ca: e9 00 00 00 00              	jmp	0x1400015cf <demo_flattening+0x18f>
+1400015cf: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400015d3: 2d ec fc bd 72              	subl	$0x72bdfcec, %eax       # imm = 0x72BDFCEC
+1400015d8: 0f 84 83 01 00 00           	je	0x140001761 <demo_flattening+0x321>
+1400015de: e9 00 00 00 00              	jmp	0x1400015e3 <demo_flattening+0x1a3>
+1400015e3: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400015e7: 2d 30 ba d3 72              	subl	$0x72d3ba30, %eax       # imm = 0x72D3BA30
+1400015ec: 0f 84 39 00 00 00           	je	0x14000162b <demo_flattening+0x1eb>
+1400015f2: e9 00 00 00 00              	jmp	0x1400015f7 <demo_flattening+0x1b7>
+1400015f7: 8b 44 24 04                 	movl	0x4(%rsp), %eax
+1400015fb: 2d 80 c7 12 76              	subl	$0x7612c780, %eax       # imm = 0x7612C780
+140001600: 0f 84 06 02 00 00           	je	0x14000180c <demo_flattening+0x3cc>
+140001606: e9 00 00 00 00              	jmp	0x14000160b <demo_flattening+0x1cb>
+14000160b: e9 0a 02 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001610: b8 eb 96 0d 3e              	movl	$0x3e0d96eb, %eax       # imm = 0x3E0D96EB
+140001615: b9 30 ba d3 72              	movl	$0x72d3ba30, %ecx       # imm = 0x72D3BA30
+14000161a: 83 7c 24 18 00              	cmpl	$0x0, 0x18(%rsp)
+14000161f: 0f 45 c1                    	cmovnel	%ecx, %eax
+140001622: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+140001626: e9 ef 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+14000162b: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+14000162f: 05 11 11 00 00              	addl	$0x1111, %eax           # imm = 0x1111
+140001634: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+140001638: c7 44 24 08 db 0b 6e 1a     	movl	$0x1a6e0bdb, 0x8(%rsp)  # imm = 0x1A6E0BDB
+140001640: e9 d5 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001645: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+140001649: 35 22 22 00 00              	xorl	$0x2222, %eax           # imm = 0x2222
+14000164e: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+140001652: c7 44 24 08 db 0b 6e 1a     	movl	$0x1a6e0bdb, 0x8(%rsp)  # imm = 0x1A6E0BDB
+14000165a: e9 bb 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+14000165f: c7 44 24 0c 00 00 00 00     	movl	$0x0, 0xc(%rsp)
+140001667: c7 44 24 08 ed 6a 99 d4     	movl	$0xd4996aed, 0x8(%rsp)  # imm = 0xD4996AED
+14000166f: e9 a6 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001674: b8 50 f8 52 86              	movl	$0x8652f850, %eax       # imm = 0x8652F850
+140001679: b9 4e 28 ca 3d              	movl	$0x3dca284e, %ecx       # imm = 0x3DCA284E
+14000167e: 83 7c 24 0c 04              	cmpl	$0x4, 0xc(%rsp)
+140001683: 0f 42 c1                    	cmovbl	%ecx, %eax
+140001686: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+14000168a: e9 8b 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+14000168f: 8b 54 24 10                 	movl	0x10(%rsp), %edx
+140001693: 81 e2 00 01 00 00           	andl	$0x100, %edx            # imm = 0x100
+140001699: b8 1a f4 74 c6              	movl	$0xc674f41a, %eax       # imm = 0xC674F41A
+14000169e: b9 0a 83 e2 14              	movl	$0x14e2830a, %ecx       # imm = 0x14E2830A
+1400016a3: 83 fa 00                    	cmpl	$0x0, %edx
+1400016a6: 0f 45 c1                    	cmovnel	%ecx, %eax
+1400016a9: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+1400016ad: e9 68 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400016b2: 8b 44 24 0c                 	movl	0xc(%rsp), %eax
+1400016b6: 05 00 10 00 00              	addl	$0x1000, %eax           # imm = 0x1000
+1400016bb: 33 44 24 10                 	xorl	0x10(%rsp), %eax
+1400016bf: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400016c3: c7 44 24 08 78 ca cc 85     	movl	$0x85ccca78, 0x8(%rsp)  # imm = 0x85CCCA78
+1400016cb: e9 4a 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400016d0: 8b 44 24 0c                 	movl	0xc(%rsp), %eax
+1400016d4: 05 00 01 00 00              	addl	$0x100, %eax            # imm = 0x100
+1400016d9: 03 44 24 10                 	addl	0x10(%rsp), %eax
+1400016dd: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400016e1: c7 44 24 08 78 ca cc 85     	movl	$0x85ccca78, 0x8(%rsp)  # imm = 0x85CCCA78
+1400016e9: e9 2c 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400016ee: c7 44 24 08 44 21 f5 fc     	movl	$0xfcf52144, 0x8(%rsp)  # imm = 0xFCF52144
+1400016f6: e9 1f 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400016fb: 8b 44 24 0c                 	movl	0xc(%rsp), %eax
+1400016ff: 83 c0 01                    	addl	$0x1, %eax
+140001702: 89 44 24 0c                 	movl	%eax, 0xc(%rsp)
+140001706: c7 44 24 08 ed 6a 99 d4     	movl	$0xd4996aed, 0x8(%rsp)  # imm = 0xD4996AED
+14000170e: e9 07 01 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001713: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+140001717: 83 e0 03                    	andl	$0x3, %eax
+14000171a: 89 44 24 1c                 	movl	%eax, 0x1c(%rsp)
+14000171e: c7 44 24 08 d8 6b cb bb     	movl	$0xbbcb6bd8, 0x8(%rsp)  # imm = 0xBBCB6BD8
+140001726: e9 ef 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+14000172b: b8 4e ef d1 ac              	movl	$0xacd1ef4e, %eax       # imm = 0xACD1EF4E
+140001730: b9 6e bc 52 66              	movl	$0x6652bc6e, %ecx       # imm = 0x6652BC6E
+140001735: 83 7c 24 1c 01              	cmpl	$0x1, 0x1c(%rsp)
+14000173a: 0f 4c c1                    	cmovll	%ecx, %eax
+14000173d: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+140001741: e9 d4 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001746: b8 ec fc bd 72              	movl	$0x72bdfcec, %eax       # imm = 0x72BDFCEC
+14000174b: b9 cd 01 47 a7              	movl	$0xa74701cd, %ecx       # imm = 0xA74701CD
+140001750: 83 7c 24 1c 02              	cmpl	$0x2, 0x1c(%rsp)
+140001755: 0f 4c c1                    	cmovll	%ecx, %eax
+140001758: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+14000175c: e9 b9 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001761: b8 d6 5e 3b d2              	movl	$0xd23b5ed6, %eax       # imm = 0xD23B5ED6
+140001766: b9 11 08 db 81              	movl	$0x81db0811, %ecx       # imm = 0x81DB0811
+14000176b: 83 7c 24 1c 02              	cmpl	$0x2, 0x1c(%rsp)
+140001770: 0f 44 c1                    	cmovel	%ecx, %eax
+140001773: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+140001777: e9 9e 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+14000177c: b8 d6 5e 3b d2              	movl	$0xd23b5ed6, %eax       # imm = 0xD23B5ED6
+140001781: b9 5c 3f a9 58              	movl	$0x58a93f5c, %ecx       # imm = 0x58A93F5C
+140001786: 83 7c 24 1c 00              	cmpl	$0x0, 0x1c(%rsp)
+14000178b: 0f 44 c1                    	cmovel	%ecx, %eax
+14000178e: 89 44 24 08                 	movl	%eax, 0x8(%rsp)
+140001792: e9 83 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+140001797: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+14000179b: 05 11 11 11 11              	addl	$0x11111111, %eax       # imm = 0x11111111
+1400017a0: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400017a4: c7 44 24 08 80 c7 12 76     	movl	$0x7612c780, 0x8(%rsp)  # imm = 0x7612C780
+1400017ac: e9 69 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400017b1: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+1400017b5: 35 22 22 22 22              	xorl	$0x22222222, %eax       # imm = 0x22222222
+1400017ba: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400017be: c7 44 24 08 80 c7 12 76     	movl	$0x7612c780, 0x8(%rsp)  # imm = 0x7612C780
+1400017c6: e9 4f 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400017cb: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+1400017cf: 2d 33 33 00 00              	subl	$0x3333, %eax           # imm = 0x3333
+1400017d4: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400017d8: c7 44 24 08 80 c7 12 76     	movl	$0x7612c780, 0x8(%rsp)  # imm = 0x7612C780
+1400017e0: e9 35 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400017e5: c7 44 24 08 ee db 26 c6     	movl	$0xc626dbee, 0x8(%rsp)  # imm = 0xC626DBEE
+1400017ed: e9 28 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+1400017f2: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+1400017f6: 05 44 44 00 00              	addl	$0x4444, %eax           # imm = 0x4444
+1400017fb: 89 44 24 10                 	movl	%eax, 0x10(%rsp)
+1400017ff: c7 44 24 08 80 c7 12 76     	movl	$0x7612c780, 0x8(%rsp)  # imm = 0x7612C780
+140001807: e9 0e 00 00 00              	jmp	0x14000181a <demo_flattening+0x3da>
+14000180c: 8b 44 24 10                 	movl	0x10(%rsp), %eax
+140001810: 35 be ba fe ca              	xorl	$0xcafebabe, %eax       # imm = 0xCAFEBABE
+140001815: 48 83 c4 20                 	addq	$0x20, %rsp
+140001819: c3                          	retq
+14000181a: e9 44 fc ff ff              	jmp	0x140001463 <demo_flattening+0x23>
+14000181f: 90                          	nop

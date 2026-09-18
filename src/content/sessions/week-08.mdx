@@ -270,11 +270,14 @@ No new patching. The point is the justification, not the edit.
 <FileList
   items={[
     { id: "assets/evidence/s03_ollvm_bcf/validation.json", what: "eligible, patched, triples, mismatches, hashes, genuine-branch coverage" },
+    { id: "assets/evidence/s03_ollvm_bcf/patch_manifest.json", what: "all 22 patches: address, expected bytes, written bytes" },
     { id: "assets/evidence/s03_ollvm_bcf/metadata_audit.json", what: "the file-level audit: what changed and what did not" },
     { id: "assets/evidence/s03_ollvm_bcf/projection_notes.json", what: "the reachability convention and the classification of what died" },
     { id: "assets/evidence/s03_ollvm_bcf/rewritten_target_disassembly.txt", what: "the rewritten function, instruction by instruction" },
     { id: "assets/evidence/s03_ollvm_bcf/original_target_disassembly.txt", what: "the same function before the patches, for the diff" },
     { id: "assets/evidence/s07_polaris_bcf/validation.json", what: "the second implementation: 16 gates, 4,598 triples" },
+    { id: "assets/evidence/s07_polaris_bcf/patch_manifest.json", what: "the transfer case's 16 patches — different addresses, same method" },
+    { id: "assets/evidence/s07_polaris_bcf/rewritten_target_disassembly.txt", what: "the second rewritten function, instruction by instruction" },
     { id: "assets/reports/opaque_predicate_rewrite.md", what: "the rewriting study, including the preconditions the consumer checks" },
   ]}
 />

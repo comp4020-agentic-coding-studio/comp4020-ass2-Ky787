@@ -4,6 +4,7 @@ import { withBase } from "astro-theme-university/url";
 import CourseLayout from "../../layouts/CourseLayout.astro";
 import EvidenceCode from "../../components/EvidenceCode.astro";
 import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
 import Numbers from "../../components/Numbers.astro";
 import SpecimenTable from "../../components/SpecimenTable.astro";
 import { HELD_IMAGES, allEvidence } from "../../lib/evidence-manifest";
@@ -192,6 +193,25 @@ const totalBytes = allEvidence.reduce((sum, id) => sum + evidenceInfo(id).bytes,
       experiments ran on. They are provenance, not instructions, and the
       research tree they point at is deliberately not bundled.
     </p>
+  </section>
+
+  <section class="sc-section">
+    <h2>Six examples worth opening in a disassembler</h2>
+    <p>
+      If you have lab access and an afternoon, these six are where the corpus
+      repays manual reading. Start from the matched clean binary in every case,
+      navigate by export name or RVA, and decline the original debug symbols
+      for any rewrite.
+    </p>
+    <p>
+      One warning about this table specifically: its story numbers are the
+      <em>older</em> evidence-pack IDs, not the ones the week pages use. The
+      table's own note says so, and the crosswalk is in{" "}
+      <a href={evidenceUrl("VISUAL_INDEX.md")}>VISUAL_INDEX.md</a>. Two numbering
+      schemes for the same eight stories is exactly the kind of provenance
+      hazard this course keeps pointing at, and it is in our own material.
+    </p>
+    <LectureTable id="12_manual_analysis_examples" headingLevel="h3" class="sc-wide" />
   </section>
 
   <section class="sc-section">

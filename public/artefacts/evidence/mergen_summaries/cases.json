@@ -1,0 +1,1128 @@
+[
+  {
+    "id": "clean/ollvm_sub",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "target": "demo_substitution",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "target_va": "0x140001030",
+    "target_rva": "0x1030",
+    "end_va": "0x140001203",
+    "target_bytes_sha256": "82C3E07C7DA127468C3D17E68B883098FF5FA468513EF9D1475295B6512AC26F",
+    "runtime_ranges": [
+      [
+        4144,
+        4611,
+        503800
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 115,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 115,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.01668410000274889,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 1,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 115,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 734,
+    "raw_blocks": 1,
+    "raw_O2_instructions": 35,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 34,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 9,
+    "internal_O2_blocks": 1,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "clean/ollvm_bcf",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "target": "demo_bogus_control_flow",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "target_va": "0x140001210",
+    "target_rva": "0x1210",
+    "end_va": "0x1400012c3",
+    "target_bytes_sha256": "01057784ECA95507063EE4A4BEA0031E9067180411E75E4E1CD2A7EE86B7D691",
+    "runtime_ranges": [
+      [
+        4624,
+        4803,
+        503808
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 39,
+    "native_blocks": 11,
+    "native_direct_reachable_instructions": 39,
+    "native_direct_reachable_blocks": 11,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.016540400014491752,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 40,
+      "blocks_completed": 16,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 187,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 437,
+    "raw_blocks": 40,
+    "raw_O2_instructions": 42,
+    "raw_O2_blocks": 12,
+    "internal_instructions": 29,
+    "internal_blocks": 12,
+    "internal_O2_instructions": 29,
+    "internal_O2_blocks": 12,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "clean/ollvm_fla",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "target": "demo_flattening",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "target_va": "0x1400012d0",
+    "target_rva": "0x12d0",
+    "end_va": "0x1400013f8",
+    "target_bytes_sha256": "C0A281625A638B77F5905B9C8A7B92022C1B93E87E6192B06549094E971FC4C3",
+    "runtime_ranges": [
+      [
+        4816,
+        5112,
+        503816
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 68,
+    "native_blocks": 21,
+    "native_direct_reachable_instructions": 68,
+    "native_direct_reachable_blocks": 21,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.019094599992968142,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 43,
+      "blocks_completed": 4,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 161,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 613,
+    "raw_blocks": 43,
+    "raw_O2_instructions": 63,
+    "raw_O2_blocks": 13,
+    "internal_instructions": 51,
+    "internal_blocks": 13,
+    "internal_O2_instructions": 51,
+    "internal_O2_blocks": 13,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "clean/polaris_sub",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "target": "demo_substitution",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "target_va": "0x140001030",
+    "target_rva": "0x1030",
+    "end_va": "0x140001203",
+    "target_bytes_sha256": "82C3E07C7DA127468C3D17E68B883098FF5FA468513EF9D1475295B6512AC26F",
+    "runtime_ranges": [
+      [
+        4144,
+        4611,
+        503800
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "warning": "",
+    "native_instructions": 115,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 115,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.014839499985100701,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 1,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 115,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 734,
+    "raw_blocks": 1,
+    "raw_O2_instructions": 35,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 34,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 9,
+    "internal_O2_blocks": 1,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "clean/polaris_bcf",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "target": "demo_bogus_control_flow",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "target_va": "0x140001210",
+    "target_rva": "0x1210",
+    "end_va": "0x1400012c3",
+    "target_bytes_sha256": "01057784ECA95507063EE4A4BEA0031E9067180411E75E4E1CD2A7EE86B7D691",
+    "runtime_ranges": [
+      [
+        4624,
+        4803,
+        503808
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "warning": "",
+    "native_instructions": 39,
+    "native_blocks": 11,
+    "native_direct_reachable_instructions": 39,
+    "native_direct_reachable_blocks": 11,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.01728870000806637,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 40,
+      "blocks_completed": 16,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 187,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 437,
+    "raw_blocks": 40,
+    "raw_O2_instructions": 42,
+    "raw_O2_blocks": 12,
+    "internal_instructions": 29,
+    "internal_blocks": 12,
+    "internal_O2_instructions": 29,
+    "internal_O2_blocks": 12,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "clean/tigress_sub",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\tigress\\clean\\O0\\showcase.exe",
+    "target": "demo_substitution",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\tigress\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "4E366B3192FAD752CF026A5551ADB72AF68C6AB80404BC6642B0B2A27ED73765",
+    "target_va": "0x140001060",
+    "target_rva": "0x1060",
+    "end_va": "0x140001457",
+    "target_bytes_sha256": "4C335A20E8B296642DB4AC3B6D4FA2A3BEEE54E33751BCE63699678C1D7D7F89",
+    "runtime_ranges": [
+      [
+        4192,
+        5207,
+        503648
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4E366B3192FAD752CF026A5551ADB72AF68C6AB80404BC6642B0B2A27ED73765",
+    "warning": "",
+    "native_instructions": 249,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 249,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.01624440000159666,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 5,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 255,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 746,
+    "raw_blocks": 5,
+    "raw_O2_instructions": 39,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 34,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 9,
+    "internal_O2_blocks": 1,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "clean/complex_mixed",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\complex_arithmetic_v1\\clean\\ollvm16\\probe.exe",
+    "target": "complex_mixed",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\complex_arithmetic_v1\\clean\\ollvm16\\probe.exe",
+    "static_only": false,
+    "sha256": "980396EC64E5034A70B5732960357A7F66A31F6DD3577387308B8CC814058D8A",
+    "target_va": "0x1400010a0",
+    "target_rva": "0x10a0",
+    "end_va": "0x1400010f8",
+    "target_bytes_sha256": "60313CF2532E68601F662D6FDA6A5FC07F60A76D4E37BB174F35423DAB28F5A7",
+    "runtime_ranges": [
+      [
+        4256,
+        4344,
+        499672
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "980396EC64E5034A70B5732960357A7F66A31F6DD3577387308B8CC814058D8A",
+    "warning": "",
+    "native_instructions": 22,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 22,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.012933799996972084,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 1,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 22,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 123,
+    "raw_blocks": 1,
+    "raw_O2_instructions": 24,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 10,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 10,
+    "internal_O2_blocks": 1,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Clean control; essential return-value semantics recognizable and tested."
+  },
+  {
+    "id": "arithmetic/ollvm_sub",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\sub\\O0\\showcase.exe",
+    "target": "demo_substitution",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "1219EFD932F81930556039CC0221AB757D8F9BA28A5036E5551D2C83BD69A65E",
+    "target_va": "0x140001070",
+    "target_rva": "0x1070",
+    "end_va": "0x140001512",
+    "target_bytes_sha256": "55A7371FDA13C15B964313A0E54ACB95993230790B2F1CC23C04610975CD678D",
+    "runtime_ranges": [
+      [
+        4208,
+        5394,
+        503800
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 311,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 311,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.01960440000402741,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 1,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 311,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1998,
+    "raw_blocks": 1,
+    "raw_O2_instructions": 67,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 45,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 45,
+    "internal_O2_blocks": 1,
+    "semantic_status": "FAIL",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "SEMANTIC FAILURE \u2014 simplification is not recovery"
+    ],
+    "notes": "SEMANTIC FAILURE: 3917/4118 mismatches at every stage, including raw emission; no recovery credit."
+  },
+  {
+    "id": "arithmetic/polaris_mba",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\primary_o0\\polaris\\mba\\showcase.exe",
+    "target": "demo_substitution",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "48A7750AAAD7E6CC7E0F9638D9278CF7864882D4BA95D0C3222596BC6879AEF5",
+    "target_va": "0x140001030",
+    "target_rva": "0x1030",
+    "end_va": "0x140001a63",
+    "target_bytes_sha256": "8E475AD1BFCE143CD68C37C0FD1EB6D3DF485236ECDC9C1BDC9EA5F22AA904F2",
+    "runtime_ranges": [
+      [
+        4144,
+        6755,
+        503784
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "warning": "",
+    "native_instructions": 678,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 678,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.04664500002400018,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 1,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 678,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 6689,
+    "raw_blocks": 1,
+    "raw_O2_instructions": 386,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 375,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 359,
+    "internal_O2_blocks": 1,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION"
+    ],
+    "notes": "Runnable partial simplification, substantial coefficient-heavy MBA remains; not clean-equivalent IR complexity."
+  },
+  {
+    "id": "arithmetic/tigress_encode",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\tigress\\encode_arithmetic\\O0\\showcase.exe",
+    "target": "demo_substitution",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\tigress\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "DBC1B4078560F18E682BD2C7E0763BA067202B69C23CA321056D234703BF4E2D",
+    "target_va": "0x1400011d0",
+    "target_rva": "0x11d0",
+    "end_va": "0x140001872",
+    "target_bytes_sha256": "45C5F9C8BF88B745DDF774B39702CB3017B2CEEE63527B678D32A2F641098CCF",
+    "runtime_ranges": [
+      [
+        4560,
+        6258,
+        590448
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4E366B3192FAD752CF026A5551ADB72AF68C6AB80404BC6642B0B2A27ED73765",
+    "warning": "",
+    "native_instructions": 426,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 426,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.021143599995411932,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 5,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 432,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1591,
+    "raw_blocks": 5,
+    "raw_O2_instructions": 104,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 80,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 80,
+    "internal_O2_blocks": 1,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION"
+    ],
+    "notes": "Runnable internal stages with exact fixed .data store backing; residual arithmetic identities remain; raw stages not executed."
+  },
+  {
+    "id": "bcf/ollvm_original",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\bcf\\O0\\showcase.exe",
+    "target": "demo_bogus_control_flow",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "3ED20E83BE53F28FAF64D1A1CFBC2FEB323B83EC35CCEE0FAF8D85AD7905285F",
+    "target_va": "0x140001630",
+    "target_rva": "0x1630",
+    "end_va": "0x140001cb4",
+    "target_bytes_sha256": "4CB000198A252C341D35878E4A974505C6E4A084F80CD955F24FC9C310356ECE",
+    "runtime_ranges": [
+      [
+        5680,
+        7348,
+        520200
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 460,
+    "native_blocks": 70,
+    "native_direct_reachable_instructions": 460,
+    "native_direct_reachable_blocks": 70,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.03173550000065006,
+    "lift_diagnostics": {
+      "total": 5,
+      "info": 5,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 180,
+      "blocks_completed": 16,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 1832,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1728,
+    "raw_blocks": 180,
+    "raw_O2_instructions": 243,
+    "raw_O2_blocks": 32,
+    "internal_instructions": 87,
+    "internal_blocks": 16,
+    "internal_O2_instructions": 87,
+    "internal_O2_blocks": 16,
+    "semantic_status": "LIFTED IR ONLY / SEMANTIC EXECUTION NOT ESTABLISHED",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT"
+    ],
+    "notes": "LIFTED IR ONLY / SEMANTIC EXECUTION NOT ESTABLISHED: 3 outlined absolute-address calls and symbolic absolute memory."
+  },
+  {
+    "id": "bcf/ollvm_triton_rewritten",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_rewrite\\ollvm16_o0\\showcase_ollvm_bcf_deopaque.exe",
+    "target": "demo_bogus_control_flow",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "15BF8731CD94663F5E0691983F1616969E28675E89B8595371DDBCBA51EA906A",
+    "target_va": "0x140001630",
+    "target_rva": "0x1630",
+    "end_va": "0x140001cb4",
+    "target_bytes_sha256": "27F35E9A2AF8086F229F2745C849626DE946DD9F8CD677C98FCC34C6A95F1DD2",
+    "runtime_ranges": [
+      [
+        5680,
+        7348,
+        520200
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 482,
+    "native_blocks": 70,
+    "native_direct_reachable_instructions": 385,
+    "native_direct_reachable_blocks": 37,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.031047299999045208,
+    "lift_diagnostics": {
+      "total": 5,
+      "info": 5,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 180,
+      "blocks_completed": 16,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 1832,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1728,
+    "raw_blocks": 180,
+    "raw_O2_instructions": 243,
+    "raw_O2_blocks": 32,
+    "internal_instructions": 87,
+    "internal_blocks": 16,
+    "internal_O2_instructions": 87,
+    "internal_O2_blocks": 16,
+    "semantic_status": "LIFTED IR ONLY / SEMANTIC EXECUTION NOT ESTABLISHED",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT"
+    ],
+    "notes": "LIFTED IR ONLY / SEMANTIC EXECUTION NOT ESTABLISHED: same residual call/memory contract as original."
+  },
+  {
+    "id": "bcf/polaris_original",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\bcf\\O0\\showcase.exe",
+    "target": "demo_bogus_control_flow",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "859F3F4303CF59BB6437EEAC4DCC6894A9E4F6D47665C87B80C0F5A6634009F0",
+    "target_va": "0x140001210",
+    "target_rva": "0x1210",
+    "end_va": "0x140001667",
+    "target_bytes_sha256": "61E6134D91176FE779655F6130EECC18BF46B28A71BA61F8CD543F7EA5698649",
+    "runtime_ranges": [
+      [
+        4624,
+        5735,
+        503808
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "warning": "",
+    "native_instructions": 286,
+    "native_blocks": 54,
+    "native_direct_reachable_instructions": 286,
+    "native_direct_reachable_blocks": 54,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.0263386000005994,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 159,
+      "blocks_completed": 16,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 1450,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1026,
+    "raw_blocks": 159,
+    "raw_O2_instructions": 82,
+    "raw_O2_blocks": 24,
+    "internal_instructions": 29,
+    "internal_blocks": 12,
+    "internal_O2_instructions": 29,
+    "internal_O2_blocks": 12,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Tested semantic recovery; same 29-instruction/12-block complexity as clean BCF control, not byte-identical; concrete initial PE globals, not universal memory proof."
+  },
+  {
+    "id": "bcf/polaris_triton_rewritten",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_rewrite\\polaris_o0\\showcase_polaris_bcf_deopaque.exe",
+    "target": "demo_bogus_control_flow",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "6E5C2E7D5AB299766F5157B65E4202AEE5DA8BBEDF6A9AB6BF1BBD5F74E61A8A",
+    "target_va": "0x140001210",
+    "target_rva": "0x1210",
+    "end_va": "0x140001667",
+    "target_bytes_sha256": "46290EFEC05F32E7D6D362AF383724D984A7DD18F32D0271405C904F3541E4E7",
+    "runtime_ranges": [
+      [
+        4624,
+        5735,
+        503808
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "4C75C71BD29C9B4403C50457AD859A4EEA010D7298ED7D5501AECC29ED14E202",
+    "warning": "",
+    "native_instructions": 302,
+    "native_blocks": 54,
+    "native_direct_reachable_instructions": 250,
+    "native_direct_reachable_blocks": 30,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.026632399996742606,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 159,
+      "blocks_completed": 16,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 1450,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1026,
+    "raw_blocks": 159,
+    "raw_O2_instructions": 82,
+    "raw_O2_blocks": 24,
+    "internal_instructions": 29,
+    "internal_blocks": 12,
+    "internal_O2_instructions": 29,
+    "internal_O2_blocks": 12,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4580,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Tested semantic recovery; same internal IR modulo SSA names as original BCF lift; no incremental size benefit from branch rewriting here."
+  },
+  {
+    "id": "fla/ollvm_original",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\fla\\O0\\showcase.exe",
+    "target": "demo_flattening",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "239D02B425E749CF2AEC01BBA297E9077A1773850DE04585D655A0E0C941EFB3",
+    "target_va": "0x140001440",
+    "target_rva": "0x1440",
+    "end_va": "0x1400017d7",
+    "target_bytes_sha256": "F320C0A92C9474B1AE46710D09F28A642656BA56B99695DAE3AC06C57F1761D7",
+    "runtime_ranges": [
+      [
+        5184,
+        6103,
+        503816
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 190,
+    "native_blocks": 60,
+    "native_direct_reachable_instructions": 190,
+    "native_direct_reachable_blocks": 60,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.022863199992571026,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 125,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 316,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1121,
+    "raw_blocks": 125,
+    "raw_O2_instructions": 92,
+    "raw_O2_blocks": 22,
+    "internal_instructions": 61,
+    "internal_blocks": 22,
+    "internal_O2_instructions": 61,
+    "internal_O2_blocks": 22,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION"
+    ],
+    "notes": "Runnable reconstruction, but dispatcher switch/state loop survives; not deflattened."
+  },
+  {
+    "id": "fla/ollvm_unflattened",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\unflattening\\ollvm16\\o0\\stock_rewritten.exe",
+    "target": "demo_flattening",
+    "clean_input": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\ollvm16\\clean\\O0\\showcase.exe",
+    "static_only": false,
+    "sha256": "FCF8827FF1E7A3B81FB6F0E005FF9BB0342F79C6785AC802DF0639C8C2F90E9B",
+    "target_va": "0x140001440",
+    "target_rva": "0x1440",
+    "end_va": "0x1400017d7",
+    "target_bytes_sha256": "966541C7C09D179E9A3B9B370ECF4D0DB69E1688DB25061044553470E394909B",
+    "runtime_ranges": [
+      [
+        5184,
+        6103,
+        503816
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": "7FC180DAA49940E993245D7C131ABD19561E8181CBF6E40FFC1F080343E469E4",
+    "warning": "",
+    "native_instructions": 555,
+    "native_blocks": 449,
+    "native_direct_reachable_instructions": 111,
+    "native_direct_reachable_blocks": 18,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.01861179998377338,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 32,
+      "blocks_completed": 4,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 248,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 702,
+    "raw_blocks": 32,
+    "raw_O2_instructions": 70,
+    "raw_O2_blocks": 13,
+    "internal_instructions": 51,
+    "internal_blocks": 13,
+    "internal_O2_instructions": 51,
+    "internal_O2_blocks": 13,
+    "semantic_status": "PASS (tested, not proof)",
+    "native_semantic_inputs": 4118,
+    "native_mismatches": 0,
+    "executed_stages": [
+      "raw",
+      "raw_O2",
+      "internal",
+      "internal_O2"
+    ],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT",
+      "RUNNABLE RECONSTRUCTION",
+      "SEMANTIC RECOVERY (tested, not proof)"
+    ],
+    "notes": "Tested semantic recovery after prior unflattening; 51 instructions/13 blocks like clean control."
+  },
+  {
+    "id": "binprotect_static/mba",
+    "input": "E:\\Workspace\\seeing_through_obfuscation\\results\\binprotect_showcase_v1\\mba\\o2\\showcase_protected.exe",
+    "target": "demo_substitution",
+    "clean_input": null,
+    "static_only": true,
+    "sha256": "FABFDCC8B17072078AF057519414C94712CD2AB12E25546C56526C2516FC5481",
+    "target_va": "0x14000181f",
+    "target_rva": "0x181f",
+    "end_va": "0x140001ccc",
+    "target_bytes_sha256": "DEF6347035E05B8156A4AFEAE1B1F5A942AD0BE52CB1A618715D7B96E470917E",
+    "runtime_ranges": [
+      [
+        6175,
+        7372,
+        665830
+      ]
+    ],
+    "boundary": "PE RUNTIME_FUNCTION, including chained records",
+    "clean_sha256": null,
+    "warning": "STATIC ONLY / SEMANTICALLY INVALID PROTECTED PE / DO NOT EXECUTE AS THE PROTECTED PROGRAM",
+    "native_instructions": 381,
+    "native_blocks": 1,
+    "native_direct_reachable_instructions": 381,
+    "native_direct_reachable_blocks": 1,
+    "native_metric_method": "LLVM objdump linear runtime extent plus direct-branch recursive CFG. Indirect jump successors are not inferred.",
+    "lift_exit": 0,
+    "lift_seconds": 0.02002840000204742,
+    "lift_diagnostics": {
+      "total": 2,
+      "info": 2,
+      "warning": 0,
+      "error": 0
+    },
+    "lift_stats": {
+      "blocks_attempted": 1,
+      "blocks_completed": 1,
+      "blocks_unreachable": 0,
+      "instructions_lifted": 381,
+      "instructions_unsupported": 0
+    },
+    "all_ir_verified": true,
+    "all_stages_recompiled": true,
+    "raw_instructions": 1700,
+    "raw_blocks": 1,
+    "raw_O2_instructions": 101,
+    "raw_O2_blocks": 1,
+    "internal_instructions": 83,
+    "internal_blocks": 1,
+    "internal_O2_instructions": 74,
+    "internal_O2_blocks": 1,
+    "semantic_status": "STATIC ONLY / NOT EXECUTED",
+    "native_semantic_inputs": 0,
+    "native_mismatches": null,
+    "executed_stages": [],
+    "categories": [
+      "IR SIMPLIFICATION",
+      "RECOMPILABLE LIFT"
+    ],
+    "notes": "STATIC ONLY / SEMANTICALLY INVALID PROTECTED PE / DO NOT EXECUTE AS THE PROTECTED PROGRAM. Partial IR simplification, no runtime or correctness claim."
+  }
+]

@@ -1,0 +1,868 @@
+{
+  "id": "tigress-flatten-O0",
+  "method": "Independent retained-source/IR transition ground truth + PE dispatcher equality edges/table. State constants are only join keys; operation bodies, state definitions, branch conditions, and source regions are retained for review.",
+  "nodes": [
+    {
+      "state": 4,
+      "source_excerpt": " \n#line 249 \"E:/Workspace/seeing_through_obfuscation/src/showcase.c\"\n    value ^= 0x2222u;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 8UL;\n    }\n    break;\n",
+      "successors": [
+        8
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001081",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001081",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x140001084",
+              "size": 5,
+              "name": "XOR",
+              "asm": "XOR        EAX, 0x2222",
+              "bytes": "3522220000"
+            },
+            {
+              "va": "0x140001089",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x14000108c",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x8",
+              "bytes": "48c744241008000000"
+            },
+            {
+              "va": "0x140001095",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9b9010000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 14,
+      "source_excerpt": " ;\n    return (value ^ 0xCAFEBABEu);\n    break;\n",
+      "successors": [],
+      "returning": true,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000109a",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000109a",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x14000109d",
+              "size": 5,
+              "name": "XOR",
+              "asm": "XOR        EAX, 0xCAFEBABE",
+              "bytes": "35bebafeca"
+            },
+            {
+              "va": "0x1400010a2",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_1",
+              "bytes": "e9b1010000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001258"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 12,
+      "source_excerpt": " \n#line 247\n    value += 0x1111u;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 8UL;\n    }\n    break;\n",
+      "successors": [
+        8
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400010ac",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400010ac",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x1400010af",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x1111",
+              "bytes": "0511110000"
+            },
+            {
+              "va": "0x1400010b4",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x1400010b7",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x8",
+              "bytes": "48c744241008000000"
+            },
+            {
+              "va": "0x1400010c0",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e98e010000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 8,
+      "source_excerpt": " \n#line 252\n    i = (uint32_t )0;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 16UL;\n    }\n    break;\n",
+      "successors": [
+        16
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400010c5",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400010c5",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x4], 0x0",
+              "bytes": "c744240400000000"
+            },
+            {
+              "va": "0x1400010cd",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x10",
+              "bytes": "48c744241010000000"
+            },
+            {
+              "va": "0x1400010d6",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e978010000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 1,
+      "source_excerpt": " ;\n    switch (value & 3u) {\n    case 0u: \n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 19UL;\n    }\n    break;\n    case 1u: \n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 21UL;\n    }\n    break;\n    case 2u: \n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 10UL;\n    }\n    break;\n    default: \n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 2UL;\n    }\n    break;\n    }\n    break;\n",
+      "successors": [
+        2,
+        10,
+        19,
+        21
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400010db",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400010db",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x1400010de",
+              "size": 3,
+              "name": "AND",
+              "asm": "AND        EAX, 0x3",
+              "bytes": "83e003"
+            },
+            {
+              "va": "0x1400010e1",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x8], EAX",
+              "bytes": "89442408"
+            },
+            {
+              "va": "0x1400010e5",
+              "size": 5,
+              "name": "CMP",
+              "asm": "CMP        DWORD PTR [RSP + 0x8], 0x0",
+              "bytes": "837c240800"
+            },
+            {
+              "va": "0x1400010ea",
+              "size": 2,
+              "name": "JZ",
+              "asm": "JZ         loc_key_11",
+              "bytes": "7410"
+            }
+          ],
+          "machine_successors": [
+            "0x1400010ec",
+            "0x1400010fc"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 3,
+      "source_excerpt": " \n#line 254\n    value ^= 0x1000u + i;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 17UL;\n    }\n    break;\n",
+      "successors": [
+        17
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000112b",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000112b",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x4]",
+              "bytes": "8b442404"
+            },
+            {
+              "va": "0x14000112f",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x1000",
+              "bytes": "0500100000"
+            },
+            {
+              "va": "0x140001134",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        ECX, DWORD PTR [RSP]",
+              "bytes": "8b0c24"
+            },
+            {
+              "va": "0x140001137",
+              "size": 2,
+              "name": "XOR",
+              "asm": "XOR        ECX, EAX",
+              "bytes": "33c8"
+            },
+            {
+              "va": "0x140001139",
+              "size": 2,
+              "name": "MOV",
+              "asm": "MOV        EAX, ECX",
+              "bytes": "8bc1"
+            },
+            {
+              "va": "0x14000113b",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x14000113e",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x11",
+              "bytes": "48c744241011000000"
+            },
+            {
+              "va": "0x140001147",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e907010000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 16,
+      "source_excerpt": " ;\n    if (i < 4u) {\n      {\n      _TIG_FN_V0GS_1_demo_flattening_next = 20UL;\n      }\n    } else {\n      {\n      _TIG_FN_V0GS_1_demo_flattening_next = 1UL;\n      }\n    }\n    break;\n",
+      "successors": [
+        1,
+        20
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000114c",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000114c",
+              "size": 5,
+              "name": "CMP",
+              "asm": "CMP        DWORD PTR [RSP + 0x4], 0x4",
+              "bytes": "837c240404"
+            },
+            {
+              "va": "0x140001151",
+              "size": 2,
+              "name": "JAE",
+              "asm": "JAE        loc_key_21",
+              "bytes": "730b"
+            }
+          ],
+          "machine_successors": [
+            "0x140001153",
+            "0x14000115e"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 21,
+      "source_excerpt": " \n#line 266\n    value ^= 0x22222222u;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 14UL;\n    }\n    break;\n",
+      "successors": [
+        14
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000116c",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000116c",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x14000116f",
+              "size": 5,
+              "name": "XOR",
+              "asm": "XOR        EAX, 0x22222222",
+              "bytes": "3522222222"
+            },
+            {
+              "va": "0x140001174",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x140001177",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0xE",
+              "bytes": "48c74424100e000000"
+            },
+            {
+              "va": "0x140001180",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9ce000000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 9,
+      "source_excerpt": " \n#line 256\n    value += 0x0100u + i;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 17UL;\n    }\n    break;\n",
+      "successors": [
+        17
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001185",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001185",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x140001188",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        ECX, DWORD PTR [RSP + 0x4]",
+              "bytes": "8b4c2404"
+            },
+            {
+              "va": "0x14000118c",
+              "size": 7,
+              "name": "LEA",
+              "asm": "LEA        EAX, DWORD PTR [RAX + RCX + 0x100]",
+              "bytes": "8d840800010000"
+            },
+            {
+              "va": "0x140001193",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x140001196",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x11",
+              "bytes": "48c744241011000000"
+            },
+            {
+              "va": "0x14000119f",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9af000000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 13,
+      "source_excerpt": " \n#line 243\n    value = input;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 7UL;\n    }\n    break;\n",
+      "successors": [
+        7
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400011a4",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400011a4",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x30]",
+              "bytes": "8b442430"
+            },
+            {
+              "va": "0x1400011a8",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x1400011ab",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x7",
+              "bytes": "48c744241007000000"
+            },
+            {
+              "va": "0x1400011b4",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e99a000000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 19,
+      "source_excerpt": " \n#line 262\n    value += 0x11111111u;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 14UL;\n    }\n    break;\n",
+      "successors": [
+        14
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400011b9",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400011b9",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x1400011bc",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x11111111",
+              "bytes": "0511111111"
+            },
+            {
+              "va": "0x1400011c1",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x1400011c4",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0xE",
+              "bytes": "48c74424100e000000"
+            },
+            {
+              "va": "0x1400011cd",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e981000000"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 17,
+      "source_excerpt": " \n#line 252\n    i ++;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 16UL;\n    }\n    break;\n",
+      "successors": [
+        16
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400011d2",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400011d2",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x4]",
+              "bytes": "8b442404"
+            },
+            {
+              "va": "0x1400011d6",
+              "size": 2,
+              "name": "INC",
+              "asm": "INC        EAX",
+              "bytes": "ffc0"
+            },
+            {
+              "va": "0x1400011d8",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x4], EAX",
+              "bytes": "89442404"
+            },
+            {
+              "va": "0x1400011dc",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0x10",
+              "bytes": "48c744241010000000"
+            },
+            {
+              "va": "0x1400011e5",
+              "size": 2,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "eb6c"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 10,
+      "source_excerpt": " \n#line 270\n    value -= 0x3333u;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 14UL;\n    }\n    break;\n",
+      "successors": [
+        14
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400011e7",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400011e7",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x1400011ea",
+              "size": 5,
+              "name": "SUB",
+              "asm": "SUB        EAX, 0x3333",
+              "bytes": "2d33330000"
+            },
+            {
+              "va": "0x1400011ef",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x1400011f2",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0xE",
+              "bytes": "48c74424100e000000"
+            },
+            {
+              "va": "0x1400011fb",
+              "size": 2,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "eb56"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 7,
+      "source_excerpt": " ;\n    if ((value & 1u) != 0u) {\n      {\n      _TIG_FN_V0GS_1_demo_flattening_next = 12UL;\n      }\n    } else {\n      {\n      _TIG_FN_V0GS_1_demo_flattening_next = 4UL;\n      }\n    }\n    break;\n",
+      "successors": [
+        4,
+        12
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400011fd",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400011fd",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x140001200",
+              "size": 3,
+              "name": "AND",
+              "asm": "AND        EAX, 0x1",
+              "bytes": "83e001"
+            },
+            {
+              "va": "0x140001203",
+              "size": 2,
+              "name": "TEST",
+              "asm": "TEST       EAX, EAX",
+              "bytes": "85c0"
+            },
+            {
+              "va": "0x140001205",
+              "size": 2,
+              "name": "JZ",
+              "asm": "JZ         loc_key_31",
+              "bytes": "740b"
+            }
+          ],
+          "machine_successors": [
+            "0x140001212",
+            "0x140001207"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 2,
+      "source_excerpt": " \n#line 274\n    value += 0x4444u;\n    {\n    _TIG_FN_V0GS_1_demo_flattening_next = 14UL;\n    }\n    break;\n",
+      "successors": [
+        14
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000121d",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000121d",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x140001220",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x4444",
+              "bytes": "0544440000"
+            },
+            {
+              "va": "0x140001225",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP], EAX",
+              "bytes": "890424"
+            },
+            {
+              "va": "0x140001228",
+              "size": 9,
+              "name": "MOV",
+              "asm": "MOV        QWORD PTR [RSP + 0x10], 0xE",
+              "bytes": "48c74424100e000000"
+            },
+            {
+              "va": "0x140001231",
+              "size": 2,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "eb20"
+            }
+          ],
+          "machine_successors": [
+            "0x140001253"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 20,
+      "source_excerpt": " ;\n    if ((value & 0x100u) != 0u) {\n      {\n      _TIG_FN_V0GS_1_demo_flattening_next = 3UL;\n      }\n    } else {\n      {\n      _TIG_FN_V0GS_1_demo_flattening_next = 9UL;\n      }\n    }\n    break;\n    default: \n    break;\n    }\n  }\n}\n}\n",
+      "successors": [
+        3,
+        9
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001233",
+          "method": "Validated RVA jump table, source case label and source #line provenance",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001233",
+              "size": 3,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP]",
+              "bytes": "8b0424"
+            },
+            {
+              "va": "0x140001236",
+              "size": 5,
+              "name": "AND",
+              "asm": "AND        EAX, 0x100",
+              "bytes": "2500010000"
+            },
+            {
+              "va": "0x14000123b",
+              "size": 2,
+              "name": "TEST",
+              "asm": "TEST       EAX, EAX",
+              "bytes": "85c0"
+            },
+            {
+              "va": "0x14000123d",
+              "size": 2,
+              "name": "JZ",
+              "asm": "JZ         loc_key_36",
+              "bytes": "740b"
+            }
+          ],
+          "machine_successors": [
+            "0x14000124a",
+            "0x14000123f"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    }
+  ]
+}

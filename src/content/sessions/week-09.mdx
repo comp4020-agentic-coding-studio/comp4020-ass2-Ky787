@@ -24,6 +24,7 @@ import CodePair from "../../components/CodePair.astro";
 import EvidenceCode from "../../components/EvidenceCode.astro";
 import FileList from "../../components/FileList.astro";
 import LectureTable from "../../components/LectureTable.astro";
+import Pane from "../../components/Pane.astro";
 import Ledger from "../../components/Ledger.astro";
 import Numbers from "../../components/Numbers.astro";
 import Screenshot from "../../components/Screenshot.astro";
@@ -101,7 +102,7 @@ in the *stores*, distributed across the function, one per exit edge.
 Take the parity test — the first thing the source does. In the flattened
 build, it is three states:
 
-<div class="at-table-wrap sc-wide">
+<Pane title="Three states of the parity branch" note="derived from the flattened IR and the retained region map" class="sc-wide">
   <table>
     <thead>
       <tr>
@@ -133,7 +134,7 @@ build, it is three states:
       </tr>
     </tbody>
   </table>
-</div>
+</Pane>
 
 Read that table as a control-flow graph and the source is back: a two-way
 branch that reconverges. Nothing about the *machine code* draws those edges.
@@ -273,6 +274,7 @@ properly — that is the exercise, and A2 is the same skill under a deadline.
     { id: "assets/ir/s04_ollvm_fla/before_target.ll", what: "flattened IR: the dispatcher switch and the state stores" },
     { id: "assets/cfg/s04_ollvm_fla/course_comparison.svg", what: "clean, flattened and rewritten graphs in one figure, with counts" },
     { id: "assets/evidence/s04_ollvm_fla/before_cfg.txt", what: "the flattened function's blocks as text, with addresses" },
+    { id: "assets/evidence/s04_ollvm_fla/provenance_region_map.json", what: "ground truth: source region to state to PE address" },
     { id: "assets/evidence/s08_tigress_flatten/verified_jump_table.json", what: "the 21-entry table: state to address, and the encoding" },
     { id: "assets/ir/s08_tigress_flatten/exact_generated_flatten.c", what: "the generated C, where the state machine is visible as source" },
   ]}

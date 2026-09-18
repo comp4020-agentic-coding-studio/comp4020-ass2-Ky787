@@ -1,3 +1,22 @@
+# SLOP8445 — Seeing Through Obfuscated Code
+
+This repo is the Assignment 2 course site: **SLOP8445, Seeing Through
+Obfuscated Code** — obfuscation, assembly, and recovering program semantics,
+across twelve dated teaching weeks.
+
+`claude_course_handoff_v1/` is the curated research package the course teaches
+from and the technical source of truth for every claim on the site. The cited
+slice of it is republished byte-for-byte under `public/artefacts/` by
+`pnpm artefacts`, and `spec/evidence-integrity.test.ts` re-checks every copy
+against the original's SHA-256. See `CLAUDE.md` for the rules the work follows,
+`PROCESS.md` for how it was built, and `spec/README.md` for what each check
+protects.
+
+The rest of this file is the platform documentation that arrived with the
+starter, and it is still accurate.
+
+---
+
 # COMP4020 course-site template
 
 A starter template for course-website prototypes in **COMP4020 / COMP8020

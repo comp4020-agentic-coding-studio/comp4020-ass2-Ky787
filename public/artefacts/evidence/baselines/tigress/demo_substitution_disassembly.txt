@@ -1,0 +1,259 @@
+0000000140001060 <demo_substitution>:
+140001060: 89 4c 24 08                 	movl	%ecx, 0x8(%rsp)
+140001064: 48 83 ec 38                 	subq	$0x38, %rsp
+140001068: 48 8b 05 51 20 08 00        	movq	0x82051(%rip), %rax     # 0x1400830c0
+14000106f: 48 33 c4                    	xorq	%rsp, %rax
+140001072: 48 89 44 24 20              	movq	%rax, 0x20(%rsp)
+140001077: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+14000107b: 05 01 01 01 01              	addl	$0x1010101, %eax        # imm = 0x1010101
+140001080: b9 04 00 00 00              	movl	$0x4, %ecx
+140001085: 48 6b c9 00                 	imulq	$0x0, %rcx, %rcx
+140001089: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000108c: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+140001090: 05 02 02 02 02              	addl	$0x2020202, %eax        # imm = 0x2020202
+140001095: b9 04 00 00 00              	movl	$0x4, %ecx
+14000109a: 48 6b c9 01                 	imulq	$0x1, %rcx, %rcx
+14000109e: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400010a1: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+1400010a5: 05 03 03 03 03              	addl	$0x3030303, %eax        # imm = 0x3030303
+1400010aa: b9 04 00 00 00              	movl	$0x4, %ecx
+1400010af: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+1400010b3: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400010b6: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+1400010ba: 05 04 04 04 04              	addl	$0x4040404, %eax        # imm = 0x4040404
+1400010bf: b9 04 00 00 00              	movl	$0x4, %ecx
+1400010c4: 48 6b c9 03                 	imulq	$0x3, %rcx, %rcx
+1400010c8: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400010cb: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+1400010cf: 05 05 05 05 05              	addl	$0x5050505, %eax        # imm = 0x5050505
+1400010d4: b9 04 00 00 00              	movl	$0x4, %ecx
+1400010d9: 48 6b c9 04                 	imulq	$0x4, %rcx, %rcx
+1400010dd: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400010e0: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+1400010e4: 05 06 06 06 06              	addl	$0x6060606, %eax        # imm = 0x6060606
+1400010e9: b9 04 00 00 00              	movl	$0x4, %ecx
+1400010ee: 48 6b c9 05                 	imulq	$0x5, %rcx, %rcx
+1400010f2: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400010f5: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+1400010f9: 05 07 07 07 07              	addl	$0x7070707, %eax        # imm = 0x7070707
+1400010fe: b9 04 00 00 00              	movl	$0x4, %ecx
+140001103: 48 6b c9 06                 	imulq	$0x6, %rcx, %rcx
+140001107: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000110a: 8b 44 24 40                 	movl	0x40(%rsp), %eax
+14000110e: 05 08 08 08 08              	addl	$0x8080808, %eax        # imm = 0x8080808
+140001113: b9 04 00 00 00              	movl	$0x4, %ecx
+140001118: 48 6b c9 07                 	imulq	$0x7, %rcx, %rcx
+14000111c: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000111f: b8 04 00 00 00              	movl	$0x4, %eax
+140001124: 48 6b c0 00                 	imulq	$0x0, %rax, %rax
+140001128: 8b 04 04                    	movl	(%rsp,%rax), %eax
+14000112b: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+140001130: b9 04 00 00 00              	movl	$0x4, %ecx
+140001135: 48 6b c9 00                 	imulq	$0x0, %rcx, %rcx
+140001139: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000113c: b8 04 00 00 00              	movl	$0x4, %eax
+140001141: 48 6b c0 01                 	imulq	$0x1, %rax, %rax
+140001145: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001148: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+14000114d: b9 04 00 00 00              	movl	$0x4, %ecx
+140001152: 48 6b c9 01                 	imulq	$0x1, %rcx, %rcx
+140001156: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001159: b8 04 00 00 00              	movl	$0x4, %eax
+14000115e: 48 6b c0 02                 	imulq	$0x2, %rax, %rax
+140001162: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001165: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+14000116a: b9 04 00 00 00              	movl	$0x4, %ecx
+14000116f: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+140001173: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001176: b8 04 00 00 00              	movl	$0x4, %eax
+14000117b: 48 6b c0 03                 	imulq	$0x3, %rax, %rax
+14000117f: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001182: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+140001187: b9 04 00 00 00              	movl	$0x4, %ecx
+14000118c: 48 6b c9 03                 	imulq	$0x3, %rcx, %rcx
+140001190: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001193: b8 04 00 00 00              	movl	$0x4, %eax
+140001198: 48 6b c0 04                 	imulq	$0x4, %rax, %rax
+14000119c: 8b 04 04                    	movl	(%rsp,%rax), %eax
+14000119f: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400011a4: b9 04 00 00 00              	movl	$0x4, %ecx
+1400011a9: 48 6b c9 04                 	imulq	$0x4, %rcx, %rcx
+1400011ad: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400011b0: b8 04 00 00 00              	movl	$0x4, %eax
+1400011b5: 48 6b c0 05                 	imulq	$0x5, %rax, %rax
+1400011b9: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400011bc: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400011c1: b9 04 00 00 00              	movl	$0x4, %ecx
+1400011c6: 48 6b c9 05                 	imulq	$0x5, %rcx, %rcx
+1400011ca: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400011cd: b8 04 00 00 00              	movl	$0x4, %eax
+1400011d2: 48 6b c0 06                 	imulq	$0x6, %rax, %rax
+1400011d6: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400011d9: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400011de: b9 04 00 00 00              	movl	$0x4, %ecx
+1400011e3: 48 6b c9 06                 	imulq	$0x6, %rcx, %rcx
+1400011e7: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400011ea: b8 04 00 00 00              	movl	$0x4, %eax
+1400011ef: 48 6b c0 07                 	imulq	$0x7, %rax, %rax
+1400011f3: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400011f6: 35 78 56 34 12              	xorl	$0x12345678, %eax       # imm = 0x12345678
+1400011fb: b9 04 00 00 00              	movl	$0x4, %ecx
+140001200: 48 6b c9 07                 	imulq	$0x7, %rcx, %rcx
+140001204: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001207: b8 04 00 00 00              	movl	$0x4, %eax
+14000120c: 48 6b c0 00                 	imulq	$0x0, %rax, %rax
+140001210: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001213: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001218: b9 04 00 00 00              	movl	$0x4, %ecx
+14000121d: 48 6b c9 00                 	imulq	$0x0, %rcx, %rcx
+140001221: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001224: b8 04 00 00 00              	movl	$0x4, %eax
+140001229: 48 6b c0 01                 	imulq	$0x1, %rax, %rax
+14000122d: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001230: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001235: b9 04 00 00 00              	movl	$0x4, %ecx
+14000123a: 48 6b c9 01                 	imulq	$0x1, %rcx, %rcx
+14000123e: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001241: b8 04 00 00 00              	movl	$0x4, %eax
+140001246: 48 6b c0 02                 	imulq	$0x2, %rax, %rax
+14000124a: 8b 04 04                    	movl	(%rsp,%rax), %eax
+14000124d: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+140001252: b9 04 00 00 00              	movl	$0x4, %ecx
+140001257: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+14000125b: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000125e: b8 04 00 00 00              	movl	$0x4, %eax
+140001263: 48 6b c0 03                 	imulq	$0x3, %rax, %rax
+140001267: 8b 04 04                    	movl	(%rsp,%rax), %eax
+14000126a: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+14000126f: b9 04 00 00 00              	movl	$0x4, %ecx
+140001274: 48 6b c9 03                 	imulq	$0x3, %rcx, %rcx
+140001278: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000127b: b8 04 00 00 00              	movl	$0x4, %eax
+140001280: 48 6b c0 04                 	imulq	$0x4, %rax, %rax
+140001284: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001287: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+14000128c: b9 04 00 00 00              	movl	$0x4, %ecx
+140001291: 48 6b c9 04                 	imulq	$0x4, %rcx, %rcx
+140001295: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001298: b8 04 00 00 00              	movl	$0x4, %eax
+14000129d: 48 6b c0 05                 	imulq	$0x5, %rax, %rax
+1400012a1: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400012a4: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+1400012a9: b9 04 00 00 00              	movl	$0x4, %ecx
+1400012ae: 48 6b c9 05                 	imulq	$0x5, %rcx, %rcx
+1400012b2: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400012b5: b8 04 00 00 00              	movl	$0x4, %eax
+1400012ba: 48 6b c0 06                 	imulq	$0x6, %rax, %rax
+1400012be: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400012c1: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+1400012c6: b9 04 00 00 00              	movl	$0x4, %ecx
+1400012cb: 48 6b c9 06                 	imulq	$0x6, %rcx, %rcx
+1400012cf: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400012d2: b8 04 00 00 00              	movl	$0x4, %eax
+1400012d7: 48 6b c0 07                 	imulq	$0x7, %rax, %rax
+1400012db: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400012de: 05 37 13 00 00              	addl	$0x1337, %eax           # imm = 0x1337
+1400012e3: b9 04 00 00 00              	movl	$0x4, %ecx
+1400012e8: 48 6b c9 07                 	imulq	$0x7, %rcx, %rcx
+1400012ec: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400012ef: b8 04 00 00 00              	movl	$0x4, %eax
+1400012f4: 48 6b c0 00                 	imulq	$0x0, %rax, %rax
+1400012f8: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400012fb: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+140001300: b9 04 00 00 00              	movl	$0x4, %ecx
+140001305: 48 6b c9 00                 	imulq	$0x0, %rcx, %rcx
+140001309: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000130c: b8 04 00 00 00              	movl	$0x4, %eax
+140001311: 48 6b c0 01                 	imulq	$0x1, %rax, %rax
+140001315: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001318: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+14000131d: b9 04 00 00 00              	movl	$0x4, %ecx
+140001322: 48 6b c9 01                 	imulq	$0x1, %rcx, %rcx
+140001326: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001329: b8 04 00 00 00              	movl	$0x4, %eax
+14000132e: 48 6b c0 02                 	imulq	$0x2, %rax, %rax
+140001332: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001335: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+14000133a: b9 04 00 00 00              	movl	$0x4, %ecx
+14000133f: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+140001343: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001346: b8 04 00 00 00              	movl	$0x4, %eax
+14000134b: 48 6b c0 03                 	imulq	$0x3, %rax, %rax
+14000134f: 8b 04 04                    	movl	(%rsp,%rax), %eax
+140001352: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+140001357: b9 04 00 00 00              	movl	$0x4, %ecx
+14000135c: 48 6b c9 03                 	imulq	$0x3, %rcx, %rcx
+140001360: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001363: b8 04 00 00 00              	movl	$0x4, %eax
+140001368: 48 6b c0 04                 	imulq	$0x4, %rax, %rax
+14000136c: 8b 04 04                    	movl	(%rsp,%rax), %eax
+14000136f: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+140001374: b9 04 00 00 00              	movl	$0x4, %ecx
+140001379: 48 6b c9 04                 	imulq	$0x4, %rcx, %rcx
+14000137d: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+140001380: b8 04 00 00 00              	movl	$0x4, %eax
+140001385: 48 6b c0 05                 	imulq	$0x5, %rax, %rax
+140001389: 8b 04 04                    	movl	(%rsp,%rax), %eax
+14000138c: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+140001391: b9 04 00 00 00              	movl	$0x4, %ecx
+140001396: 48 6b c9 05                 	imulq	$0x5, %rcx, %rcx
+14000139a: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+14000139d: b8 04 00 00 00              	movl	$0x4, %eax
+1400013a2: 48 6b c0 06                 	imulq	$0x6, %rax, %rax
+1400013a6: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400013a9: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+1400013ae: b9 04 00 00 00              	movl	$0x4, %ecx
+1400013b3: 48 6b c9 06                 	imulq	$0x6, %rcx, %rcx
+1400013b7: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400013ba: b8 04 00 00 00              	movl	$0x4, %eax
+1400013bf: 48 6b c0 07                 	imulq	$0x7, %rax, %rax
+1400013c3: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400013c6: 2d 11 11 00 00              	subl	$0x1111, %eax           # imm = 0x1111
+1400013cb: b9 04 00 00 00              	movl	$0x4, %ecx
+1400013d0: 48 6b c9 07                 	imulq	$0x7, %rcx, %rcx
+1400013d4: 89 04 0c                    	movl	%eax, (%rsp,%rcx)
+1400013d7: b8 04 00 00 00              	movl	$0x4, %eax
+1400013dc: 48 6b c0 00                 	imulq	$0x0, %rax, %rax
+1400013e0: b9 04 00 00 00              	movl	$0x4, %ecx
+1400013e5: 48 6b c9 01                 	imulq	$0x1, %rcx, %rcx
+1400013e9: 8b 04 04                    	movl	(%rsp,%rax), %eax
+1400013ec: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+1400013ef: 33 c1                       	xorl	%ecx, %eax
+1400013f1: b9 04 00 00 00              	movl	$0x4, %ecx
+1400013f6: 48 6b c9 02                 	imulq	$0x2, %rcx, %rcx
+1400013fa: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+1400013fd: 33 c1                       	xorl	%ecx, %eax
+1400013ff: b9 04 00 00 00              	movl	$0x4, %ecx
+140001404: 48 6b c9 03                 	imulq	$0x3, %rcx, %rcx
+140001408: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+14000140b: 33 c1                       	xorl	%ecx, %eax
+14000140d: b9 04 00 00 00              	movl	$0x4, %ecx
+140001412: 48 6b c9 04                 	imulq	$0x4, %rcx, %rcx
+140001416: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+140001419: 33 c1                       	xorl	%ecx, %eax
+14000141b: b9 04 00 00 00              	movl	$0x4, %ecx
+140001420: 48 6b c9 05                 	imulq	$0x5, %rcx, %rcx
+140001424: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+140001427: 33 c1                       	xorl	%ecx, %eax
+140001429: b9 04 00 00 00              	movl	$0x4, %ecx
+14000142e: 48 6b c9 06                 	imulq	$0x6, %rcx, %rcx
+140001432: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+140001435: 33 c1                       	xorl	%ecx, %eax
+140001437: b9 04 00 00 00              	movl	$0x4, %ecx
+14000143c: 48 6b c9 07                 	imulq	$0x7, %rcx, %rcx
+140001440: 8b 0c 0c                    	movl	(%rsp,%rcx), %ecx
+140001443: 33 c1                       	xorl	%ecx, %eax
+140001445: 48 8b 4c 24 20              	movq	0x20(%rsp), %rcx
+14000144a: 48 33 cc                    	xorq	%rsp, %rcx
+14000144d: e8 6e 0b 00 00              	callq	0x140001fc0 <demo_combined+0x8c0>
+140001452: 48 83 c4 38                 	addq	$0x38, %rsp
+140001456: c3                          	retq
+140001457: cc                          	int3
+140001458: cc                          	int3
+140001459: cc                          	int3
+14000145a: cc                          	int3
+14000145b: cc                          	int3
+14000145c: cc                          	int3
+14000145d: cc                          	int3
+14000145e: cc                          	int3
+14000145f: cc                          	int3

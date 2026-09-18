@@ -46,7 +46,8 @@ Only one of these produces evidence.
 `%7` and `%15` cancel: `42·A − 42·A = 0`
 
 ```text
-−1128481603 + 1145324680 − 68  =  16843009  =  0x01010101
+−1128481603 + 1145324680 − 68
+  =  16843009  =  0x01010101
 ```
 
 Everything else is `1 · x`.
@@ -98,7 +99,8 @@ candidate ≢ expected →  did it recover?
 - **2** returned SMT UNKNOWN
 
 ```json
-"input_to_candidate":   { "result": "unknown", "reason_unknown": "timeout" },
+"input_to_candidate": { "result": "unknown",
+                        "reason_unknown": "timeout" },
 "candidate_to_expected": { "result": "unsat" },
 "classification": "SMT UNKNOWN",
 "recovered": false
