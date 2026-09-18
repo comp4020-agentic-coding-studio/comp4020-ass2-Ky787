@@ -1,12 +1,279 @@
 ---
 title: Bogus control flow and opaque predicates
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  Four branches the programmer wrote, twenty-two a tool injected, and the
+  question of how you tell them apart when you do not have the source.
 week: 6
 date: 2027-03-31
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Ground truth against graph
+question: Which of these twenty-six conditional branches did the programmer actually write?
+teachers:
+  - rasha-oyelaran
 spec:
-  - placeholder
+  - you can read a CFG and identify a loop, a reconverging branch and a dead edge
+  - you can read `demo_bogus_control_flow` in the source and list its four conditions
+  - you know why an `-O0` specimen is being used this week
+related:
+  - lectures/spine-02
+  - sessions/week-07
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CfgFigure from "../../components/CfgFigure.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Bogus control flow adds branches that never go both ways, guarded by
+predicates whose value the transformer knows and the analyst is supposed not
+to. It also clones real code, so that the branch has somewhere plausible to
+go.
+
+The target for this week and the next two was written to make the distinction
+checkable. It has exactly four conditions, each with a constant you will
+recognise on sight.
+
+<section class="sc-section">
+
+## The four genuine conditions
+
+<CodePair>
+  <EvidenceCode
+    id="assets/source/showcase.c"
+    lang="c"
+    title="showcase.c — demo_bogus_control_flow"
+    note="ground truth: four conditions"
+    fromMatch={/^    uint32_t result = 0x11111111u;$/}
+    take={21}
+    dedent={4}
+  />
+  <EvidenceCode
+    id="assets/evidence/s03_ollvm_bcf/clean_target_disassembly.txt"
+    lang="asm"
+    title="the clean build of it"
+    note="39 instructions, 11 blocks, four Jcc"
+    from={1}
+    to={16}
+  />
+  <span slot="caption">
+    An equality test against `0x1337`, a threshold against `0x12340000`, a
+    low-byte test against `0x37`, and a parity test. In the clean listing the
+    first one is `cmp dword ptr [rsp + 8], 0x1337` followed by `jne` — a direct
+    transliteration. Eleven blocks, fourteen edges, four conditional branches:
+    that is the whole function.
+  </span>
+</CodePair>
+
+Every one of those four is **path-dependent**: whether it is taken depends on
+the arguments, and both directions are reachable. Keep that word. An opaque
+predicate is not "a branch whose outcome depends on something obscure" — it is
+a branch one of whose directions is *unreachable*, by construction, and the
+whole of week 7 is about how you would show that.
+
+</section>
+
+<section class="sc-section">
+
+## What the pass adds
+
+<Specimen
+  title="This week's specimen"
+  fields={[
+    ["Tool", "OLLVM-16, <code>-mllvm -bcf</code>, <code>bcf_prob=100</code>, <code>bcf_loop=1</code>"],
+    ["Level", "<code>-O0</code> — and this is not an incidental detail, see below"],
+    ["Target", "<code>demo_bogus_control_flow</code> at RVA <code>0x1630</code>"],
+    ["Structure", "44 IR blocks / 69 edges; 59 machine blocks / 84 edges; 407 machine instructions"],
+  ]}
+  verdict={{ tone: "pass", text: "PASS", label: "retained runtime status" }}
+/>
+
+<EvidenceCode
+  id="assets/evidence/s03_ollvm_bcf/original_target_disassembly.txt"
+  lang="asm"
+  title="the same function, with bogus control flow"
+  note="the predicate, at the top of the function"
+  from={1}
+  to={22}
+  class="sc-wide"
+/>
+
+Read it instruction by instruction. Two `mov`s load a pair of writable globals
+through RIP-relative addressing — `0x14008901C` into `eax` and `0x140089018`
+into `ecx`. Then `edx = eax − 1`, `imul eax, edx`, `and eax, 1`, `cmp eax, 0`,
+`sete al`. That is the algebraic half: **g · (g − 1) & 1 == 0**. The other half
+is `cmp ecx, 0xa` / `setl cl` — a signed comparison of the second global
+against ten. `or al, cl`, `test al, 1`, and the `jne` at `0x1667` goes to the
+real code while the fall-through goes to a stub.
+
+So the gate is a disjunction, and its first disjunct is the interesting one:
+the product of two consecutive integers is even, so the low bit is zero, so the
+`sete` always sets `al` — which makes the whole `or` always true and the branch
+always taken.
+
+*Over the integers.* Over 32-bit values with wraparound you would want to
+check, and "I can see it is always true" is not a check. Week 7 stops looking
+at it and proves it instead.
+
+Note also why the globals are there at all. A predicate over initialised
+constants would fold away during compilation. A predicate over *writable*
+globals cannot be folded, because the compiler cannot prove that nothing
+writes them — which is the same fact the analysis in week 7 has to work
+around.
+
+</section>
+
+<section class="sc-section">
+
+## The graph
+
+<CfgFigure
+  id="assets/cfg/s03_ollvm_bcf/clean_entry_reachable.svg"
+  alt="A compact control-flow graph of eleven blocks with fourteen edges, showing four two-way branches that reconverge, and a single return."
+  convention="PE-byte audit: calls do not split blocks, ret is terminal"
+  crop={false}
+>
+  The clean target: eleven entry-reachable blocks. You can read the source off
+  this graph.
+</CfgFigure>
+
+<CfgFigure
+  id="assets/cfg/s03_ollvm_bcf/original_entry_reachable.svg"
+  alt="A much larger control-flow graph, roughly seventy blocks, with repeated diamond structures and many edges, most leading into duplicated regions."
+  convention="same audit convention — 70 entry-reachable blocks"
+>
+  The same function after the pass: seventy entry-reachable blocks. The
+  repeated diamond shapes are the injected gates, each with a clone of real
+  code on one side.
+</CfgFigure>
+
+<Screenshot
+  id="assets/ida/demo_bogus_control3_flow_clean_to_bcf_2.jpg"
+  alt="A disassembler diff close-up. The left pane shows comparisons against 1337h and 12340000h and a low-byte test. The right pane contains those same comparisons interleaved with RIP-relative global loads, an imul, test instructions and duplicated routes."
+>
+  Both panes, close up. The genuine comparisons — `1337h`, `12340000h`, the
+  low-byte test — are still there on the right, among the injected predicate
+  machinery. That is what makes the target usable: ground truth is visible
+  inside the treated binary.
+</Screenshot>
+
+<Numbers
+  items={[
+    { value: "26", label: "conditional branches in the treated target", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "22", label: "of them injected opaque gates", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "4", label: "genuine source conditions, all two-sided", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "11 → 70", label: "entry-reachable blocks, clean to treated", sourceId: "assets/tables/research/selected_metrics.md" },
+  ]}
+/>
+
+</section>
+
+<section class="sc-section">
+
+## Four implementations, four different amounts of nothing
+
+<LectureTable id="04_opaque_optimization" class="sc-wide" />
+
+One row on that table needs unpacking, because it is the week's most useful
+correction.
+
+One implementation's `-O0` IR has the *same* 44-block / 69-edge topology as the
+specimen above. Its machine code has 15 blocks and 18 edges. The reason is
+that most of its injected guards are literal `icmp eq i32 1, 1`, and the
+backend folds those without being asked. The four conditional jumps that
+survive into its machine code are **the four genuine source conditions**.
+
+So when the week 7 workflow runs on that binary and proves zero injected gates,
+that is not a failure of the workflow. There were no injected gates left in the
+machine code to prove anything about. Crediting those four surviving branches
+as "removed injected predicates" would invert the result completely — and it is
+exactly the kind of mistake that a workflow reporting only successes would
+make.
+
+</section>
+
+<section class="sc-section">
+
+## A different mechanism: state, not algebra
+
+One implementation in this corpus builds its opaque conditions from
+**runtime-initialised program state** rather than from an algebraic identity —
+source-level guards over globals set up at start-up.
+
+<CodePair>
+  <CfgFigure
+    id="assets/cfg/support_tigress_opaque/tigress-add_opaque-O0_before.svg"
+    alt="A small control-flow graph with several conditional branches, before symbolic simplification under a captured initialised state."
+    convention="symbolic projection, not a patched binary"
+    crop={false}
+  >
+    Before: the target as recovered, with its guards intact.
+  </CfgFigure>
+  <CfgFigure
+    id="assets/cfg/support_tigress_opaque/tigress-add_opaque-O0_after.svg"
+    alt="The same graph after symbolic simplification under a captured initialised state, with fewer branches remaining."
+    convention="symbolic projection, not a patched binary"
+    crop={false}
+  >
+    After: the same graph, simplified under one captured initialised state.
+  </CfgFigure>
+  <span slot="caption">
+    Both are symbolic *projections* — a read-only graph, not a rewritten
+    executable. The difference between them is not a technique, it is an
+    assumption: the right-hand graph assumes the state that was captured at
+    run time. Next week that assumption turns zero proofs into three.
+  </span>
+</CodePair>
+
+</section>
+
+<Ledger
+  establishes={[
+    "The treated target has 26 conditional branches: 22 injected gates and the 4 genuine source conditions, with source and IR provenance separating them.",
+    "Entry-reachable blocks go from 11 to 70 under the PE-byte audit convention, with the injected predicates computed over writable globals the compiler cannot fold.",
+    "In one implementation, most injected guards are literal <code>icmp eq i32 1, 1</code> and are folded by the backend at <code>-O0</code>; its four surviving machine-level Jccs are the genuine conditions.",
+  ]}
+  withholds={[
+    "That any of the 22 injected branches is one-sided. Nothing this week proves that — the provenance says they were injected, which is a different claim.",
+    "That the four genuine branches are not obfuscated. They are the same four conditions, reached through more machinery.",
+    "That 70 blocks is comparable with a block count from the unflattening study. Different convention, different numbers.",
+    "That these structures exist above <code>-O0</code>. For two of the four implementations they do not.",
+  ]}
+  sources={[
+    { label: "Branch classification:", id: "assets/reports/opaque_predicate_triton.md" },
+    { label: "Structure and folding:", id: "assets/reports/optimization_survival.md" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: separate the genuine from the injected
+
+Working from the clean and treated disassembly of the same function:
+
+1. Find all four genuine conditions in the treated listing. Give the address
+   of each. Say what you used to identify them.
+2. Find one injected gate. Write out the predicate it computes, as algebra,
+   from the instructions.
+3. Now argue that your predicate is always false — and then find the hole in
+   your own argument. The hole is the reason week 7 exists.
+4. Read the family results file and find the lane where zero gates were
+   proved. Write one sentence explaining why that is not a failure of the
+   prover, citing the block counts.
+
+<FileList
+  items={[
+    { id: "assets/source/showcase.c", what: "ground truth: the four conditions, in C" },
+    { id: "assets/evidence/s03_ollvm_bcf/clean_target_disassembly.txt", what: "the clean target — 39 instructions" },
+    { id: "assets/evidence/s03_ollvm_bcf/original_target_disassembly.txt", what: "the treated target — 407 instructions" },
+    { id: "assets/ir/s03_ollvm_bcf/target_function.ll", what: "post-pass IR, where the clone regions are visible as IR blocks" },
+    { id: "assets/evidence/triton_summaries/family_results.json", what: "branch counts per lane, injected against genuine" },
+    { id: "assets/reports/opaque_predicate_triton.md", what: "the study, including the folding correction" },
+  ]}
+/>
+
+</section>

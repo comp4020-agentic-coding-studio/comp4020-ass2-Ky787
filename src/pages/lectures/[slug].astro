@@ -28,7 +28,7 @@ const covered = lecture.data.covers
   title={lecture.data.title}
   documentTitle={`${lecture.data.title} — SLOP8445 spine lecture ${lecture.data.block}`}
   kicker={`Spine lecture ${lecture.data.block}${block ? ` · Opens Block ${block.numeral} ${block.title}` : ""}`}
-  description={lecture.data.description}
+  description={lecture.data.description ?? undefined}
 >
   <p class="sc-weekhead__meta">
     <span class="sc-label">Delivered {formatCourseDate(lecture.data.date)}, week {lecture.data.week}</span>

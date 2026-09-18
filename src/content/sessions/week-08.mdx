@@ -1,12 +1,282 @@
 ---
 title: From proof to a working binary
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  Six bytes, of which four differ. The audit that reconciles seventy blocks
+  with thirty-seven. And 4,591 test triples, which is a great many inputs and
+  not all of them.
 week: 8
 date: 2027-04-28
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Byte-level rewrite
+question: A solver proved an edge impossible. What has to happen next, and who has to do it?
+teachers:
+  - rasha-oyelaran
+  - tomas-wrenn
 spec:
-  - placeholder
+  - you can compute an x86-64 relative branch displacement by hand
+  - you have week 7's two obligations written out for the gate at RVA 0x1667
+  - you can say what an RVA is and how it differs from a virtual address
+related:
+  - lectures/spine-03
+  - sessions/week-07
+  - assessments/a2-recover-the-semantics
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import BytePatch from "../../components/BytePatch.astro";
+import CfgFigure from "../../components/CfgFigure.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+The solver's job finished last week. Nothing it did changed a file.
+
+What happens now is a different program: a patch consumer that reads the frozen
+proofs, checks the bytes it is about to touch against what it expects to find,
+and writes a new executable. It ran no solver queries of its own — the
+recorded count is zero — and that separation is the reason this week's result
+can be stated cleanly.
+
+<section class="sc-section">
+
+## Six bytes
+
+<Specimen
+  title="The patch"
+  fields={[
+    ["Site", "RVA <code>0x1667</code>, inside <code>demo_bogus_control_flow</code>"],
+    ["Instruction", "<code>jne 0x140001672</code> — the gate proved one-sided in week 7"],
+    ["Input", "SHA-256 <code>3ED20E83…05285F</code>, checked before writing"],
+    ["Output", "SHA-256 <code>15BF8731…A906A</code>"],
+    ["Solver runs during rewriting", "zero"],
+  ]}
+  verdict={{ tone: "pass", text: "PASS", label: "retained validation status" }}
+/>
+
+<BytePatch
+  rows={[
+    { label: "before", bytes: ["0F", "85", "05", "00", "00", "00"], asm: "jne 0x140001672" },
+    { label: "after", bytes: ["E9", "06", "00", "00", "00", "90"], changed: [0, 1, 2, 5], asm: "jmp 0x140001672 ; nop" },
+  ]}
+/>
+
+Work out the displacement, because it is the whole trick. `0F 85` is a
+two-byte opcode for `jne rel32`, so the instruction is six bytes long and the
+next instruction begins at `0x166D`; a displacement of `0x05` reaches
+`0x1672`. `E9` is a one-byte opcode for `jmp rel32`, so *that* instruction is
+five bytes long and the next one begins at `0x166C`; to reach the same
+`0x1672` the displacement has to be `0x06`.
+
+Same destination, different number, because the length of the instruction
+changed. The sixth byte would otherwise be a stray tail, so it is filled with
+`0x90` — a one-byte `nop` — which keeps every subsequent byte in the file at
+the address it was at before.
+
+That is why four bytes differ out of six, and it is also the arithmetic behind
+the file-level number:
+
+<Numbers
+  items={[
+    { value: "22", label: "gates patched, from 22 proved and 22 eligible", sourceId: "assets/evidence/s03_ollvm_bcf/validation.json" },
+    { value: "88", label: "bytes changed in the whole file — 22 gates × 4 differing bytes", sourceId: "assets/evidence/s03_ollvm_bcf/metadata_audit.json" },
+    { value: "132", label: "bytes in the approved patch window — 22 × 6", sourceId: "assets/evidence/s03_ollvm_bcf/metadata_audit.json" },
+    { value: "571,904", label: "bytes in the file, every other one of them identical", sourceId: "assets/evidence/s03_ollvm_bcf/metadata_audit.json" },
+  ]}
+/>
+
+</section>
+
+<section class="sc-section">
+
+## What the rewrite did not touch
+
+<EvidenceCode
+  id="assets/evidence/s03_ollvm_bcf/metadata_audit.json"
+  lang="json"
+  title="metadata_audit.json — the layout audit"
+  note="every claim here is a checked file-level fact"
+  from={1}
+  to={13}
+  class="sc-wide"
+/>
+
+Headers identical. Sections identical. Imports, exports, relocations, exception
+and debug directories identical. The target's entry and unwind ranges
+identical. No byte outside the approved window changed.
+
+That is a *layout-preserving* rewrite, and it is a design choice with a cost.
+Nothing was deleted, nothing moved, and every unreachable instruction is still
+physically present in the file. The alternative — recompacting the function —
+would produce a smaller binary and would invalidate every address in it.
+
+Read the last two fields of that record with care:
+
+:::warning[Two things the audit explicitly does not claim]
+`"pdb": "Not copied. Retained original RSDS debug reference is provenance
+only, not a valid changed-instruction map."` The original debug identifier can
+still match after patching, so a debugger will happily load symbols whose
+instruction mappings inside the rewritten function are now wrong. Decline them.
+
+`"exception_unwind_correctness_tested": false`. The unwind ranges are
+byte-identical, and nobody tested whether an exception unwinding through a
+patched frame behaves correctly. Ordinary execution is not an unwind guarantee.
+:::
+
+</section>
+
+<section class="sc-section">
+
+## Seventy blocks, thirty-seven reachable, seventy still there
+
+<CodePair>
+  <CfgFigure
+    id="assets/cfg/s03_ollvm_bcf/rewritten_entry_reachable.svg"
+    alt="A control-flow graph of about thirty-seven blocks, much smaller than the original, with the repeated diamond structures replaced by straight-through paths."
+    convention="entry-reachable projection, 37 blocks"
+  >
+    What is reachable from the entry, after the patches.
+  </CfgFigure>
+  <CfgFigure
+    id="assets/cfg/s03_ollvm_bcf/rewritten_all_static.svg"
+    alt="A control-flow graph of the same rewritten function decoding every instruction in its extent, including unreachable blocks, which is visibly larger and contains disconnected fragments."
+    convention="all-static decode of the same bytes"
+  >
+    Every instruction still in the file, reachable or not.
+  </CfgFigure>
+  <span slot="caption">
+    The same binary, two projections. The left graph is what execution can
+    reach; the right graph is what the bytes contain. Both are true, and a
+    report that shows only the left one while calling the file "cleaned" is
+    misleading about the file.
+  </span>
+</CodePair>
+
+<EvidenceCode
+  id="assets/evidence/s03_ollvm_bcf/projection_notes.json"
+  lang="json"
+  title="projection_notes.json — what became unreachable, and what it was"
+  note="a read-only graph projection; no block was deleted"
+  from={1}
+  to={10}
+  class="sc-wide"
+/>
+
+Thirty-three blocks became unreachable: eleven bogus clones and twenty-two jump
+stubs. Note the two zeroes. Zero *predicate computation* blocks became
+unreachable — the arithmetic that computes each opaque condition still runs on
+every call, because the patched jump sits after it. And zero *genuine semantic*
+blocks became unreachable, which is the check that the rewrite did not remove
+program logic.
+
+<LectureTable id="08_bcf_proof_to_patch" class="sc-wide" />
+
+<Screenshot
+  id="assets/ida/demo_bogus_control3_flow_bcf_to_rewritten_2.jpg"
+  alt="A disassembler diff close-up. On the left, conditional JNZ instructions guard duplicated regions. On the right, the same positions hold unconditional JMP instructions while the surrounding predicate computations and stub blocks remain present."
+>
+  The conditional gates have become unconditional transfers. The predicate
+  arithmetic above them and the stub blocks below them are still there. This is
+  a partial rewrite, and calling it anything else would be wrong.
+</Screenshot>
+
+</section>
+
+<section class="sc-section">
+
+## And then it was tested
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/s03_ollvm_bcf/validation.json"
+    lang="json"
+    title="validation.json — the differential test record"
+    note="4,591 triples, 0 mismatches"
+    from={1}
+    to={8}
+  />
+  <EvidenceCode
+    id="assets/evidence/s03_ollvm_bcf/canonical_rewritten_stdout.txt"
+    lang="text"
+    title="what the rewritten executable prints"
+    note="the six canonical answers, unchanged"
+  />
+  <span slot="caption">
+    A triple runs the clean, original and rewritten builds on the same input
+    and compares all three. 4,591 of them, 13,773 native function calls, zero
+    mismatches — including all four genuine conditions exercised both ways and
+    all twelve feasible joint combinations of them.
+  </span>
+</CodePair>
+
+The same workflow, unmodified, on the second implementation: sixteen gates
+proved, sixteen patched, sixty-four bytes changed, reachable blocks 54 to 30,
+4,598 triples, zero mismatches. That transfer is the strongest generic result
+in the course, and it is worth being exact about what made it transfer — the
+proof was about instruction semantics and the patch was about bytes. Neither
+step recognised an obfuscator.
+
+:::info[9,189 inputs is not all inputs]
+Together the two families cover 9,189 differential triples with no mismatch.
+That is strong evidence and it is evidence of a specific kind: the program
+agreed with its comparators on the inputs that were run. It is not a proof of
+equivalence, the solver proofs were per-branch and not whole-program, and the
+unwind behaviour was never tested at all.
+:::
+
+</section>
+
+<Ledger
+  establishes={[
+    "Twenty-two proved gates were rewritten as <code>jmp</code> plus a padding <code>nop</code>, changing 88 bytes inside a 132-byte approved window and leaving every other byte of a 571,904-byte file identical.",
+    "Entry-reachable blocks fell from 70 to 37; the 33 that became unreachable were 11 bogus clones and 22 jump stubs, and no genuine semantic block was among them.",
+    "The rewritten executables passed their canonical checks and 9,189 clean/original/rewrite differential triples across two implementations with zero mismatches.",
+    "The rewriting step ran zero solver queries of its own: proof generation and patch application are separate programs with separate preconditions.",
+  ]}
+  withholds={[
+    "That the binary was cleaned. Every instruction is still in it, and the predicate arithmetic still executes on every call.",
+    "That 9,189 passing triples prove equivalence. They are the inputs that were run.",
+    "That exception and unwind behaviour is correct through a patched frame. The audit records that this was not tested.",
+    "That the original PDB can be trusted on the rewritten function. The identifier survives; the instruction mappings do not.",
+  ]}
+  sources={[
+    { label: "Patch and validation:", id: "assets/reports/opaque_predicate_rewrite.md" },
+    { label: "Reachability convention:", id: "assets/evidence/s03_ollvm_bcf/projection_notes.json" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: justify a patch you did not write
+
+1. At RVA `0x1667`, derive both displacements from first principles and explain
+   why they differ. Then explain why the `nop` is necessary rather than tidy.
+2. Using the projection notes, reconcile three numbers: 70 physical blocks, 37
+   reachable blocks, 33 unreachable blocks. Say what each one is counting.
+3. Find the two zeroes in the classification counts and say what each one
+   rules out.
+4. Separate the evidence: which part of this week's result is a solver proof,
+   which part is a byte-level argument, and which part is a test? For each,
+   name the file.
+5. Then the A2 rehearsal: write a one-paragraph analyst's summary of this
+   week's result that is *too strong*, and underline the words doing the
+   overreaching.
+
+No new patching. The point is the justification, not the edit.
+
+<FileList
+  items={[
+    { id: "assets/evidence/s03_ollvm_bcf/validation.json", what: "eligible, patched, triples, mismatches, hashes, genuine-branch coverage" },
+    { id: "assets/evidence/s03_ollvm_bcf/metadata_audit.json", what: "the file-level audit: what changed and what did not" },
+    { id: "assets/evidence/s03_ollvm_bcf/projection_notes.json", what: "the reachability convention and the classification of what died" },
+    { id: "assets/evidence/s03_ollvm_bcf/rewritten_target_disassembly.txt", what: "the rewritten function, instruction by instruction" },
+    { id: "assets/evidence/s03_ollvm_bcf/original_target_disassembly.txt", what: "the same function before the patches, for the diff" },
+    { id: "assets/evidence/s07_polaris_bcf/validation.json", what: "the second implementation: 16 gates, 4,598 triples" },
+    { id: "assets/reports/opaque_predicate_rewrite.md", what: "the rewriting study, including the preconditions the consumer checks" },
+  ]}
+/>
+
+</section>

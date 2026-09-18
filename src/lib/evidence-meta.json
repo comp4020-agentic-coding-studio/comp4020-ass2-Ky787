@@ -349,10 +349,40 @@
     "bytes": 141,
     "lines": 8
   },
+  "assets/evidence/s05_polaris_fla_wrong/clean_cfg.txt": {
+    "sha256": "0552945363188DFE3E4CE7BE3B433F41F7D4DEFDFE8106C1CA4B94518614601F",
+    "bytes": 3556,
+    "lines": 109
+  },
+  "assets/evidence/s05_polaris_fla_wrong/before_cfg.txt": {
+    "sha256": "2EEBEE372384455429994B0E263CAC37D24F33BC6F53D88720C73663C36F21FA",
+    "bytes": 8787,
+    "lines": 276
+  },
   "assets/evidence/s05_polaris_fla_wrong/after_cfg.txt": {
     "sha256": "7F892A43FDE2B097216E819CAC35BFCC7FC9268832AE6E101CB9275E2CA3E8B7",
     "bytes": 3894,
     "lines": 101
+  },
+  "assets/evidence/s08_tigress_flatten/clean_cfg.txt": {
+    "sha256": "7FA8D9CE22602668958F8EFBF13EACDEEAF51E226FFDA0698DD9AEF29D959328",
+    "bytes": 3388,
+    "lines": 104
+  },
+  "assets/evidence/support_hikari_fla/before_cfg.txt": {
+    "sha256": "5BDF2868EB62F014EE3D3E0D812821EBCFEBD8E1C3721F6C30DC2FA181E45D4A",
+    "bytes": 10834,
+    "lines": 333
+  },
+  "assets/evidence/support_hikari_fla/after_cfg.txt": {
+    "sha256": "E6A8286B0416F6AFFE29FB7A0E99C8963D13AC1B663A7ACB910B8F22CCC62245",
+    "bytes": 5751,
+    "lines": 157
+  },
+  "assets/evidence/support_hikari_fla/output_runtime_stdout.txt": {
+    "sha256": "209B18A98213AFD9A1C39D354BBA69608A352441BA9F4B116327593B12E22287",
+    "bytes": 141,
+    "lines": 8
   },
   "assets/evidence/s05_polaris_fla_wrong/stock_result.json": {
     "sha256": "C8A7268D20B1223B3F8A6EDB8C651DE1341FCACE6D1520D76DA0FB08C71654A0",

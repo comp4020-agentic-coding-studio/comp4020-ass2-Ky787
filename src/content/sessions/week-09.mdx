@@ -1,12 +1,281 @@
 ---
 title: Control-flow flattening
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  The dispatcher, the state variable, and why the thing being hidden here is
+  not a value but a relationship — which block runs next.
 week: 9
 date: 2027-05-05
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: State-machine trace
+question: If every block returns to the same dispatcher, where did the program's structure go?
+teachers:
+  - tomas-wrenn
 spec:
-  - placeholder
+  - you can identify a loop and a switch in a CFG with no source to hand
+  - you can read `demo_flattening` in the source and name its three regions
+  - you have week 8's distinction between reachable and physical blocks written down
+related:
+  - lectures/spine-03
+  - sessions/week-10
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CfgFigure from "../../components/CfgFigure.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Everything so far hid a *value* — what an expression computes, or which way a
+branch goes. Flattening hides something else: the edges. Every semantic block
+still exists and still does its job, and no block any longer says which block
+comes after it. That fact is now held in a number.
+
+<section class="sc-section">
+
+## What is being flattened
+
+<EvidenceCode
+  id="assets/source/showcase.c"
+  lang="c"
+  title="showcase.c — demo_flattening"
+  note="three regions: a branch, a loop, a four-way switch"
+  fromMatch={/^    if \(\(value & 1u\) != 0u\) \{$/}
+  take={30}
+  dedent={4}
+  class="sc-wide"
+/>
+
+An if/else on parity. A four-iteration loop with a condition inside it. A
+four-way `switch` on the low two bits whose cases all reconverge. Then a final
+XOR against `0xCAFEBABE`. The clean build of that is 21 blocks and 26 edges,
+and you could sketch it from the source.
+
+</section>
+
+<section class="sc-section">
+
+## The dispatcher
+
+<Specimen
+  title="This week's specimen"
+  fields={[
+    ["Tool", "OLLVM-16, <code>-mllvm -fla</code>, <code>-O0</code>"],
+    ["Target", "<code>demo_flattening</code>, entry <code>0x140001440</code>"],
+    ["State variable", "a DWORD at <code>[RSP+8]</code>"],
+    ["Dispatcher", "<code>0x140001463</code>; predispatcher <code>0x1400017D2</code>"],
+    ["Structure", "23 IR blocks / 41 edges; 58 machine blocks / 76 edges"],
+  ]}
+  verdict={{ tone: "pass", text: "PASS", label: "retained runtime status" }}
+/>
+
+<EvidenceCode
+  id="assets/ir/s04_ollvm_fla/before_target.ll"
+  lang="llvm"
+  title="before_target.ll — the flattened IR"
+  note="the switch, and the states it selects between"
+  fromMatch={/switch i32/}
+  take={16}
+  class="sc-wide"
+/>
+
+There is the whole mechanism, in one construct. A `switch` on the state
+variable, with a case per semantic region and an apparently arbitrary 32-bit
+constant per case. Each semantic block ends by *storing a new state* and
+jumping back to the dispatcher instead of jumping to its successor.
+
+The constants are the interesting part. They are randomised, so they carry no
+ordering information: state `0x51837FD6` does not come "before" state
+`0x03AD94FD` in any sense the number reveals. The successor relation now lives
+in the *stores*, distributed across the function, one per exit edge.
+
+</section>
+
+<section class="sc-section">
+
+## Following one source branch through it
+
+Take the parity test — the first thing the source does. In the flattened
+build, it is three states:
+
+<div class="at-table-wrap sc-wide">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">State</th>
+        <th scope="col">What the region does</th>
+        <th scope="col">Which state it stores next</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><code>0x51837FD6</code></th>
+        <td>tests the low bit of <code>value</code></td>
+        <td><code>0xA0385473</code> or <code>0x2416DE21</code></td>
+      </tr>
+      <tr>
+        <th scope="row"><code>0xA0385473</code></th>
+        <td><code>value += 0x1111</code> — the odd branch</td>
+        <td><code>0x03AD94FD</code></td>
+      </tr>
+      <tr>
+        <th scope="row"><code>0x2416DE21</code></th>
+        <td><code>value ^= 0x2222</code> — the even branch</td>
+        <td><code>0x03AD94FD</code></td>
+      </tr>
+      <tr>
+        <th scope="row"><code>0x03AD94FD</code></th>
+        <td>initialises the loop counter</td>
+        <td>…</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Read that table as a control-flow graph and the source is back: a two-way
+branch that reconverges. Nothing about the *machine code* draws those edges.
+They are consequences of which constant gets stored, which is why recovering
+them is a semantic problem — you have to know what the state variable holds
+when the dispatcher is reached, which means reasoning about the computation,
+not matching a pattern.
+
+<CodePair>
+  <CfgFigure
+    id="assets/cfg/s04_ollvm_fla/clean_cfg.svg"
+    alt="A compact control-flow graph of twenty-one blocks showing a branch that reconverges, a loop with an internal condition, and a four-way switch whose arms rejoin."
+    convention="Miasm recursive CFG — calls split blocks"
+  >
+    Clean: 21 blocks, 26 edges, 68 instructions. The source, visible.
+  </CfgFigure>
+  <CfgFigure
+    id="assets/cfg/s04_ollvm_fla/before_cfg.svg"
+    alt="A wide control-flow graph dominated by a long ladder of comparison blocks at the top, with many short blocks below it, each returning by a long edge back to the top of the ladder."
+    convention="same convention — 60 blocks"
+  >
+    Flattened: 60 blocks. The ladder at the top is the dispatcher; every short
+    block below it returns there.
+  </CfgFigure>
+  <span slot="caption">
+    Both counted the same way, which is the only reason they can be put beside
+    each other. These are Miasm recursive graphs and they split blocks at
+    calls, so neither number is comparable with week 8's audit figures.
+  </span>
+</CodePair>
+
+:::info[No indirect jump required]
+In this build the dispatcher is a ladder of comparisons and direct branches,
+not a jump table. The LLVM backend lowered a sparse `switch` over randomised
+32-bit constants that way. A flattened function with no indirect jump is still
+flattened — the state machine is in the state variable, not in the opcode.
+:::
+
+<Screenshot
+  id="assets/ida/demo_flattening4_clean_to_ollvm_fla_1.jpg"
+  alt="Two function graphs side by side. The left is a compact structured graph. The right is very wide, with a long horizontal chain of small comparison blocks and many edges returning to its start."
+  crop
+>
+  The same pair as graphs. The shape on the right — a wide comparison ladder
+  with return edges to its head — is what flattening looks like from across the
+  room.
+</Screenshot>
+
+</section>
+
+<section class="sc-section">
+
+## A different dispatcher, in the same corpus
+
+A source-level flattener produces the same idea with completely different
+machine code:
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/s08_tigress_flatten/verified_jump_table.json"
+    lang="json"
+    title="verified_jump_table.json"
+    note="21 entries, indexed by state − 1"
+    from={1}
+    to={10}
+  />
+  <CfgFigure
+    id="assets/cfg/s08_tigress_flatten/reference_complete_cfg.svg"
+    alt="A control-flow graph of thirty-eight blocks fanning out from a single indirect-jump block, with most blocks returning to it."
+    convention="jump-table-aware reference — 38 blocks"
+  >
+    The table-aware reference graph: 38 blocks, all reached through one
+    indirect jump.
+  </CfgFigure>
+  <span slot="caption">
+    Here the state lives in a QWORD at `[RSP+0x10]`, the dispatcher is a real
+    indirect jump at `0x14000107F`, and the targets come from a 21-entry table
+    of RVAs at `0x1260` indexed by `state − 1`. Same concept, different
+    lowering — and, as next week shows, a completely different outcome when a
+    recovery tool meets it.
+  </span>
+</CodePair>
+
+<Numbers
+  items={[
+    { value: "21 → 60", label: "blocks, clean to flattened, in the LLVM-family specimen", sourceId: "assets/tables/research/selected_metrics.md" },
+    { value: "25", label: "semantic successor pairs in the ground-truth region map for that function", sourceId: "assets/evidence/s04_ollvm_fla/semantic_edge_score.json" },
+    { value: "38", label: "blocks in the jump-table-aware reference for the source-level flattener", sourceId: "assets/evidence/s08_tigress_flatten/reference_complete_cfg.txt" },
+    { value: "21", label: "jump-table entries, indexed by state − 1", sourceId: "assets/evidence/s08_tigress_flatten/verified_jump_table.json" },
+  ]}
+/>
+
+<LectureTable id="05_flattening_optimization" class="sc-wide" />
+
+</section>
+
+<Ledger
+  establishes={[
+    "In the LLVM-family specimen, semantic blocks are mediated by a <code>switch</code> on a stack DWORD with randomised 32-bit state constants, and the clean function's 21 blocks become 60 under the Miasm convention.",
+    "One source branch is recoverable as three states with a named successor each, and the successor relation is carried by the state stores rather than by any control-flow edge.",
+    "The source-level flattener uses a different mechanism entirely: a QWORD state, a real indirect jump, and a verified 21-entry RVA table indexed by state − 1.",
+    "Flattening survived every optimisation level tested in all four implementations, with the native dispatch form changing between a comparison network and a jump table.",
+  ]}
+  withholds={[
+    "That the 60-block figure is comparable with week 8's numbers. Different convention — these graphs split at calls.",
+    "That the absence of an indirect jump means the flattening was removed or weakened. It is a lowering choice.",
+    "That reading the state constants recovers the program. Nothing has been recovered yet: we have read the mechanism, not undone it.",
+    "That an <code>-O0</code> dispatcher layout tells you what a recovery tool will do to an <code>-O2</code> one. Next week it does not.",
+  ]}
+  sources={[
+    { label: "Region and state mapping:", id: "assets/reports/unflattening_course_examples.md" },
+    { label: "Survival across levels:", id: "assets/reports/optimization_survival.md" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: follow one transition
+
+Do not try to reconstruct the whole function. Pick one region and follow it
+properly — that is the exercise, and A2 is the same skill under a deadline.
+
+1. In the flattened IR, find the `switch` and list the state constants it
+   selects between. Say where the state variable lives.
+2. Take the parity branch. Find the two state stores that implement its two
+   outcomes, and the state both of them lead to.
+3. Now compare with the clean CFG. Say which clean edge corresponds to which
+   state store.
+4. Look at the source-level specimen's jump table. Find state 7, work out the
+   address it dispatches to, and say what that region does. Then note what an
+   analysis would have to resolve before it could see any of those 21 edges at
+   all.
+
+<FileList
+  items={[
+    { id: "assets/ir/s04_ollvm_fla/clean_target.ll", what: "clean IR for the target — the structure being hidden" },
+    { id: "assets/ir/s04_ollvm_fla/before_target.ll", what: "flattened IR: the dispatcher switch and the state stores" },
+    { id: "assets/cfg/s04_ollvm_fla/course_comparison.svg", what: "clean, flattened and rewritten graphs in one figure, with counts" },
+    { id: "assets/evidence/s04_ollvm_fla/before_cfg.txt", what: "the flattened function's blocks as text, with addresses" },
+    { id: "assets/evidence/s08_tigress_flatten/verified_jump_table.json", what: "the 21-entry table: state to address, and the encoding" },
+    { id: "assets/ir/s08_tigress_flatten/exact_generated_flatten.c", what: "the generated C, where the state machine is visible as source" },
+  ]}
+/>
+
+</section>

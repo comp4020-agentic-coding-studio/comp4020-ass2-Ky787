@@ -1,12 +1,321 @@
 ---
 title: Lifting machine code back to LLVM IR
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  One tool, one afternoon, two verdicts. Sixty-eight verifier-clean LLVM
+  modules, one of which miscomputes 3,917 of 4,118 inputs — and the fold that
+  did it is four operators long.
 week: 11
 date: 2027-05-19
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Two verdicts, one tool
+question: The lifted IR verifies, recompiles and is smaller than the machine code. Is it right?
+teachers:
+  - rasha-oyelaran
+  - petra-kovac
 spec:
-  - placeholder
+  - you can read LLVM IR with `select`, `icmp` and bitwise operators
+  - you can evaluate `(~A & B) | (A & C)` for small values of A, B and C
+  - you have week 10's verdict on the incorrect rewrite written down
+related:
+  - lectures/spine-04
+  - sessions/week-10
+  - assessments/capstone-unfamiliar-binary
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Queries from "../../components/Queries.astro";
+import Query from "../../components/Query.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Lifting runs the pipeline backwards. Take a compiled function, translate each
+instruction into an intermediate representation with defined semantics, and you
+have something an optimiser can simplify, a solver can reason about, and a
+person can read.
+
+It is the most appealing idea in the field, and week 11 exists because of what
+that appeal does to your judgement.
+
+<section class="sc-section">
+
+## The study
+
+<EvidenceCode
+  id="assets/evidence/mergen_summaries/totals.json"
+  lang="json"
+  title="totals.json — the whole lifting study"
+  note="read line 3 against line 8"
+  class="sc-wide"
+/>
+
+Seventeen functions lifted. Four stage variants each, so sixty-eight modules,
+and every one of the sixty-eight passed the LLVM verifier and recompiled.
+Fifty-one stages were actually executed against test vectors — 218,334 vectors
+in total — and forty-seven passed.
+
+Thirteen cases passed under their documented runtime contracts. One case
+failed. Two bogus-control-flow lifts were never executed as lifts, because
+they contained unknown helper calls and memory accesses with no safe contract
+to run them under; and the post-link lane stayed static-only, because nothing
+it produced ran in the first place.
+
+Note what "68 verified modules" is a fact about. It is a fact about
+well-formedness.
+
+</section>
+
+<section class="sc-section">
+
+## Four stages, two paths
+
+The stage names matter, because reading them as one chain leads to a wrong
+conclusion about where a bug came from.
+
+<div class="at-table-wrap sc-wide">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Stage</th>
+        <th scope="col">What it is</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">R</th><td>the raw lift — which already performs folding of its own</td></tr>
+      <tr><th scope="row">R2</th><td>R, plus ordinary LLVM <code>-O2</code></td></tr>
+      <tr><th scope="row">M</th><td>R, plus the lifter's own internal optimiser</td></tr>
+      <tr><th scope="row">M2</th><td>M, plus ordinary LLVM <code>-O2</code></td></tr>
+    </tbody>
+  </table>
+</div>
+
+So there are two branches from R — `R → R2` and `R → M → M2` — and they are
+alternatives, not a four-step sequence. If a defect is present in R, it is
+present before either branch, and neither ordinary optimisation nor the
+lifter's own can be blamed for introducing it or expected to remove it.
+
+</section>
+
+<section class="sc-section">
+
+## The case that passes
+
+<Specimen
+  title="Lifting the MBA specimen"
+  fields={[
+    ["Input", "the week 4 linear-MBA binary — a passing native PE, 678 instructions in the target"],
+    ["Lift time", "0.047 s"],
+    ["Sizes", "6,689 raw IR instructions → 386 at R2, 375 at M, 359 at M2"],
+    ["Runtime", "all 4,118 vectors match at every one of the four stages"],
+  ]}
+  verdict={{ tone: "pass", text: "PASS", label: "retained runtime status" }}
+/>
+
+That is a genuine success and worth being precise about. An earlier
+expression-extraction attempt on this same function gave up: it hit a
+20,000-node AST occurrence guard at 25,384 occurrences. The lifter produced a
+compact, executable whole-function representation of it in 47 milliseconds.
+Different tools, different representations, and this one scaled where the other
+did not.
+
+And then read the residue. M still contains 372 arithmetic and Boolean
+instructions where the clean build's equivalent is a short scalar expression.
+Some constants are recognisable; hundreds of multiply, add and Boolean
+operations with coefficients are not. This is successful lifting with runnable
+partial simplification — not MBA elimination, and not recovered source.
+
+One detail to head off a misreading: M2 contains thirteen `call` instructions,
+and they are LLVM vector-reduction intrinsics introduced by vectorisation, not
+unresolved calls into the original binary.
+
+</section>
+
+<section class="sc-section">
+
+## The case that does not
+
+<Specimen
+  title="Lifting the substitution specimen"
+  fields={[
+    ["Input", "the week 3 classic-substitution binary — native PE, retained runtime PASS"],
+    ["Sizes", "1,998 raw IR instructions → 67 at R2, 45 at M, 45 at M2"],
+    ["Verifier", "clean at all four stages; all four recompile"],
+    ["Runtime", "3,917 of 4,118 vectors wrong, at every one of the four stages"],
+  ]}
+  verdict={{ tone: "fail", text: "SEMANTIC FAILURE", label: "retained runtime status" }}
+/>
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/s01_ollvm_sub/mergen/semantic_result.json"
+    lang="json"
+    title="the record"
+    note="same count at every stage"
+    fromMatch={/"stage": "raw"/}
+    take={14}
+  />
+  <EvidenceCode
+    id="assets/ir/s01_ollvm_sub/mergen/internal_O2.ll"
+    lang="llvm"
+    title="what the lift produced"
+    note="the shape is the bug"
+    from={7}
+    to={28}
+  />
+  <span slot="caption">
+    At `x = 0` the function should return `0x08083808`. The lift returns `0`.
+    Then look at the IR: eight `icmp eq` comparisons of the argument against
+    eight specific constants, feeding a cascade of `select` instructions. A
+    function that adds constants to its argument has become a function that
+    asks whether its argument is one of eight particular values.
+  </span>
+</CodePair>
+
+Forty-five instructions. Smaller than the machine code, readable, verifier
+clean, and wrong for 95% of its inputs.
+
+### Where it came from
+
+The cause is identifiable in the lifter's source without patching anything.
+Its operand utilities fold
+
+```text
+(~A & B) | (A & C)   →   select(A, C, B)
+```
+
+when the known-bits extrema of `A` are zero and all-ones. That is a legitimate
+rewrite when `A` really is a mask that is either all-zeros or all-ones. But an
+*unconstrained* integer also has those extrema, and having them does not make
+`A` a mask.
+
+<Queries>
+  <Query obligation="A = 0 or A = −1" status="fold is sound" tone="pass" reading="A is a genuine mask; select is exactly equivalent.">
+    Which is the case the rewrite was written for, and it is common in compiled
+    comparison code.
+  </Query>
+  <Query obligation="A = 1, B = 0, C = 2" status="fold is wrong" tone="fail" reading="Bitwise gives 0; the select gives 2. One counterexample, three small integers.">
+    `(~1 & 0) | (1 & 2)` is `0 | 0` = **0**. `select(1 ≠ 0, 2, 0)` is **2**.
+  </Query>
+</Queries>
+
+The emitted `%selectEZ…` values and the propagated `select` chain in the IR
+above are consistent with exactly that fold. Three points of discipline about
+that sentence:
+
+1. **It is a diagnosis, not a repair.** No fix was applied and no retest was
+   run, so this is a strongly supported explanation and not a verified one.
+2. **The obfuscator is not at fault.** The native binary passes all 4,118
+   vectors. The error appears only in the lift.
+3. **LLVM is not at fault.** R already fails. Ordinary `-O2` did not introduce
+   this and could not have removed it — an optimiser preserves the semantics of
+   the IR it is given, including wrong semantics.
+
+:::error[Valid IR ≠ correct lift]
+Verifier acceptance means the module is well-formed: types check, SSA holds,
+terminators exist. It says nothing about whether the module computes what the
+machine code computed. On this site that is not an abstract warning — it is one
+retained case, four stages, 3,917 mismatches each.
+:::
+
+<Numbers
+  items={[
+    { value: "68 / 68", label: "lifted modules verifier-clean and recompilable", sourceId: "assets/evidence/mergen_summaries/totals.json" },
+    { value: "13", label: "of 17 cases with passing runtime outcomes under their contracts", sourceId: "assets/evidence/mergen_summaries/totals.json" },
+    { value: "3,917 / 4,118", label: "inputs miscomputed by the failing case, at all four stages", sourceId: "assets/evidence/s01_ollvm_sub/mergen/semantic_result.json" },
+    { value: "4", label: "operators in the fold that caused it", sourceId: "assets/reports/mergen_validation.md" },
+  ]}
+/>
+
+</section>
+
+<section class="sc-section">
+
+## A structural aside worth having
+
+The same lifter was pointed at both a flattened function and the working
+unflattened rewrite of it from week 10:
+
+<CodePair>
+  <EvidenceCode
+    id="assets/ir/mergen_fla/ollvm_original/internal_O2.ll"
+    lang="llvm"
+    title="lifted from the flattened original"
+    note="the dispatcher survives into the IR"
+    from={1}
+    to={14}
+  />
+  <EvidenceCode
+    id="assets/ir/mergen_fla/ollvm_unflattened/internal_O2.ll"
+    lang="llvm"
+    title="lifted from the unflattened rewrite"
+    note="no dispatcher to lift"
+    from={1}
+    to={14}
+  />
+  <span slot="caption">
+    Lifting does not undo flattening — the state machine is faithfully
+    represented, because that is what the machine code does. Structural
+    recovery has to happen at the binary level, before or instead of lifting.
+    The two outputs are alternative representations of two different binaries,
+    not a before-and-after of one deobfuscation.
+  </span>
+</CodePair>
+
+<LectureTable id="06_deobfuscation_outputs" class="sc-wide" />
+
+</section>
+
+<Ledger
+  establishes={[
+    "All 68 lifted modules across 17 cases were verifier-clean and recompilable, and 13 of the 17 cases had passing runtime outcomes under their documented contracts.",
+    "The MBA case matches all 4,118 vectors at every stage while retaining substantial residual arithmetic — 372 arithmetic and Boolean instructions in the internal stage.",
+    "The substitution case miscomputes 3,917 of 4,118 inputs at all four stages, with the defect already present in the raw lift, and its native input passes.",
+    "An unsound <code>(~A &amp; B) | (A &amp; C)</code> to <code>select</code> fold, justified by known-bits extrema, is consistent with the emitted IR and is refuted by A = 1, B = 0, C = 2.",
+  ]}
+  withholds={[
+    "That the lifter is unusable. Thirteen of seventeen cases passed, and one of them scaled where a different extractor had given up.",
+    "That the fold has been confirmed as the cause. It was diagnosed from the source and the emitted IR; no fix was applied and no retest was run.",
+    "That ordinary LLVM optimisation caused or could repair the failure. The raw lift is already wrong.",
+    "That any of this produced a rewritten original executable. It did not — the recompiled validation harness is a different artefact.",
+    "That the passing 4,118 vectors prove equivalence. Side-effect equivalence was explicitly not claimed, and the record says so.",
+  ]}
+  sources={[
+    { label: "Lifting study:", id: "assets/reports/mergen_validation.md" },
+    { label: "Totals:", id: "assets/evidence/mergen_summaries/totals.json" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: two verdicts from one tool
+
+1. Draw the two stage paths. Then say, for the failing case, which stage the
+   defect is in and what that rules out.
+2. In the failing IR, find the eight `icmp eq` comparisons and say what the
+   original function did with those eight constants. Explain in one sentence
+   how a chain of additions became a chain of equality tests.
+3. Evaluate `(~A & B) | (A & C)` and `select(A, C, B)` for `A = 1, B = 0,
+   C = 2`. Then find a second counterexample of your own.
+4. For the passing case, compare the four instruction counts and the residual
+   arithmetic. Write the sentence that correctly reports it — including what it
+   did *not* recover.
+5. Then the capstone rehearsal. For each of the two cases, name the level the
+   claim was validated at, and the level it was *not*.
+
+<FileList
+  items={[
+    { id: "assets/evidence/mergen_summaries/totals.json", what: "17 cases, 68 modules, 51 executed stages, 218,334 vectors" },
+    { id: "assets/evidence/s01_ollvm_sub/mergen/semantic_result.json", what: "the failing case: per-stage mismatch counts and the first mismatches" },
+    { id: "assets/ir/s01_ollvm_sub/mergen/raw_O2.ll", what: "the raw lift plus ordinary O2 — already wrong" },
+    { id: "assets/ir/s01_ollvm_sub/mergen/internal_O2.ll", what: "45 instructions, verifier clean, wrong" },
+    { id: "assets/evidence/s02_polaris_mba/mergen/semantic_result.json", what: "the passing case: 4,118 vectors at each stage, zero mismatches" },
+    { id: "assets/evidence/s02_polaris_mba/mergen/ir_metrics.json", what: "6,689 → 386 → 375 → 359, with operator histograms" },
+    { id: "assets/ir/s02_polaris_mba/mergen/internal_O2.ll", what: "the passing lift's IR — note what is still in it" },
+    { id: "assets/reports/mergen_validation.md", what: "the study, including the source-level diagnosis of the fold" },
+  ]}
+/>
+
+</section>

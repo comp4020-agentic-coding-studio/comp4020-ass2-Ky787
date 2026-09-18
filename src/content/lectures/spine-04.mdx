@@ -27,9 +27,11 @@ appearance will tell you which it is.**
 
 The first piece of evidence. A stock unflattener is pointed at a flattened
 function. It succeeds — exit code 0, patch generated, executable written. The
-graph drops from 56 blocks to 10, which is the most dramatic simplification
-anywhere in this corpus, and the file is a valid PE with the same size, the
-same sections and the same exports. It computes the wrong answer. Four
+graph drops from 56 blocks to 10 — both figures from Miasm recursive graphs,
+which split at calls, so they are comparable with each other and with nothing
+in week 8 — and that is the most dramatic simplification anywhere in this
+corpus. The file is a valid PE with the same size, the same sections and the
+same exports. It computes the wrong answer. Four
 legitimate `switch` alternatives from the original C were grouped under a single
 incoming state and emitted one after another, so all four now run in sequence.
 The program prints `F9CD8332` where it should print `DBEFFCE7` and exits 1.

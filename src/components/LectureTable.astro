@@ -15,10 +15,12 @@ interface Props {
   id: string;
   /** Hide the table's own title when the surrounding heading already says it. */
   headless?: boolean;
+  /** Heading level for the table title — set it so the page's order holds. */
+  headingLevel?: "h2" | "h3" | "h4";
   class?: string;
 }
 
-const { id, headless = false, class: className } = Astro.props;
+const { id, headless = false, headingLevel: Heading = "h3", class: className } = Astro.props;
 const table = lectureTable(id);
 
 /** Rows arrive as "PASS\nSelected originals": verdict first, then the detail. */
@@ -33,14 +35,14 @@ function split(text: string): { head: string; rest: string | undefined } {
     !headless && (
       <div class="sc-table__head">
         <span class="sc-table__number">Table {String(table.number).padStart(2, "0")}</span>
-        <h3 class="sc-table__title" id={`table-${table.id}`}>
+        <Heading class="sc-table__title" id={`table-${table.id}`}>
           {table.title}
-        </h3>
+        </Heading>
         {table.subtitle && <p class="sc-table__subtitle">{table.subtitle}</p>}
       </div>
     )
   }
-  {headless && <h3 class="visually-hidden" id={`table-${table.id}`}>{table.title}</h3>}
+  {headless && <Heading class="visually-hidden" id={`table-${table.id}`}>{table.title}</Heading>}
   <div class="at-table-wrap">
     <table>
       <thead>

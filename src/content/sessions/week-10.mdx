@@ -1,12 +1,335 @@
 ---
 title: Unflattening and hidden assumptions
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  Four runs of one unmodified tool. Two working rewrites, one valid executable
+  that returns the wrong answer, and one failure that never reached the part of
+  the tool everybody talks about.
 week: 10
 date: 2027-05-12
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Failure post-mortem
+question: The tool exited zero and the graph got smaller. How would you find out whether it worked?
+teachers:
+  - rasha-oyelaran
+  - petra-kovac
 spec:
-  - placeholder
+  - you can read a block listing and follow fall-through from one instruction to the next
+  - you have week 9's state table for the parity branch written down
+  - you can say what a precision and a recall of 1.0 do and do not tell you
+related:
+  - lectures/spine-04
+  - sessions/week-09
+  - assessments/capstone-unfamiliar-binary
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CfgFigure from "../../components/CfgFigure.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Screenshot from "../../components/Screenshot.astro";
+import Specimen from "../../components/Specimen.astro";
+
+One tool, unmodified, pointed at four flattened functions from four
+implementations. It is a reasonable tool built on a reasonable idea: discover
+the dispatcher, recover each region's successors by symbolic execution, then
+patch the binary so the blocks jump to each other directly.
+
+Four runs. Four different kinds of outcome.
+
+<section class="sc-section">
+
+## The scoreboard, before anything else
+
+<LectureTable id="09_unflattening_outcomes" headingLevel="h3" class="sc-wide" />
+
+Two working rewrites, one wrong answer, one no-output. Keep the third and
+fourth rows apart in your head — they are different failures with different
+causes, and treating them as one is the most common misreading of this table.
+
+</section>
+
+<section class="sc-section">
+
+## The two that worked
+
+<Numbers
+  items={[
+    { value: "25 / 25", label: "successor pairs recovered in the first implementation — 60 blocks to 17", sourceId: "assets/evidence/s04_ollvm_fla/semantic_edge_score.json" },
+    { value: "28 / 28", label: "successor pairs in a second, related implementation — 66 blocks to 20", sourceId: "assets/evidence/support_hikari_fla/semantic_edge_score.json" },
+    { value: "862", label: "bytes changed in the first rewrite, with the file size unchanged", sourceId: "assets/evidence/s04_ollvm_fla/stock_result.json" },
+    { value: "17 vs 21", label: "rewritten blocks against the compiler's own clean build", sourceId: "assets/tables/research/selected_metrics.md" },
+  ]}
+/>
+
+Both produced working executables: the canonical run prints all six expected
+values and exits zero. The transfer is genuine — the tool was built against one
+implementation and worked unmodified on another — and it is bounded, because
+those two implementations share a lineage, a dispatcher shape and a state
+layout.
+
+The fourth number is the interesting one. The rewritten function has 17 blocks;
+the compiler's own clean build of the same source has 21. The recovered version
+is *smaller than the original*, keeps dead state writes that no longer control
+anything, and is correct on every retained test. Graph identity was never the
+goal and would have been the wrong goal.
+
+<Screenshot
+  id="assets/ida/demo_flattening4_clean_to_rewritten_fla_1.jpg"
+  alt="A disassembler diff close-up. Both panes show loop and case operations; the right-hand pane retains state-variable stores and padding NOP instructions while its blocks branch directly to one another."
+>
+  Clean on the left, the successful rewrite on the right. Different
+  instructions, different layout, same tested behaviour. "Correct" and
+  "identical" were never the same requirement.
+</Screenshot>
+
+</section>
+
+<section class="sc-section">
+
+## The one that produced a valid, wrong executable
+
+<Specimen
+  title="The rewrite this course keeps"
+  fields={[
+    ["Tool", "the same stock unflattener, unmodified, exit code 0"],
+    ["Input", "a flattened <code>-O0</code> build, target <code>0x1400012D0</code>, retained runtime PASS"],
+    ["Output", "a valid PE — same size, same sections, same exports, same unwind ranges"],
+    ["Graph", "56 blocks → 10 blocks, the largest reduction anywhere in this corpus"],
+    ["Successor pairs", "14 of 22 correct, plus 1 false pair and 8 unresolved"],
+  ]}
+  verdict={{ tone: "fail", text: "WRONG", label: "retained runtime status" }}
+/>
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/s05_polaris_fla_wrong/input_runtime_stdout.txt"
+    lang="text"
+    title="the flattened original"
+    note="PASS"
+  />
+  <EvidenceCode
+    id="assets/evidence/s05_polaris_fla_wrong/output_runtime_stdout.txt"
+    lang="text"
+    title="the smaller, cleaner, valid rewrite"
+    note="FAIL"
+  />
+  <span slot="caption">
+    One line differs. `FLA = DBEFFCE7` became `FLA = F9CD8332`, and the process
+    exits 1 instead of 0. Every other value is untouched, because the tool was
+    only ever asked to rewrite one function.
+  </span>
+</CodePair>
+
+Here is why, and it is completely legible once you look at the right file.
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/s05_polaris_fla_wrong/clean_cfg.txt"
+    lang="asm"
+    title="the clean build: four alternatives"
+    note="four blocks, each reconverging"
+    from={82}
+    to={104}
+  />
+  <EvidenceCode
+    id="assets/evidence/s05_polaris_fla_wrong/after_cfg.txt"
+    lang="asm"
+    title="the rewrite: one block, four operations"
+    note="no branch, no choice"
+    from={34}
+    to={58}
+  />
+  <span slot="caption">
+    On the left, the source's four-way `switch`: four separate blocks — add
+    `0x11111111`, XOR `0x22222222`, subtract `0x3333`, add `0x4444` — each
+    ending with a jump to the common successor. On the right, the same four
+    operations in one straight line, executed one after another, with no branch
+    between them. Then the final `XOR 0xCAFEBABE` and `RET`.
+  </span>
+</CodePair>
+
+The four legitimate `switch` alternatives were grouped under a single incoming
+state. The recovery trace records one edge where the ground-truth region map
+has four, and the patcher faithfully emitted what the trace told it. Note the
+four `MOV DWORD PTR [RSP + 0xC], 0x24E` stores in the right-hand listing —
+the same "next state" written four times, which is the fingerprint of the
+collapse.
+
+:::error[The point of the whole course, in one specimen]
+The graph got 82% smaller. The file is structurally valid. The tool exited
+zero. The successor score had already said 14 of 22 with one false pair —
+*before anyone ran the binary*. And the thing that actually caught it was
+running the program and comparing eight hex digits.
+
+Nothing about the appearance of the output distinguishes this from the two
+successes above.
+:::
+
+<CfgFigure
+  id="assets/cfg/s05_polaris_fla_wrong/course_comparison.svg"
+  alt="Three control-flow graphs side by side with block counts labelled: a clean structured graph, a wide flattened graph, and a small ten-block graph marked as the incorrect rewrite."
+  convention="Miasm recursive CFG — the rewritten graph is marked incorrect in the figure"
+>
+  Clean, flattened, and the incorrect rewrite, at the same scale and in the
+  same convention. The third graph is the most attractive one on the page.
+</CfgFigure>
+
+<Screenshot
+  id="assets/ida/demo_flattening5_polaris_to_rewritten_1.jpg"
+  alt="Two function graphs side by side. The left is a wide state-dispatch network. The right is a much smaller graph containing a long straight-line region and only a few branches."
+  crop
+>
+  The original dispatcher beside the incorrect rewrite. The long straight-line
+  region on the right is the collapsed switch. Visual simplification is not
+  semantic correctness — and this image is the reason that sentence is in every
+  block of this course.
+</Screenshot>
+
+</section>
+
+<section class="sc-section">
+
+## The one that failed before it started
+
+The fourth run is a different kind of negative result, and confusing it with
+the third would be a mistake.
+
+<EvidenceCode
+  id="assets/evidence/s08_tigress_flatten/stock_result.json"
+  lang="json"
+  title="stock_result.json — the whole outcome"
+  note="read the stderr line"
+  fromMatch={/"exit_code":/}
+  take={10}
+  class="sc-wide"
+/>
+
+`INFO:root:Function 0x140001020 is not flattened.` No output file. No patch. No
+symbolic execution, no solver, no successor recovery — the tool's *discovery*
+stage saw six blocks where the jump-table-aware reference has 38, decided this
+was not a flattened function, and stopped.
+
+<Numbers
+  items={[
+    { value: "6", label: "blocks the stock discovery stage found", sourceId: "assets/evidence/s08_tigress_flatten/before_cfg.txt" },
+    { value: "38", label: "blocks in the jump-table-aware reference for the same function", sourceId: "assets/evidence/s08_tigress_flatten/reference_complete_cfg.txt" },
+    { value: "21", label: "dispatch targets it never saw, behind one indirect jump", sourceId: "assets/evidence/s08_tigress_flatten/verified_jump_table.json" },
+    { value: "0", label: "solver queries issued — the failure is upstream of the analysis", sourceId: "assets/evidence/s08_tigress_flatten/stock_result.json" },
+  ]}
+/>
+
+Six discovered blocks is not a six-block function. It is a graph with 32
+missing blocks, because the edges out of the dispatcher go through an indirect
+jump and resolving those needs a jump-table model the discovery stage does not
+have. A disassembler with that model resolves them; this tool does not.
+
+So the honest verdict is "blocked at discovery", not "the symbolic execution
+failed" and certainly not "the solver could not handle it". Lowering the
+acceptance threshold does not help either — a separately labelled scoring
+adapter was tried and also fails, which is what you would expect when the
+problem is 32 absent blocks rather than a score.
+
+<CodePair>
+  <CfgFigure
+    id="assets/cfg/s08_tigress_flatten/before_cfg.svg"
+    alt="A very small control-flow graph of six blocks with few edges, ending abruptly at an indirect jump."
+    convention="stock discovery — 6 blocks"
+    crop={false}
+  >
+    What the tool saw.
+  </CfgFigure>
+  <CfgFigure
+    id="assets/cfg/s08_tigress_flatten/reference_complete_cfg.svg"
+    alt="A control-flow graph of thirty-eight blocks fanning out from one indirect-jump block, with most blocks returning to it."
+    convention="jump-table-aware reference — 38 blocks"
+    crop={false}
+  >
+    What was there.
+  </CfgFigure>
+  <span slot="caption">
+    The left graph is not simpler code. It is the same code, under an analysis
+    that could not follow it. If you take one habit from this week: a small
+    recovered graph is a claim about the recovery, not about the program.
+  </span>
+</CodePair>
+
+</section>
+
+<section class="sc-section">
+
+## What the four outcomes have in common
+
+Each of the four runs used the same tool with the same defaults, and the
+difference between them is an assumption about the representation:
+
+- the two successes share the dispatcher shape and state layout the tool was
+  written against;
+- the wrong rewrite shares the shape closely enough to be accepted, and
+  differs in how a multi-way source construct is represented in its states;
+- the blocked run differs in the dispatch mechanism itself.
+
+None of that is visible in a tool's exit code, and none of it is visible in the
+output graph. It is visible in the successor score, in the ground-truth region
+map, and in eight hex digits of program output.
+
+<LectureTable id="10_correctness_traps" class="sc-wide" />
+
+</section>
+
+<Ledger
+  establishes={[
+    "Stock unflattening produced working canonical rewrites for two related <code>-O0</code> specimens, recovering 25/25 and 28/28 ground-truth successor pairs.",
+    "On a third specimen the same tool produced a structurally valid PE with a 56→10 block graph that returns <code>F9CD8332</code> instead of <code>DBEFFCE7</code> and exits 1; its four legitimate switch alternatives now execute in sequence.",
+    "On a fourth it stopped at discovery, seeing 6 blocks where the jump-table-aware reference has 38, without reaching symbolic successor recovery at all.",
+    "A correct rewrite need not match the compiler's clean graph: the successful one has 17 blocks against the clean build's 21 and retains dead state writes.",
+  ]}
+  withholds={[
+    "That the tool is broken, or that unflattening does not work. Two of four runs produced working executables.",
+    "That the <code>-O0</code> successes extend to <code>-O2</code>. For one of the two implementations, the higher-optimisation run fails before useful recovery.",
+    "That the blocked run is a solver failure or a semantics failure. It is a discovery failure, upstream of both.",
+    "That a successor-pair score proves correctness. The successful runs scored 25/25 and were also executed; the score alone does not establish branch polarity.",
+  ]}
+  sources={[
+    { label: "Paired examples:", id: "assets/reports/unflattening_course_examples.md" },
+    { label: "Full protocol and limits:", id: "assets/reports/unflattening_validation.md" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: audit a beautiful result
+
+Static analysis only. Do not execute the incorrect rewrite — you already know
+what it prints, and the exercise is to find the fault without that.
+
+1. In the clean listing, identify the four `switch` alternatives and the block
+   they all reconverge to.
+2. In the rewritten listing, find the block that contains all four. Walk it
+   instruction by instruction and compute what it returns for an input whose
+   low two bits are `01`. Compare with the clean path for the same input.
+3. Find the four identical state stores and say what their repetition tells you
+   about how the recovery went wrong.
+4. Now the assessment skill. Write the rejection: a paragraph that refuses the
+   claim "this rewrite deobfuscated the function", citing the successor score,
+   the region map and the block listing — **without** citing the runtime
+   output. That is the position an analyst is usually in.
+5. Finally, the counterfactual. What would the tool have had to represent
+   differently to get this right? One sentence.
+
+<FileList
+  items={[
+    { id: "assets/evidence/s05_polaris_fla_wrong/after_cfg.txt", what: "the incorrect rewrite, instruction by instruction" },
+    { id: "assets/evidence/s05_polaris_fla_wrong/clean_cfg.txt", what: "the clean build of the same function, for the diff" },
+    { id: "assets/evidence/s05_polaris_fla_wrong/semantic_edge_score.json", what: "14 of 22, one false pair, eight unresolved — the warning nobody read" },
+    { id: "assets/evidence/s05_polaris_fla_wrong/output_runtime_stdout.txt", what: "what it actually prints" },
+    { id: "assets/evidence/s04_ollvm_fla/stock_result.json", what: "a successful run, for comparison: 862 bytes changed, exit 0" },
+    { id: "assets/evidence/s08_tigress_flatten/stock_result.json", what: "the blocked run: no output file, no recovery attempted" },
+    { id: "assets/cfg/s05_polaris_fla_wrong/course_comparison.svg", what: "clean, flattened and incorrect rewrite, one figure" },
+    { id: "assets/reports/unflattening_course_examples.md", what: "all four cases, with addresses, states and region maps" },
+  ]}
+/>
+
+</section>

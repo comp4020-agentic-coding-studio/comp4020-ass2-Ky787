@@ -1,12 +1,290 @@
 ---
 title: Symbolic execution and SMT
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  One branch, two queries, and a solver that answers one of them with a
+  witness and the other with nothing at all. Plus the assumption that turns
+  zero proofs into three.
 week: 7
 date: 2027-04-21
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Solver walkthrough
+question: What exactly has a solver established when it returns UNSAT for one direction of a branch?
+teachers:
+  - rasha-oyelaran
 spec:
-  - placeholder
+  - you can read a bit-vector SMT-LIB formula well enough to follow `bvand`, `bvsub` and `ite`
+  - you have week 6's hand-argument written down — the one with the hole in it
+  - you can state the difference between a satisfying model and a reachable program input
+related:
+  - lectures/spine-03
+  - sessions/week-06
+  - assessments/a2-recover-the-semantics
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Queries from "../../components/Queries.astro";
+import Query from "../../components/Query.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Last week ended with a hand argument and a hole in it: the product of two
+consecutive integers is even, *over the integers*, and the machine works modulo
+2³². This week we stop arguing and write the obligation down.
+
+<section class="sc-section">
+
+## Symbolic execution, in one paragraph
+
+Instead of running the function on a value, run it on a *variable*. Every
+instruction updates an expression rather than a number: `and eax, 1` turns the
+expression in `eax` into `bvand(previous, 1)`. When you reach a conditional
+branch you have an expression for its condition, in terms of whatever you left
+symbolic. Then you can ask a solver about it.
+
+What you left symbolic is the whole ballgame. Here, the two globals the
+predicate reads are symbolic — nothing else about the program's state is. That
+choice is the analysis's model, and every result below is a result *about that
+model*.
+
+</section>
+
+<section class="sc-section">
+
+## One frozen gate
+
+<Specimen
+  title="The worked example, frozen"
+  fields={[
+    ["Branch", "<code>jne 0x140001672</code> at RVA <code>0x1667</code>"],
+    ["Symbolic", "two globals — <code>g_140089018_4</code> and <code>g_14008901c_4</code>"],
+    ["Path prefix", "empty: this gate is reached unconditionally from the entry"],
+    ["Expression size", "46 unique AST nodes, reference-expanded depth 20"],
+    ["Solver time", "3 ms reported, per query"],
+  ]}
+/>
+
+The condition, translated from the actual instructions, with the framework's
+own comments left in:
+
+<EvidenceCode
+  id="assets/evidence/s03_ollvm_bcf/first_gate_proof/condition.smt2"
+  lang="scheme"
+  title="condition.smt2 — the branch condition, as bit-vectors"
+  note="read it bottom-up"
+  fromMatch={/Extended part - SUB operation/}
+  class="sc-wide"
+/>
+
+`ref!54` is `g − 1`. `ref!63` is the product. `ref!68` masks the low bit.
+`ref!82` is the zero flag from comparing that against zero — the `sete`.
+`ref!86` and `ref!91` are the second global's comparison against ten and its
+sign flag. `ref!103` is the `or` and the `test`, and `ref!108` is the zero flag
+the `jne` actually reads.
+
+Every one of those is a 32-bit or 1-bit value. Nothing here is an integer.
+
+</section>
+
+<section class="sc-section">
+
+## Two queries
+
+Write `P` for the path prefix and `C` for "the branch is taken". Then there are
+exactly two things to ask, and they are separate questions:
+
+<Queries>
+  <Query
+    obligation="P ∧ C"
+    status="SAT"
+    tone="info"
+    reading="The taken direction is reachable within the model, and here is a state that reaches it."
+  >
+    The solver returns a model: both globals zero.
+
+    ```json
+    "model": { "g_140089018_4": 0, "g_14008901c_4": 0 }
+    ```
+
+    That is a witness *inside the model*. It is not automatically a reachable
+    whole-program input, because nothing here checked that those globals can
+    hold those values at this point in a real execution.
+  </Query>
+  <Query
+    obligation="P ∧ ¬C"
+    status="UNSAT"
+    tone="pass"
+    reading="No assignment to the symbolic globals makes the branch fall through — so under P and this model, that edge cannot be taken."
+  >
+    No model, because there is none. This is the result the rest of the block
+    is built on, and it is the one most often quoted more strongly than it
+    deserves.
+  </Query>
+</Queries>
+
+<EvidenceCode
+  id="assets/evidence/s03_ollvm_bcf/first_gate_proof/result.json"
+  lang="json"
+  title="result.json — the recorded statuses"
+  note="both queries, plus the unrestricted re-run"
+  fromMatch={/"queries":/}
+  take={20}
+  class="sc-wide"
+/>
+
+The prefix here is trivial — `(= (_ bv1 1) (_ bv1 1))`, which is to say "no
+constraints", because the gate is reached unconditionally. The file records it
+anyway. On a gate deeper in the function it would not be trivial, and a result
+whose prefix was not written down would not be interpretable at all.
+
+:::warning[Three statuses, three meanings]
+**SAT** — there is a model. For an equivalence-disequality query that model is
+a counterexample *within the model*, not necessarily a reachable input.
+**UNSAT** — no assignment satisfies the formula under its assumptions. For a
+faithful encoding this establishes the property in scope; under *inconsistent*
+assumptions it establishes nothing, because everything follows from a
+contradiction. **UNKNOWN or timeout** — neither. It is not a weak yes.
+:::
+
+</section>
+
+<section class="sc-section">
+
+## Doing it 41 times, generically
+
+The same harness, with no per-implementation pattern, on four `-O0` lanes:
+
+<Numbers
+  items={[
+    { value: "22 / 22", label: "injected gates proved one-sided in the first implementation", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "16 / 16", label: "injected gates proved in a second, unrelated implementation", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "16", label: "genuine source branches across the lanes, every one of them two-sided", sourceId: "assets/evidence/triton_summaries/aggregate_accuracy.json" },
+    { value: "0", label: "false positives — no genuine branch was ever classified as opaque", sourceId: "assets/evidence/triton_summaries/aggregate_accuracy.json" },
+  ]}
+/>
+
+The false-positive count is the number that makes the rest mean something. A
+classifier that called everything opaque would score 38 out of 38 on the
+injected gates and be worthless. The genuine conditions staying two-sided is
+the control.
+
+The aggregate across all four `-O0` lanes is 38 true positives, 1 false
+negative, 0 false positives, 16 true negatives, and 2 branches never reached
+within the exploration budget. All three of the shortfalls — the false negative
+and the two unreached — are in one lane, and that lane is the subject of the
+next section.
+
+</section>
+
+<section class="sc-section">
+
+## The assumption that changes the answer
+
+One implementation's opaque conditions are not algebraic. They are built from
+program state that gets initialised at start-up, and its generated C says so
+in the clear.
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/support_tigress_opaque/o0/result.json"
+    lang="json"
+    title="arbitrary symbolic globals — 0 of 3 proved"
+    note="why it stopped"
+    from={3}
+    to={29}
+  />
+  <EvidenceCode
+    id="assets/evidence/support_tigress_opaque/o0_initialized/initialized_state.json"
+    lang="json"
+    title="one captured initialised state — 3 of 3 proved"
+    note="where the state came from"
+    from={1}
+    to={13}
+  />
+  <span slot="caption">
+    Same harness, same branches, same day. Read the left pane's `failure`
+    block: the run did not fail to prove the gates, it *stopped* — at
+    `mov eax, dword ptr [rcx + rax*4]`, a symbolic effective address, with the
+    policy `"stop, no unrecorded concretization"`. Given an unconstrained
+    pointer it declined to guess. The right pane is the alternative: emulate
+    the real initialisation path for 763 instructions, capture the state, keep
+    the function's two arguments symbolic, and the same three gates fall out.
+    The difference is not a technique — it is an assumption about the world,
+    made explicit and written to a file.
+  </span>
+</CodePair>
+
+That stopping policy is worth dwelling on. An analysis that silently
+concretised the pointer would have produced a number, and the number would have
+been about one arbitrary heap layout while looking like a general result. The
+configuration records `"symbolic_address_policy": "stop, no unrecorded
+concretization"` because refusing to answer is a defensible result and a quiet
+guess is not.
+
+Which means the honest statement of the right-hand result is long, and the long
+version is the only correct one: *under the captured initialised state, with
+the function's arguments still symbolic, three injected gates are one-sided.*
+Not: these predicates are opaque. Allocation outcomes, heap layout, entropy sources
+and any later mutation of those globals are all outside the model, and a claim
+about arbitrary program state is a different claim that this evidence does not
+support.
+
+<LectureTable id="04_opaque_optimization" class="sc-wide" />
+
+</section>
+
+<Ledger
+  establishes={[
+    "For the frozen gate at RVA <code>0x1667</code>, with two globals symbolic and an empty path prefix, the taken direction is SAT with a recorded model and the fall-through is UNSAT.",
+    "Across two unrelated <code>-O0</code> implementations, a generic harness proved all 38 injected gates one-sided while leaving all 16 genuine source branches two-sided, with zero false positives.",
+    "For the state-dependent implementation, the generic yield is 0 of 3 and the yield under one captured initialised state is 3 of 3, with the function arguments symbolic in both.",
+  ]}
+  withholds={[
+    "That any of these branches is globally opaque. Each UNSAT is relative to a path prefix and a memory model, both of which are recorded because both are load-bearing.",
+    "That the SAT model is a reachable program input. It is an assignment that satisfies a formula.",
+    "That the captured-state result says anything about arbitrary globals, allocation outcomes, or state after later mutation.",
+    "That anything has been changed in any binary. Nothing this week touched a byte — that is next week, and it is a different tool.",
+  ]}
+  sources={[
+    { label: "Methodology and controls:", id: "assets/reports/opaque_predicate_triton.md" },
+    { label: "Per-lane results:", id: "assets/evidence/triton_summaries/family_results.json" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: interpret a proof you did not run
+
+Nothing is executed this week. The solver artefacts are frozen and that is the
+point — you are practising the thing an analyst actually does, which is reading
+somebody else's result and deciding what it licenses.
+
+1. Open `prefix.smt2`, `condition.smt2`, `true.smt2` and `false.smt2`. Identify
+   which assertion differs between the last two, and say in one sentence what
+   each file is asking.
+2. Write the two obligations for this gate in your own notation, including the
+   bit widths. Then write the sentence that correctly reports the result — the
+   long version, with the qualifiers.
+3. Now write the overclaimed version, the one that drops the prefix and the
+   model. Keep both. A2 asks you to spot the second kind in somebody else's
+   prose.
+4. Compare the two Tigress result files. State the assumption the right-hand
+   one adds, and list three things it still does not cover.
+
+<FileList
+  items={[
+    { id: "assets/evidence/s03_ollvm_bcf/first_gate_proof/result.json", what: "the frozen gate: statuses, model, metrics, seed" },
+    { id: "assets/evidence/s03_ollvm_bcf/first_gate_proof/prefix.smt2", what: "the path prefix, trivial here and recorded anyway" },
+    { id: "assets/evidence/s03_ollvm_bcf/first_gate_proof/condition.smt2", what: "the branch condition as bit-vectors, with the framework's comments" },
+    { id: "assets/evidence/s03_ollvm_bcf/first_gate_proof/true.smt2", what: "P ∧ C — returns SAT" },
+    { id: "assets/evidence/s03_ollvm_bcf/first_gate_proof/false.smt2", what: "P ∧ ¬C — returns UNSAT" },
+    { id: "assets/evidence/support_tigress_opaque/o0/result.json", what: "arbitrary symbolic globals: 0 of 3" },
+    { id: "assets/evidence/support_tigress_opaque/o0_initialized/result.json", what: "captured initialised state: 3 of 3" },
+    { id: "assets/ir/support_tigress_opaque/add_opaque.c", what: "the generated C, where the state-dependent guards are visible" },
+  ]}
+/>
+
+</section>

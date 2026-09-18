@@ -1,12 +1,222 @@
 ---
 title: Optimization versus obfuscation
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  The compiler flag is part of the experiment. Change it and a transformation
+  can halve, double, or vanish — while the obfuscator's own output file stays
+  exactly the same.
 week: 5
 date: 2027-03-24
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Controlled comparison
+question: Is this result about the obfuscator, or about the optimisation flag that came after it?
+teachers:
+  - tomas-wrenn
 spec:
-  - placeholder
+  - you can say what `-O0` stops the compiler doing, in concrete terms
+  - you have week 3's finding written down — what survived to machine code, and what did not
+  - you can compute a ratio and say what the denominator has to be for it to mean anything
+related:
+  - lectures/spine-02
+  - assessments/a1-trace-the-transformation
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Specimen from "../../components/Specimen.astro";
+
+Week 3 ended with a transformation that mostly stopped existing when the
+optimiser was turned on. That was not an accident of that tool. Optimisation
+level is not a nuisance variable in this field — it is part of the treatment,
+and this week is about designing comparisons that survive it.
+
+<section class="sc-section">
+
+## How the matrix controls for it
+
+Two different problems, two different answers.
+
+For the **source-level** lane the problem is easy to state and easy to get
+wrong: if you generate obfuscated C four times, once per optimisation level,
+you have four specimens and no control. So the matrix generates the C **once**
+and compiles that exact file at every level. Here is the check, in the two
+retained metadata records:
+
+<CodePair>
+  <EvidenceCode
+    id="assets/evidence/s06_tigress_arithmetic/original/metadata.json"
+    lang="json"
+    title="the O0 build"
+    note="/Od /Ob0"
+    fromMatch={/"optimization":/}
+    take={7}
+  />
+  <EvidenceCode
+    id="assets/evidence/s06_tigress_arithmetic/optimized/metadata.json"
+    lang="json"
+    title="the maximum-optimisation build"
+    note="/Ox, recorded as O3"
+    fromMatch={/"optimization":/}
+    take={7}
+  />
+  <span slot="caption">
+    `input_source_sha256` is the same value in both records. One generated file,
+    two compilations — so any difference between the two binaries is the
+    compiler's, and nothing else's. Note also
+    `"optimization_note": "MSVC has no /O3; /Ox is the maximum-optimization
+    analogue."` The directory says O3; the flag was `/Ox`, and quoting it as
+    `/O3` would be a small lie that compounds.
+  </span>
+</CodePair>
+
+For the **IR-level** lanes the problem is the opposite. If you run the
+obfuscation pass and then hand the result to a normal compilation, the
+middle-end runs twice and you cannot tell what the pass did from what the
+second run did. So the matrix emits post-pass IR once, then generates object
+and assembly from that exact IR with `-Xclang -disable-llvm-passes`. One
+middle-end run, per build, on purpose.
+
+</section>
+
+<section class="sc-section">
+
+## The same generated C, twice
+
+<Specimen
+  title="Source-level arithmetic encoding, two levels"
+  fields={[
+    ["Generated C", "one file, <code>54163E7E…BD88</code>, compiled twice"],
+    ["Transformation", "Tigress 4.0.11 <code>EncodeArithmetic</code>, <code>--Functions=demo_substitution</code>, seed 424242"],
+    ["Compiler", "MSVC 19.51.36248 x64 — <code>/Od /Ob0</code> and <code>/Ox</code>"],
+    ["Comparators", "matched clean builds at the <em>same two levels</em>, not one clean build for both"],
+  ]}
+  verdict={{ tone: "pass", text: "both PASS", label: "retained runtime status" }}
+/>
+
+<Numbers
+  items={[
+    { value: "426", label: "target instructions at /Od — against a matched clean 249", sourceId: "assets/reports/optimization_survival.md" },
+    { value: "226", label: "target instructions at /Ox — against a matched clean 106", sourceId: "assets/reports/optimization_survival.md" },
+    { value: "≈2.1×", label: "the surviving ratio at maximum optimisation", sourceId: "assets/tables/research/selected_metrics.md" },
+    { value: "106", label: "the clean /Ox comparator — not the older, larger O2 figure", sourceId: "assets/reports/obfuscator_comparison_summary.md" },
+  ]}
+/>
+
+The absolute count nearly halved. The ratio against the correct comparator
+barely moved. Both statements are true, and only the second one is about the
+transformation.
+
+That last number carries a warning worth repeating. An earlier measurement of
+the clean `/Ox` target overran the function boundary — it measured to the next
+export rather than to the return — and produced a larger clean figure and
+therefore a smaller, flattering ratio. The corrected comparator is 106
+instructions. If you are ever tempted to compare against a number you did not
+scope yourself, that is the shape of the mistake.
+
+:::warning[Two numbers, two questions]
+"Did optimisation shrink the obfuscated function?" — yes, 426 to 226.
+"Did optimisation weaken the obfuscation?" — barely, 1.7× to 2.1× against the
+matched clean control. These are different questions with different answers
+and the same two measurements behind them.
+:::
+
+</section>
+
+<section class="sc-section">
+
+## What disappears
+
+Now the result that ought to make you nervous about every `-O0` finding in the
+literature.
+
+<LectureTable id="04_opaque_optimization" class="sc-wide" />
+
+Two of the four opaque-control-flow lanes are **gone** by `-O1`. Not reduced —
+the measured target is structurally identical to the clean target. One of them
+was already mostly folded at `-O0`, because its injected guards were literal
+`icmp eq i32 1, 1` and the backend does not need an optimiser's permission to
+resolve that.
+
+For arithmetic, the same pattern with different winners:
+
+<LectureTable id="03_arithmetic_optimization" class="sc-wide" />
+
+And for flattening, the opposite result entirely:
+
+<LectureTable id="05_flattening_optimization" class="sc-wide" />
+
+Flattening is the durable family. Two implementations keep essentially their
+whole dispatcher from `-O1` through `-O3`; a third loses about half its
+structure and still has a dispatcher; the source-level one changes *how* the
+dispatch is lowered — an indirect jump table at some levels, a direct
+comparison network at another — without losing the state machine at all.
+
+That last point is the one people get wrong. A missing indirect jump is not
+evidence that flattening disappeared. It is evidence about lowering.
+
+</section>
+
+<section class="sc-section">
+
+## What this does to course design, and to yours
+
+The study's own recommendation is blunt: teach bogus control flow with explicit
+`-O0`-versus-`-O2` pairs, because two of the four implementations vanish at
+`-O1` and presenting their `-O0` structure as "an obfuscated binary" would be
+straightforwardly false.
+
+Which is why weeks 6 to 8 work on `-O0` specimens and say so in every
+sentence, and why week 10's flattening work can use higher levels.
+
+<Ledger
+  establishes={[
+    "One generated C file compiled at two MSVC levels went from 426 to 226 target instructions, against matched clean comparators of 249 and 106 — a surviving ratio of roughly 2.1× at maximum optimisation.",
+    "Two of the four tested bogus-control-flow lanes are structurally identical to their clean comparator from <code>-O1</code> onward, in the measured target.",
+    "Flattening survived every level tested in all four implementations, with one changing its native dispatch form between an indirect jump table and a comparison network.",
+  ]}
+  withholds={[
+    "That these figures rank the four tools. Each measures a different technique on one function, and two of the lanes are not even measured in the same units.",
+    "That a smaller instruction count means weaker obfuscation. Against the matched comparator, the source-level lane barely changed.",
+    "That absence of an indirect jump means flattening was removed. It means the backend lowered the switch differently.",
+    "That any of these survival results transfers to another program. Optimisation interacts with the specific code, and the corpus is one 483-line file.",
+  ]}
+  sources={[
+    { label: "Survival matrix:", id: "assets/reports/optimization_survival.md" },
+    { label: "Comparator correction:", id: "assets/reports/obfuscator_comparison_summary.md" },
+  ]}
+/>
+
+</section>
+
+<section class="sc-section">
+
+## Studio: compare two builds fairly
+
+1. Open the two metadata records and confirm for yourself that
+   `input_source_sha256` matches. Write down what that fact rules out.
+2. Compare the two disassembly listings. Find one arithmetic site in each and
+   say what the optimiser did to it.
+3. Compute both ratios — obfuscated against clean, at each level, using the
+   matched control. Then write the one sentence that is supported by them.
+4. Now write the sentence that is *not* supported: the cross-tool comparison
+   that this data does not license. Say precisely which control is missing.
+
+**A1 is due Friday at 17:00.** Bring a draft of its "what this does not
+establish" section to the studio if you want it read.
+
+<FileList
+  items={[
+    { id: "assets/evidence/s06_tigress_arithmetic/demo_substitution_O0_disassembly.txt", what: "426 instructions at /Od" },
+    { id: "assets/evidence/s06_tigress_arithmetic/demo_substitution_Ox_disassembly.txt", what: "226 instructions at /Ox, from the same generated C" },
+    { id: "assets/evidence/baselines/tigress_Ox/target_function_disassembly.txt", what: "the matched clean /Ox control — 106 instructions" },
+    { id: "assets/evidence/s06_tigress_arithmetic/original/metadata.json", what: "build record for the /Od specimen" },
+    { id: "assets/evidence/s06_tigress_arithmetic/optimized/metadata.json", what: "build record for the /Ox specimen — same source hash" },
+    { id: "assets/ir/s06_tigress_arithmetic/exact_generated_encode_arithmetic.c", what: "the generated C itself, all 387 kB of it" },
+    { id: "assets/reports/optimization_survival.md", what: "the full survival matrix, IR and machine, for every lane" },
+  ]}
+/>
+
+</section>

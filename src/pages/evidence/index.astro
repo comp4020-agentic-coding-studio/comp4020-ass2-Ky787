@@ -112,6 +112,12 @@ const totalBytes = allEvidence.reduce((sum, id) => sum + evidenceInfo(id).bytes,
       a different specimen with a different ABI and different lowering.
     </p>
     <p>
+      No BinProtect protected output is bundled either, and none is published
+      here. All eight tested protected outputs failed at runtime — seven access
+      violations and one hang — so that lane is static-analysis evidence only
+      and has no runnable specimen to distribute.
+    </p>
+    <p>
       No PDB or MAP file is included anywhere, on purpose. Navigate by export
       name or by loaded base plus RVA. For a rewritten specimen, decline the
       original PDB if a debugger offers it: the RSDS identifier can survive

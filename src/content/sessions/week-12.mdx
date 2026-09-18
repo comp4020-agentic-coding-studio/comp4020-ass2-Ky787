@@ -1,12 +1,258 @@
 ---
 title: How generic can deobfuscation be?
-description: Placeholder while the pipeline is smoke-tested. Replaced before commit.
+description:
+  The one week with no new evidence. What transferred between implementations,
+  what did not, and the protocol for choosing a method when nobody tells you
+  what was done to the binary.
 week: 12
 date: 2027-05-26
-mode: Placeholder
-question: Placeholder question long enough to satisfy the schema minimum length.
+mode: Method selection protocol
+question: Given an unfamiliar obfuscated function, what would you do first, and what would you have to check?
+teachers:
+  - rasha-oyelaran
+  - petra-kovac
 spec:
-  - placeholder
+  - you have a draft capstone limitations section, however rough
+  - you can name, from memory, the four outcomes this course keeps apart
+  - you have picked the two representations your capstone will work in
+related:
+  - lectures/spine-04
+  - sessions/week-10
+  - sessions/week-11
+  - assessments/capstone-unfamiliar-binary
 ---
 
-Placeholder.
+import Badge from "../../components/Badge.astro";
+import CodePair from "../../components/CodePair.astro";
+import EvidenceCode from "../../components/EvidenceCode.astro";
+import FileList from "../../components/FileList.astro";
+import LectureTable from "../../components/LectureTable.astro";
+import Ledger from "../../components/Ledger.astro";
+import Numbers from "../../components/Numbers.astro";
+import Outcomes from "../../components/Outcomes.astro";
+import Screenshot from "../../components/Screenshot.astro";
+
+No new specimens this week. Everything below has already appeared; the work is
+putting it in one place and drawing the conclusion it supports.
+
+<section class="sc-section">
+
+## Everything, on one table
+
+<LectureTable id="07_end_to_end_results" class="sc-wide" />
+
+Eight cases. All eight inputs were working programs. The output column is where
+they diverge, and it has four distinct values in it — produced, not produced,
+wrong, and nothing at all.
+
+</section>
+
+<section class="sc-section">
+
+## What transferred
+
+Three things crossed an implementation boundary in this corpus.
+
+**The branch proof plus a separate patcher.** A generic symbolic harness proved
+thirty-eight injected gates one-sided across two unrelated obfuscators, while
+leaving sixteen genuine conditions two-sided, with no false positives. A
+separate program turned those proofs into changed bytes. 9,189 differential
+triples, zero mismatches.
+
+**Local arithmetic recovery.** Ten of twelve isolated sites recovered across
+three different implementations, every accepted candidate carrying an
+independent 32-bit equivalence proof, and the two that could not be proved
+recorded as UNKNOWN rather than accepted.
+
+**Stock unflattening, within a lineage.** From one LLVM-family implementation to
+a closely related one: 25/25 and 28/28 successor pairs, two working
+executables.
+
+Look at what those three share. Each one carries an **explicit model** — of
+memory and path prefix, of bit width, of dispatcher and state layout — and each
+one has a **separate validation step** that could have said no. In the case of
+the third, on a fourth specimen, it did.
+
+## What did not
+
+- **A seed is not a reconstruction key.** Two fresh runs of the same command
+  with the same RNG seed produced IR with different hashes for one pass. The
+  exact retained artefact is the specimen, not the command that made it.
+- **Local recovery is not whole-function recovery.** Ten of twelve isolated
+  sites; zero of twenty composed return expressions.
+- **An `-O0` result is not an `-O2` result.** Two bogus-control-flow lanes are
+  indistinguishable from clean by `-O1`. One unflattening success does not
+  survive its own implementation's `-O2`.
+- **A mathematical identity is not a machine identity.** Not until you have
+  checked it at the width the machine uses.
+- **An initialised-state invariant is not a claim about arbitrary state.** Zero
+  of three gates from generic entry state; three of three from one captured
+  state.
+- **A discovery failure is not a solver failure.** Six blocks found where
+  thirty-eight exist, before any analysis ran.
+
+The pattern is uncomfortable and it is the course's thesis: the methods that
+travelled were the ones that modelled semantics and validated separately. The
+methods that did not travel were the ones that recognised a shape.
+
+<LectureTable id="11_reproducibility" class="sc-wide" />
+
+</section>
+
+<section class="sc-section">
+
+## Four traps, with the specimen that sets each one off
+
+<LectureTable id="10_correctness_traps" class="sc-wide" />
+
+<Screenshot
+  id="assets/ida/demo_flattening4_ollvm_to_rewritten_fla_1.jpg"
+  alt="Two function graphs. The left is a wide state-dispatch network; the right is a compact graph with a loop and a few branches."
+  crop
+>
+  A working rewrite: the dispatcher network becomes a compact branching graph,
+  and the retained execution checks pass.
+</Screenshot>
+
+<Screenshot
+  id="assets/ida/demo_flattening5_polaris_to_rewritten_1.jpg"
+  alt="Two function graphs. The left is a wide state-dispatch network; the right is a small graph dominated by one long straight-line region."
+  crop
+>
+  An incorrect rewrite: the dispatcher network becomes an even smaller graph,
+  and the program returns the wrong value.
+</Screenshot>
+
+Those two images are the final exam of the course, in the sense that matters.
+Neither one, on its own, tells you which is which. You need the runtime record,
+or the successor score, or the region map. The picture is not the evidence.
+
+</section>
+
+<section class="sc-section">
+
+## A protocol, not a checklist
+
+Given a target function and no information about what was done to it, the order
+below is what this corpus supports. It is a protocol because each step names
+what it assumes, and you get to say so out loud.
+
+1. **Get a matched comparator.** Same compiler family, same optimisation level.
+   Without it, every count you take is unanchored. Most of the bad claims in
+   this field die here.
+2. **Decide what is being hidden.** Expression complexity, branch outcome, or
+   successor relation? Those need different methods and produce different
+   outputs. Look at block count against expression size: a one-block function
+   with 678 instructions is not the same problem as a 60-block dispatcher.
+3. **Establish ground truth where you can.** A clean build, a source file, a
+   canonical output, a test vector. If ground truth exists, use it, and say
+   that you had it — a result checked against known answers is worth more than
+   one that could not be.
+4. **Choose the method by the representation, not the vendor.** Expression
+   recovery for arithmetic, symbolic branch proof for gates, successor recovery
+   for dispatchers, lifting when you want the whole function in one
+   representation. Naming the obfuscator buys nothing; in this corpus one
+   filename was wrong about which binary it even showed.
+5. **Write the assumption down before you run anything.** Which values are
+   symbolic. What the memory model covers. What bit width. Which path prefix.
+   If you cannot write it, you will not be able to report the result.
+6. **Validate at the level of the claim.** An expression claim needs an
+   equivalence proof at the right width. A CFG claim needs a convention and a
+   comparator in the same convention. A lifted-function claim needs test
+   vectors. An executable claim needs the executable run.
+7. **Write down what you could not establish.** Not as a disclaimer. As the
+   part of the result that tells the next person where to start.
+
+<Outcomes />
+
+</section>
+
+<section class="sc-section">
+
+## Two places this course stops
+
+**The lane that never ran.** One post-link tool applied four transformations to
+two inputs and returned exit code 0 for all eight invocations. Seven of the
+eight protected executables terminate with an access violation and the eighth
+hangs. Its transformations are visible and real; its outputs support static
+observations and nothing else. There is no end-to-end deobfuscation lane there
+because there was never a working protected program to deobfuscate.
+
+**Virtualization.** Translating protected behaviour into custom bytecode run by
+an embedded interpreter is where a lot of commercial protection actually lives,
+and this corpus contains **no** virtualization or devirtualization experiment.
+It was intentionally not tested. So the course can tell you what the problem is
+and cannot tell you anything measured about it, and week 12 is not going to
+pretend otherwise by reasoning from the results above. If you want to work on
+it, that is a research question with an empty results section, which is the
+best kind.
+
+<Numbers
+  items={[
+    { value: "0 / 8", label: "post-link protected outputs valid at runtime — seven crashes, one hang", sourceId: "assets/reports/binprotect_validation.md" },
+    { value: "0", label: "virtualization experiments in this corpus", sourceId: "EXPERIMENTAL_CORPUS.md" },
+    { value: "2", label: "screenshots withheld because their contents contradict their filenames", sourceId: "VISUAL_INDEX.md" },
+    { value: "1", label: "483-line program behind every result on this site", sourceId: "assets/source/SHOWCASE_VERSION.txt" },
+  ]}
+/>
+
+That last number is the honest boundary of the whole course. Everything here
+is about one small C program, compiled sixty-eight ways. The reasoning
+generalises. The measurements do not, and a page that blurred those two would
+have failed its own standard.
+
+</section>
+
+<Ledger
+  establishes={[
+    "Three methods transferred across implementation boundaries in this corpus, and all three carry an explicit model plus a separate validation step.",
+    "Six specific non-transfers are documented with the specimen that demonstrates each, including the seed, the optimisation level and the state assumption.",
+    "Two results in this corpus are valid-looking failures — a 56→10 block rewrite returning the wrong value, and a verifier-clean lift miscomputing 3,917 of 4,118 inputs — and both were caught only by execution.",
+  ]}
+  withholds={[
+    "That semantic methods solve obfuscation. The strongest result here is 38 branches in two binaries from one 483-line program.",
+    "Anything measured about virtualization or devirtualization. No experiment was performed, and none of the results above extends to it.",
+    "A ranking of the five obfuscators or of the deobfuscation workflows. Different techniques on one program is not a benchmark.",
+    "That the protocol above is complete. It is what this corpus supports, and its step 7 exists because it is not.",
+  ]}
+  sources={[
+    { label: "End-to-end outcomes:", id: "assets/tables/research/end_to_end_results.md" },
+    { label: "Synthesis, including what did not generalise:", id: "assets/reports/FINAL_RESEARCH_OVERVIEW.md" },
+    { label: "Every boundary, in one table:", href: "/claims/", text: "what we do and do not claim" },
+  ]}
+/>
+
+<section class="sc-section">
+
+## Studio: your capstone protocol, out loud
+
+Bring your sample and whatever you have. Twenty minutes each, in pairs, then a
+round of the whole room.
+
+1. State what you think is being hidden in your function, and the evidence for
+   that. One minute.
+2. Name the two representations you will work in and why those two.
+3. For each method you plan to use, state the assumption it depends on. Your
+   partner's job is to find the assumption you left out.
+4. For each conclusion you expect to reach, name the level you will validate it
+   at and how.
+5. Read your limitations section aloud. This is the part people skip and the
+   part markers read first, and hearing your own draft is the fastest way to
+   notice that it says nothing.
+
+Then one question to the room, which is the question the course has been
+building towards for twelve weeks: **what would make you abandon your current
+conclusion?** If there is no answer, there is no conclusion yet.
+
+<FileList
+  items={[
+    { id: "assets/tables/research/end_to_end_results.md", what: "all eight cases, recovered against produced, with qualifications" },
+    { id: "assets/reports/FINAL_RESEARCH_OVERVIEW.md", what: "the thirteen-section synthesis, including sections 9, 10 and 13" },
+    { id: "CLAIMS_AND_CAVEATS.md", what: "every safe formulation beside the overclaim it is confused with" },
+    { id: "assets/tables/research/selected_metrics.md", what: "every headline number with its convention and provenance" },
+    { id: "BINARY_GUIDE.md", what: "per-specimen runtime status and export RVAs, for the capstone" },
+    { id: "BIBLIOGRAPHY.md", what: "the upstream tools and the background papers, with what each is and is not" },
+  ]}
+/>
+
+</section>

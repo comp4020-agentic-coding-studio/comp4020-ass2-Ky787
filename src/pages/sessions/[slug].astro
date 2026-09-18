@@ -25,7 +25,7 @@ const extra = session.data as { question?: string; mode?: string };
   title={session.data.title}
   documentTitle={`Week ${week}: ${session.data.title} — SLOP8445`}
   kicker={`Week ${String(week).padStart(2, "0")} · Block ${block.numeral} ${block.title}`}
-  description={session.data.description}
+  description={session.data.description ?? undefined}
 >
   <WeekHeader week={week} date={session.data.date} mode={extra.mode} question={extra.question} />
   <Content />
