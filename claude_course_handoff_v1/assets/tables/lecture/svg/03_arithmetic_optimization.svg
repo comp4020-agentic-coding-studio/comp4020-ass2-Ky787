@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="743" viewBox="0 0 1180 743" role="img" aria-labelledby="title desc">
+<title id="title">Arithmetic: complexity can shrink or survive</title>
+<desc id="desc">Optimization acts on the obfuscated program before we inspect its machine code. IR expansion, native instruction count and semantic difficulty are different measurements.</desc>
+<rect width="1180" height="743" fill="white"/>
+<text x="40" y="31" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700">SEEING THROUGH OBFUSCATION  /  TABLE 03</text>
+<text x="40" y="80" fill="#183B50" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Arithmetic: complexity can shrink or survive</text>
+<text x="40" y="119" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">Optimization acts on the obfuscated program before we inspect its machine code.</text>
+<rect x="40" y="149" width="1100" height="46" fill="#183B50" rx="0"/>
+<text x="52" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Treatment</text>
+<text x="283" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">At O0</text>
+<text x="591" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">At higher optimization</text>
+<text x="888" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Main lesson</text>
+<rect x="40" y="195" width="1100" height="93" fill="#FFFFFF" rx="0"/>
+<rect x="40" y="195" width="231" height="93" fill="#ECF2F5" rx="0"/>
+<text x="54" y="248.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">OLLVM SUB</text>
+<text x="285" y="237" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">24 IR sites transformed; native</text>
+<text x="285" y="260" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">XOR/SUB recognizable</text>
+<rect x="579" y="195" width="297" height="93" fill="#FFF0D5" rx="0"/>
+<text x="593" y="225.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">WEAKENED</text>
+<text x="593" y="248.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">O1+: all 24 native operations</text>
+<text x="593" y="271.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">reappear</text>
+<text x="890" y="237" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Large IR trees need not</text>
+<text x="890" y="260" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">survive code generation.</text>
+<line x1="40" y1="288" x2="1140" y2="288" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="288" width="1100" height="93" fill="#F5F8FA" rx="0"/>
+<rect x="40" y="288" width="231" height="93" fill="#ECF2F5" rx="0"/>
+<text x="54" y="341.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Hikari SUB</text>
+<text x="285" y="330" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Partial coverage; 213 native</text>
+<text x="285" y="353" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">instructions</text>
+<rect x="579" y="288" width="297" height="93" fill="#E7F0FA" rx="0"/>
+<text x="593" y="318.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">REMOVED</text>
+<text x="593" y="341.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">O1+: measured target matches</text>
+<text x="593" y="364.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">clean</text>
+<text x="890" y="330" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Coverage and optimization</text>
+<text x="890" y="353" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">survival are different.</text>
+<line x1="40" y1="381" x2="1140" y2="381" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="381" width="1100" height="93" fill="#FFFFFF" rx="0"/>
+<rect x="40" y="381" width="231" height="93" fill="#ECF2F5" rx="0"/>
+<text x="54" y="434.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Polaris SUB</text>
+<text x="285" y="423" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">XOR 8/8; ADD 8/8; SUB 3/8</text>
+<text x="285" y="446" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">transformed</text>
+<rect x="579" y="381" width="297" height="93" fill="#FFF0D5" rx="0"/>
+<text x="593" y="411.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">WEAKENED</text>
+<text x="593" y="434.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">O1+: native operations</text>
+<text x="593" y="457.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">recognizable</text>
+<text x="890" y="423" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Classic SUB is not the</text>
+<text x="890" y="446" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">stronger MBA treatment.</text>
+<line x1="40" y1="474" x2="1140" y2="474" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="474" width="1100" height="93" fill="#F5F8FA" rx="0"/>
+<rect x="40" y="474" width="231" height="93" fill="#ECF2F5" rx="0"/>
+<text x="54" y="516" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Tigress</text>
+<text x="54" y="539" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">EncodeArithmetic</text>
+<text x="285" y="527.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">426 native instructions</text>
+<rect x="579" y="474" width="297" height="93" fill="#E7F0FA" rx="0"/>
+<text x="593" y="516" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">PERSISTS</text>
+<text x="593" y="539" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">/Ox: 226 vs 106 clean</text>
+<text x="890" y="504.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Exact same generated C;</text>
+<text x="890" y="527.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">substantial complexity</text>
+<text x="890" y="550.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">remains.</text>
+<line x1="40" y1="567" x2="1140" y2="567" stroke="#D9E2E8" stroke-width="1"/>
+<line x1="271" y1="195" x2="271" y2="567" stroke="#E0E7EC" stroke-width="1"/>
+<line x1="579" y1="195" x2="579" y2="567" stroke="#E0E7EC" stroke-width="1"/>
+<line x1="876" y1="195" x2="876" y2="567" stroke="#E0E7EC" stroke-width="1"/>
+<rect x="40" y="589" width="1100" height="51" fill="#E8F2F6" rx="5"/>
+<text x="59" y="620" fill="#183B50" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">IR expansion, native instruction count and semantic difficulty are different measurements.</text>
+<text x="40" y="669.5" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400">Target: demo_substitution. Tigress uses MSVC /Ox (recorded as O3); the 106-instruction clean is also /Ox.</text>
+<rect x="40" y="688" width="12" height="12" fill="#E3F3EB" rx="0"/>
+<text x="58" y="699" fill="#15533A" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Validated</text>
+<rect x="135.124" y="688" width="12" height="12" fill="#FFF0D5" rx="0"/>
+<text x="153.124" y="699" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Qualified / incomplete</text>
+<rect x="298.327" y="688" width="12" height="12" fill="#FCE5E8" rx="0"/>
+<text x="316.327" y="699" fill="#922838" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Wrong / invalid</text>
+<rect x="423.999" y="688" width="12" height="12" fill="#E7F0FA" rx="0"/>
+<text x="441.999" y="699" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Observation</text>
+<rect x="534.394" y="688" width="12" height="12" fill="#EEF1F4" rx="0"/>
+<text x="552.394" y="699" fill="#465462" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Not produced</text>
+<text x="40" y="719" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400">Windows x64 | Retained samples only | Source keys in SOURCES.md</text>
+</svg>

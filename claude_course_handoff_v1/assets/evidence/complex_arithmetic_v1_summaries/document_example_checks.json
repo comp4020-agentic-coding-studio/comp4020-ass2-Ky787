@@ -1,0 +1,36 @@
+[
+  {
+    "id": "polaris-sub-O0__complex_variables",
+    "before_display": {
+      "result": "unsat",
+      "bit_width": 32,
+      "elapsed_seconds": 0.0005242999977781437,
+      "reason_unknown": null,
+      "counterexample": null
+    },
+    "after_display": {
+      "result": "unsat",
+      "bit_width": 32,
+      "elapsed_seconds": 0.0004697999975178391,
+      "reason_unknown": null,
+      "counterexample": null
+    }
+  },
+  {
+    "id": "tigress-encode-O0__complex_constants",
+    "before_display": {
+      "result": "unsat",
+      "bit_width": 32,
+      "elapsed_seconds": 0.0008423999970545992,
+      "reason_unknown": null,
+      "counterexample": null
+    },
+    "after_display": {
+      "result": "unsat",
+      "bit_width": 32,
+      "elapsed_seconds": 0.0005218000005697832,
+      "reason_unknown": null,
+      "counterexample": null
+    }
+  }
+]

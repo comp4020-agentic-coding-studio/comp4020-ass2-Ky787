@@ -1,0 +1,482 @@
+140001630: 55                       push rbp
+140001631: 4883ec40                 sub rsp, 0x40
+140001635: 488d6c2440               lea rbp, [rsp + 0x40]
+14000163a: 8955f8                   mov dword ptr [rbp - 8], edx
+14000163d: 894dfc                   mov dword ptr [rbp - 4], ecx
+140001640: 8b05d6790800             mov eax, dword ptr [rip + 0x879d6]
+140001646: 8b0dcc790800             mov ecx, dword ptr [rip + 0x879cc]
+14000164c: 89c2                     mov edx, eax
+14000164e: 83ea01                   sub edx, 1
+140001651: 0fafc2                   imul eax, edx
+140001654: 83e001                   and eax, 1
+140001657: 83f800                   cmp eax, 0
+14000165a: 0f94c0                   sete al
+14000165d: 83f90a                   cmp ecx, 0xa
+140001660: 0f9cc1                   setl cl
+140001663: 08c8                     or al, cl
+140001665: a801                     test al, 1
+140001667: e906000000               jmp 0x140001672
+14000166c: 90                       nop
+14000166d: e973050000               jmp 0x140001be5
+140001672: 8b55fc                   mov edx, dword ptr [rbp - 4]
+140001675: 448b4df8                 mov r9d, dword ptr [rbp - 8]
+140001679: b810000000               mov eax, 0x10
+14000167e: 488945d8                 mov qword ptr [rbp - 0x28], rax
+140001682: e859410000               call 0x1400057e0
+140001687: 4829c4                   sub rsp, rax
+14000168a: 488b45d8                 mov rax, qword ptr [rbp - 0x28]
+14000168e: 4989e0                   mov r8, rsp
+140001691: 4c8945d0                 mov qword ptr [rbp - 0x30], r8
+140001695: e846410000               call 0x1400057e0
+14000169a: 4829c4                   sub rsp, rax
+14000169d: 488b45d8                 mov rax, qword ptr [rbp - 0x28]
+1400016a1: 4889e1                   mov rcx, rsp
+1400016a4: 48894de0                 mov qword ptr [rbp - 0x20], rcx
+1400016a8: e833410000               call 0x1400057e0
+1400016ad: 4829c4                   sub rsp, rax
+1400016b0: 488b45e0                 mov rax, qword ptr [rbp - 0x20]
+1400016b4: 4889e1                   mov rcx, rsp
+1400016b7: 48894de8                 mov qword ptr [rbp - 0x18], rcx
+1400016bb: 458908                   mov dword ptr [r8], r9d
+1400016be: 8910                     mov dword ptr [rax], edx
+1400016c0: c70111111111             mov dword ptr [rcx], 0x11111111
+1400016c6: 813837130000             cmp dword ptr [rax], 0x1337
+1400016cc: 0f94c0                   sete al
+1400016cf: 8845f7                   mov byte ptr [rbp - 9], al
+1400016d2: 8b0544790800             mov eax, dword ptr [rip + 0x87944]
+1400016d8: 8b0d3a790800             mov ecx, dword ptr [rip + 0x8793a]
+1400016de: 89c2                     mov edx, eax
+1400016e0: 83ea01                   sub edx, 1
+1400016e3: 0fafc2                   imul eax, edx
+1400016e6: 83e001                   and eax, 1
+1400016e9: 83f800                   cmp eax, 0
+1400016ec: 0f94c0                   sete al
+1400016ef: 83f90a                   cmp ecx, 0xa
+1400016f2: 0f9cc1                   setl cl
+1400016f5: 08c8                     or al, cl
+1400016f7: a801                     test al, 1
+1400016f9: e906000000               jmp 0x140001704
+1400016fe: 90                       nop
+1400016ff: e9e1040000               jmp 0x140001be5
+140001704: 8a45f7                   mov al, byte ptr [rbp - 9]
+140001707: a801                     test al, 1
+140001709: 0f8505000000             jne 0x140001714
+14000170f: e977000000               jmp 0x14000178b
+140001714: 8b0502790800             mov eax, dword ptr [rip + 0x87902]
+14000171a: 8b0df8780800             mov ecx, dword ptr [rip + 0x878f8]
+140001720: 89c2                     mov edx, eax
+140001722: 83ea01                   sub edx, 1
+140001725: 0fafc2                   imul eax, edx
+140001728: 83e001                   and eax, 1
+14000172b: 83f800                   cmp eax, 0
+14000172e: 0f94c0                   sete al
+140001731: 83f90a                   cmp ecx, 0xa
+140001734: 0f9cc1                   setl cl
+140001737: 08c8                     or al, cl
+140001739: a801                     test al, 1
+14000173b: e906000000               jmp 0x140001746
+140001740: 90                       nop
+140001741: e9e8040000               jmp 0x140001c2e
+140001746: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+14000174a: 8b08                     mov ecx, dword ptr [rax]
+14000174c: 81f122222222             xor ecx, 0x22222222
+140001752: 8908                     mov dword ptr [rax], ecx
+140001754: 8b05c2780800             mov eax, dword ptr [rip + 0x878c2]
+14000175a: 8b0db8780800             mov ecx, dword ptr [rip + 0x878b8]
+140001760: 89c2                     mov edx, eax
+140001762: 83ea01                   sub edx, 1
+140001765: 0fafc2                   imul eax, edx
+140001768: 83e001                   and eax, 1
+14000176b: 83f800                   cmp eax, 0
+14000176e: 0f94c0                   sete al
+140001771: 83f90a                   cmp ecx, 0xa
+140001774: 0f9cc1                   setl cl
+140001777: 08c8                     or al, cl
+140001779: a801                     test al, 1
+14000177b: e906000000               jmp 0x140001786
+140001780: 90                       nop
+140001781: e9a8040000               jmp 0x140001c2e
+140001786: e977000000               jmp 0x140001802
+14000178b: 8b058b780800             mov eax, dword ptr [rip + 0x8788b]
+140001791: 8b0d81780800             mov ecx, dword ptr [rip + 0x87881]
+140001797: 89c2                     mov edx, eax
+140001799: 83ea01                   sub edx, 1
+14000179c: 0fafc2                   imul eax, edx
+14000179f: 83e001                   and eax, 1
+1400017a2: 83f800                   cmp eax, 0
+1400017a5: 0f94c0                   sete al
+1400017a8: 83f90a                   cmp ecx, 0xa
+1400017ab: 0f9cc1                   setl cl
+1400017ae: 08c8                     or al, cl
+1400017b0: a801                     test al, 1
+1400017b2: e906000000               jmp 0x1400017bd
+1400017b7: 90                       nop
+1400017b8: e984040000               jmp 0x140001c41
+1400017bd: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+1400017c1: 8b08                     mov ecx, dword ptr [rax]
+1400017c3: 81c133330000             add ecx, 0x3333
+1400017c9: 8908                     mov dword ptr [rax], ecx
+1400017cb: 8b054b780800             mov eax, dword ptr [rip + 0x8784b]
+1400017d1: 8b0d41780800             mov ecx, dword ptr [rip + 0x87841]
+1400017d7: 89c2                     mov edx, eax
+1400017d9: 83ea01                   sub edx, 1
+1400017dc: 0fafc2                   imul eax, edx
+1400017df: 83e001                   and eax, 1
+1400017e2: 83f800                   cmp eax, 0
+1400017e5: 0f94c0                   sete al
+1400017e8: 83f90a                   cmp ecx, 0xa
+1400017eb: 0f9cc1                   setl cl
+1400017ee: 08c8                     or al, cl
+1400017f0: a801                     test al, 1
+1400017f2: e906000000               jmp 0x1400017fd
+1400017f7: 90                       nop
+1400017f8: e944040000               jmp 0x140001c41
+1400017fd: e900000000               jmp 0x140001802
+140001802: 8b0514780800             mov eax, dword ptr [rip + 0x87814]
+140001808: 8b0d0a780800             mov ecx, dword ptr [rip + 0x8780a]
+14000180e: 89c2                     mov edx, eax
+140001810: 83ea01                   sub edx, 1
+140001813: 0fafc2                   imul eax, edx
+140001816: 83e001                   and eax, 1
+140001819: 83f800                   cmp eax, 0
+14000181c: 0f94c0                   sete al
+14000181f: 83f90a                   cmp ecx, 0xa
+140001822: 0f9cc1                   setl cl
+140001825: 08c8                     or al, cl
+140001827: a801                     test al, 1
+140001829: e906000000               jmp 0x140001834
+14000182e: 90                       nop
+14000182f: e920040000               jmp 0x140001c54
+140001834: 488b45d0                 mov rax, qword ptr [rbp - 0x30]
+140001838: 813800003412             cmp dword ptr [rax], 0x12340000
+14000183e: 0f97c0                   seta al
+140001841: 8845cf                   mov byte ptr [rbp - 0x31], al
+140001844: 8b05d2770800             mov eax, dword ptr [rip + 0x877d2]
+14000184a: 8b0dc8770800             mov ecx, dword ptr [rip + 0x877c8]
+140001850: 89c2                     mov edx, eax
+140001852: 83ea01                   sub edx, 1
+140001855: 0fafc2                   imul eax, edx
+140001858: 83e001                   and eax, 1
+14000185b: 83f800                   cmp eax, 0
+14000185e: 0f94c0                   sete al
+140001861: 83f90a                   cmp ecx, 0xa
+140001864: 0f9cc1                   setl cl
+140001867: 08c8                     or al, cl
+140001869: a801                     test al, 1
+14000186b: e906000000               jmp 0x140001876
+140001870: 90                       nop
+140001871: e9de030000               jmp 0x140001c54
+140001876: 8a45cf                   mov al, byte ptr [rbp - 0x31]
+140001879: a801                     test al, 1
+14000187b: 0f8505000000             jne 0x140001886
+140001881: e977000000               jmp 0x1400018fd
+140001886: 8b0590770800             mov eax, dword ptr [rip + 0x87790]
+14000188c: 8b0d86770800             mov ecx, dword ptr [rip + 0x87786]
+140001892: 89c2                     mov edx, eax
+140001894: 83ea01                   sub edx, 1
+140001897: 0fafc2                   imul eax, edx
+14000189a: 83e001                   and eax, 1
+14000189d: 83f800                   cmp eax, 0
+1400018a0: 0f94c0                   sete al
+1400018a3: 83f90a                   cmp ecx, 0xa
+1400018a6: 0f9cc1                   setl cl
+1400018a9: 08c8                     or al, cl
+1400018ab: a801                     test al, 1
+1400018ad: e906000000               jmp 0x1400018b8
+1400018b2: 90                       nop
+1400018b3: e9a1030000               jmp 0x140001c59
+1400018b8: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+1400018bc: 8b08                     mov ecx, dword ptr [rax]
+1400018be: 81c144440000             add ecx, 0x4444
+1400018c4: 8908                     mov dword ptr [rax], ecx
+1400018c6: 8b0550770800             mov eax, dword ptr [rip + 0x87750]
+1400018cc: 8b0d46770800             mov ecx, dword ptr [rip + 0x87746]
+1400018d2: 89c2                     mov edx, eax
+1400018d4: 83ea01                   sub edx, 1
+1400018d7: 0fafc2                   imul eax, edx
+1400018da: 83e001                   and eax, 1
+1400018dd: 83f800                   cmp eax, 0
+1400018e0: 0f94c0                   sete al
+1400018e3: 83f90a                   cmp ecx, 0xa
+1400018e6: 0f9cc1                   setl cl
+1400018e9: 08c8                     or al, cl
+1400018eb: a801                     test al, 1
+1400018ed: e906000000               jmp 0x1400018f8
+1400018f2: 90                       nop
+1400018f3: e961030000               jmp 0x140001c59
+1400018f8: e900000000               jmp 0x1400018fd
+1400018fd: 8b0519770800             mov eax, dword ptr [rip + 0x87719]
+140001903: 8b0d0f770800             mov ecx, dword ptr [rip + 0x8770f]
+140001909: 89c2                     mov edx, eax
+14000190b: 83ea01                   sub edx, 1
+14000190e: 0fafc2                   imul eax, edx
+140001911: 83e001                   and eax, 1
+140001914: 83f800                   cmp eax, 0
+140001917: 0f94c0                   sete al
+14000191a: 83f90a                   cmp ecx, 0xa
+14000191d: 0f9cc1                   setl cl
+140001920: 08c8                     or al, cl
+140001922: a801                     test al, 1
+140001924: e906000000               jmp 0x14000192f
+140001929: 90                       nop
+14000192a: e93d030000               jmp 0x140001c6c
+14000192f: 488b45e0                 mov rax, qword ptr [rbp - 0x20]
+140001933: 8b00                     mov eax, dword ptr [rax]
+140001935: 25ff000000               and eax, 0xff
+14000193a: 83f837                   cmp eax, 0x37
+14000193d: 0f94c0                   sete al
+140001940: 8845ce                   mov byte ptr [rbp - 0x32], al
+140001943: 8b05d3760800             mov eax, dword ptr [rip + 0x876d3]
+140001949: 8b0dc9760800             mov ecx, dword ptr [rip + 0x876c9]
+14000194f: 89c2                     mov edx, eax
+140001951: 83ea01                   sub edx, 1
+140001954: 0fafc2                   imul eax, edx
+140001957: 83e001                   and eax, 1
+14000195a: 83f800                   cmp eax, 0
+14000195d: 0f94c0                   sete al
+140001960: 83f90a                   cmp ecx, 0xa
+140001963: 0f9cc1                   setl cl
+140001966: 08c8                     or al, cl
+140001968: a801                     test al, 1
+14000196a: e906000000               jmp 0x140001975
+14000196f: 90                       nop
+140001970: e9f7020000               jmp 0x140001c6c
+140001975: 8a45ce                   mov al, byte ptr [rbp - 0x32]
+140001978: a801                     test al, 1
+14000197a: 0f8505000000             jne 0x140001985
+140001980: e977000000               jmp 0x1400019fc
+140001985: 8b0591760800             mov eax, dword ptr [rip + 0x87691]
+14000198b: 8b0d87760800             mov ecx, dword ptr [rip + 0x87687]
+140001991: 89c2                     mov edx, eax
+140001993: 83ea01                   sub edx, 1
+140001996: 0fafc2                   imul eax, edx
+140001999: 83e001                   and eax, 1
+14000199c: 83f800                   cmp eax, 0
+14000199f: 0f94c0                   sete al
+1400019a2: 83f90a                   cmp ecx, 0xa
+1400019a5: 0f9cc1                   setl cl
+1400019a8: 08c8                     or al, cl
+1400019aa: a801                     test al, 1
+1400019ac: e906000000               jmp 0x1400019b7
+1400019b1: 90                       nop
+1400019b2: e9ba020000               jmp 0x140001c71
+1400019b7: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+1400019bb: 8b08                     mov ecx, dword ptr [rax]
+1400019bd: 81f155555555             xor ecx, 0x55555555
+1400019c3: 8908                     mov dword ptr [rax], ecx
+1400019c5: 8b0551760800             mov eax, dword ptr [rip + 0x87651]
+1400019cb: 8b0d47760800             mov ecx, dword ptr [rip + 0x87647]
+1400019d1: 89c2                     mov edx, eax
+1400019d3: 83ea01                   sub edx, 1
+1400019d6: 0fafc2                   imul eax, edx
+1400019d9: 83e001                   and eax, 1
+1400019dc: 83f800                   cmp eax, 0
+1400019df: 0f94c0                   sete al
+1400019e2: 83f90a                   cmp ecx, 0xa
+1400019e5: 0f9cc1                   setl cl
+1400019e8: 08c8                     or al, cl
+1400019ea: a801                     test al, 1
+1400019ec: e906000000               jmp 0x1400019f7
+1400019f1: 90                       nop
+1400019f2: e97a020000               jmp 0x140001c71
+1400019f7: e900000000               jmp 0x1400019fc
+1400019fc: 8b051a760800             mov eax, dword ptr [rip + 0x8761a]
+140001a02: 8b0d10760800             mov ecx, dword ptr [rip + 0x87610]
+140001a08: 89c2                     mov edx, eax
+140001a0a: 83ea01                   sub edx, 1
+140001a0d: 0fafc2                   imul eax, edx
+140001a10: 83e001                   and eax, 1
+140001a13: 83f800                   cmp eax, 0
+140001a16: 0f94c0                   sete al
+140001a19: 83f90a                   cmp ecx, 0xa
+140001a1c: 0f9cc1                   setl cl
+140001a1f: 08c8                     or al, cl
+140001a21: a801                     test al, 1
+140001a23: e906000000               jmp 0x140001a2e
+140001a28: 90                       nop
+140001a29: e956020000               jmp 0x140001c84
+140001a2e: 488b45d0                 mov rax, qword ptr [rbp - 0x30]
+140001a32: 8b00                     mov eax, dword ptr [rax]
+140001a34: 83e001                   and eax, 1
+140001a37: 83f800                   cmp eax, 0
+140001a3a: 0f94c0                   sete al
+140001a3d: 8845cd                   mov byte ptr [rbp - 0x33], al
+140001a40: 8b05d6750800             mov eax, dword ptr [rip + 0x875d6]
+140001a46: 8b0dcc750800             mov ecx, dword ptr [rip + 0x875cc]
+140001a4c: 89c2                     mov edx, eax
+140001a4e: 83ea01                   sub edx, 1
+140001a51: 0fafc2                   imul eax, edx
+140001a54: 83e001                   and eax, 1
+140001a57: 83f800                   cmp eax, 0
+140001a5a: 0f94c0                   sete al
+140001a5d: 83f90a                   cmp ecx, 0xa
+140001a60: 0f9cc1                   setl cl
+140001a63: 08c8                     or al, cl
+140001a65: a801                     test al, 1
+140001a67: e906000000               jmp 0x140001a72
+140001a6c: 90                       nop
+140001a6d: e912020000               jmp 0x140001c84
+140001a72: 8a45cd                   mov al, byte ptr [rbp - 0x33]
+140001a75: a801                     test al, 1
+140001a77: 0f8505000000             jne 0x140001a82
+140001a7d: e977000000               jmp 0x140001af9
+140001a82: 8b0594750800             mov eax, dword ptr [rip + 0x87594]
+140001a88: 8b0d8a750800             mov ecx, dword ptr [rip + 0x8758a]
+140001a8e: 89c2                     mov edx, eax
+140001a90: 83ea01                   sub edx, 1
+140001a93: 0fafc2                   imul eax, edx
+140001a96: 83e001                   and eax, 1
+140001a99: 83f800                   cmp eax, 0
+140001a9c: 0f94c0                   sete al
+140001a9f: 83f90a                   cmp ecx, 0xa
+140001aa2: 0f9cc1                   setl cl
+140001aa5: 08c8                     or al, cl
+140001aa7: a801                     test al, 1
+140001aa9: e906000000               jmp 0x140001ab4
+140001aae: 90                       nop
+140001aaf: e9d5010000               jmp 0x140001c89
+140001ab4: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001ab8: 8b08                     mov ecx, dword ptr [rax]
+140001aba: 81e966660000             sub ecx, 0x6666
+140001ac0: 8908                     mov dword ptr [rax], ecx
+140001ac2: 8b0554750800             mov eax, dword ptr [rip + 0x87554]
+140001ac8: 8b0d4a750800             mov ecx, dword ptr [rip + 0x8754a]
+140001ace: 89c2                     mov edx, eax
+140001ad0: 83ea01                   sub edx, 1
+140001ad3: 0fafc2                   imul eax, edx
+140001ad6: 83e001                   and eax, 1
+140001ad9: 83f800                   cmp eax, 0
+140001adc: 0f94c0                   sete al
+140001adf: 83f90a                   cmp ecx, 0xa
+140001ae2: 0f9cc1                   setl cl
+140001ae5: 08c8                     or al, cl
+140001ae7: a801                     test al, 1
+140001ae9: e906000000               jmp 0x140001af4
+140001aee: 90                       nop
+140001aef: e995010000               jmp 0x140001c89
+140001af4: e977000000               jmp 0x140001b70
+140001af9: 8b051d750800             mov eax, dword ptr [rip + 0x8751d]
+140001aff: 8b0d13750800             mov ecx, dword ptr [rip + 0x87513]
+140001b05: 89c2                     mov edx, eax
+140001b07: 83ea01                   sub edx, 1
+140001b0a: 0fafc2                   imul eax, edx
+140001b0d: 83e001                   and eax, 1
+140001b10: 83f800                   cmp eax, 0
+140001b13: 0f94c0                   sete al
+140001b16: 83f90a                   cmp ecx, 0xa
+140001b19: 0f9cc1                   setl cl
+140001b1c: 08c8                     or al, cl
+140001b1e: a801                     test al, 1
+140001b20: e906000000               jmp 0x140001b2b
+140001b25: 90                       nop
+140001b26: e971010000               jmp 0x140001c9c
+140001b2b: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001b2f: 8b08                     mov ecx, dword ptr [rax]
+140001b31: 81c177770000             add ecx, 0x7777
+140001b37: 8908                     mov dword ptr [rax], ecx
+140001b39: 8b05dd740800             mov eax, dword ptr [rip + 0x874dd]
+140001b3f: 8b0dd3740800             mov ecx, dword ptr [rip + 0x874d3]
+140001b45: 89c2                     mov edx, eax
+140001b47: 83ea01                   sub edx, 1
+140001b4a: 0fafc2                   imul eax, edx
+140001b4d: 83e001                   and eax, 1
+140001b50: 83f800                   cmp eax, 0
+140001b53: 0f94c0                   sete al
+140001b56: 83f90a                   cmp ecx, 0xa
+140001b59: 0f9cc1                   setl cl
+140001b5c: 08c8                     or al, cl
+140001b5e: a801                     test al, 1
+140001b60: e906000000               jmp 0x140001b6b
+140001b65: 90                       nop
+140001b66: e931010000               jmp 0x140001c9c
+140001b6b: e900000000               jmp 0x140001b70
+140001b70: 8b05a6740800             mov eax, dword ptr [rip + 0x874a6]
+140001b76: 8b0d9c740800             mov ecx, dword ptr [rip + 0x8749c]
+140001b7c: 89c2                     mov edx, eax
+140001b7e: 83ea01                   sub edx, 1
+140001b81: 0fafc2                   imul eax, edx
+140001b84: 83e001                   and eax, 1
+140001b87: 83f800                   cmp eax, 0
+140001b8a: 0f94c0                   sete al
+140001b8d: 83f90a                   cmp ecx, 0xa
+140001b90: 0f9cc1                   setl cl
+140001b93: 08c8                     or al, cl
+140001b95: a801                     test al, 1
+140001b97: e906000000               jmp 0x140001ba2
+140001b9c: 90                       nop
+140001b9d: e90d010000               jmp 0x140001caf
+140001ba2: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001ba6: 8b00                     mov eax, dword ptr [rax]
+140001ba8: 8945c8                   mov dword ptr [rbp - 0x38], eax
+140001bab: 8b056b740800             mov eax, dword ptr [rip + 0x8746b]
+140001bb1: 8b0d61740800             mov ecx, dword ptr [rip + 0x87461]
+140001bb7: 89c2                     mov edx, eax
+140001bb9: 83ea01                   sub edx, 1
+140001bbc: 0fafc2                   imul eax, edx
+140001bbf: 83e001                   and eax, 1
+140001bc2: 83f800                   cmp eax, 0
+140001bc5: 0f94c0                   sete al
+140001bc8: 83f90a                   cmp ecx, 0xa
+140001bcb: 0f9cc1                   setl cl
+140001bce: 08c8                     or al, cl
+140001bd0: a801                     test al, 1
+140001bd2: e906000000               jmp 0x140001bdd
+140001bd7: 90                       nop
+140001bd8: e9d2000000               jmp 0x140001caf
+140001bdd: 8b45c8                   mov eax, dword ptr [rbp - 0x38]
+140001be0: 4889ec                   mov rsp, rbp
+140001be3: 5d                       pop rbp
+140001be4: c3                       ret
+140001be5: 8b55fc                   mov edx, dword ptr [rbp - 4]
+140001be8: 448b4df8                 mov r9d, dword ptr [rbp - 8]
+140001bec: b810000000               mov eax, 0x10
+140001bf1: 488945c0                 mov qword ptr [rbp - 0x40], rax
+140001bf5: e8e63b0000               call 0x1400057e0
+140001bfa: 4829c4                   sub rsp, rax
+140001bfd: 488b45c0                 mov rax, qword ptr [rbp - 0x40]
+140001c01: 4989e0                   mov r8, rsp
+140001c04: e8d73b0000               call 0x1400057e0
+140001c09: 4829c4                   sub rsp, rax
+140001c0c: 488b45c0                 mov rax, qword ptr [rbp - 0x40]
+140001c10: 4889e1                   mov rcx, rsp
+140001c13: e8c83b0000               call 0x1400057e0
+140001c18: 4829c4                   sub rsp, rax
+140001c1b: 4889e0                   mov rax, rsp
+140001c1e: 458908                   mov dword ptr [r8], r9d
+140001c21: 8911                     mov dword ptr [rcx], edx
+140001c23: c70011111111             mov dword ptr [rax], 0x11111111
+140001c29: e944faffff               jmp 0x140001672
+140001c2e: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001c32: 8b08                     mov ecx, dword ptr [rax]
+140001c34: 81f122222222             xor ecx, 0x22222222
+140001c3a: 8908                     mov dword ptr [rax], ecx
+140001c3c: e905fbffff               jmp 0x140001746
+140001c41: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001c45: 8b08                     mov ecx, dword ptr [rax]
+140001c47: 81c133330000             add ecx, 0x3333
+140001c4d: 8908                     mov dword ptr [rax], ecx
+140001c4f: e969fbffff               jmp 0x1400017bd
+140001c54: e9dbfbffff               jmp 0x140001834
+140001c59: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001c5d: 8b08                     mov ecx, dword ptr [rax]
+140001c5f: 81c144440000             add ecx, 0x4444
+140001c65: 8908                     mov dword ptr [rax], ecx
+140001c67: e94cfcffff               jmp 0x1400018b8
+140001c6c: e9befcffff               jmp 0x14000192f
+140001c71: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001c75: 8b08                     mov ecx, dword ptr [rax]
+140001c77: 81f155555555             xor ecx, 0x55555555
+140001c7d: 8908                     mov dword ptr [rax], ecx
+140001c7f: e933fdffff               jmp 0x1400019b7
+140001c84: e9a5fdffff               jmp 0x140001a2e
+140001c89: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001c8d: 8b08                     mov ecx, dword ptr [rax]
+140001c8f: 81e966660000             sub ecx, 0x6666
+140001c95: 8908                     mov dword ptr [rax], ecx
+140001c97: e918feffff               jmp 0x140001ab4
+140001c9c: 488b45e8                 mov rax, qword ptr [rbp - 0x18]
+140001ca0: 8b08                     mov ecx, dword ptr [rax]
+140001ca2: 81c177770000             add ecx, 0x7777
+140001ca8: 8908                     mov dword ptr [rax], ecx
+140001caa: e97cfeffff               jmp 0x140001b2b
+140001caf: e9eefeffff               jmp 0x140001ba2

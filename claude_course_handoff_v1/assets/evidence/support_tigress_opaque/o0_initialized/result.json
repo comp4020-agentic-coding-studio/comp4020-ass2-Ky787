@@ -1,0 +1,1240 @@
+{
+  "case": "tigress-add_opaque-O0",
+  "sha256": "EC0422510CB401B0EC004A32961F45F5D9A399EA9EB021F4B16A38B6FE8052BE",
+  "state_model": "INITIALIZED-STATE ASSISTED RESULT",
+  "configuration": {
+    "max_runs": 128,
+    "max_instructions": 5000,
+    "solver_timeout_ms": 1500,
+    "solver": "Z3",
+    "symbolic_inputs": "ECX/EDX 32-bit",
+    "unknown_writable_globals": "first read symbolized, arbitrary concrete seed 1",
+    "symbolic_address_policy": "stop, no unrecorded concretization"
+  },
+  "exploration_complete": true,
+  "elapsed_seconds": 2.276740899993456,
+  "runs": [
+    {
+      "index": 0,
+      "seed": {
+        "x": 4919,
+        "y": 305419896
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 99,
+      "path": [
+        [
+          "0x140001135",
+          false
+        ],
+        [
+          "0x140001157",
+          false
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          false
+        ],
+        [
+          "0x14000128c",
+          true
+        ]
+      ],
+      "output": 1717943228,
+      "source_expected": 1717943228,
+      "semantic_match": true
+    },
+    {
+      "index": 1,
+      "seed": {
+        "x": 4294962376,
+        "y": 305419896
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 33,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          false
+        ],
+        [
+          "0x140001170",
+          true
+        ],
+        [
+          "0x14000127c",
+          false
+        ],
+        [
+          "0x14000128c",
+          true
+        ]
+      ],
+      "output": 286335522,
+      "source_expected": 286335522,
+      "semantic_match": true
+    },
+    {
+      "index": 2,
+      "seed": {
+        "x": 4919,
+        "y": 305397760
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 96,
+      "path": [
+        [
+          "0x140001135",
+          false
+        ],
+        [
+          "0x140001157",
+          true
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          false
+        ],
+        [
+          "0x14000128c",
+          true
+        ]
+      ],
+      "output": 1717960704,
+      "source_expected": 1717960704,
+      "semantic_match": true
+    },
+    {
+      "index": 3,
+      "seed": {
+        "x": 4919,
+        "y": 305397761
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 95,
+      "path": [
+        [
+          "0x140001135",
+          false
+        ],
+        [
+          "0x140001157",
+          false
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          true
+        ]
+      ],
+      "output": 1718000025,
+      "source_expected": 1718000025,
+      "semantic_match": true
+    },
+    {
+      "index": 4,
+      "seed": {
+        "x": 4294962376,
+        "y": 305397760
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 30,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          true
+        ],
+        [
+          "0x140001170",
+          true
+        ],
+        [
+          "0x14000127c",
+          false
+        ],
+        [
+          "0x14000128c",
+          true
+        ]
+      ],
+      "output": 286318046,
+      "source_expected": 286318046,
+      "semantic_match": true
+    },
+    {
+      "index": 5,
+      "seed": {
+        "x": 55,
+        "y": 2452881408
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 98,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          false
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          false
+        ],
+        [
+          "0x14000128c",
+          true
+        ]
+      ],
+      "output": 1145337719,
+      "source_expected": 1145337719,
+      "semantic_match": true
+    },
+    {
+      "index": 6,
+      "seed": {
+        "x": 0,
+        "y": 2147483649
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 29,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          false
+        ],
+        [
+          "0x140001170",
+          true
+        ],
+        [
+          "0x14000127c",
+          true
+        ]
+      ],
+      "output": 286392319,
+      "source_expected": 286392319,
+      "semantic_match": true
+    },
+    {
+      "index": 7,
+      "seed": {
+        "x": 4919,
+        "y": 1
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 92,
+      "path": [
+        [
+          "0x140001135",
+          false
+        ],
+        [
+          "0x140001157",
+          true
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          true
+        ]
+      ],
+      "output": 1718017501,
+      "source_expected": 1718017501,
+      "semantic_match": true
+    },
+    {
+      "index": 8,
+      "seed": {
+        "x": 55,
+        "y": 305397760
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 95,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          true
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          false
+        ],
+        [
+          "0x14000128c",
+          true
+        ]
+      ],
+      "output": 1145285291,
+      "source_expected": 1145285291,
+      "semantic_match": true
+    },
+    {
+      "index": 9,
+      "seed": {
+        "x": 0,
+        "y": 1
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 26,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          true
+        ],
+        [
+          "0x140001170",
+          true
+        ],
+        [
+          "0x14000127c",
+          true
+        ]
+      ],
+      "output": 286374843,
+      "source_expected": 286374843,
+      "semantic_match": true
+    },
+    {
+      "index": 10,
+      "seed": {
+        "x": 55,
+        "y": 2147483649
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 94,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          false
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          true
+        ]
+      ],
+      "output": 1145394516,
+      "source_expected": 1145394516,
+      "semantic_match": true
+    },
+    {
+      "index": 11,
+      "seed": {
+        "x": 55,
+        "y": 1
+      },
+      "termination": "RETURN",
+      "failure": null,
+      "instruction_count": 91,
+      "path": [
+        [
+          "0x140001135",
+          true
+        ],
+        [
+          "0x140001157",
+          true
+        ],
+        [
+          "0x140001170",
+          false
+        ],
+        [
+          "0x1400011ed",
+          false
+        ],
+        [
+          "0x140001266",
+          false
+        ],
+        [
+          "0x14000127c",
+          true
+        ]
+      ],
+      "output": 1145342088,
+      "source_expected": 1145342088,
+      "semantic_match": true
+    }
+  ],
+  "unexplored_sat_prefixes": [],
+  "remaining_queue": 0,
+  "branches": [
+    {
+      "branch_va": "0x140001135",
+      "branch_rva": "0x1135",
+      "instruction": "jne 0x140001144",
+      "classification": "GENUINE / TWO-SIDED",
+      "contexts": 1,
+      "true_sat": true,
+      "false_sat": true,
+      "predicate_ids": [
+        0
+      ],
+      "symbolized": true
+    },
+    {
+      "branch_va": "0x140001157",
+      "branch_rva": "0x1157",
+      "instruction": "jbe 0x140001164",
+      "classification": "GENUINE / TWO-SIDED",
+      "contexts": 2,
+      "true_sat": true,
+      "false_sat": true,
+      "predicate_ids": [
+        1,
+        7
+      ],
+      "symbolized": true
+    },
+    {
+      "branch_va": "0x140001170",
+      "branch_rva": "0x1170",
+      "instruction": "jne 0x140001273",
+      "classification": "GENUINE / TWO-SIDED",
+      "contexts": 4,
+      "true_sat": true,
+      "false_sat": true,
+      "predicate_ids": [
+        2,
+        8,
+        11,
+        16
+      ],
+      "symbolized": true
+    },
+    {
+      "branch_va": "0x1400011ed",
+      "branch_rva": "0x11ed",
+      "instruction": "jne 0x140001273",
+      "classification": "PROVEN ALWAYS-FALSE",
+      "contexts": 4,
+      "true_sat": false,
+      "false_sat": true,
+      "predicate_ids": [
+        3,
+        12,
+        19,
+        23
+      ],
+      "symbolized": false
+    },
+    {
+      "branch_va": "0x140001266",
+      "branch_rva": "0x1266",
+      "instruction": "jne 0x140001273",
+      "classification": "PROVEN ALWAYS-FALSE",
+      "contexts": 4,
+      "true_sat": false,
+      "false_sat": true,
+      "predicate_ids": [
+        4,
+        13,
+        20,
+        24
+      ],
+      "symbolized": false
+    },
+    {
+      "branch_va": "0x14000127c",
+      "branch_rva": "0x127c",
+      "instruction": "jne 0x14000129d",
+      "classification": "GENUINE / TWO-SIDED",
+      "contexts": 6,
+      "true_sat": true,
+      "false_sat": true,
+      "predicate_ids": [
+        5,
+        9,
+        14,
+        17,
+        21,
+        25
+      ],
+      "symbolized": true
+    },
+    {
+      "branch_va": "0x14000128c",
+      "branch_rva": "0x128c",
+      "instruction": "je 0x140001290",
+      "classification": "PROVEN ALWAYS-TRUE",
+      "contexts": 6,
+      "true_sat": true,
+      "false_sat": false,
+      "predicate_ids": [
+        6,
+        10,
+        15,
+        18,
+        22,
+        26
+      ],
+      "symbolized": false
+    }
+  ],
+  "queries": [
+    {
+      "context": 0,
+      "va": "0x140001135",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 3,
+      "wall_ms": 16.061600006651133,
+      "model": {
+        "x": 4294962376
+      }
+    },
+    {
+      "context": 0,
+      "va": "0x140001135",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 13.987900005304255,
+      "model": {
+        "x": 4919
+      }
+    },
+    {
+      "context": 1,
+      "va": "0x140001157",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.65909998700954,
+      "model": {
+        "y": 305397760,
+        "x": 4919
+      }
+    },
+    {
+      "context": 1,
+      "va": "0x140001157",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.69009999022819,
+      "model": {
+        "y": 2452881408,
+        "x": 4919
+      }
+    },
+    {
+      "context": 2,
+      "va": "0x140001170",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 13.07670000824146,
+      "model": {}
+    },
+    {
+      "context": 2,
+      "va": "0x140001170",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.591100007644854,
+      "model": {
+        "y": 2452881408,
+        "x": 4919
+      }
+    },
+    {
+      "context": 3,
+      "va": "0x1400011ed",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 12.26699999824632,
+      "model": {}
+    },
+    {
+      "context": 3,
+      "va": "0x1400011ed",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.695199999958277,
+      "model": {
+        "y": 2452881408,
+        "x": 4919
+      }
+    },
+    {
+      "context": 4,
+      "va": "0x140001266",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 12.637599997106008,
+      "model": {}
+    },
+    {
+      "context": 4,
+      "va": "0x140001266",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.526799998246133,
+      "model": {
+        "y": 2452881408,
+        "x": 4919
+      }
+    },
+    {
+      "context": 5,
+      "va": "0x14000127c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.81260000623297,
+      "model": {
+        "y": 305397761,
+        "x": 4919
+      }
+    },
+    {
+      "context": 5,
+      "va": "0x14000127c",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.662199996062554,
+      "model": {
+        "y": 2452881408,
+        "x": 4919
+      }
+    },
+    {
+      "context": 6,
+      "va": "0x14000128c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.565199999604374,
+      "model": {
+        "y": 2452881408,
+        "x": 4919
+      }
+    },
+    {
+      "context": 6,
+      "va": "0x14000128c",
+      "side": "false",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 12.865299999248236,
+      "model": {}
+    },
+    {
+      "context": 7,
+      "va": "0x140001157",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.92959999490995,
+      "model": {
+        "x": 4294962376,
+        "y": 305397760
+      }
+    },
+    {
+      "context": 7,
+      "va": "0x140001157",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.188399997190572,
+      "model": {
+        "x": 4294962376,
+        "y": 2452881408
+      }
+    },
+    {
+      "context": 8,
+      "va": "0x140001170",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.28510000591632,
+      "model": {
+        "y": 2452881408,
+        "x": 0
+      }
+    },
+    {
+      "context": 8,
+      "va": "0x140001170",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.002400006982498,
+      "model": {
+        "y": 2452881408,
+        "x": 55
+      }
+    },
+    {
+      "context": 9,
+      "va": "0x14000127c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.015699991839938,
+      "model": {
+        "y": 2147483649,
+        "x": 0
+      }
+    },
+    {
+      "context": 9,
+      "va": "0x14000127c",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.99770000029821,
+      "model": {
+        "y": 2452881408,
+        "x": 0
+      }
+    },
+    {
+      "context": 10,
+      "va": "0x14000128c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.44059999671299,
+      "model": {
+        "y": 2452881408,
+        "x": 0
+      }
+    },
+    {
+      "context": 10,
+      "va": "0x14000128c",
+      "side": "false",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.692300002323464,
+      "model": {}
+    },
+    {
+      "context": 11,
+      "va": "0x140001170",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 3,
+      "wall_ms": 12.853499996708706,
+      "model": {}
+    },
+    {
+      "context": 11,
+      "va": "0x140001170",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.77309999265708,
+      "model": {
+        "y": 305397760,
+        "x": 4919
+      }
+    },
+    {
+      "context": 12,
+      "va": "0x1400011ed",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.834099990664981,
+      "model": {}
+    },
+    {
+      "context": 12,
+      "va": "0x1400011ed",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.693599998485297,
+      "model": {
+        "y": 305397760,
+        "x": 4919
+      }
+    },
+    {
+      "context": 13,
+      "va": "0x140001266",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.929699991014786,
+      "model": {}
+    },
+    {
+      "context": 13,
+      "va": "0x140001266",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.839799991226755,
+      "model": {
+        "y": 305397760,
+        "x": 4919
+      }
+    },
+    {
+      "context": 14,
+      "va": "0x14000127c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 7,
+      "wall_ms": 16.602499992586672,
+      "model": {
+        "y": 1,
+        "x": 4919
+      }
+    },
+    {
+      "context": 14,
+      "va": "0x14000127c",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.075300009106286,
+      "model": {
+        "y": 305397760,
+        "x": 4919
+      }
+    },
+    {
+      "context": 15,
+      "va": "0x14000128c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.875000011874363,
+      "model": {
+        "y": 305397760,
+        "x": 4919
+      }
+    },
+    {
+      "context": 15,
+      "va": "0x14000128c",
+      "side": "false",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.877200013259426,
+      "model": {}
+    },
+    {
+      "context": 16,
+      "va": "0x140001170",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 16.62150000629481,
+      "model": {
+        "y": 3145728,
+        "x": 0
+      }
+    },
+    {
+      "context": 16,
+      "va": "0x140001170",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.694000001531094,
+      "model": {
+        "y": 305397760,
+        "x": 55
+      }
+    },
+    {
+      "context": 17,
+      "va": "0x14000127c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.629899993655272,
+      "model": {
+        "y": 1,
+        "x": 0
+      }
+    },
+    {
+      "context": 17,
+      "va": "0x14000127c",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.689100007875822,
+      "model": {
+        "y": 305397760,
+        "x": 0
+      }
+    },
+    {
+      "context": 18,
+      "va": "0x14000128c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.617099998053163,
+      "model": {
+        "y": 305397760,
+        "x": 0
+      }
+    },
+    {
+      "context": 18,
+      "va": "0x14000128c",
+      "side": "false",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.627800005953759,
+      "model": {}
+    },
+    {
+      "context": 19,
+      "va": "0x1400011ed",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 12.763799997628666,
+      "model": {}
+    },
+    {
+      "context": 19,
+      "va": "0x1400011ed",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.538599996943958,
+      "model": {
+        "y": 2452881408,
+        "x": 55
+      }
+    },
+    {
+      "context": 20,
+      "va": "0x140001266",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.64480000443291,
+      "model": {}
+    },
+    {
+      "context": 20,
+      "va": "0x140001266",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.383000005385838,
+      "model": {
+        "y": 2452881408,
+        "x": 55
+      }
+    },
+    {
+      "context": 21,
+      "va": "0x14000127c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.12430000002496,
+      "model": {
+        "y": 2147483649,
+        "x": 55
+      }
+    },
+    {
+      "context": 21,
+      "va": "0x14000127c",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.11519998894073,
+      "model": {
+        "y": 2452881408,
+        "x": 55
+      }
+    },
+    {
+      "context": 22,
+      "va": "0x14000128c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.09089999308344,
+      "model": {
+        "y": 2452881408,
+        "x": 55
+      }
+    },
+    {
+      "context": 22,
+      "va": "0x14000128c",
+      "side": "false",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.32540000253357,
+      "model": {}
+    },
+    {
+      "context": 23,
+      "va": "0x1400011ed",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 12.396199992508627,
+      "model": {}
+    },
+    {
+      "context": 23,
+      "va": "0x1400011ed",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.626300009898841,
+      "model": {
+        "y": 305397760,
+        "x": 55
+      }
+    },
+    {
+      "context": 24,
+      "va": "0x140001266",
+      "side": "true",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.50459999917075,
+      "model": {}
+    },
+    {
+      "context": 24,
+      "va": "0x140001266",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.635599993402138,
+      "model": {
+        "y": 305397760,
+        "x": 55
+      }
+    },
+    {
+      "context": 25,
+      "va": "0x14000127c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.468099998543039,
+      "model": {
+        "y": 1,
+        "x": 55
+      }
+    },
+    {
+      "context": 25,
+      "va": "0x14000127c",
+      "side": "false",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.215699997497723,
+      "model": {
+        "y": 305397760,
+        "x": 55
+      }
+    },
+    {
+      "context": 26,
+      "va": "0x14000128c",
+      "side": "true",
+      "status": "SAT",
+      "solver_reported_ms": 6,
+      "wall_ms": 15.421699994476512,
+      "model": {
+        "y": 305397760,
+        "x": 55
+      }
+    },
+    {
+      "context": 26,
+      "va": "0x14000128c",
+      "side": "false",
+      "status": "UNSAT",
+      "solver_reported_ms": 2,
+      "wall_ms": 11.430899990955368,
+      "model": {}
+    }
+  ],
+  "native_clean_validation": [],
+  "initialized_provenance": {
+    "method": "A: actual PE main initialization path emulated by Triton up to target entry",
+    "case": "tigress-add_opaque-O0",
+    "executable": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\tigress\\add_opaque\\O0\\showcase.exe",
+    "sha256": "EC0422510CB401B0EC004A32961F45F5D9A399EA9EB021F4B16A38B6FE8052BE",
+    "main": "0x140001300",
+    "stop": "0x140001110",
+    "instruction_count": 763,
+    "malloc_summary": "successful fresh aligned synthetic heap allocation; no target-specific state constants",
+    "allocations": [
+      {
+        "address": "0x72000000",
+        "size": 24,
+        "return_address": "0x140001bd8"
+      },
+      {
+        "address": "0x72010000",
+        "size": 24,
+        "return_address": "0x140001c1e"
+      },
+      {
+        "address": "0x72020000",
+        "size": 24,
+        "return_address": "0x140001c1e"
+      }
+    ],
+    "scope": "One concrete initialized main state; x/y re-symbolized independently at target entry",
+    "relevant_globals": {
+      "_TIG_iO_wVLP_2_main_1__opaque_array": {
+        "va": "0x14009b120",
+        "bytes": "6c00000001010000030000003a000000ec00000005000000f80000001902000005000000e40000007801000007000000c5010000c90000004200000003000000940100003c0000008e0100005f0200004e000000c5010000040200001c00000075010000d70000004e000000f800000008010000"
+      },
+      "_TIG_iE_wVLP_1_entropy": {
+        "va": "0x14009b198",
+        "bytes": "f8252d8c"
+      },
+      "_TIG_iO_wVLP_2_main_1_opaque_ptr_2": {
+        "va": "0x14009b1a0",
+        "bytes": "0000027200000000"
+      },
+      "_TIG_iO_wVLP_2_main_1_opaque_ptr_1": {
+        "va": "0x14009b1d0",
+        "bytes": "0000027200000000"
+      }
+    }
+  }
+}

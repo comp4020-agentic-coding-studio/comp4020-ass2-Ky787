@@ -1,0 +1,19 @@
+{
+  "site_input_output": {
+    "unsat": 384
+  },
+  "site_output_expected": {
+    "unsat": 368,
+    "unknown": 16
+  },
+  "internal_simplifier_checks": {
+    "unsat": 28
+  },
+  "confirmed_sat_counterexamples": 0,
+  "synthesis_input_candidate": {
+    "unsat": 3
+  },
+  "synthesis_candidate_expected": {
+    "unsat": 3
+  }
+}

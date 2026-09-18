@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "validated_utc": "2026-09-18T06:04:43+00:00",
+  "scope": "Read-only curation QA; no new experimental run, compilation, binary execution or debugger session",
+  "original_inputs_unchanged": 347,
+  "original_inventory_unchanged": true,
+  "authoritative_original_and_copied_hashes_matched": 298,
+  "asset_checks": {
+    "assets_hashed": 298,
+    "pe_x64_binaries": 21,
+    "screenshots_indexed": 25,
+    "screenshot_publication_holds": 2,
+    "lecture_tables_indexed": 12,
+    "cfg_visuals": 24,
+    "topic_mappings_checked": 16,
+    "archival_links_catalogued": 207,
+    "archival_links_to_bundled_assets": 80,
+    "archival_links_intentionally_unbundled": 127,
+    "primary_markdown_local_links_checked": 1171,
+    "provisional_weeks": 12,
+    "asset_bytes": 28939265
+  },
+  "unresolved": [
+    "Two screenshot publication holds; see VISUAL_INDEX.md",
+    "Exact screenshot database hashes/capture tool versions not supplied",
+    "No confirmed Tigress arithmetic-target or Mergen-output IDA screenshot",
+    "Windows runtime environment and publication permissions remain course-owner decisions"
+  ],
+  "preservation": "Original evidence pack, lecture tables, docs and src match the complete pre-curation snapshot; selected research-result originals match every copied hash",
+  "website_generated": false,
+  "website_or_pdb_files_present": false,
+  "checksum_policy": "SHA256SUMS.txt covers every package file except itself; run verify_handoff.py after transfer"
+}

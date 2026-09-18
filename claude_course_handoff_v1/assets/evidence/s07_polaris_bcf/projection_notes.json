@@ -1,0 +1,14 @@
+{
+  "original_blocks_now_unreachable": 24,
+  "classification_counts": {
+    "bogus clone": 8,
+    "jump stub": 16,
+    "predicate computation": 0,
+    "genuine semantic block": 0,
+    "unknown": 0
+  },
+  "projection": "rewritten_entry_reachable.dot/svg: read-only graph projection; no binary block deletion",
+  "method": "Actual PE bytes; direct intraprocedural edges. Calls do not split blocks, RET is terminal. All-static also decodes unreachable instructions within the unchanged RUNTIME_FUNCTION extent. Reachability is structural, without pruning genuine conditional outcomes.",
+  "original_block_comparison": "Any original instruction address reached in rewritten CFG keeps its original block; avoids leader shifts caused by inserted padding NOPs.",
+  "provenance": "Frozen compiler assembly instruction count/mnemonic sequence matches PE. Known injected impossible-edge stubs target compiler clone labels; clone classification includes empty forwarding clones. Retained IR/source ground truth is independent of solver classifications."
+}

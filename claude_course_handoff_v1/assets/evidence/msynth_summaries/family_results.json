@@ -1,0 +1,468 @@
+[
+  {
+    "id": "ollvm16-sub-O0",
+    "obfuscator": "ollvm16",
+    "transformation": "sub",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 16,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 8,
+    "failures": 0,
+    "recovery_percentage": 66.66666666666667,
+    "already_canonical": 16,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 5.333333333333333,
+    "simplification_seconds": 0.13518889999977546,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "ollvm16-sub-O0",
+    "obfuscator": "ollvm16",
+    "transformation": "sub",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 16,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 8,
+    "failures": 0,
+    "recovery_percentage": 66.66666666666667,
+    "already_canonical": 16,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 5.333333333333333,
+    "simplification_seconds": 0.2157713000124204,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "hikari-sub-O0",
+    "obfuscator": "hikari",
+    "transformation": "sub",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 22,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 2,
+    "failures": 0,
+    "recovery_percentage": 91.66666666666667,
+    "already_canonical": 22,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 3.5833333333333335,
+    "simplification_seconds": 0.05438679997314466,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "hikari-sub-O0",
+    "obfuscator": "hikari",
+    "transformation": "sub",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 22,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 2,
+    "failures": 0,
+    "recovery_percentage": 91.66666666666667,
+    "already_canonical": 22,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 3.5833333333333335,
+    "simplification_seconds": 0.11112519999005599,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "polaris-sub-O0",
+    "obfuscator": "polaris",
+    "transformation": "sub",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 16,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 8,
+    "failures": 0,
+    "recovery_percentage": 66.66666666666667,
+    "already_canonical": 16,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 5.166666666666667,
+    "simplification_seconds": 0.16765020002640085,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "polaris-sub-O0",
+    "obfuscator": "polaris",
+    "transformation": "sub",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 16,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 8,
+    "failures": 0,
+    "recovery_percentage": 66.66666666666667,
+    "already_canonical": 16,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 5.166666666666667,
+    "simplification_seconds": 0.17290540000976762,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "tigress-encode_arithmetic-O0",
+    "obfuscator": "tigress",
+    "transformation": "encode_arithmetic",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 8,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 16,
+    "failures": 0,
+    "recovery_percentage": 33.333333333333336,
+    "already_canonical": 7,
+    "nontrivial_recoveries": 1,
+    "mean_ast_reduction": 0.2640993265993269,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 72.72727272727273,
+    "mean_raw_ast_nodes": 7.833333333333333,
+    "simplification_seconds": 0.09077009999600705,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "tigress-encode_arithmetic-O0",
+    "obfuscator": "tigress",
+    "transformation": "encode_arithmetic",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 13,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 11,
+    "failures": 0,
+    "recovery_percentage": 54.166666666666664,
+    "already_canonical": 7,
+    "nontrivial_recoveries": 6,
+    "mean_ast_reduction": 14.979707792207792,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 75.0,
+    "mean_raw_ast_nodes": 7.833333333333333,
+    "simplification_seconds": 0.1391628999990644,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "polaris-mba-O0",
+    "obfuscator": "polaris",
+    "transformation": "mba",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 0,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 9,
+    "no_simplification": 7,
+    "failures": 8,
+    "recovery_percentage": 0.0,
+    "already_canonical": 0,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 10.314067494476573,
+    "median_ast_reduction": -3.225806451612903,
+    "maximum_ast_reduction": 41.46341463414634,
+    "mean_raw_ast_nodes": 72.83333333333333,
+    "simplification_seconds": 0.5092148000039742,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 16,
+      "UNKNOWN_TIMEOUT": 8
+    }
+  },
+  {
+    "id": "polaris-mba-O0",
+    "obfuscator": "polaris",
+    "transformation": "mba",
+    "optimization": "O0",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 0,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 9,
+    "no_simplification": 7,
+    "failures": 8,
+    "recovery_percentage": 0.0,
+    "already_canonical": 0,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 10.314067494476573,
+    "median_ast_reduction": -3.225806451612903,
+    "maximum_ast_reduction": 41.46341463414634,
+    "mean_raw_ast_nodes": 72.83333333333333,
+    "simplification_seconds": 23.08158450001065,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 16,
+      "UNKNOWN_TIMEOUT": 8
+    }
+  },
+  {
+    "id": "tigress-encode_arithmetic-O3",
+    "obfuscator": "tigress",
+    "transformation": "encode_arithmetic",
+    "optimization": "O3",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 10,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 14,
+    "failures": 0,
+    "recovery_percentage": 41.666666666666664,
+    "already_canonical": 7,
+    "nontrivial_recoveries": 3,
+    "mean_ast_reduction": 6.486742424242425,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 72.72727272727273,
+    "mean_raw_ast_nodes": 7.083333333333333,
+    "simplification_seconds": 0.09804639999492792,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "tigress-encode_arithmetic-O3",
+    "obfuscator": "tigress",
+    "transformation": "encode_arithmetic",
+    "optimization": "O3",
+    "status": "VALID RUNNABLE CORPUS SPECIMEN",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 16,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 8,
+    "failures": 0,
+    "recovery_percentage": 66.66666666666667,
+    "already_canonical": 7,
+    "nontrivial_recoveries": 9,
+    "mean_ast_reduction": 22.61228354978355,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 72.72727272727273,
+    "mean_raw_ast_nodes": 7.083333333333333,
+    "simplification_seconds": 0.09368820000963751,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "binprotect-mba-O2",
+    "obfuscator": "binprotect",
+    "transformation": "mba",
+    "optimization": "O2",
+    "status": "STATIC ONLY / SEMANTICALLY INVALID PROTECTED PE",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 0,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 24,
+    "failures": 0,
+    "recovery_percentage": 0.0,
+    "already_canonical": 0,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 9,
+    "simplification_seconds": 0.11649940000643255,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "binprotect-mba-O2",
+    "obfuscator": "binprotect",
+    "transformation": "mba",
+    "optimization": "O2",
+    "status": "STATIC ONLY / SEMANTICALLY INVALID PROTECTED PE",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 16,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 8,
+    "failures": 0,
+    "recovery_percentage": 66.66666666666667,
+    "already_canonical": 0,
+    "nontrivial_recoveries": 16,
+    "mean_ast_reduction": 45.05952380952381,
+    "median_ast_reduction": 66.66666666666667,
+    "maximum_ast_reduction": 75.0,
+    "mean_raw_ast_nodes": 9,
+    "simplification_seconds": 0.0956865999760339,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "binprotect-linear-O2",
+    "obfuscator": "binprotect",
+    "transformation": "linear",
+    "optimization": "O2",
+    "status": "STATIC ONLY / SEMANTICALLY INVALID PROTECTED PE",
+    "method": "oracle_AST",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 24,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 0,
+    "failures": 0,
+    "recovery_percentage": 100.0,
+    "already_canonical": 24,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 3,
+    "simplification_seconds": 0.051559300016378984,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  },
+  {
+    "id": "binprotect-linear-O2",
+    "obfuscator": "binprotect",
+    "transformation": "linear",
+    "optimization": "O2",
+    "status": "STATIC ONLY / SEMANTICALLY INVALID PROTECTED PE",
+    "method": "oracle_plus_SIMBA",
+    "sites_attempted": 24,
+    "extracted": 24,
+    "exact_recoveries": 24,
+    "equivalent_recoveries": 0,
+    "partial_simplifications": 0,
+    "no_simplification": 0,
+    "failures": 0,
+    "recovery_percentage": 100.0,
+    "already_canonical": 24,
+    "nontrivial_recoveries": 0,
+    "mean_ast_reduction": 0.0,
+    "median_ast_reduction": 0.0,
+    "maximum_ast_reduction": 0.0,
+    "mean_raw_ast_nodes": 3,
+    "simplification_seconds": 0.08265060000121593,
+    "smt_results": {
+      "unsat": 24
+    },
+    "verification_status": {
+      "PROVED": 24
+    }
+  }
+]

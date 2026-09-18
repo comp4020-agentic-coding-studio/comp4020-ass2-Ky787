@@ -1,0 +1,26 @@
+{
+  "hikari": {
+    "path": "D:\\VM_Shared_Folder\\software\\ollvm\\for_website\\hikari15\\build-vs-patched\\Release\\bin\\clang.exe",
+    "version": "clang version 15.0.0 (https://github.com/ChandHsu/Hikari-LLVM15 021f73404e4b0bd1ea05c7226953cab8d9801c7a)\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: D:\\VM_Shared_Folder\\software\\ollvm\\for_website\\hikari15\\build-vs-patched\\Release\\bin",
+    "sha256": "E968913828CBCE9D64CED8FD23F90A68B5CA176276B35FD2BC6D379CC031EDF1",
+    "identity": "Hikari LLVM15 revision 021f73404e4b0bd1ea05c7226953cab8d9801c7a"
+  },
+  "polaris": {
+    "path": "E:\\Workspace\\seeing_through_obfuscation\\builds\\polaris\\bin\\clang.exe",
+    "version": "clang version 16.0.6\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: E:\\Workspace\\seeing_through_obfuscation\\builds\\polaris\\bin",
+    "sha256": "88DC08535F71EFD84B3BFACE00080CF5BCA56DC47ADF6DD50FC4293568E50D10",
+    "identity": "Polaris LLVM16 / Clang 16.0.6"
+  },
+  "ollvm16": {
+    "path": "D:\\VM_Shared_Folder\\software\\ollvm\\original_ollvm\\clang.exe",
+    "version": "clang version 16.0.6 (https://github.com/llvm/llvm-project.git 7cbf1a2591520c2491aa35339f227775f4d3adf6)\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: D:\\VM_Shared_Folder\\software\\ollvm\\original_ollvm",
+    "sha256": "0D0392508AF664396606F4E006922E57573690272A4E5A39F7E60E6543B710BE",
+    "identity": "wwh1004 OLLVM-16 / Clang 16.0.6"
+  },
+  "tigress": {
+    "path": "E:\\Visual Studio\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe",
+    "version": "Microsoft C/C++ 19.51.36248 x64",
+    "sha256": "DC8426B8760D92CF757DF3D10B9F0244A95B454FF43194A58161568A0EC70D53",
+    "identity": "Tigress 4.0.11 MSVC environment -> MSVC"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "cases": 17,
+  "verified_modules": 68,
+  "recompiled_modules": 68,
+  "executed_stages": 51,
+  "passing_runtime_stages": 47,
+  "failing_runtime_stages": 4,
+  "passing_cases": 13,
+  "failing_cases": 1,
+  "total_lift_runtime_vectors": 218334
+}

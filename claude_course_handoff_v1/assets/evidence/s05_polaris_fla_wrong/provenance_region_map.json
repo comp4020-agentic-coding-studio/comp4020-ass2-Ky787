@@ -1,0 +1,1019 @@
+{
+  "id": "polaris-fla-O0",
+  "method": "Independent retained-source/IR transition ground truth + PE dispatcher equality edges/table. State constants are only join keys; operation bodies, state definitions, branch conditions, and source regions are retained for review.",
+  "nodes": [
+    {
+      "state": 7719,
+      "state_hex": "0x1e27",
+      "ir_label": "13",
+      "ir": "%14 = load volatile i32, ptr %2, align 4\n%15 = icmp ne i32 %14, 0\n%16 = select i1 %15, i32 2437, i32 11797\nstore i32 %16, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        2437,
+        11797
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000143c",
+          "dispatch_compare_va": "0x14000135f",
+          "dispatch_compare": "SUB        EAX, 0x1E27",
+          "branch_va": "0x140001364",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000143c",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EDX, DWORD PTR [RSP + 0x1C]",
+              "bytes": "8b54241c"
+            },
+            {
+              "va": "0x140001440",
+              "size": 5,
+              "name": "MOV",
+              "asm": "MOV        EAX, 0x2E15",
+              "bytes": "b8152e0000"
+            },
+            {
+              "va": "0x140001445",
+              "size": 5,
+              "name": "MOV",
+              "asm": "MOV        ECX, 0x985",
+              "bytes": "b985090000"
+            },
+            {
+              "va": "0x14000144a",
+              "size": 3,
+              "name": "CMP",
+              "asm": "CMP        EDX, 0x0",
+              "bytes": "83fa00"
+            },
+            {
+              "va": "0x14000144d",
+              "size": 3,
+              "name": "CMOVNZ",
+              "asm": "CMOVNZ     EAX, ECX",
+              "bytes": "0f45c1"
+            },
+            {
+              "va": "0x140001450",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], EAX",
+              "bytes": "8944240c"
+            },
+            {
+              "va": "0x140001454",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e998010000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x14000143c"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 2437,
+      "state_hex": "0x985",
+      "ir_label": "17",
+      "ir": "%18 = load i32, ptr %4, align 4\n%19 = add i32 %18, 4369\nstore i32 %19, ptr %4, align 4\nstore i32 32285, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        32285
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001459",
+          "dispatch_compare_va": "0x14000134b",
+          "dispatch_compare": "SUB        EAX, 0x985",
+          "branch_va": "0x140001350",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001459",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x14000145d",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x1111",
+              "bytes": "0511110000"
+            },
+            {
+              "va": "0x140001462",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x140001466",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x7E1D",
+              "bytes": "c744240c1d7e0000"
+            },
+            {
+              "va": "0x14000146e",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e97e010000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x140001459"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 11797,
+      "state_hex": "0x2e15",
+      "ir_label": "20",
+      "ir": "%21 = load i32, ptr %4, align 4\n%22 = xor i32 %21, 8738\nstore i32 %22, ptr %4, align 4\nstore i32 32285, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        32285
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001473",
+          "dispatch_compare_va": "0x140001373",
+          "dispatch_compare": "SUB        EAX, 0x2E15",
+          "branch_va": "0x140001378",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001473",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x140001477",
+              "size": 5,
+              "name": "XOR",
+              "asm": "XOR        EAX, 0x2222",
+              "bytes": "3522220000"
+            },
+            {
+              "va": "0x14000147c",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x140001480",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x7E1D",
+              "bytes": "c744240c1d7e0000"
+            },
+            {
+              "va": "0x140001488",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e964010000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x140001473"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 32285,
+      "state_hex": "0x7e1d",
+      "ir_label": "23",
+      "ir": "store i32 0, ptr %5, align 4\nstore i32 30612, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        30612
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000148d",
+          "dispatch_compare_va": "0x140001427",
+          "dispatch_compare": "SUB        EAX, 0x7E1D",
+          "branch_va": "0x14000142c",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000148d",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x10], 0x0",
+              "bytes": "c744241000000000"
+            },
+            {
+              "va": "0x140001495",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x7794",
+              "bytes": "c744240c94770000"
+            },
+            {
+              "va": "0x14000149d",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e94f010000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x14000148d"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 30612,
+      "state_hex": "0x7794",
+      "ir_label": "24",
+      "ir": "%25 = load i32, ptr %5, align 4\n%26 = icmp ult i32 %25, 4\n%27 = select i1 %26, i32 28100, i32 31891\nstore i32 %27, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        28100,
+        31891
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400014a2",
+          "dispatch_compare_va": "0x1400013eb",
+          "dispatch_compare": "SUB        EAX, 0x7794",
+          "branch_va": "0x1400013f0",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400014a2",
+              "size": 5,
+              "name": "MOV",
+              "asm": "MOV        EAX, 0x7C93",
+              "bytes": "b8937c0000"
+            },
+            {
+              "va": "0x1400014a7",
+              "size": 5,
+              "name": "MOV",
+              "asm": "MOV        ECX, 0x6DC4",
+              "bytes": "b9c46d0000"
+            },
+            {
+              "va": "0x1400014ac",
+              "size": 5,
+              "name": "CMP",
+              "asm": "CMP        DWORD PTR [RSP + 0x10], 0x4",
+              "bytes": "837c241004"
+            },
+            {
+              "va": "0x1400014b1",
+              "size": 3,
+              "name": "CMOVB",
+              "asm": "CMOVB      EAX, ECX",
+              "bytes": "0f42c1"
+            },
+            {
+              "va": "0x1400014b4",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], EAX",
+              "bytes": "8944240c"
+            },
+            {
+              "va": "0x1400014b8",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e934010000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x1400014a2"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 28100,
+      "state_hex": "0x6dc4",
+      "ir_label": "28",
+      "ir": "%29 = load i32, ptr %4, align 4\n%30 = and i32 %29, 256\n%31 = icmp ne i32 %30, 0\n%32 = select i1 %31, i32 281, i32 15921\nstore i32 %32, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        281,
+        15921
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400014bd",
+          "dispatch_compare_va": "0x1400013d7",
+          "dispatch_compare": "SUB        EAX, 0x6DC4",
+          "branch_va": "0x1400013dc",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400014bd",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EDX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b542414"
+            },
+            {
+              "va": "0x1400014c1",
+              "size": 6,
+              "name": "AND",
+              "asm": "AND        EDX, 0x100",
+              "bytes": "81e200010000"
+            },
+            {
+              "va": "0x1400014c7",
+              "size": 5,
+              "name": "MOV",
+              "asm": "MOV        EAX, 0x3E31",
+              "bytes": "b8313e0000"
+            },
+            {
+              "va": "0x1400014cc",
+              "size": 5,
+              "name": "MOV",
+              "asm": "MOV        ECX, 0x119",
+              "bytes": "b919010000"
+            },
+            {
+              "va": "0x1400014d1",
+              "size": 3,
+              "name": "CMP",
+              "asm": "CMP        EDX, 0x0",
+              "bytes": "83fa00"
+            },
+            {
+              "va": "0x1400014d4",
+              "size": 3,
+              "name": "CMOVNZ",
+              "asm": "CMOVNZ     EAX, ECX",
+              "bytes": "0f45c1"
+            },
+            {
+              "va": "0x1400014d7",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], EAX",
+              "bytes": "8944240c"
+            },
+            {
+              "va": "0x1400014db",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e911010000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x1400014bd"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 281,
+      "state_hex": "0x119",
+      "ir_label": "33",
+      "ir": "%34 = load i32, ptr %5, align 4\n%35 = add i32 4096, %34\n%36 = load i32, ptr %4, align 4\n%37 = xor i32 %36, %35\nstore i32 %37, ptr %4, align 4\nstore i32 26285, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        26285
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400014e0",
+          "dispatch_compare_va": "0x1400012fb",
+          "dispatch_compare": "SUB        EAX, 0x119",
+          "branch_va": "0x140001300",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400014e0",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x10]",
+              "bytes": "8b442410"
+            },
+            {
+              "va": "0x1400014e4",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x1000",
+              "bytes": "0500100000"
+            },
+            {
+              "va": "0x1400014e9",
+              "size": 4,
+              "name": "XOR",
+              "asm": "XOR        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "33442414"
+            },
+            {
+              "va": "0x1400014ed",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x1400014f1",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x66AD",
+              "bytes": "c744240cad660000"
+            },
+            {
+              "va": "0x1400014f9",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9f3000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x1400014e0"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 15921,
+      "state_hex": "0x3e31",
+      "ir_label": "38",
+      "ir": "%39 = load i32, ptr %5, align 4\n%40 = add i32 256, %39\n%41 = load i32, ptr %4, align 4\n%42 = add i32 %41, %40\nstore i32 %42, ptr %4, align 4\nstore i32 26285, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        26285
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400014fe",
+          "dispatch_compare_va": "0x14000139b",
+          "dispatch_compare": "SUB        EAX, 0x3E31",
+          "branch_va": "0x1400013a0",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400014fe",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x10]",
+              "bytes": "8b442410"
+            },
+            {
+              "va": "0x140001502",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x100",
+              "bytes": "0500010000"
+            },
+            {
+              "va": "0x140001507",
+              "size": 4,
+              "name": "ADD",
+              "asm": "ADD        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "03442414"
+            },
+            {
+              "va": "0x14000150b",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x14000150f",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x66AD",
+              "bytes": "c744240cad660000"
+            },
+            {
+              "va": "0x140001517",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9d5000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x1400014fe"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 26285,
+      "state_hex": "0x66ad",
+      "ir_label": "43",
+      "ir": "store i32 14680, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        14680
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000151c",
+          "dispatch_compare_va": "0x1400013c3",
+          "dispatch_compare": "SUB        EAX, 0x66AD",
+          "branch_va": "0x1400013c8",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000151c",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x3958",
+              "bytes": "c744240c58390000"
+            },
+            {
+              "va": "0x140001524",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9c8000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x14000151c"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 14680,
+      "state_hex": "0x3958",
+      "ir_label": "44",
+      "ir": "%45 = load i32, ptr %5, align 4\n%46 = add i32 %45, 1\nstore i32 %46, ptr %5, align 4\nstore i32 30612, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        30612
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001529",
+          "dispatch_compare_va": "0x140001387",
+          "dispatch_compare": "SUB        EAX, 0x3958",
+          "branch_va": "0x14000138c",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001529",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x10]",
+              "bytes": "8b442410"
+            },
+            {
+              "va": "0x14000152d",
+              "size": 3,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x1",
+              "bytes": "83c001"
+            },
+            {
+              "va": "0x140001530",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x10], EAX",
+              "bytes": "89442410"
+            },
+            {
+              "va": "0x140001534",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x7794",
+              "bytes": "c744240c94770000"
+            },
+            {
+              "va": "0x14000153c",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e9b0000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x140001529"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 31891,
+      "state_hex": "0x7c93",
+      "ir_label": "47",
+      "ir": "%48 = load i32, ptr %4, align 4\n%49 = and i32 %48, 3\nswitch i32 %49, label %59 [\ni32 0, label %50\ni32 1, label %53\ni32 2, label %56\n]\n",
+      "successors": [
+        1323,
+        2240,
+        25906,
+        32278
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001541",
+          "dispatch_compare_va": "0x1400013ff",
+          "dispatch_compare": "SUB        EAX, 0x7C93",
+          "branch_va": "0x140001404",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001541",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x140001545",
+              "size": 3,
+              "name": "AND",
+              "asm": "AND        EAX, 0x3",
+              "bytes": "83e003"
+            },
+            {
+              "va": "0x140001548",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x4], EAX",
+              "bytes": "89442404"
+            },
+            {
+              "va": "0x14000154c",
+              "size": 6,
+              "name": "JZ",
+              "asm": "JZ         loc_key_30",
+              "bytes": "0f8429000000"
+            }
+          ],
+          "machine_successors": [
+            "0x14000157b",
+            "0x140001552"
+          ]
+        }
+      ],
+      "stock_group_blocks": [
+        "0x140001595",
+        "0x1400015af",
+        "0x1400015c9",
+        "0x14000157b"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 25906,
+      "state_hex": "0x6532",
+      "ir_label": "50",
+      "ir": "%51 = load i32, ptr %4, align 4\n%52 = add i32 %51, 286331153\nstore i32 %52, ptr %4, align 4\nstore i32 590, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        590
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x14000157b",
+          "dispatch_compare_va": "0x1400013af",
+          "dispatch_compare": "SUB        EAX, 0x6532",
+          "branch_va": "0x1400013b4",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x14000157b",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x14000157f",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x11111111",
+              "bytes": "0511111111"
+            },
+            {
+              "va": "0x140001584",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x140001588",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x24E",
+              "bytes": "c744240c4e020000"
+            },
+            {
+              "va": "0x140001590",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e95c000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 1323,
+      "state_hex": "0x52b",
+      "ir_label": "53",
+      "ir": "%54 = load i32, ptr %4, align 4\n%55 = xor i32 %54, 572662306\nstore i32 %55, ptr %4, align 4\nstore i32 590, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        590
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x140001595",
+          "dispatch_compare_va": "0x140001323",
+          "dispatch_compare": "SUB        EAX, 0x52B",
+          "branch_va": "0x140001328",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x140001595",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x140001599",
+              "size": 5,
+              "name": "XOR",
+              "asm": "XOR        EAX, 0x22222222",
+              "bytes": "3522222222"
+            },
+            {
+              "va": "0x14000159e",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x1400015a2",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x24E",
+              "bytes": "c744240c4e020000"
+            },
+            {
+              "va": "0x1400015aa",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e942000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 2240,
+      "state_hex": "0x8c0",
+      "ir_label": "56",
+      "ir": "%57 = load i32, ptr %4, align 4\n%58 = sub i32 %57, 13107\nstore i32 %58, ptr %4, align 4\nstore i32 590, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        590
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400015af",
+          "dispatch_compare_va": "0x140001337",
+          "dispatch_compare": "SUB        EAX, 0x8C0",
+          "branch_va": "0x14000133c",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400015af",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x1400015b3",
+              "size": 5,
+              "name": "SUB",
+              "asm": "SUB        EAX, 0x3333",
+              "bytes": "2d33330000"
+            },
+            {
+              "va": "0x1400015b8",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x1400015bc",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x24E",
+              "bytes": "c744240c4e020000"
+            },
+            {
+              "va": "0x1400015c4",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e928000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 32278,
+      "state_hex": "0x7e16",
+      "ir_label": "59",
+      "ir": "%60 = load i32, ptr %4, align 4\n%61 = add i32 %60, 17476\nstore i32 %61, ptr %4, align 4\nstore i32 590, ptr %9, align 4\nbr label %65\n",
+      "successors": [
+        590
+      ],
+      "returning": false,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400015c9",
+          "dispatch_compare_va": "0x140001413",
+          "dispatch_compare": "SUB        EAX, 0x7E16",
+          "branch_va": "0x140001418",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400015c9",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x1400015cd",
+              "size": 5,
+              "name": "ADD",
+              "asm": "ADD        EAX, 0x4444",
+              "bytes": "0544440000"
+            },
+            {
+              "va": "0x1400015d2",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0x14], EAX",
+              "bytes": "89442414"
+            },
+            {
+              "va": "0x1400015d6",
+              "size": 8,
+              "name": "MOV",
+              "asm": "MOV        DWORD PTR [RSP + 0xC], 0x24E",
+              "bytes": "c744240c4e020000"
+            },
+            {
+              "va": "0x1400015de",
+              "size": 5,
+              "name": "JMP",
+              "asm": "JMP        loc_key_3",
+              "bytes": "e90e000000"
+            }
+          ],
+          "machine_successors": [
+            "0x1400015f1"
+          ]
+        }
+      ],
+      "stock_group_blocks": [],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    },
+    {
+      "state": 590,
+      "state_hex": "0x24e",
+      "ir_label": "62",
+      "ir": "%63 = load i32, ptr %4, align 4\n%64 = xor i32 %63, -889275714\nret i32 %64\n",
+      "successors": [],
+      "returning": true,
+      "pe_dispatch_entries": [
+        {
+          "va": "0x1400015e3",
+          "dispatch_compare_va": "0x14000130f",
+          "dispatch_compare": "SUB        EAX, 0x24E",
+          "branch_va": "0x140001314",
+          "method": "PE equality test edge with retained IR dispatcher case; NOT stock state_to_lockey_map",
+          "machine_block_instructions": [
+            {
+              "va": "0x1400015e3",
+              "size": 4,
+              "name": "MOV",
+              "asm": "MOV        EAX, DWORD PTR [RSP + 0x14]",
+              "bytes": "8b442414"
+            },
+            {
+              "va": "0x1400015e7",
+              "size": 5,
+              "name": "XOR",
+              "asm": "XOR        EAX, 0xCAFEBABE",
+              "bytes": "35bebafeca"
+            },
+            {
+              "va": "0x1400015ec",
+              "size": 4,
+              "name": "ADD",
+              "asm": "ADD        RSP, 0x20",
+              "bytes": "4883c420"
+            },
+            {
+              "va": "0x1400015f0",
+              "size": 1,
+              "name": "RET",
+              "asm": "RET        ",
+              "bytes": "c3"
+            }
+          ],
+          "machine_successors": []
+        }
+      ],
+      "stock_group_blocks": [
+        "0x1400015e3"
+      ],
+      "mapping_status": "candidate route with full IR/source and machine-body context retained"
+    }
+  ]
+}

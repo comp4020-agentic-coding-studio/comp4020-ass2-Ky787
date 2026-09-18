@@ -1,0 +1,695 @@
+[
+  {
+    "build_id": "clang-clean-O0",
+    "mode": "ast",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -3.3333333333333335,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.08484039999893866,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "clang-clean-O0",
+    "mode": "simba",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -1.25,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 8.333333333333334,
+    "summed_algorithm_seconds": 0.10349610000412213,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "clang-clean-O0",
+    "mode": "synthesis",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 43.452380952380956,
+    "median_ast_reduction": 45.23809523809524,
+    "max_ast_reduction": 75.0,
+    "summed_algorithm_seconds": 40.93860230000428,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "gcc-clean-O0",
+    "mode": "ast",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -3.3333333333333335,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.07912380000198027,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "gcc-clean-O0",
+    "mode": "simba",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -1.25,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 8.333333333333334,
+    "summed_algorithm_seconds": 0.08646379999845522,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "gcc-clean-O0",
+    "mode": "synthesis",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 43.452380952380956,
+    "median_ast_reduction": 45.23809523809524,
+    "max_ast_reduction": 75.0,
+    "summed_algorithm_seconds": 40.81664579999779,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "hikari-clean-O0",
+    "mode": "ast",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -3.3333333333333335,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.07563509998726659,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "hikari-clean-O0",
+    "mode": "simba",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -1.25,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 8.333333333333334,
+    "summed_algorithm_seconds": 0.0874503999875742,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "hikari-clean-O0",
+    "mode": "synthesis",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 43.452380952380956,
+    "median_ast_reduction": 45.23809523809524,
+    "max_ast_reduction": 75.0,
+    "summed_algorithm_seconds": 40.82528159999492,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "msvc-clean-O0",
+    "mode": "ast",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -3.3333333333333335,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.07709810000960715,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "msvc-clean-O0",
+    "mode": "simba",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -1.25,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 8.333333333333334,
+    "summed_algorithm_seconds": 0.08658060000016121,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "msvc-clean-O0",
+    "mode": "synthesis",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 43.452380952380956,
+    "median_ast_reduction": 45.23809523809524,
+    "max_ast_reduction": 75.0,
+    "summed_algorithm_seconds": 40.88885229999141,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "ollvm16-clean-O0",
+    "mode": "ast",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -3.3333333333333335,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.07701889999589184,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "ollvm16-clean-O0",
+    "mode": "simba",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -1.25,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 8.333333333333334,
+    "summed_algorithm_seconds": 0.08848400000715628,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "ollvm16-clean-O0",
+    "mode": "synthesis",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 43.452380952380956,
+    "median_ast_reduction": 45.23809523809524,
+    "max_ast_reduction": 75.0,
+    "summed_algorithm_seconds": 40.800227900006576,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-clean-O0",
+    "mode": "ast",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -3.3333333333333335,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.07748510000965325,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-clean-O0",
+    "mode": "simba",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "EXACT RECOVERY": 4
+    },
+    "recovered": 4,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -1.25,
+    "median_ast_reduction": -2.5,
+    "max_ast_reduction": 8.333333333333334,
+    "summed_algorithm_seconds": 0.08629889999428997,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-clean-O0",
+    "mode": "synthesis",
+    "role": "clean",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 43.452380952380956,
+    "median_ast_reduction": 45.23809523809524,
+    "max_ast_reduction": 75.0,
+    "summed_algorithm_seconds": 41.051778499997454,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "hikari-sub-O0",
+    "mode": "ast",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -2.9935987784824993,
+    "median_ast_reduction": -3.6616161616161618,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.12942930000281194,
+    "oracle_accepted_replacements": 1
+  },
+  {
+    "build_id": "hikari-sub-O0",
+    "mode": "simba",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": -2.9935987784824993,
+    "median_ast_reduction": -3.6616161616161618,
+    "max_ast_reduction": 0.0,
+    "summed_algorithm_seconds": 0.2523187999977381,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "hikari-sub-O0",
+    "mode": "synthesis",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 75.36322527601597,
+    "median_ast_reduction": 74.72222222222223,
+    "max_ast_reduction": 88.37209302325581,
+    "summed_algorithm_seconds": 40.92845639999723,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "ollvm16-sub-O0",
+    "mode": "ast",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 2,
+      "PARTIAL SIMPLIFICATION": 2
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 2,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 19.538211122999524,
+    "median_ast_reduction": 18.108680310515176,
+    "max_ast_reduction": 41.935483870967744,
+    "summed_algorithm_seconds": 0.1528621999968891,
+    "oracle_accepted_replacements": 4
+  },
+  {
+    "build_id": "ollvm16-sub-O0",
+    "mode": "simba",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 2,
+      "PARTIAL SIMPLIFICATION": 2
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 2,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 17.647858947799758,
+    "median_ast_reduction": 13.521524347212422,
+    "max_ast_reduction": 43.54838709677419,
+    "summed_algorithm_seconds": 0.3526411000129883,
+    "oracle_accepted_replacements": 1
+  },
+  {
+    "build_id": "ollvm16-sub-O0",
+    "mode": "synthesis",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 88.75459716473178,
+    "median_ast_reduction": 88.67374005305041,
+    "max_ast_reduction": 95.41284403669725,
+    "summed_algorithm_seconds": 40.809324999994715,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-mba-O0",
+    "mode": "ast",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 0,
+    "classifications": {
+      "EXTRACTION FAILURE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": null,
+    "median_ast_reduction": null,
+    "max_ast_reduction": null,
+    "summed_algorithm_seconds": 0,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-mba-O0",
+    "mode": "simba",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 0,
+    "classifications": {
+      "EXTRACTION FAILURE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": null,
+    "median_ast_reduction": null,
+    "max_ast_reduction": null,
+    "summed_algorithm_seconds": 0,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-mba-O0",
+    "mode": "synthesis",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 0,
+    "classifications": {
+      "EXTRACTION FAILURE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": null,
+    "median_ast_reduction": null,
+    "max_ast_reduction": null,
+    "summed_algorithm_seconds": 0,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "polaris-sub-O0",
+    "mode": "ast",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 2,
+      "PARTIAL SIMPLIFICATION": 2
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 2,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 24.755983010699993,
+    "median_ast_reduction": 27.81385281385281,
+    "max_ast_reduction": 43.39622641509434,
+    "summed_algorithm_seconds": 0.17751090000092518,
+    "oracle_accepted_replacements": 5
+  },
+  {
+    "build_id": "polaris-sub-O0",
+    "mode": "simba",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 1,
+      "PARTIAL SIMPLIFICATION": 3
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 3,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 23.67954372671354,
+    "median_ast_reduction": 27.878567972907597,
+    "max_ast_reduction": 38.96103896103896,
+    "summed_algorithm_seconds": 0.3172086000049603,
+    "oracle_accepted_replacements": 3
+  },
+  {
+    "build_id": "polaris-sub-O0",
+    "mode": "synthesis",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 88.1919992160406,
+    "median_ast_reduction": 89.96648512777546,
+    "max_ast_reduction": 93.58974358974359,
+    "summed_algorithm_seconds": 40.76548699998966,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "tigress-encode-O0",
+    "mode": "ast",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "PARTIAL SIMPLIFICATION": 1,
+      "SMT UNKNOWN": 1,
+      "NO SIMPLIFICATION": 2
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 1,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 29.061285426463492,
+    "median_ast_reduction": 35.22248243559719,
+    "max_ast_reduction": 58.62068965517241,
+    "summed_algorithm_seconds": 0.7070766999895568,
+    "oracle_accepted_replacements": 6
+  },
+  {
+    "build_id": "tigress-encode-O0",
+    "mode": "simba",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "PARTIAL SIMPLIFICATION": 2,
+      "SMT UNKNOWN": 2
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 2,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 34.113828511793464,
+    "median_ast_reduction": 35.02463054187192,
+    "max_ast_reduction": 74.09836065573771,
+    "summed_algorithm_seconds": 7.233063700005005,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "tigress-encode-O0",
+    "mode": "synthesis",
+    "role": "primary",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 90.91745921310647,
+    "median_ast_reduction": 91.00353669319188,
+    "max_ast_reduction": 97.37704918032787,
+    "summed_algorithm_seconds": 40.812222499997006,
+    "oracle_accepted_replacements": 0
+  },
+  {
+    "build_id": "tigress-encode-Ox",
+    "mode": "ast",
+    "role": "paired_optimization",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 2,
+      "SMT UNKNOWN": 2
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 10.27775465040144,
+    "median_ast_reduction": 8.010706433419369,
+    "max_ast_reduction": 44.44444444444444,
+    "summed_algorithm_seconds": 0.4657078999953228,
+    "oracle_accepted_replacements": 7
+  },
+  {
+    "build_id": "tigress-encode-Ox",
+    "mode": "simba",
+    "role": "paired_optimization",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "NO SIMPLIFICATION": 3,
+      "SMT UNKNOWN": 1
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 0,
+    "mean_ast_reduction": 3.190186009205039,
+    "median_ast_reduction": -5.238504923047509,
+    "max_ast_reduction": 42.592592592592595,
+    "summed_algorithm_seconds": 0.5409758999958285,
+    "oracle_accepted_replacements": 3
+  },
+  {
+    "build_id": "tigress-encode-Ox",
+    "mode": "synthesis",
+    "role": "paired_optimization",
+    "attempted": 4,
+    "extracted": 4,
+    "classifications": {
+      "SMT COUNTEREXAMPLE": 4
+    },
+    "recovered": 0,
+    "nontrivial_recoveries": 0,
+    "partial": 0,
+    "search_timeouts": 4,
+    "mean_ast_reduction": 89.10787088002922,
+    "median_ast_reduction": 89.66275659824046,
+    "max_ast_reduction": 97.47634069400631,
+    "summed_algorithm_seconds": 40.792531399994914,
+    "oracle_accepted_replacements": 0
+  }
+]

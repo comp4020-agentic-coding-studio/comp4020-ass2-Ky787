@@ -1,0 +1,21 @@
+SHOWCASE CORPUS VERSION: 1.0
+SOURCE FILE: showcase.c
+SOURCE SHA-256: 39FEF0BB2A9742870F3D6F7CC864F7CFFA129136F6D2A59C4FB37F25906B99D2
+VALIDATION DATE: 2026-09-11 (Australia/Sydney)
+
+CANONICAL SEMANTIC INPUTS
+g_input_a = 0x00001337
+g_input_b = 0x12345678
+
+EXPECTED RESULTS
+demo_substitution       = 0x08080000
+demo_bogus_control_flow = 0x6665BBBC
+demo_flattening         = 0xDBEFFCE7
+demo_calls              = 0x12345F05
+demo_data               = 0x57977293
+demo_combined           = 0xEEBB6D71
+
+FREEZE STATUS
+Validated clean on Windows x64 with MSVC 19.51.36248,
+Visual Studio clang-cl 22.1.3, and MSYS2 UCRT64 GCC 16.2.0.
+All three executables produced the expected output and exit status 0.

@@ -1,0 +1,317 @@
+
+E:\Workspace\seeing_through_obfuscation\results\showcase_matrix_v1\optimization_survival\ollvm16\sub\O0\showcase.exe:	file format coff-x86-64
+
+Disassembly of section .text:
+
+0000000140001070 <demo_substitution>:
+140001070: 48 83 ec 28                 	sub	rsp, 0x28
+140001074: 89 4c 24 24                 	mov	dword ptr [rsp + 0x24], ecx
+140001078: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+14000107c: 05 b7 65 e8 06              	add	eax, 0x6e865b7
+140001081: 05 01 01 01 01              	add	eax, 0x1010101
+140001086: 2d b7 65 e8 06              	sub	eax, 0x6e865b7
+14000108b: 89 04 24                    	mov	dword ptr [rsp], eax
+14000108e: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+140001092: 2d cb e4 38 84              	sub	eax, 0x8438e4cb
+140001097: 05 02 02 02 02              	add	eax, 0x2020202
+14000109c: 05 cb e4 38 84              	add	eax, 0x8438e4cb
+1400010a1: 89 44 24 04                 	mov	dword ptr [rsp + 0x4], eax
+1400010a5: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+1400010a9: 31 c9                       	xor	ecx, ecx
+1400010ab: 81 e9 03 03 03 03           	sub	ecx, 0x3030303
+1400010b1: 29 c8                       	sub	eax, ecx
+1400010b3: 89 44 24 08                 	mov	dword ptr [rsp + 0x8], eax
+1400010b7: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+1400010bb: 31 c9                       	xor	ecx, ecx
+1400010bd: 81 e9 04 04 04 04           	sub	ecx, 0x4040404
+1400010c3: 29 c8                       	sub	eax, ecx
+1400010c5: 89 44 24 0c                 	mov	dword ptr [rsp + 0xc], eax
+1400010c9: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+1400010cd: 31 c9                       	xor	ecx, ecx
+1400010cf: 29 c1                       	sub	ecx, eax
+1400010d1: 31 c0                       	xor	eax, eax
+1400010d3: 2d 05 05 05 05              	sub	eax, 0x5050505
+1400010d8: 01 c1                       	add	ecx, eax
+1400010da: 31 c0                       	xor	eax, eax
+1400010dc: 29 c8                       	sub	eax, ecx
+1400010de: 89 44 24 10                 	mov	dword ptr [rsp + 0x10], eax
+1400010e2: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+1400010e6: 2d ad 04 d4 b5              	sub	eax, 0xb5d404ad
+1400010eb: 05 06 06 06 06              	add	eax, 0x6060606
+1400010f0: 05 ad 04 d4 b5              	add	eax, 0xb5d404ad
+1400010f5: 89 44 24 14                 	mov	dword ptr [rsp + 0x14], eax
+1400010f9: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+1400010fd: 2d a6 d8 c0 90              	sub	eax, 0x90c0d8a6
+140001102: 05 07 07 07 07              	add	eax, 0x7070707
+140001107: 05 a6 d8 c0 90              	add	eax, 0x90c0d8a6
+14000110c: 89 44 24 18                 	mov	dword ptr [rsp + 0x18], eax
+140001110: 8b 44 24 24                 	mov	eax, dword ptr [rsp + 0x24]
+140001114: 05 c3 19 b1 09              	add	eax, 0x9b119c3
+140001119: 05 08 08 08 08              	add	eax, 0x8080808
+14000111e: 2d c3 19 b1 09              	sub	eax, 0x9b119c3
+140001123: 89 44 24 1c                 	mov	dword ptr [rsp + 0x1c], eax
+140001127: 44 8b 04 24                 	mov	r8d, dword ptr [rsp]
+14000112b: 44 89 c0                    	mov	eax, r8d
+14000112e: 83 f0 ff                    	xor	eax, -0x1
+140001131: 25 85 a4 39 2f              	and	eax, 0x2f39a485
+140001136: ba ff ff ff ff              	mov	edx, 0xffffffff
+14000113b: 81 f2 85 a4 39 2f           	xor	edx, 0x2f39a485
+140001141: 41 21 d0                    	and	r8d, edx
+140001144: b9 ff ff ff ff              	mov	ecx, 0xffffffff
+140001149: 81 f1 78 56 34 12           	xor	ecx, 0x12345678
+14000114f: 81 e1 85 a4 39 2f           	and	ecx, 0x2f39a485
+140001155: 81 e2 78 56 34 12           	and	edx, 0x12345678
+14000115b: 44 09 c0                    	or	eax, r8d
+14000115e: 09 d1                       	or	ecx, edx
+140001160: 31 c8                       	xor	eax, ecx
+140001162: 89 04 24                    	mov	dword ptr [rsp], eax
+140001165: 8b 4c 24 04                 	mov	ecx, dword ptr [rsp + 0x4]
+140001169: 89 c8                       	mov	eax, ecx
+14000116b: 83 f0 ff                    	xor	eax, -0x1
+14000116e: 25 78 56 34 12              	and	eax, 0x12345678
+140001173: ba ff ff ff ff              	mov	edx, 0xffffffff
+140001178: 81 f2 78 56 34 12           	xor	edx, 0x12345678
+14000117e: 21 d1                       	and	ecx, edx
+140001180: 09 c8                       	or	eax, ecx
+140001182: 89 44 24 04                 	mov	dword ptr [rsp + 0x4], eax
+140001186: 8b 4c 24 08                 	mov	ecx, dword ptr [rsp + 0x8]
+14000118a: 89 c8                       	mov	eax, ecx
+14000118c: 83 f0 ff                    	xor	eax, -0x1
+14000118f: 25 78 56 34 12              	and	eax, 0x12345678
+140001194: ba ff ff ff ff              	mov	edx, 0xffffffff
+140001199: 81 f2 78 56 34 12           	xor	edx, 0x12345678
+14000119f: 21 d1                       	and	ecx, edx
+1400011a1: 09 c8                       	or	eax, ecx
+1400011a3: 89 44 24 08                 	mov	dword ptr [rsp + 0x8], eax
+1400011a7: 8b 4c 24 0c                 	mov	ecx, dword ptr [rsp + 0xc]
+1400011ab: 89 c8                       	mov	eax, ecx
+1400011ad: 83 f0 ff                    	xor	eax, -0x1
+1400011b0: 25 78 56 34 12              	and	eax, 0x12345678
+1400011b5: ba ff ff ff ff              	mov	edx, 0xffffffff
+1400011ba: 81 f2 78 56 34 12           	xor	edx, 0x12345678
+1400011c0: 21 d1                       	and	ecx, edx
+1400011c2: 09 c8                       	or	eax, ecx
+1400011c4: 89 44 24 0c                 	mov	dword ptr [rsp + 0xc], eax
+1400011c8: 44 8b 44 24 10              	mov	r8d, dword ptr [rsp + 0x10]
+1400011cd: 44 89 c0                    	mov	eax, r8d
+1400011d0: 83 f0 ff                    	xor	eax, -0x1
+1400011d3: 25 be a9 f8 0c              	and	eax, 0xcf8a9be
+1400011d8: ba ff ff ff ff              	mov	edx, 0xffffffff
+1400011dd: 81 f2 be a9 f8 0c           	xor	edx, 0xcf8a9be
+1400011e3: 41 21 d0                    	and	r8d, edx
+1400011e6: b9 ff ff ff ff              	mov	ecx, 0xffffffff
+1400011eb: 81 f1 78 56 34 12           	xor	ecx, 0x12345678
+1400011f1: 81 e1 be a9 f8 0c           	and	ecx, 0xcf8a9be
+1400011f7: 81 e2 78 56 34 12           	and	edx, 0x12345678
+1400011fd: 44 09 c0                    	or	eax, r8d
+140001200: 09 d1                       	or	ecx, edx
+140001202: 31 c8                       	xor	eax, ecx
+140001204: 89 44 24 10                 	mov	dword ptr [rsp + 0x10], eax
+140001208: 44 8b 44 24 14              	mov	r8d, dword ptr [rsp + 0x14]
+14000120d: 44 89 c0                    	mov	eax, r8d
+140001210: 83 f0 ff                    	xor	eax, -0x1
+140001213: 25 bc cc 00 31              	and	eax, 0x3100ccbc
+140001218: ba ff ff ff ff              	mov	edx, 0xffffffff
+14000121d: 81 f2 bc cc 00 31           	xor	edx, 0x3100ccbc
+140001223: 41 21 d0                    	and	r8d, edx
+140001226: b9 ff ff ff ff              	mov	ecx, 0xffffffff
+14000122b: 81 f1 78 56 34 12           	xor	ecx, 0x12345678
+140001231: 81 e1 bc cc 00 31           	and	ecx, 0x3100ccbc
+140001237: 81 e2 78 56 34 12           	and	edx, 0x12345678
+14000123d: 44 09 c0                    	or	eax, r8d
+140001240: 09 d1                       	or	ecx, edx
+140001242: 31 c8                       	xor	eax, ecx
+140001244: 89 44 24 14                 	mov	dword ptr [rsp + 0x14], eax
+140001248: 44 8b 44 24 18              	mov	r8d, dword ptr [rsp + 0x18]
+14000124d: 44 89 c0                    	mov	eax, r8d
+140001250: 83 f0 ff                    	xor	eax, -0x1
+140001253: 25 c3 6d 44 b0              	and	eax, 0xb0446dc3
+140001258: ba ff ff ff ff              	mov	edx, 0xffffffff
+14000125d: 81 f2 c3 6d 44 b0           	xor	edx, 0xb0446dc3
+140001263: 41 21 d0                    	and	r8d, edx
+140001266: b9 ff ff ff ff              	mov	ecx, 0xffffffff
+14000126b: 81 f1 78 56 34 12           	xor	ecx, 0x12345678
+140001271: 81 e1 c3 6d 44 b0           	and	ecx, 0xb0446dc3
+140001277: 81 e2 78 56 34 12           	and	edx, 0x12345678
+14000127d: 44 09 c0                    	or	eax, r8d
+140001280: 09 d1                       	or	ecx, edx
+140001282: 31 c8                       	xor	eax, ecx
+140001284: 89 44 24 18                 	mov	dword ptr [rsp + 0x18], eax
+140001288: 8b 4c 24 1c                 	mov	ecx, dword ptr [rsp + 0x1c]
+14000128c: 89 c8                       	mov	eax, ecx
+14000128e: 83 f0 ff                    	xor	eax, -0x1
+140001291: 25 78 56 34 12              	and	eax, 0x12345678
+140001296: ba ff ff ff ff              	mov	edx, 0xffffffff
+14000129b: 81 f2 78 56 34 12           	xor	edx, 0x12345678
+1400012a1: 21 d1                       	and	ecx, edx
+1400012a3: 09 c8                       	or	eax, ecx
+1400012a5: 89 44 24 1c                 	mov	dword ptr [rsp + 0x1c], eax
+1400012a9: 8b 04 24                    	mov	eax, dword ptr [rsp]
+1400012ac: 2d 50 af 5a 0f              	sub	eax, 0xf5aaf50
+1400012b1: 05 37 13 00 00              	add	eax, 0x1337
+1400012b6: 05 50 af 5a 0f              	add	eax, 0xf5aaf50
+1400012bb: 89 04 24                    	mov	dword ptr [rsp], eax
+1400012be: 8b 44 24 04                 	mov	eax, dword ptr [rsp + 0x4]
+1400012c2: 05 ec 3c 5b 24              	add	eax, 0x245b3cec
+1400012c7: 05 37 13 00 00              	add	eax, 0x1337
+1400012cc: 2d ec 3c 5b 24              	sub	eax, 0x245b3cec
+1400012d1: 89 44 24 04                 	mov	dword ptr [rsp + 0x4], eax
+1400012d5: 8b 44 24 08                 	mov	eax, dword ptr [rsp + 0x8]
+1400012d9: 05 cc 2a 63 81              	add	eax, 0x81632acc
+1400012de: 05 37 13 00 00              	add	eax, 0x1337
+1400012e3: 2d cc 2a 63 81              	sub	eax, 0x81632acc
+1400012e8: 89 44 24 08                 	mov	dword ptr [rsp + 0x8], eax
+1400012ec: 8b 44 24 0c                 	mov	eax, dword ptr [rsp + 0xc]
+1400012f0: 31 c9                       	xor	ecx, ecx
+1400012f2: 29 c1                       	sub	ecx, eax
+1400012f4: 31 c0                       	xor	eax, eax
+1400012f6: 2d 37 13 00 00              	sub	eax, 0x1337
+1400012fb: 01 c1                       	add	ecx, eax
+1400012fd: 31 c0                       	xor	eax, eax
+1400012ff: 29 c8                       	sub	eax, ecx
+140001301: 89 44 24 0c                 	mov	dword ptr [rsp + 0xc], eax
+140001305: 8b 44 24 10                 	mov	eax, dword ptr [rsp + 0x10]
+140001309: 2d 6b 7f f4 30              	sub	eax, 0x30f47f6b
+14000130e: 05 37 13 00 00              	add	eax, 0x1337
+140001313: 05 6b 7f f4 30              	add	eax, 0x30f47f6b
+140001318: 89 44 24 10                 	mov	dword ptr [rsp + 0x10], eax
+14000131c: 8b 44 24 14                 	mov	eax, dword ptr [rsp + 0x14]
+140001320: 31 c9                       	xor	ecx, ecx
+140001322: 81 e9 37 13 00 00           	sub	ecx, 0x1337
+140001328: 29 c8                       	sub	eax, ecx
+14000132a: 89 44 24 14                 	mov	dword ptr [rsp + 0x14], eax
+14000132e: 8b 44 24 18                 	mov	eax, dword ptr [rsp + 0x18]
+140001332: 31 c9                       	xor	ecx, ecx
+140001334: 29 c1                       	sub	ecx, eax
+140001336: 31 c0                       	xor	eax, eax
+140001338: 2d 37 13 00 00              	sub	eax, 0x1337
+14000133d: 01 c1                       	add	ecx, eax
+14000133f: 31 c0                       	xor	eax, eax
+140001341: 29 c8                       	sub	eax, ecx
+140001343: 89 44 24 18                 	mov	dword ptr [rsp + 0x18], eax
+140001347: 8b 44 24 1c                 	mov	eax, dword ptr [rsp + 0x1c]
+14000134b: 31 c9                       	xor	ecx, ecx
+14000134d: 29 c1                       	sub	ecx, eax
+14000134f: 31 c0                       	xor	eax, eax
+140001351: 2d 37 13 00 00              	sub	eax, 0x1337
+140001356: 01 c1                       	add	ecx, eax
+140001358: 31 c0                       	xor	eax, eax
+14000135a: 29 c8                       	sub	eax, ecx
+14000135c: 89 44 24 1c                 	mov	dword ptr [rsp + 0x1c], eax
+140001360: 8b 04 24                    	mov	eax, dword ptr [rsp]
+140001363: 05 f4 9f 1a 3d              	add	eax, 0x3d1a9ff4
+140001368: 2d 11 11 00 00              	sub	eax, 0x1111
+14000136d: 2d f4 9f 1a 3d              	sub	eax, 0x3d1a9ff4
+140001372: 89 04 24                    	mov	dword ptr [rsp], eax
+140001375: 8b 44 24 04                 	mov	eax, dword ptr [rsp + 0x4]
+140001379: 05 96 5c 30 22              	add	eax, 0x22305c96
+14000137e: 2d 11 11 00 00              	sub	eax, 0x1111
+140001383: 2d 96 5c 30 22              	sub	eax, 0x22305c96
+140001388: 89 44 24 04                 	mov	dword ptr [rsp + 0x4], eax
+14000138c: 8b 44 24 08                 	mov	eax, dword ptr [rsp + 0x8]
+140001390: 31 c9                       	xor	ecx, ecx
+140001392: 81 e9 11 11 00 00           	sub	ecx, 0x1111
+140001398: 01 c8                       	add	eax, ecx
+14000139a: 89 44 24 08                 	mov	dword ptr [rsp + 0x8], eax
+14000139e: 8b 44 24 0c                 	mov	eax, dword ptr [rsp + 0xc]
+1400013a2: 05 63 07 12 ba              	add	eax, 0xba120763
+1400013a7: 2d 11 11 00 00              	sub	eax, 0x1111
+1400013ac: 2d 63 07 12 ba              	sub	eax, 0xba120763
+1400013b1: 89 44 24 0c                 	mov	dword ptr [rsp + 0xc], eax
+1400013b5: 8b 44 24 10                 	mov	eax, dword ptr [rsp + 0x10]
+1400013b9: 05 f6 6f 2b fb              	add	eax, 0xfb2b6ff6
+1400013be: 2d 11 11 00 00              	sub	eax, 0x1111
+1400013c3: 2d f6 6f 2b fb              	sub	eax, 0xfb2b6ff6
+1400013c8: 89 44 24 10                 	mov	dword ptr [rsp + 0x10], eax
+1400013cc: 8b 44 24 14                 	mov	eax, dword ptr [rsp + 0x14]
+1400013d0: 05 21 68 ce b8              	add	eax, 0xb8ce6821
+1400013d5: 2d 11 11 00 00              	sub	eax, 0x1111
+1400013da: 2d 21 68 ce b8              	sub	eax, 0xb8ce6821
+1400013df: 89 44 24 14                 	mov	dword ptr [rsp + 0x14], eax
+1400013e3: 8b 44 24 18                 	mov	eax, dword ptr [rsp + 0x18]
+1400013e7: 2d 6e 1b 2f 46              	sub	eax, 0x462f1b6e
+1400013ec: 2d 11 11 00 00              	sub	eax, 0x1111
+1400013f1: 05 6e 1b 2f 46              	add	eax, 0x462f1b6e
+1400013f6: 89 44 24 18                 	mov	dword ptr [rsp + 0x18], eax
+1400013fa: 8b 44 24 1c                 	mov	eax, dword ptr [rsp + 0x1c]
+1400013fe: 2d 8a 87 82 00              	sub	eax, 0x82878a
+140001403: 2d 11 11 00 00              	sub	eax, 0x1111
+140001408: 05 8a 87 82 00              	add	eax, 0x82878a
+14000140d: 89 44 24 1c                 	mov	dword ptr [rsp + 0x1c], eax
+140001411: 44 8b 04 24                 	mov	r8d, dword ptr [rsp]
+140001415: 8b 54 24 04                 	mov	edx, dword ptr [rsp + 0x4]
+140001419: 44 89 c0                    	mov	eax, r8d
+14000141c: 83 f0 ff                    	xor	eax, -0x1
+14000141f: 25 3d 25 a5 98              	and	eax, 0x98a5253d
+140001424: 41 b9 ff ff ff ff           	mov	r9d, 0xffffffff
+14000142a: 41 81 f1 3d 25 a5 98        	xor	r9d, 0x98a5253d
+140001431: 45 21 c8                    	and	r8d, r9d
+140001434: 89 d1                       	mov	ecx, edx
+140001436: 83 f1 ff                    	xor	ecx, -0x1
+140001439: 81 e1 3d 25 a5 98           	and	ecx, 0x98a5253d
+14000143f: 44 21 ca                    	and	edx, r9d
+140001442: 44 09 c0                    	or	eax, r8d
+140001445: 09 d1                       	or	ecx, edx
+140001447: 31 c8                       	xor	eax, ecx
+140001449: 8b 4c 24 08                 	mov	ecx, dword ptr [rsp + 0x8]
+14000144d: 89 c2                       	mov	edx, eax
+14000144f: 83 f2 ff                    	xor	edx, -0x1
+140001452: 41 89 c8                    	mov	r8d, ecx
+140001455: 41 21 d0                    	and	r8d, edx
+140001458: 83 f1 ff                    	xor	ecx, -0x1
+14000145b: 21 c8                       	and	eax, ecx
+14000145d: 41 09 c0                    	or	r8d, eax
+140001460: 8b 54 24 0c                 	mov	edx, dword ptr [rsp + 0xc]
+140001464: 44 89 c1                    	mov	ecx, r8d
+140001467: 83 f1 ff                    	xor	ecx, -0x1
+14000146a: 81 e1 a2 b2 80 9a           	and	ecx, 0x9a80b2a2
+140001470: 41 b9 ff ff ff ff           	mov	r9d, 0xffffffff
+140001476: 41 81 f1 a2 b2 80 9a        	xor	r9d, 0x9a80b2a2
+14000147d: 45 21 c8                    	and	r8d, r9d
+140001480: 89 d0                       	mov	eax, edx
+140001482: 83 f0 ff                    	xor	eax, -0x1
+140001485: 25 a2 b2 80 9a              	and	eax, 0x9a80b2a2
+14000148a: 44 21 ca                    	and	edx, r9d
+14000148d: 44 09 c1                    	or	ecx, r8d
+140001490: 09 d0                       	or	eax, edx
+140001492: 31 c1                       	xor	ecx, eax
+140001494: 8b 54 24 10                 	mov	edx, dword ptr [rsp + 0x10]
+140001498: 41 89 c8                    	mov	r8d, ecx
+14000149b: 41 83 f0 ff                 	xor	r8d, -0x1
+14000149f: 89 d0                       	mov	eax, edx
+1400014a1: 44 21 c0                    	and	eax, r8d
+1400014a4: 83 f2 ff                    	xor	edx, -0x1
+1400014a7: 21 d1                       	and	ecx, edx
+1400014a9: 09 c8                       	or	eax, ecx
+1400014ab: 8b 4c 24 14                 	mov	ecx, dword ptr [rsp + 0x14]
+1400014af: 89 c2                       	mov	edx, eax
+1400014b1: 83 f2 ff                    	xor	edx, -0x1
+1400014b4: 41 89 c8                    	mov	r8d, ecx
+1400014b7: 41 21 d0                    	and	r8d, edx
+1400014ba: 83 f1 ff                    	xor	ecx, -0x1
+1400014bd: 21 c8                       	and	eax, ecx
+1400014bf: 41 09 c0                    	or	r8d, eax
+1400014c2: 8b 54 24 18                 	mov	edx, dword ptr [rsp + 0x18]
+1400014c6: 44 89 c1                    	mov	ecx, r8d
+1400014c9: 83 f1 ff                    	xor	ecx, -0x1
+1400014cc: 81 e1 c7 bf 98 47           	and	ecx, 0x4798bfc7
+1400014d2: 41 b9 ff ff ff ff           	mov	r9d, 0xffffffff
+1400014d8: 41 81 f1 c7 bf 98 47        	xor	r9d, 0x4798bfc7
+1400014df: 45 21 c8                    	and	r8d, r9d
+1400014e2: 89 d0                       	mov	eax, edx
+1400014e4: 83 f0 ff                    	xor	eax, -0x1
+1400014e7: 25 c7 bf 98 47              	and	eax, 0x4798bfc7
+1400014ec: 44 21 ca                    	and	edx, r9d
+1400014ef: 44 09 c1                    	or	ecx, r8d
+1400014f2: 09 d0                       	or	eax, edx
+1400014f4: 31 c1                       	xor	ecx, eax
+1400014f6: 8b 54 24 1c                 	mov	edx, dword ptr [rsp + 0x1c]
+1400014fa: 41 89 c8                    	mov	r8d, ecx
+1400014fd: 41 83 f0 ff                 	xor	r8d, -0x1
+140001501: 89 d0                       	mov	eax, edx
+140001503: 44 21 c0                    	and	eax, r8d
+140001506: 83 f2 ff                    	xor	edx, -0x1
+140001509: 21 d1                       	and	ecx, edx
+14000150b: 09 c8                       	or	eax, ecx
+14000150d: 48 83 c4 28                 	add	rsp, 0x28
+140001511: c3                          	ret

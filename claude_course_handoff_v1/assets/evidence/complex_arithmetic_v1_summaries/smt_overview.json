@@ -1,0 +1,36 @@
+{
+  "core_build_function_rows": 48,
+  "core_mode_rows": 144,
+  "complete_extractions": 44,
+  "raw_to_expected": {
+    "unsat": 42,
+    "unknown": 2
+  },
+  "simplifier_input_to_candidate": {
+    "unsat": 83,
+    "unknown": 5
+  },
+  "simplifier_candidate_to_expected": {
+    "unsat": 86,
+    "unknown": 2
+  },
+  "synthesis_input_to_candidate": {
+    "sat": 44
+  },
+  "synthesis_candidate_to_expected": {
+    "sat": 44
+  },
+  "synthesis_nonzero_score_candidates": 44,
+  "internal_simplifier_smt": {
+    "unsat": 45
+  },
+  "synthesis_expansion_input_to_candidate": {
+    "unsat": 10,
+    "unknown": 2
+  },
+  "synthesis_expansion_candidate_to_expected": {
+    "unsat": 12
+  },
+  "claimed_candidate_counterexamples": [],
+  "note": "All 44 core synthesis candidates have nonzero scores and SAT counterexamples: failed searches, not accepted unsound rewrites. All UNKNOWN statuses retained."
+}

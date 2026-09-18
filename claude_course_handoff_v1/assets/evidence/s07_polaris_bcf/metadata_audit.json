@@ -1,0 +1,98 @@
+{
+  "file_size": 557056,
+  "image_size": 581632,
+  "bytes_changed": 64,
+  "approved_patch_window_bytes": 96,
+  "all_other_file_bytes_identical": true,
+  "entire_headers_identical": true,
+  "sections_identical": true,
+  "imports_exports_relocations_exception_debug_directories_and_payloads_identical": true,
+  "target_entry_and_unwind_ranges_identical": true,
+  "target": {
+    "va": 5368713744,
+    "rva": 4624,
+    "end": 5368714855,
+    "boundary": "PE RUNTIME_FUNCTION including chained ranges",
+    "runtime_ranges": [
+      [
+        4624,
+        5735,
+        503808
+      ]
+    ]
+  },
+  "checksum": 0,
+  "certificate_table": [
+    0,
+    0
+  ],
+  "all_data_directories": [
+    [
+      532176,
+      284
+    ],
+    [
+      532460,
+      40
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      548864,
+      20700
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      577536,
+      2040
+    ],
+    [
+      500400,
+      112
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      500080,
+      320
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      454656,
+      704
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "patch_windows_outside_prologue": true,
+  "pdb": "Not copied. Retained original RSDS debug reference is provenance only, not a valid changed-instruction map.",
+  "exception_unwind_correctness_tested": false
+}

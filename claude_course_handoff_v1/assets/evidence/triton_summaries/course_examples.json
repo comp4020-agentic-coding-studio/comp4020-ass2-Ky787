@@ -1,0 +1,30 @@
+[
+  {
+    "name": "01_ollvm_template_free",
+    "case": "ollvm16-bcf-O0",
+    "branch_va": "0x140001667",
+    "classification": "PROVEN ALWAYS-TRUE",
+    "evidence": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_triton\\summaries\\course_examples\\01_ollvm_template_free.json"
+  },
+  {
+    "name": "02_polaris_cross_implementation",
+    "case": "polaris-bcf-O0",
+    "branch_va": "0x140001257",
+    "classification": "PROVEN ALWAYS-TRUE",
+    "evidence": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_triton\\summaries\\course_examples\\02_polaris_cross_implementation.json"
+  },
+  {
+    "name": "03_tigress_initialization",
+    "case": "tigress-add_opaque-O0",
+    "branch_va": "0x14000128c",
+    "classification": "PROVEN ALWAYS-TRUE",
+    "evidence": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_triton\\summaries\\course_examples\\03_tigress_initialization.json"
+  },
+  {
+    "name": "04_genuine_correlated_branch",
+    "case": "ollvm16-clean-O0",
+    "branch_va": "0x140001278",
+    "classification": "GENUINE / TWO-SIDED",
+    "evidence": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\opaque_triton\\summaries\\course_examples\\04_genuine_correlated_branch.json"
+  }
+]

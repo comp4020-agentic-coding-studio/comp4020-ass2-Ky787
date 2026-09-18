@@ -1,0 +1,1244 @@
+[
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/01_ollvm_sub/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/01_ollvm_sub/original/ollvm16_sub_O0.exe",
+    "bundled_path": "assets/binaries/s01_ollvm_sub/original/ollvm16_sub_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/02_polaris_mba/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/polaris/polaris_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/polaris/polaris_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/02_polaris_mba/original/polaris_mba_O0.exe",
+    "bundled_path": "assets/binaries/s02_polaris_mba/original/polaris_mba_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/03_ollvm_bcf/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/03_ollvm_bcf/original/ollvm16_bcf_O0.exe",
+    "bundled_path": "assets/binaries/s03_ollvm_bcf/original/ollvm16_bcf_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/03_ollvm_bcf/rewritten/ollvm16_bcf_O0_triton_rewritten.exe",
+    "bundled_path": "assets/binaries/s03_ollvm_bcf/rewritten/ollvm16_bcf_O0_triton_rewritten.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/04_polaris_bcf/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/polaris/polaris_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/polaris/polaris_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/04_polaris_bcf/original/polaris_bcf_O0.exe",
+    "bundled_path": "assets/binaries/s07_polaris_bcf/original/polaris_bcf_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/04_polaris_bcf/rewritten/polaris_bcf_O0_triton_rewritten.exe",
+    "bundled_path": "assets/binaries/s07_polaris_bcf/rewritten/polaris_bcf_O0_triton_rewritten.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/05_ollvm_fla/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/ollvm16/ollvm16_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/05_ollvm_fla/original/ollvm16_fla_O0.exe",
+    "bundled_path": "assets/binaries/s04_ollvm_fla/original/ollvm16_fla_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/05_ollvm_fla/rewritten/ollvm16_fla_O0_stock_unflattened.exe",
+    "bundled_path": "assets/binaries/s04_ollvm_fla/rewritten/ollvm16_fla_O0_stock_unflattened.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/06_polaris_fla_incorrect/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/polaris/polaris_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/polaris/polaris_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/06_polaris_fla_incorrect/original/polaris_fla_O0.exe",
+    "bundled_path": "assets/binaries/s05_polaris_fla_wrong/original/polaris_fla_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/06_polaris_fla_incorrect/rewritten/INCORRECT_DEOBFUSCATION_DO_NOT_USE_AS_WORKING_BINARY.exe",
+    "bundled_path": "assets/binaries/s05_polaris_fla_wrong/rewritten/INCORRECT_DEOBFUSCATION_DO_NOT_USE_AS_WORKING_BINARY.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/07_tigress_arithmetic/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/tigress/tigress_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/tigress/tigress_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/07_tigress_arithmetic/original/tigress_encode_arithmetic_O0.exe",
+    "bundled_path": "assets/binaries/s06_tigress_arithmetic/original/tigress_encode_arithmetic_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/07_tigress_arithmetic/optimized/tigress_encode_arithmetic_Ox.exe",
+    "bundled_path": "assets/binaries/s06_tigress_arithmetic/optimized/tigress_encode_arithmetic_Ox.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/08_tigress_flatten_discovery/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/baselines/tigress/tigress_clean_O0.exe",
+    "bundled_path": "assets/binaries/baselines/tigress/tigress_clean_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/tables/research/best_course_examples.md",
+    "archival_reference": "../manual_analysis/08_tigress_flatten_discovery/original/tigress_flatten_O0.exe",
+    "bundled_path": "assets/binaries/s08_tigress_flatten/original/tigress_flatten_O0.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../scripts/deobfuscation/msynth/install.ps1",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/environment/identity.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/environment/oracle.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/sanity",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../scripts/deobfuscation/msynth/sanity.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../scripts/deobfuscation/msynth/proof_lemmas.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/artifacts.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../scripts/deobfuscation/msynth/extract.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/family_results.json",
+    "bundled_path": "assets/evidence/msynth_summaries/family_results.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/operator_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/polaris_mba/feature_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/optimization_comparison/paired_sites.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/binprotect_static",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/synthesis_results.json",
+    "bundled_path": "assets/evidence/msynth_summaries/synthesis_results.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/whole_function_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/evidence_audit.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/smt_overview.json",
+    "bundled_path": "assets/evidence/msynth_summaries/smt_overview.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../scripts/deobfuscation/msynth",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/site_results.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/site_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/family_results.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/family_results.json",
+    "bundled_path": "assets/evidence/msynth_summaries/family_results.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/synthesis_results.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/msynth_validation.md",
+    "archival_reference": "../results/deobfuscation/msynth/summaries/synthesis_results.json",
+    "bundled_path": "assets/evidence/msynth_summaries/synthesis_results.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../src/probes/substitution_complex.c",
+    "bundled_path": "assets/source/substitution_complex.c",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../src/probes/SUBSTITUTION_COMPLEX_VERSION.txt",
+    "bundled_path": "assets/source/SUBSTITUTION_COMPLEX_VERSION.txt",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../scripts/deobfuscation/complex_arithmetic/model.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/preregistration/freeze.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/complex_arithmetic_v1/clean",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/builds.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/expression_metrics.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/structural_metrics.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/guard_diagnostics.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/preregistration/protocol.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/simplification_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/family_results.json",
+    "bundled_path": "assets/evidence/complex_arithmetic_v1_summaries/family_results.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/synthesis_expansion.json",
+    "bundled_path": "assets/evidence/complex_arithmetic_v1_summaries/synthesis_expansion.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/document_example_checks.json",
+    "bundled_path": "assets/evidence/complex_arithmetic_v1_summaries/document_example_checks.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/smt_overview.json",
+    "bundled_path": "assets/evidence/complex_arithmetic_v1_summaries/smt_overview.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/summaries/evidence_audit.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../results/deobfuscation/complex_arithmetic_v1/COURSE_EXAMPLES.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/complex_arithmetic_deobfuscation.md",
+    "archival_reference": "../scripts/deobfuscation/complex_arithmetic",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/docs/unflattening_validation.md",
+    "bundled_path": "assets/reports/unflattening_validation.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/clean_cfg.svg",
+    "bundled_path": "assets/cfg/s04_ollvm_fla/clean_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/before_cfg.svg",
+    "bundled_path": "assets/cfg/s04_ollvm_fla/before_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/after_cfg.svg",
+    "bundled_path": "assets/cfg/s04_ollvm_fla/after_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/course_comparison.svg",
+    "bundled_path": "assets/cfg/s04_ollvm_fla/course_comparison.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/stock_rewritten.exe",
+    "bundled_path": "assets/binaries/s04_ollvm_fla/rewritten/ollvm16_fla_O0_stock_unflattened.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/output_runtime_stdout.txt",
+    "bundled_path": "assets/evidence/s04_ollvm_fla/output_runtime_stdout.txt",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/provenance_region_map.json",
+    "bundled_path": "assets/evidence/s04_ollvm_fla/provenance_region_map.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/instrumentation.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/clean_cfg.svg",
+    "bundled_path": "assets/cfg/support_hikari_fla/clean_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/before_cfg.svg",
+    "bundled_path": "assets/cfg/support_hikari_fla/before_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/after_cfg.svg",
+    "bundled_path": "assets/cfg/support_hikari_fla/after_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/course_comparison.svg",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/stock_rewritten.exe",
+    "bundled_path": "assets/binaries/support_hikari_fla/rewritten/stock_rewritten.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/output_runtime_stdout.txt",
+    "bundled_path": "assets/evidence/support_hikari_fla/output_runtime_stdout.txt",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/provenance_region_map.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/instrumentation.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/clean_cfg.svg",
+    "bundled_path": "assets/cfg/s05_polaris_fla_wrong/clean_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/before_cfg.svg",
+    "bundled_path": "assets/cfg/s05_polaris_fla_wrong/before_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/after_cfg.svg",
+    "bundled_path": "assets/cfg/s05_polaris_fla_wrong/after_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/course_comparison.svg",
+    "bundled_path": "assets/cfg/s05_polaris_fla_wrong/course_comparison.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/output_runtime_stdout.txt",
+    "bundled_path": "assets/evidence/s05_polaris_fla_wrong/output_runtime_stdout.txt",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/after_cfg.txt",
+    "bundled_path": "assets/evidence/s05_polaris_fla_wrong/after_cfg.txt",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/provenance_region_map.json",
+    "bundled_path": "assets/evidence/s05_polaris_fla_wrong/provenance_region_map.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0/instrumentation.json",
+    "bundled_path": "assets/evidence/s05_polaris_fla_wrong/instrumentation.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/clean_cfg.svg",
+    "bundled_path": "assets/cfg/s08_tigress_flatten/clean_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/reference_complete_cfg.svg",
+    "bundled_path": "assets/cfg/s08_tigress_flatten/reference_complete_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/before_cfg.svg",
+    "bundled_path": "assets/cfg/s08_tigress_flatten/before_cfg.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/verified_jump_table.json",
+    "bundled_path": "assets/evidence/s08_tigress_flatten/verified_jump_table.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/input_runtime_stdout.txt",
+    "bundled_path": "assets/evidence/s08_tigress_flatten/input_runtime_stdout.txt",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/provenance_region_map.json",
+    "bundled_path": "assets/evidence/s08_tigress_flatten/provenance_region_map.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/tigress/o0/stock_result.json",
+    "bundled_path": "assets/evidence/s08_tigress_flatten/stock_result.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_course_examples.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/assisted_transfer/tigress_o0_bounded/instrumentation.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/stock_results.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/semantic_edge_scores.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/docs/unflattening_course_examples.md",
+    "bundled_path": "assets/reports/unflattening_course_examples.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/environment/upstream_head_stdout.txt",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/environment",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/sanity",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/sanity/gate.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/stock_transfer/selections.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/stock_transfer/ground_truth",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/ollvm16/o0/stock_rewritten.exe",
+    "bundled_path": "assets/binaries/s04_ollvm_fla/rewritten/ollvm16_fla_O0_stock_unflattened.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/hikari/o0/stock_rewritten.exe",
+    "bundled_path": "assets/binaries/support_hikari_fla/rewritten/stock_rewritten.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/polaris/o0",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/cfg_metrics.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/scripts/deobfuscation/unflattening/semantic_ground_truth.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/scripts/deobfuscation/unflattening/map_regions.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/semantic_edges.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/transfer_assumptions.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/assisted_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/binprotect_static",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/stock_results.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/cfg_metrics.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/semantic_edges.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/transfer_assumptions.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/scripts/deobfuscation/unflattening",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/stock_transfer/preserved_stock_manifest.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/unflattening_validation.md",
+    "archival_reference": "E:/Workspace/seeing_through_obfuscation/results/deobfuscation/unflattening/summaries/evidence_audit.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/environment/",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/sanity/sanity.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/inventory/compact_inventory.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/inventory/cases.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/branch_ground_truth.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/branch_ground_truth.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/ground_truth/freeze.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../scripts/deobfuscation/opaque_triton/",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/native_verification/",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/o2_negative_controls.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/smt_serialization_audit.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/proof_freeze.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/preservation_audit.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/environment/harness_development_notes.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/accuracy_metrics.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/predicate_results.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/family_results.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/solver_metrics.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/cfg_projection/",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_triton.md",
+    "archival_reference": "../results/deobfuscation/opaque_triton/summaries/course_examples.json",
+    "bundled_path": "assets/evidence/triton_summaries/course_examples.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "opaque_predicate_triton.md",
+    "bundled_path": "assets/reports/opaque_predicate_triton.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/proof_audit/ollvm16.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/proof_audit/polaris.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/patches.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/ollvm16_o0/showcase_ollvm_bcf_deopaque.exe",
+    "bundled_path": "assets/binaries/s03_ollvm_bcf/rewritten/ollvm16_bcf_O0_triton_rewritten.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/polaris_o0/showcase_polaris_bcf_deopaque.exe",
+    "bundled_path": "assets/binaries/s07_polaris_bcf/rewritten/polaris_bcf_O0_triton_rewritten.exe",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/runtime_tests.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/runtime_tests.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/cfg_metrics.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/cfg_metrics.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/cfg_projection/ollvm16/rewritten_entry_reachable.svg",
+    "bundled_path": "assets/cfg/s03_ollvm_bcf/rewritten_entry_reachable.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/cfg_projection/polaris/rewritten_entry_reachable.svg",
+    "bundled_path": "assets/cfg/s07_polaris_bcf/rewritten_entry_reachable.svg",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/final_audit.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/independent_verification.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../results/deobfuscation/opaque_rewrite/summaries/output_freeze.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../scripts/deobfuscation/opaque_rewrite/pilot.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../scripts/deobfuscation/opaque_rewrite/support.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../scripts/deobfuscation/opaque_rewrite/native_worker.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/opaque_predicate_rewrite.md",
+    "archival_reference": "../scripts/deobfuscation/opaque_rewrite/cfg.py",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/mergen_validation.md",
+    "archival_reference": "../results/deobfuscation/mergen/summaries/cases.json",
+    "bundled_path": "assets/evidence/mergen_summaries/cases.json",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/mergen_validation.md",
+    "archival_reference": "../results/deobfuscation/mergen/summaries/cases.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/mergen_validation.md",
+    "archival_reference": "../results/deobfuscation/mergen/summaries/ir_metrics.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/mergen_validation.md",
+    "archival_reference": "../results/deobfuscation/mergen/summaries/ir_metrics.csv",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/mergen_validation.md",
+    "archival_reference": "../results/deobfuscation/mergen/course_examples/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/mergen_validation.md",
+    "archival_reference": "../results/deobfuscation/mergen/summaries/input_inventory.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "RESEARCH_SUMMARY.md",
+    "bundled_path": "assets/reports/RESEARCH_SUMMARY.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "IDA_WALKTHROUGH.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/showcase_validation.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/showcase_matrix_v1.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "tables/obfuscators.md",
+    "bundled_path": "assets/tables/research/obfuscators.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "tables/optimization_survival.md",
+    "bundled_path": "assets/tables/research/optimization_survival.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/msynth_validation.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/complex_arithmetic_deobfuscation.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/unflattening_course_examples.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/opaque_predicate_triton.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/opaque_predicate_rewrite.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "reference/research_docs/mergen_validation.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "tables/best_course_examples.md",
+    "bundled_path": "assets/tables/research/best_course_examples.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "tables/selected_metrics.md",
+    "bundled_path": "assets/tables/research/selected_metrics.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "MANIFEST.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/FINAL_RESEARCH_OVERVIEW.md",
+    "archival_reference": "IDA_WALKTHROUGH.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "PIPELINES.md",
+    "bundled_path": "assets/reports/PIPELINES.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "tables/obfuscators.md",
+    "bundled_path": "assets/tables/research/obfuscators.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "tables/optimization_survival.md",
+    "bundled_path": "assets/tables/research/optimization_survival.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "manual_analysis/01_ollvm_sub/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "manual_analysis/02_polaris_mba/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "manual_analysis/07_tigress_arithmetic/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "manual_analysis/03_ollvm_bcf/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "manual_analysis/04_polaris_bcf/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "tables/end_to_end_results.md",
+    "bundled_path": "assets/tables/research/end_to_end_results.md",
+    "status": "BUNDLED — use mapped path"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "manual_analysis/06_polaris_fla_incorrect/README.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "reference/research_docs/mergen_validation.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "MANIFEST.json",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/RESEARCH_SUMMARY.md",
+    "archival_reference": "IDA_WALKTHROUGH.md",
+    "bundled_path": null,
+    "status": "NOT BUNDLED — deeper original-workspace detail; not required for primary handoff"
+  },
+  {
+    "report": "assets/reports/PIPELINES.md",
+    "archival_reference": "tables/end_to_end_results.md",
+    "bundled_path": "assets/tables/research/end_to_end_results.md",
+    "status": "BUNDLED — use mapped path"
+  }
+]

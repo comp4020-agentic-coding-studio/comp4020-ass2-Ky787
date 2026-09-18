@@ -1,0 +1,95 @@
+[
+  {
+    "id": "tigress-encode-O0__complex_constants",
+    "title": "One-variable chain: partial reduction",
+    "dataset": "complex_arithmetic_v1",
+    "function": "complex_constants",
+    "target_rva": "0x1000",
+    "target_va": "0x140001000",
+    "clean_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\complex_arithmetic_v1\\clean\\msvc\\probe.exe",
+    "obfuscated_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\probe.exe",
+    "pdb": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\probe.pdb",
+    "map": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\probe.map",
+    "pe_sha256": "CEF2F0F9FAEA53B6E3FB3BF1F79C44C94C91E81A25EA5DC70CC6FA931BFB3014",
+    "stages": {
+      "simple_c": "E:\\Workspace\\seeing_through_obfuscation\\src\\probes\\substitution_complex.c",
+      "obfuscated_ir_or_c": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_constants\\generated_function.c",
+      "obfuscated_x64": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_constants\\bounded_disassembly.txt",
+      "miasm_expression": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_constants\\extraction.json",
+      "simplification_and_smt": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_constants\\ast\\result.json"
+    },
+    "result": "PARTIAL SIMPLIFICATION",
+    "nodes_before": 58,
+    "nodes_after": 24
+  },
+  {
+    "id": "polaris-sub-O0__complex_variables",
+    "title": "Two symbolic variables: inner recovery, outer encoding remains",
+    "dataset": "complex_arithmetic_v1",
+    "function": "complex_variables",
+    "target_rva": "0x1070",
+    "target_va": "0x140001070",
+    "clean_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\complex_arithmetic_v1\\clean\\polaris\\probe.exe",
+    "obfuscated_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\probe.exe",
+    "pdb": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\probe.pdb",
+    "map": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\probe.map",
+    "pe_sha256": "F736635201A3442EB6354DF2599EB4A4D8DB88A19502D9132CE06C7D13162A90",
+    "stages": {
+      "simple_c": "E:\\Workspace\\seeing_through_obfuscation\\src\\probes\\substitution_complex.c",
+      "obfuscated_ir_or_c": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\complex_variables\\function.ll",
+      "obfuscated_x64": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\complex_variables\\bounded_disassembly.txt",
+      "miasm_expression": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\complex_variables\\extraction.json",
+      "simplification_and_smt": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\polaris_sub\\O0\\complex_variables\\ast\\result.json"
+    },
+    "result": "PARTIAL SIMPLIFICATION",
+    "nodes_before": 53,
+    "nodes_after": 30
+  },
+  {
+    "id": "tigress-encode-O0__complex_mixed",
+    "title": "Interacting mixed chain: large reduction, not complete recovery",
+    "dataset": "complex_arithmetic_v1",
+    "function": "complex_mixed",
+    "target_rva": "0x13e0",
+    "target_va": "0x1400013e0",
+    "clean_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\complex_arithmetic_v1\\clean\\msvc\\probe.exe",
+    "obfuscated_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\probe.exe",
+    "pdb": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\probe.pdb",
+    "map": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\probe.map",
+    "pe_sha256": "CEF2F0F9FAEA53B6E3FB3BF1F79C44C94C91E81A25EA5DC70CC6FA931BFB3014",
+    "stages": {
+      "simple_c": "E:\\Workspace\\seeing_through_obfuscation\\src\\probes\\substitution_complex.c",
+      "obfuscated_ir_or_c": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_mixed\\generated_function.c",
+      "obfuscated_x64": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_mixed\\bounded_disassembly.txt",
+      "miasm_expression": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_mixed\\extraction.json",
+      "simplification_and_smt": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\tigress_encode\\O0\\complex_mixed\\simba\\result.json"
+    },
+    "result": "PARTIAL SIMPLIFICATION",
+    "nodes_before": 305,
+    "nodes_after": 79
+  },
+  {
+    "id": "polaris-mba-O0__xor_1",
+    "title": "Structurally diverse Polaris MBA: full isolated XOR recovery",
+    "dataset": "earlier repeated-site corpus; preregistered expansion",
+    "function": "demo_substitution",
+    "site_index": 1,
+    "target_rva": "0x1030",
+    "writeback_rva": "0x12bd",
+    "pe_sha256": "48A7750AAAD7E6CC7E0F9638D9278CF7864882D4BA95D0C3222596BC6879AEF5",
+    "clean_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\optimization_survival\\polaris\\clean\\O0\\showcase.exe",
+    "obfuscated_pe": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\primary_o0\\polaris\\mba\\showcase.exe",
+    "pdb": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\primary_o0\\polaris\\mba\\showcase.pdb",
+    "map": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\primary_o0\\polaris\\mba\\showcase.map",
+    "stages": {
+      "simple_c": "E:\\Workspace\\seeing_through_obfuscation\\src\\showcase.c",
+      "obfuscated_ir": "E:\\Workspace\\seeing_through_obfuscation\\results\\showcase_matrix_v1\\primary_o0\\polaris\\mba\\program.ll",
+      "obfuscated_x64": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\msynth\\polaris_mba\\bounded_disassembly.txt",
+      "miasm_expression": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\synthesis_expansion\\polaris-mba-O0__xor_1\\synthesis\\input.json",
+      "synthesis_and_smt": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\complex_arithmetic_v1\\synthesis_expansion\\polaris-mba-O0__xor_1\\synthesis\\result.json"
+    },
+    "result": "EXACT RECOVERY",
+    "nodes_before": 73,
+    "nodes_after": 3
+  }
+]

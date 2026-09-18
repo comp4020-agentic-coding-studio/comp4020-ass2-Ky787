@@ -1,0 +1,110 @@
+[
+  {
+    "Transformation": "OLLVM SUB",
+    "O0 behavior": "All 24 IR sites expanded; native XOR/SUB already canonical",
+    "O1 behavior": "All 24 native operations recovered; residual instructions",
+    "O2 behavior": "Same lesson as O1",
+    "O3 or /Ox behavior": "Same lesson as O1",
+    "Overall interpretation": "Rich retained IR can become simple native operations",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Hikari SUB",
+    "O0 behavior": "Partial probabilistic coverage; 213 target instructions",
+    "O1 behavior": "Measured target matches clean (51 instructions)",
+    "O2 behavior": "Measured target matches clean",
+    "O3 or /Ox behavior": "Measured target matches clean",
+    "Overall interpretation": "Coverage and survival are separate questions",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Polaris SUB",
+    "O0 behavior": "XOR 8/8; ADD 8/8; SUB 3/8 rewritten",
+    "O1 behavior": "All 24 native operations recognizable",
+    "O2 behavior": "Native operations retained; residual scaffolding",
+    "O3 or /Ox behavior": "Native operations retained; residual scaffolding",
+    "Overall interpretation": "Classic SUB is weaker than separately retained O0 MBA",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Tigress EncodeArithmetic",
+    "O0 behavior": "426 target instructions",
+    "O1 behavior": "483 target instructions",
+    "O2 behavior": "503 target instructions",
+    "O3 or /Ox behavior": "226 target instructions; clean /Ox 106",
+    "Overall interpretation": "Exact same generated C; substantial complexity survives /Ox",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "OLLVM BCF",
+    "O0 behavior": "Strong cloned/opaque topology",
+    "O1 behavior": "Small opaque-loop residue",
+    "O2 behavior": "Small residue; not clean-identical",
+    "O3 or /Ox behavior": "Small residue; not clean-identical",
+    "Overall interpretation": "Optimization removes much, not every artifact",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Hikari BCF",
+    "O0 behavior": "Injected gates already folded in native code",
+    "O1 behavior": "Measured target matches clean",
+    "O2 behavior": "Measured target matches clean",
+    "O3 or /Ox behavior": "Measured target matches clean",
+    "Overall interpretation": "IR injection is not proof of native opaque predicates",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Polaris BCF",
+    "O0 behavior": "Strong cloned/opaque topology",
+    "O1 behavior": "Measured target matches clean",
+    "O2 behavior": "Measured target matches clean",
+    "O3 or /Ox behavior": "Measured target matches clean",
+    "Overall interpretation": "Excellent O0 proof example, weak optimized survivor",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Tigress AddOpaque",
+    "O0 behavior": "Initialized global-state-dependent opaque flow",
+    "O1 behavior": "Opaque structure remains",
+    "O2 behavior": "Opaque structure remains",
+    "O3 or /Ox behavior": "6 conditional jumps versus 1 clean",
+    "Overall interpretation": "Runtime initialization prevents simple compiler removal",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "OLLVM FLA",
+    "O0 behavior": "State/switch dispatcher",
+    "O1 behavior": "Strong flattening survives",
+    "O2 behavior": "Strong flattening survives",
+    "O3 or /Ox behavior": "Strong flattening survives",
+    "Overall interpretation": "Direct comparison dispatch is still flattening",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Hikari FLA",
+    "O0 behavior": "State/switch dispatcher",
+    "O1 behavior": "Strong flattening survives",
+    "O2 behavior": "Strong flattening survives",
+    "O3 or /Ox behavior": "Strong flattening survives",
+    "Overall interpretation": "Survival does not imply stock deobfuscator compatibility",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Polaris FLA",
+    "O0 behavior": "Strong O0 state dispatcher",
+    "O1 behavior": "Smaller: 11 retained IR blocks",
+    "O2 behavior": "Smaller: 10 retained IR blocks",
+    "O3 or /Ox behavior": "Smaller: 10 retained IR blocks",
+    "Overall interpretation": "Dispatcher survives although graph shrinks",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  },
+  {
+    "Transformation": "Tigress Flatten",
+    "O0 behavior": "Indirect jump-table dispatcher",
+    "O1 behavior": "Compiler emits direct comparison network",
+    "O2 behavior": "Indirect jump-table dispatcher",
+    "O3 or /Ox behavior": "Indirect jump-table dispatcher",
+    "Overall interpretation": "Same generated C, different native dispatch representation",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\optimization_survival.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\showcase_matrix_v1.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md"
+  }
+]

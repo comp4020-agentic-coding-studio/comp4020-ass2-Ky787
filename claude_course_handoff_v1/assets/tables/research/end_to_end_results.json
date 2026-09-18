@@ -1,0 +1,189 @@
+[
+  {
+    "Transformation family": "SUB / MBA",
+    "Case": "OLLVM SUB",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "Local expression recovery available",
+    "SMT/proof validation": "Selected recovered expressions proved",
+    "Working rewritten binary": "No msynth PE produced",
+    "Clean-like representation": "Some operations canonical before msynth",
+    "Notable limitation": "Mergen lifted IR FAILS semantics; original PE is valid",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "SUB / MBA",
+    "Case": "Hikari SUB",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "Mostly already simple; limited fresh recovery",
+    "SMT/proof validation": "Expression checks on tested cases",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "Many local expressions already clean-like",
+    "Notable limitation": "Partial O0 injection and O1 removal",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "SUB / MBA",
+    "Case": "Polaris SUB",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "Local expression analysis; backend simplification",
+    "SMT/proof validation": "Selected expression checks",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "Native operations largely recognizable",
+    "Notable limitation": "Not the stronger linear MBA treatment",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "SUB / MBA",
+    "Case": "Polaris MBA",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "Local recovery plus successful Mergen whole-function reconstruction",
+    "SMT/proof validation": "Selected local SMT proofs; 4118-vector lift checks are not universal proof",
+    "Working rewritten binary": "No rewritten original PE; compiled lift harness only",
+    "Clean-like representation": "Partial; much MBA remains",
+    "Notable limitation": "Miasm whole-function extraction guard; not fully normalized",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "SUB / MBA",
+    "Case": "Tigress EncodeArithmetic",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "Local/partial simplification; qualified Mergen execution",
+    "SMT/proof validation": "Local SMT proofs; lift runtime with global backing",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "Partial",
+    "Notable limitation": "Exact generated C and runtime global contract matter",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "SUB / MBA",
+    "Case": "BinProtect MBA/Linear O2",
+    "Obfuscated runnable binary": "INVALID; static only",
+    "Semantic deobfuscation": "Local/static arithmetic analysis; Mergen IR emitted",
+    "SMT/proof validation": "Local checks do not validate full PE",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "Partial/static only",
+    "Notable limitation": "Protected whole PE crashes; no runtime success claim",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "BCF / opaque predicates",
+    "Case": "OLLVM BCF O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "22 impossible edges removed",
+    "SMT/proof validation": "22/22 gate proofs; genuine branches negative controls",
+    "Working rewritten binary": "PASS: proof-rewritten PE",
+    "Clean-like representation": "Reachable CFG much smaller, not clean-identical",
+    "Notable limitation": "Predicate arithmetic and dead bytes remain",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "BCF / opaque predicates",
+    "Case": "Polaris BCF O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "16 impossible edges removed",
+    "SMT/proof validation": "16/16 gate proofs; genuine branches negative controls",
+    "Working rewritten binary": "PASS: proof-rewritten PE",
+    "Clean-like representation": "Reachable CFG smaller; lifted IR also simpler",
+    "Notable limitation": "Lift uses concrete global assumptions; not isolated proof-patch benefit",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "BCF / opaque predicates",
+    "Case": "Hikari BCF O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "No extant injected native opaque gate to remove",
+    "SMT/proof validation": "N/A for injected gates; genuine branch controls",
+    "Working rewritten binary": "No; unnecessary for already folded gates",
+    "Clean-like representation": "Backend already simplified",
+    "Notable limitation": "Do not report 0 gates as solver failure",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "BCF / opaque predicates",
+    "Case": "Tigress AddOpaque",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "3/3 only under captured initialized-state model",
+    "SMT/proof validation": "State-dependent proof; generic globals 0/3",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "No full rewritten-PE result",
+    "Notable limitation": "Not a universal proof over arbitrary global states",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "BCF / opaque predicates",
+    "Case": "BinProtect Opaque",
+    "Obfuscated runnable binary": "INVALID; static only",
+    "Semantic deobfuscation": "Limited predicate characterization",
+    "SMT/proof validation": "11 regions: 4 one-sided, 4 SAT/SAT, 3 timeout",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "No",
+    "Notable limitation": "Machine overflow defeats naive mathematical opacity; crash/hang",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "FLA",
+    "Case": "OLLVM FLA O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "25/25 semantic successor pairs recovered",
+    "SMT/proof validation": "Edge oracle + runtime, not universal formal proof",
+    "Working rewritten binary": "PASS: stock rewrite",
+    "Clean-like representation": "Dispatcher removed; graph differs from clean",
+    "Notable limitation": "Whole-function address mapping changed; original PDB unsafe",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "FLA",
+    "Case": "Hikari FLA O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "28/28 successor pairs recovered",
+    "SMT/proof validation": "Edge oracle + canonical runtime",
+    "Working rewritten binary": "PASS: stock rewrite, indexed original evidence",
+    "Clean-like representation": "66 to 20 blocks",
+    "Notable limitation": "O2 fails early; no cross-optimization success claim",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "FLA",
+    "Case": "Polaris FLA O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "14/22 true pairs plus 1 false pair",
+    "SMT/proof validation": "Runtime counterexample proves incorrect rewrite",
+    "Working rewritten binary": "FAIL: valid PE, wrong result",
+    "Clean-like representation": "Visually small but WRONG (56 to 10 blocks)",
+    "Notable limitation": "Legitimate four-way switch collapsed into sequential case operations",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "FLA",
+    "Case": "Tigress Flatten O0",
+    "Obfuscated runnable binary": "PASS",
+    "Semantic deobfuscation": "Stock CFG discovery only 6/38 blocks",
+    "SMT/proof validation": "Verified jump-table/reference CFG; no successful recovery",
+    "Working rewritten binary": "No output",
+    "Clean-like representation": "No",
+    "Notable limitation": "Fails before symbolic successor analysis",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "FLA",
+    "Case": "BinProtect CFF",
+    "Obfuscated runnable binary": "INVALID; static only",
+    "Semantic deobfuscation": "Static state/compare-chain characterization",
+    "SMT/proof validation": "No whole-PE correctness proof",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "No",
+    "Notable limitation": "Direct dispatch is flattening; original protected output invalid",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  },
+  {
+    "Transformation family": "Other",
+    "Case": "Polaris indirection / global encryption / backend MIR",
+    "Obfuscated runnable binary": "PASS in individual smoke tests",
+    "Semantic deobfuscation": "No dedicated deobfuscation study",
+    "SMT/proof validation": "Retained runtime/repeatability checks only",
+    "Working rewritten binary": "No",
+    "Clean-like representation": "Not established",
+    "Notable limitation": "MIR distinct from IR, nondeterministic; not a core pack story",
+    "Evidence sources": "E:\\Workspace\\seeing_through_obfuscation\\docs\\obfuscator_comparison_summary.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\msynth_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\complex_arithmetic_deobfuscation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\unflattening_course_examples.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_triton.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\opaque_predicate_rewrite.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\mergen_validation.md; E:\\Workspace\\seeing_through_obfuscation\\docs\\polaris_validation.md"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "group": "ollvm_bcf",
+    "stage": "raw",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_original\\lift\\output_no_opts.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_triton_rewritten\\lift\\output_no_opts.ll"
+  },
+  {
+    "group": "ollvm_bcf",
+    "stage": "raw_O2",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_original\\raw_O2.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_triton_rewritten\\raw_O2.ll"
+  },
+  {
+    "group": "ollvm_bcf",
+    "stage": "internal",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": true,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_original\\lift\\output.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_triton_rewritten\\lift\\output.ll"
+  },
+  {
+    "group": "ollvm_bcf",
+    "stage": "internal_O2",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": true,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_original\\internal_O2.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\ollvm_triton_rewritten\\internal_O2.ll"
+  },
+  {
+    "group": "polaris_bcf",
+    "stage": "raw",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\lift\\output_no_opts.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_triton_rewritten\\lift\\output_no_opts.ll"
+  },
+  {
+    "group": "polaris_bcf",
+    "stage": "raw_O2",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\raw_O2.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_triton_rewritten\\raw_O2.ll"
+  },
+  {
+    "group": "polaris_bcf",
+    "stage": "internal",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": true,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\lift\\output.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_triton_rewritten\\lift\\output.ll"
+  },
+  {
+    "group": "polaris_bcf",
+    "stage": "internal_O2",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": true,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\internal_O2.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_triton_rewritten\\internal_O2.ll"
+  },
+  {
+    "group": "polaris_bcf_clean",
+    "stage": "raw",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\clean\\polaris_bcf\\lift\\output_no_opts.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\lift\\output_no_opts.ll"
+  },
+  {
+    "group": "polaris_bcf_clean",
+    "stage": "raw_O2",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\clean\\polaris_bcf\\raw_O2.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\raw_O2.ll"
+  },
+  {
+    "group": "polaris_bcf_clean",
+    "stage": "internal",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\clean\\polaris_bcf\\lift\\output.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\lift\\output.ll"
+  },
+  {
+    "group": "polaris_bcf_clean",
+    "stage": "internal_O2",
+    "byte_hash_equal": false,
+    "equal_modulo_ssa_names": false,
+    "equal_without_module_id": false,
+    "a": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\clean\\polaris_bcf\\internal_O2.ll",
+    "b": "E:\\Workspace\\seeing_through_obfuscation\\results\\deobfuscation\\mergen\\bcf\\polaris_original\\internal_O2.ll"
+  }
+]
