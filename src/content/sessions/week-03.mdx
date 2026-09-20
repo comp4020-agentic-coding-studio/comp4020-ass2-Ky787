@@ -25,6 +25,7 @@ import FileList from "../../components/FileList.astro";
 import LectureTable from "../../components/LectureTable.astro";
 import Ledger from "../../components/Ledger.astro";
 import Numbers from "../../components/Numbers.astro";
+import Primer from "../../components/Primer.astro";
 import Screenshot from "../../components/Screenshot.astro";
 import Specimen from "../../components/Specimen.astro";
 
@@ -53,6 +54,18 @@ interesting question is what happens to it on the way to the executable.
 <section class="sc-section">
 
 ## One site, before and after
+
+Week 1 introduced SSA — every value named once and never reassigned. That
+property is what makes the next listing readable: to find out what a pass did,
+follow the chain of names backwards from whatever gets stored.
+
+<Primer
+  terms={[
+    { term: "dependency chain", gloss: "Which value feeds which. Because each name is assigned once, there is exactly one definition to follow back from any use." },
+    { term: "dead code", gloss: "A value that is computed and then used by nothing. Legal, and often the fingerprint of a transformation that <em>added</em> rather than replaced." },
+    { term: "template", gloss: "One of the fixed shapes a substitution pass chooses from. Counting the distinct shapes tells you how much variety the pass actually had." },
+  ]}
+/>
 
 <CodePair>
   <EvidenceCode

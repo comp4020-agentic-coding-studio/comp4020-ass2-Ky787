@@ -144,16 +144,27 @@ describe("citations resolve", () => {
     }
   });
 
-  // A listing on a page is worth nothing unless the reader can get to the file
-  // it came from. Anywhere a page shows a block of code, it has to name the
-  // artefact's hash — which only the build-time excerpt component does, so a
-  // pasted listing fails this.
-  it("names the source file's hash on any page that shows a code block", () => {
-    for (const weekPage of weekPages()) {
-      if (!weekPage.html.includes("<pre")) continue;
-      expect(weekPage.html, `${weekPage.route} shows code with no provenance`).toMatch(
-        /sha256 [0-9a-fA-F]{12}/,
-      );
+  // A listing is worth nothing unless the reader can reach the file it came
+  // from. Every evidence pane therefore carries a link to its own artefact —
+  // which only the build-time excerpt component emits, so a listing pasted
+  // into a page fails this.
+  //
+  // This used to assert a printed SHA-256 instead. The hash was dropped from
+  // the pane because a reader cannot check twelve hex digits by eye, and the
+  // copy's identity is already asserted above, against the original. The
+  // contract the page owes is reachability, so that is what is tested.
+  const panes = (html: string): string[] => html.split('<figure class="sc-pane').slice(1);
+
+  it("links its own source artefact from every evidence pane", () => {
+    for (const sitePage of sitePages()) {
+      for (const pane of panes(sitePage.html)) {
+        const foot = pane.split("</figure>")[0] ?? "";
+        if (!foot.includes("<pre") && !foot.includes("<table")) continue;
+        expect(
+          foot.includes("/artefacts/"),
+          `a pane on ${sitePage.route} shows evidence without linking its artefact`,
+        ).toBe(true);
+      }
     }
   });
 
@@ -161,7 +172,7 @@ describe("citations resolve", () => {
   // More than that and the course has stopped teaching from evidence.
   it("teaches from sliced-out evidence in at least ten of the twelve weeks", () => {
     const withExcerpts = weekPages().filter((weekPage) =>
-      /sha256 [0-9a-fA-F]{12}/.test(weekPage.html),
+      panes(weekPage.html).some((pane) => pane.includes("<pre")),
     );
     expect(withExcerpts.length).toBeGreaterThanOrEqual(10);
   });

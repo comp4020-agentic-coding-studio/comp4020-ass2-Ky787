@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="651" viewBox="0 0 1180 651" role="img" aria-labelledby="title desc">
+<title id="title">Flattening can survive without an indirect jump</title>
+<desc id="desc">FLA = control-flow flattening. Look for state-driven dispatch, not one opcode. A direct chain of comparisons can implement the same flattened state machine as a jump table.</desc>
+<rect width="1180" height="651" fill="white"/>
+<text x="40" y="31" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700">SEEING THROUGH OBFUSCATION  /  TABLE 05</text>
+<text x="40" y="80" fill="#183B50" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Flattening can survive without an indirect jump</text>
+<text x="40" y="119" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">FLA = control-flow flattening. Look for state-driven dispatch, not one opcode.</text>
+<rect x="40" y="149" width="1100" height="46" fill="#183B50" rx="0"/>
+<text x="52" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Treatment</text>
+<text x="272" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">At O0</text>
+<text x="558" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">At higher optimization</text>
+<text x="866" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">What to look for</text>
+<rect x="40" y="195" width="1100" height="70" fill="#FFFFFF" rx="0"/>
+<rect x="40" y="195" width="220" height="70" fill="#ECF2F5" rx="0"/>
+<text x="54" y="237" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">OLLVM FLA</text>
+<text x="274" y="237" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">State/switch dispatcher</text>
+<text x="560" y="237" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Strong flattening persists</text>
+<text x="868" y="225.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Repeated state tests and</text>
+<text x="868" y="248.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">returns to dispatch.</text>
+<line x1="40" y1="265" x2="1140" y2="265" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="265" width="1100" height="70" fill="#F5F8FA" rx="0"/>
+<rect x="40" y="265" width="220" height="70" fill="#ECF2F5" rx="0"/>
+<text x="54" y="307" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Hikari FLA</text>
+<text x="274" y="307" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">State/switch dispatcher</text>
+<text x="560" y="307" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Strong flattening persists</text>
+<text x="868" y="295.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Dispatcher structure despite</text>
+<text x="868" y="318.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">simpler blocks.</text>
+<line x1="40" y1="335" x2="1140" y2="335" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="335" width="1100" height="70" fill="#FFFFFF" rx="0"/>
+<rect x="40" y="335" width="220" height="70" fill="#ECF2F5" rx="0"/>
+<text x="54" y="377" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Polaris FLA</text>
+<text x="274" y="377" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Strong state dispatcher</text>
+<text x="560" y="377" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Smaller, but still flattened</text>
+<text x="868" y="365.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Simplification is not full</text>
+<text x="868" y="388.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">unflattening.</text>
+<line x1="40" y1="405" x2="1140" y2="405" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="405" width="1100" height="70" fill="#F5F8FA" rx="0"/>
+<rect x="40" y="405" width="220" height="70" fill="#ECF2F5" rx="0"/>
+<text x="54" y="447" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Tigress Flatten</text>
+<text x="274" y="447" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Indirect jump table</text>
+<text x="560" y="435.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">O1: direct network</text>
+<text x="560" y="458.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">O2 and /Ox: indirect table</text>
+<text x="868" y="435.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Same generated C, different</text>
+<text x="868" y="458.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">native dispatch.</text>
+<line x1="40" y1="475" x2="1140" y2="475" stroke="#D9E2E8" stroke-width="1"/>
+<line x1="260" y1="195" x2="260" y2="475" stroke="#E0E7EC" stroke-width="1"/>
+<line x1="546" y1="195" x2="546" y2="475" stroke="#E0E7EC" stroke-width="1"/>
+<line x1="854" y1="195" x2="854" y2="475" stroke="#E0E7EC" stroke-width="1"/>
+<rect x="40" y="497" width="1100" height="51" fill="#E8F2F6" rx="5"/>
+<text x="59" y="528" fill="#183B50" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">A direct chain of comparisons can implement the same flattened state machine as a jump table.</text>
+<text x="40" y="577.5" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400">Scope: demo_flattening. Survival of obfuscation does not establish compatibility with an unflattener.</text>
+<rect x="40" y="596" width="12" height="12" fill="#E3F3EB" rx="0"/>
+<text x="58" y="607" fill="#15533A" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Validated</text>
+<rect x="135.124" y="596" width="12" height="12" fill="#FFF0D5" rx="0"/>
+<text x="153.124" y="607" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Qualified / incomplete</text>
+<rect x="298.327" y="596" width="12" height="12" fill="#FCE5E8" rx="0"/>
+<text x="316.327" y="607" fill="#922838" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Wrong / invalid</text>
+<rect x="423.999" y="596" width="12" height="12" fill="#E7F0FA" rx="0"/>
+<text x="441.999" y="607" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Observation</text>
+<rect x="534.394" y="596" width="12" height="12" fill="#EEF1F4" rx="0"/>
+<text x="552.394" y="607" fill="#465462" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Not produced</text>
+<text x="40" y="627" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400">Windows x64 | Retained samples only | Source keys in SOURCES.md</text>
+</svg>

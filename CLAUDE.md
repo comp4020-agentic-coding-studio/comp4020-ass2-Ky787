@@ -34,6 +34,11 @@ artefacts, and two results that look like successes and are not.
 - Anchor excerpts with `fromMatch` where the content matters more than the
   line number. The handoff files are CRLF; the excerpt reader normalises them
   and the published copies stay byte-identical.
+- Provenance on a page is a **link to the artefact**, not a printed hash. A
+  reader cannot check twelve hex digits by eye; the copies are hash-checked in
+  `spec/evidence-integrity.test.ts` and the identities stated once on
+  `/evidence/`. Print a hash only where it is the claim — the frozen source,
+  the two builds that share a generated file, a rewrite's before and after.
 - Quote every number with its representation, its counting convention and the
   comparator it was taken against. The corpus uses **two** CFG conventions and
   they are not interchangeable.
@@ -44,6 +49,10 @@ artefacts, and two results that look like successes and are not.
 
 - The 12 weeks must form one cumulative argument rather than 12 independent
   articles. Four blocks of three, each opened by one spine lecture.
+- **Introduce a term before the listing that needs it.** Block I is written for
+  a reader who has not seen compiler output: `Primer` hands over the vocabulary
+  at the point of difficulty, and no week may use a term that no earlier week
+  or primer has given. The evidence does not get simpler; the ramp gets built.
 - Every week declares a `question` and a `mode` in frontmatter; the schema
   requires both, and `spec/curriculum.test.ts` refuses a `mode` used by three
   or more weeks.

@@ -39,8 +39,7 @@ const shot = screenshot(id);
     <slot />
     <span class="sc-figure__meta">
       <span>analysis view — not correctness evidence</span>
-      <span>{shot.fullWidth}×{shot.fullHeight}</span>
-      <span><a href={evidenceUrl(id)}>{evidenceName(id)}</a></span>
+      <span><a href={evidenceUrl(id)}>{evidenceName(id)}</a> — open for full resolution</span>
     </span>
   </figcaption>
 </figure>

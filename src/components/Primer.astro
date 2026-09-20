@@ -1,0 +1,53 @@
+---
+// A term, introduced at the point the page first needs it.
+//
+// The early weeks of this course have a specific hazard: the evidence is real,
+// which means the first listing a reader meets is full of vocabulary nobody
+// has given them yet. `alloca`, `getelementptr`, instruction selection, basic
+// block. The fix is not to show less evidence — it is to hand over the word
+// just before the reader needs it, and to say what it buys them here rather
+// than only what it means in general.
+//
+// Every term also exists in the glossary with its full qualification. This is
+// the short version, placed where the difficulty is.
+import { withBase } from "astro-theme-university/url";
+
+interface Entry {
+  /** The term, as it appears in the listing below or above. */
+  term: string;
+  /** One sentence. What it is. */
+  gloss: string;
+}
+
+interface Props {
+  /** Optional heading, when a page introduces more than one batch. */
+  title?: string;
+  terms: Entry[];
+  /** Link the glossary for the long versions. */
+  glossary?: boolean;
+}
+
+const { title = "New words, in the order you meet them", terms, glossary = true } = Astro.props;
+---
+
+<aside class="sc-primer" aria-label={title}>
+  <p class="sc-primer__title">{title}</p>
+  <dl>
+    {
+      terms.map((entry) => (
+        <>
+          <dt>{entry.term}</dt>
+          <dd set:html={entry.gloss} />
+        </>
+      ))
+    }
+  </dl>
+  {
+    glossary && (
+      <p class="sc-primer__more">
+        Every one of these is in the <a href={withBase("/glossary/")}>glossary</a> with the
+        qualification that matters later.
+      </p>
+    )
+  }
+</aside>

@@ -24,7 +24,11 @@ import FileList from "../../components/FileList.astro";
 import LectureTable from "../../components/LectureTable.astro";
 import Ledger from "../../components/Ledger.astro";
 import Numbers from "../../components/Numbers.astro";
+import Primer from "../../components/Primer.astro";
 import Screenshot from "../../components/Screenshot.astro";
+
+Week 1 gave you four ways to describe one function. This week is about the
+people who change one of them on purpose.
 
 A working definition, and then five hours of trouble with it.
 
@@ -58,9 +62,21 @@ after it — no optimiser will undo it, and no optimiser will fix it either.
 
 ## The five lanes this course uses
 
-Four compilers and one post-link rewriter were tested. Their exact identities
-are recorded, because "OLLVM" is a family of implementations spanning a decade
-and results do not transfer between them for free:
+Four compilers and one post-link rewriter were tested. Three words first,
+because the evidence below is full of them.
+
+<Primer
+  title="How an obfuscator gets invoked"
+  terms={[
+    { term: "pass", gloss: "One transformation the compiler can be asked to run over the program. Most obfuscators are ordinary compilers with extra passes bolted in." },
+    { term: "-mllvm -sub", gloss: "How you switch one on: a flag handed through the compiler driver to the pass machinery. Each obfuscator spells its own differently, which is why the exact flags get recorded." },
+    { term: "post-link", gloss: "Applied to a finished executable instead of during compilation — so there is no compiler left to run afterwards, for better and for worse." },
+  ]}
+/>
+
+Their exact identities are recorded too, because "OLLVM" is a family of
+implementations spanning a decade and results do not transfer between them for
+free:
 
 <EvidenceCode
   id="assets/evidence/matrix/compiler_inventory.json"
@@ -124,8 +140,9 @@ the four compilers tested, that turned out not to be available.
 Annotation-only pilots were run first: mark one function with
 `__attribute__((annotate("sub")))`, build, and check that only it changed. On
 the tested OLLVM-16 and Hikari builds, the annotated target compiled *and was
-not transformed*. In OLLVM-16's case the legacy annotation reader did not
-recognise the opaque-pointer representation this front end emits. The retained
+not transformed*. In OLLVM-16's case its annotation reader was written
+against an older way of spelling pointers in LLVM IR, and did not recognise
+what this front end emits. The retained
 matrix therefore uses global switches — `-mllvm -sub`, `-enable-subobf` and
 their siblings — which transform everything eligible in the module.
 

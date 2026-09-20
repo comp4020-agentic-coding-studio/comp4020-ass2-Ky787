@@ -1,0 +1,109 @@
+{
+  "evidence_pack": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1",
+  "sources": {
+    "tables/obfuscators.json": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\tables\\obfuscators.json",
+      "sha256": "7858FDB050354ADEC12CF9EE9073CFE263178D7588EC85D81C93B7FCF271305D"
+    },
+    "PIPELINES.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\PIPELINES.md",
+      "sha256": "42C49A6403566622ADB00EA03C82753B64AEDC8CB68AE3CE883A928BF2D4CB99"
+    },
+    "tables/end_to_end_results.json": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\tables\\end_to_end_results.json",
+      "sha256": "A8CE0B0497B52C9F26C77F2A4DB52BDC449865A402EBE060145C16963FD6DD51"
+    },
+    "tables/optimization_survival.json": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\tables\\optimization_survival.json",
+      "sha256": "72D26F04CA19306CABBFFE292640BCB6F4D0CF1C2230226CB6F0DD679A39C5F1"
+    },
+    "tables/selected_metrics.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\tables\\selected_metrics.md",
+      "sha256": "8FC0C59F8B38F44D041ECCED6B8DB15240FD7DF29C9EBA0137D9D38BFC9B0C25"
+    },
+    "tables/deobfuscators.json": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\tables\\deobfuscators.json",
+      "sha256": "D132819407CC9047DF094357D471512A1E7AFC0EE2D22D62B17554B41BCBAB33"
+    },
+    "manual_analysis/03_ollvm_bcf/evidence/validation.json": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\manual_analysis\\03_ollvm_bcf\\evidence\\validation.json",
+      "sha256": "1A276194546B002517A958C1E5B959C119524786D8787A272A52489E228E7709"
+    },
+    "manual_analysis/04_polaris_bcf/evidence/validation.json": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\manual_analysis\\04_polaris_bcf\\evidence\\validation.json",
+      "sha256": "14AC32543364965F40E2D016E2124E924DBD61E05B6FC4A68ABD78D6DBEB3A60"
+    },
+    "IDA_WALKTHROUGH.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\IDA_WALKTHROUGH.md",
+      "sha256": "39A84EC894C360F2B9B331AD89BD4944093D4616B4B9EF35EAAE9E3F7CFA7F08"
+    },
+    "reference/research_docs/mergen_validation.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\reference\\research_docs\\mergen_validation.md",
+      "sha256": "3DF35F28CF7193F7283945F6B9FE60581EEECC7DF8150BA66EF5AF03A07E2CD8"
+    },
+    "reference/research_docs/polaris_validation.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\reference\\research_docs\\polaris_validation.md",
+      "sha256": "F154BE1524D1F63D5FCDC960783F53F8F37FF02049B633FF6183E9BBD55F36B8"
+    },
+    "reference/research_docs/tigress_validation.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\reference\\research_docs\\tigress_validation.md",
+      "sha256": "953A781A737892135DFC870C120751BF95FA38441063EB21279136454B0FC514"
+    },
+    "tables/best_course_examples.md": {
+      "absolute_path": "E:\\Workspace\\seeing_through_obfuscation\\course_handoff\\evidence_pack_v1\\tables\\best_course_examples.md",
+      "sha256": "3FD65EAD8FB9591529F27D25C5CB7E3227C82C368D0CC606AF703F79CDB2D172"
+    }
+  },
+  "table_sources": {
+    "01_transformation_layers": [
+      "tables/obfuscators.json",
+      "PIPELINES.md"
+    ],
+    "02_obfuscator_snapshot": [
+      "tables/obfuscators.json",
+      "tables/end_to_end_results.json"
+    ],
+    "03_arithmetic_optimization": [
+      "tables/optimization_survival.json",
+      "tables/selected_metrics.md"
+    ],
+    "04_opaque_optimization": [
+      "tables/optimization_survival.json",
+      "tables/end_to_end_results.json"
+    ],
+    "05_flattening_optimization": [
+      "tables/optimization_survival.json",
+      "tables/obfuscators.json"
+    ],
+    "06_deobfuscation_outputs": [
+      "tables/deobfuscators.json"
+    ],
+    "07_end_to_end_results": [
+      "tables/end_to_end_results.json",
+      "tables/selected_metrics.md"
+    ],
+    "08_bcf_proof_to_patch": [
+      "tables/selected_metrics.md",
+      "manual_analysis/03_ollvm_bcf/evidence/validation.json",
+      "manual_analysis/04_polaris_bcf/evidence/validation.json"
+    ],
+    "09_unflattening_outcomes": [
+      "tables/selected_metrics.md",
+      "tables/end_to_end_results.json"
+    ],
+    "10_correctness_traps": [
+      "tables/selected_metrics.md",
+      "IDA_WALKTHROUGH.md",
+      "reference/research_docs/mergen_validation.md"
+    ],
+    "11_reproducibility": [
+      "tables/obfuscators.json",
+      "reference/research_docs/polaris_validation.md",
+      "reference/research_docs/tigress_validation.md"
+    ],
+    "12_manual_analysis_examples": [
+      "tables/best_course_examples.md",
+      "IDA_WALKTHROUGH.md"
+    ]
+  }
+}

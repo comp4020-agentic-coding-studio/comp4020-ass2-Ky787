@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="697" viewBox="0 0 1180 697" role="img" aria-labelledby="title desc">
+<title id="title">Opaque flow: what survives optimization?</title>
+<desc id="desc">BCF = bogus control flow. The observation is about the measured native target. Choose the optimization level deliberately: it can erase the phenomenon being taught.</desc>
+<rect width="1180" height="697" fill="white"/>
+<text x="40" y="31" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700">SEEING THROUGH OBFUSCATION  /  TABLE 04</text>
+<text x="40" y="80" fill="#183B50" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Opaque flow: what survives optimization?</text>
+<text x="40" y="119" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">BCF = bogus control flow. The observation is about the measured native target.</text>
+<rect x="40" y="149" width="1100" height="46" fill="#183B50" rx="0"/>
+<text x="52" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Treatment</text>
+<text x="272" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">At O0</text>
+<text x="580" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">O1 through O3 / Ox</text>
+<text x="877" y="177" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700">Interpretation</text>
+<rect x="40" y="195" width="1100" height="93" fill="#FFFFFF" rx="0"/>
+<rect x="40" y="195" width="220" height="93" fill="#ECF2F5" rx="0"/>
+<text x="54" y="248.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">OLLVM BCF</text>
+<text x="274" y="248.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Clones and opaque branches</text>
+<rect x="568" y="195" width="297" height="93" fill="#FFF0D5" rx="0"/>
+<text x="582" y="225.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">RESIDUE</text>
+<text x="582" y="248.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Small optimized opaque-loop</text>
+<text x="582" y="271.5" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">structure</text>
+<text x="879" y="237" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Optimization removes much,</text>
+<text x="879" y="260" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">not everything.</text>
+<line x1="40" y1="288" x2="1140" y2="288" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="288" width="1100" height="70" fill="#F5F8FA" rx="0"/>
+<rect x="40" y="288" width="220" height="70" fill="#ECF2F5" rx="0"/>
+<text x="54" y="330" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Hikari BCF</text>
+<text x="274" y="318.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Injected native gates already</text>
+<text x="274" y="341.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">folded</text>
+<rect x="568" y="288" width="297" height="70" fill="#E7F0FA" rx="0"/>
+<text x="582" y="318.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">REMOVED</text>
+<text x="582" y="341.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Measured target matches clean</text>
+<text x="879" y="318.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">IR injection does not imply a</text>
+<text x="879" y="341.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">native predicate.</text>
+<line x1="40" y1="358" x2="1140" y2="358" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="358" width="1100" height="70" fill="#FFFFFF" rx="0"/>
+<rect x="40" y="358" width="220" height="70" fill="#ECF2F5" rx="0"/>
+<text x="54" y="400" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Polaris BCF</text>
+<text x="274" y="400" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Strong cloned/opaque topology</text>
+<rect x="568" y="358" width="297" height="70" fill="#E7F0FA" rx="0"/>
+<text x="582" y="388.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">REMOVED</text>
+<text x="582" y="411.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Measured target matches clean</text>
+<text x="879" y="388.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">A strong O0 example can be</text>
+<text x="879" y="411.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">weak at O1+.</text>
+<line x1="40" y1="428" x2="1140" y2="428" stroke="#D9E2E8" stroke-width="1"/>
+<rect x="40" y="428" width="1100" height="93" fill="#F5F8FA" rx="0"/>
+<rect x="40" y="428" width="220" height="93" fill="#ECF2F5" rx="0"/>
+<text x="54" y="481.5" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">Tigress AddOpaque</text>
+<text x="274" y="470" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Initialization-dependent opaque</text>
+<text x="274" y="493" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">flow</text>
+<rect x="568" y="428" width="297" height="93" fill="#E7F0FA" rx="0"/>
+<text x="582" y="458.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="700">PERSISTS</text>
+<text x="582" y="481.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">/Ox: 6 conditional jumps vs 1</text>
+<text x="582" y="504.5" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">clean</text>
+<text x="879" y="470" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">Runtime state matters to</text>
+<text x="879" y="493" fill="#172C3D" font-family="Arial, Helvetica, sans-serif" font-size="18.5" font-weight="400">proof and optimization.</text>
+<line x1="40" y1="521" x2="1140" y2="521" stroke="#D9E2E8" stroke-width="1"/>
+<line x1="260" y1="195" x2="260" y2="521" stroke="#E0E7EC" stroke-width="1"/>
+<line x1="568" y1="195" x2="568" y2="521" stroke="#E0E7EC" stroke-width="1"/>
+<line x1="865" y1="195" x2="865" y2="521" stroke="#E0E7EC" stroke-width="1"/>
+<rect x="40" y="543" width="1100" height="51" fill="#E8F2F6" rx="5"/>
+<text x="59" y="574" fill="#183B50" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Choose the optimization level deliberately: it can erase the phenomenon being taught.</text>
+<text x="40" y="623.5" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400">Scope: demo_bogus_control_flow in the retained optimization study. Jump counts alone do not prove opacity.</text>
+<rect x="40" y="642" width="12" height="12" fill="#E3F3EB" rx="0"/>
+<text x="58" y="653" fill="#15533A" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Validated</text>
+<rect x="135.124" y="642" width="12" height="12" fill="#FFF0D5" rx="0"/>
+<text x="153.124" y="653" fill="#744700" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Qualified / incomplete</text>
+<rect x="298.327" y="642" width="12" height="12" fill="#FCE5E8" rx="0"/>
+<text x="316.327" y="653" fill="#922838" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Wrong / invalid</text>
+<rect x="423.999" y="642" width="12" height="12" fill="#E7F0FA" rx="0"/>
+<text x="441.999" y="653" fill="#224F78" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Observation</text>
+<rect x="534.394" y="642" width="12" height="12" fill="#EEF1F4" rx="0"/>
+<text x="552.394" y="653" fill="#465462" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400">Not produced</text>
+<text x="40" y="673" fill="#546776" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400">Windows x64 | Retained samples only | Source keys in SOURCES.md</text>
+</svg>

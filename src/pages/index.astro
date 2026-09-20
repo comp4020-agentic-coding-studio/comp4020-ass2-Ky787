@@ -47,9 +47,11 @@ import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
     <h2>The thing you will keep meeting</h2>
     <p>
       A stock unflattener was pointed at a flattened function. It exited zero,
-      wrote a valid executable, and took the control-flow graph from 56 blocks
-      to 10 — both counted the same way, in Miasm recursive graphs that split
-      at calls, and the largest simplification anywhere in this corpus.
+      wrote a valid executable, and took the function's control-flow graph —
+      the map of which piece of code can run after which — from 56 blocks down
+      to 10. That is the largest simplification anywhere in this corpus. (Both
+      figures under the same Miasm counting convention, which matters more than
+      it sounds and is week 9's problem.)
     </p>
     <EvidenceCode
       id="assets/evidence/s05_polaris_fla_wrong/output_runtime_stdout.txt"

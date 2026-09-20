@@ -178,7 +178,12 @@
 /* --- panes -------------------------------------------------------------- */
 
 .sc-pane {
+  /* `figure` carries `margin: 1em 40px` from the user-agent stylesheet and the
+     theme resets only the block axis, so without this every pane on the site
+     sits 40px narrower than the column it lives in — which at 390px is most of
+     the room a listing has. */
   margin-block: var(--at-spacing-lg);
+  margin-inline: 0;
   border: var(--sc-rule);
   border-radius: var(--at-border-radius);
   background: var(--sc-pane-bg);
@@ -220,6 +225,22 @@
   line-height: 1.55;
 }
 
+/* At the phone marking viewport the first listing in the course was cutting a
+   constant in half. Between the page gutters and the theme's 1.5rem of `pre`
+   padding, a 390px screen had about 220px of text area — 25 characters.
+   
+   So on phones a pane takes the full screen width, using the same bleed the
+   theme already gives images below this breakpoint, and trims its own padding
+   and type. That is ~37 characters, which fits the source lines. Long
+   disassembly still scrolls sideways, which is unavoidable and fine: the point
+   is that a short line should not have to. */
+@media (width < 640px) {
+  .sc-pane__body > :is(pre, .astro-code) {
+    padding-inline: var(--at-spacing-md);
+    font-size: 0.6875rem;
+  }
+}
+
 .sc-pane__foot {
   display: flex;
   flex-wrap: wrap;
@@ -239,6 +260,7 @@
 /* --- two-pane comparison ------------------------------------------------ */
 
 .sc-pair {
+  margin-inline: 0;
   display: grid;
   gap: var(--at-spacing-md);
   margin-block: var(--at-spacing-lg);
@@ -264,6 +286,64 @@
   font-size: var(--at-font-size-sm);
   color: var(--at-text-secondary);
   text-wrap: pretty;
+}
+
+/* --- primer ------------------------------------------------------------- */
+
+/* Vocabulary handed over at the point of difficulty. Deliberately quieter than
+   a callout: it is scaffolding, not an aside, and a reader who already knows
+   the words should be able to skim straight past it. */
+.sc-primer {
+  margin-block: var(--at-spacing-lg);
+  padding: var(--at-spacing-md) var(--at-spacing-md) var(--at-spacing-md) 0;
+  border-block-start: 1px solid var(--at-border);
+  border-block-end: 1px solid var(--at-divider);
+  max-inline-size: calc(var(--sc-measure) + 6rem);
+}
+
+.sc-primer__title {
+  margin: 0 0 var(--at-spacing-sm);
+  font-family: var(--sc-mono);
+  font-size: var(--sc-label);
+  letter-spacing: var(--sc-label-tracking);
+  text-transform: uppercase;
+  color: var(--at-text-muted);
+}
+
+.sc-primer dl {
+  display: grid;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  font-size: var(--at-font-size-sm);
+}
+
+@media (width >= 640px) {
+  .sc-primer dl {
+    grid-template-columns: minmax(7rem, max-content) 1fr;
+  }
+}
+
+.sc-primer dt {
+  font-family: var(--sc-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--at-heading);
+}
+
+.sc-primer dd {
+  margin: 0;
+  color: var(--at-text-secondary);
+  text-wrap: pretty;
+}
+
+.sc-primer dd code {
+  font-size: 0.85em;
+}
+
+.sc-primer__more {
+  margin: var(--at-spacing-sm) 0 0;
+  font-size: var(--at-font-size-xs);
+  color: var(--at-text-muted);
 }
 
 /* --- ledger ------------------------------------------------------------- */

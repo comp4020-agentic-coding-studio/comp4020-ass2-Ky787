@@ -102,7 +102,15 @@ in the *stores*, distributed across the function, one per exit edge.
 Take the parity test — the first thing the source does. In the flattened
 build, it is three states:
 
-<Pane title="Three states of the parity branch" note="derived from the flattened IR and the retained region map" class="sc-wide">
+<Pane
+  title="Three states of the parity branch"
+  note="read off the evidence, not from a tool's output"
+  sources={[
+    { label: "State constants from", id: "assets/ir/s04_ollvm_fla/before_target.ll" },
+    { label: "Region mapping from", id: "assets/evidence/s04_ollvm_fla/provenance_region_map.json" },
+  ]}
+  class="sc-wide"
+>
   <table>
     <thead>
       <tr>

@@ -1,0 +1,209 @@
+{
+  "title": "Seeing Through Obfuscation",
+  "subtitle": "Concise comparison tables for lecture-note inserts",
+  "scope": "Retained Windows x64 experiments. Results are sample- and configuration-specific.",
+  "tables": [
+    {
+      "id": "01_transformation_layers",
+      "title": "Where does obfuscation happen?",
+      "subtitle": "The transformation stage determines which optimizations come afterwards.",
+      "columns": ["Layer", "Examples", "What changes?", "What follows?"],
+      "widths": [0.17, 0.25, 0.28, 0.30],
+      "rows": [
+        ["C source", "Tigress", "Expressions and control flow in generated C", "The native compiler can reshape the result."],
+        ["LLVM IR", "OLLVM / Hikari / Polaris", "IR operations, blocks and edges", "LLVM optimization and instruction selection."],
+        ["X86 backend", "Polaris backend-obfu", "Machine instructions after IR", "Native changes may be invisible in IR metrics."],
+        ["Linked binary", "BinProtect", "Instructions in an existing PE", "No later compiler optimization in these tests."]
+      ],
+      "takeaway": "Compare the final machine code, not just the representation where obfuscation was added.",
+      "note": "Polaris has separate IR and backend paths. BinProtect outputs were semantically invalid in the retained tests.",
+      "sources": ["tables/obfuscators.json", "PIPELINES.md"]
+    },
+    {
+      "id": "02_obfuscator_snapshot",
+      "title": "Five obfuscators, five useful lessons",
+      "subtitle": "A compact comparison of the tested implementations, not a universal ranking.",
+      "columns": ["Obfuscator", "Best teaching contrast", "Original PE status", "Main qualification"],
+      "widths": [0.17, 0.31, 0.22, 0.30],
+      "rows": [
+        ["OLLVM-16", "Classic SUB; working BCF and FLA rewrites", {"text":"PASS\nSelected originals", "tone":"pass"}, "Global pass selection in the retained matrix."],
+        ["Hikari", "Partial SUB coverage; FLA transfer", {"text":"PASS\nSelected originals", "tone":"pass"}, "SUB/BCF target effects disappear by O1."],
+        ["Polaris", "Strong MBA; BCF transfer; wrong FLA rewrite", {"text":"PASS\nSelected originals", "tone":"pass"}, "Original PASS does not validate a later rewrite."],
+        ["Tigress", "Source-level effects survive native optimization", {"text":"PASS\nMatched environment", "tone":"pass"}, "Preserve exact generated C and initialization."],
+        ["BinProtect", "Post-link arithmetic and state dispatch", {"text":"INVALID\n0 / 8 valid outputs", "tone":"fail"}, "Crash/hang: static observations only."]
+      ],
+      "takeaway": "An obfuscator's original output and a deobfuscator's rewritten output need separate validation.",
+      "note": "PASS means the retained checks passed. It is not a guarantee for arbitrary programs or inputs.",
+      "sources": ["tables/obfuscators.json", "tables/end_to_end_results.json"]
+    },
+    {
+      "id": "03_arithmetic_optimization",
+      "title": "Arithmetic: complexity can shrink or survive",
+      "subtitle": "Optimization acts on the obfuscated program before we inspect its machine code.",
+      "columns": ["Treatment", "At O0", "At higher optimization", "Main lesson"],
+      "widths": [0.21, 0.28, 0.27, 0.24],
+      "rows": [
+        ["OLLVM SUB", "24 IR sites transformed; native XOR/SUB recognizable", {"text":"WEAKENED\nO1+: all 24 native operations reappear", "tone":"partial"}, "Large IR trees need not survive code generation."],
+        ["Hikari SUB", "Partial coverage; 213 native instructions", {"text":"REMOVED\nO1+: measured target matches clean", "tone":"info"}, "Coverage and optimization survival are different."],
+        ["Polaris SUB", "XOR 8/8; ADD 8/8; SUB 3/8 transformed", {"text":"WEAKENED\nO1+: native operations recognizable", "tone":"partial"}, "Classic SUB is not the stronger MBA treatment."],
+        ["Tigress EncodeArithmetic", "426 native instructions", {"text":"PERSISTS\n/Ox: 226 vs 106 clean", "tone":"info"}, "Exact same generated C; substantial complexity remains."]
+      ],
+      "takeaway": "IR expansion, native instruction count and semantic difficulty are different measurements.",
+      "note": "Target: demo_substitution. Tigress uses MSVC /Ox (recorded as O3); the 106-instruction clean is also /Ox.",
+      "sources": ["tables/optimization_survival.json", "tables/selected_metrics.md"]
+    },
+    {
+      "id": "04_opaque_optimization",
+      "title": "Opaque flow: what survives optimization?",
+      "subtitle": "BCF = bogus control flow. The observation is about the measured native target.",
+      "columns": ["Treatment", "At O0", "O1 through O3 / Ox", "Interpretation"],
+      "widths": [0.20, 0.28, 0.27, 0.25],
+      "rows": [
+        ["OLLVM BCF", "Clones and opaque branches", {"text":"RESIDUE\nSmall optimized opaque-loop structure", "tone":"partial"}, "Optimization removes much, not everything."],
+        ["Hikari BCF", "Injected native gates already folded", {"text":"REMOVED\nMeasured target matches clean", "tone":"info"}, "IR injection does not imply a native predicate."],
+        ["Polaris BCF", "Strong cloned/opaque topology", {"text":"REMOVED\nMeasured target matches clean", "tone":"info"}, "A strong O0 example can be weak at O1+."],
+        ["Tigress AddOpaque", "Initialization-dependent opaque flow", {"text":"PERSISTS\n/Ox: 6 conditional jumps vs 1 clean", "tone":"info"}, "Runtime state matters to proof and optimization."]
+      ],
+      "takeaway": "Choose the optimization level deliberately: it can erase the phenomenon being taught.",
+      "note": "Scope: demo_bogus_control_flow in the retained optimization study. Jump counts alone do not prove opacity.",
+      "sources": ["tables/optimization_survival.json", "tables/end_to_end_results.json"]
+    },
+    {
+      "id": "05_flattening_optimization",
+      "title": "Flattening can survive without an indirect jump",
+      "subtitle": "FLA = control-flow flattening. Look for state-driven dispatch, not one opcode.",
+      "columns": ["Treatment", "At O0", "At higher optimization", "What to look for"],
+      "widths": [0.20, 0.26, 0.28, 0.26],
+      "rows": [
+        ["OLLVM FLA", "State/switch dispatcher", "Strong flattening persists", "Repeated state tests and returns to dispatch."],
+        ["Hikari FLA", "State/switch dispatcher", "Strong flattening persists", "Dispatcher structure despite simpler blocks."],
+        ["Polaris FLA", "Strong state dispatcher", "Smaller, but still flattened", "Simplification is not full unflattening."],
+        ["Tigress Flatten", "Indirect jump table", "O1: direct network\nO2 and /Ox: indirect table", "Same generated C, different native dispatch."]
+      ],
+      "takeaway": "A direct chain of comparisons can implement the same flattened state machine as a jump table.",
+      "note": "Scope: demo_flattening. Survival of obfuscation does not establish compatibility with an unflattener.",
+      "sources": ["tables/optimization_survival.json", "tables/obfuscators.json"]
+    },
+    {
+      "id": "06_deobfuscation_outputs",
+      "title": "What does each deobfuscator actually produce?",
+      "subtitle": "Expression recovery, a branch proof, LLVM IR and a rewritten PE are different outputs.",
+      "columns": ["Workflow", "Input / idea", "Delivered result", "Boundary to remember"],
+      "widths": [0.23, 0.27, 0.22, 0.28],
+      "rows": [
+        ["msynth AST/oracle", "Extracted expression; rewrite / match", "Simpler expression", "No rewritten PE in this study."],
+        ["SiMBA", "Algebraic MBA simplification", "Simpler expression", "Partial reduction is not full recovery."],
+        ["Synthesizer", "Search for a small expression", "Candidate expression", "Accept only after equivalence proof."],
+        ["ollvm-unflattener", "Discover states; recover successors", "Rewritten PE or failure", "A produced PE can have wrong semantics."],
+        ["Triton DSE/SMT", "Symbolic branch conditions", "Proof / witness", "Analysis itself does not patch the PE."],
+        ["Proof-driven rewriter", "Consume proofs and exact bytes", "Patched PE", "Predicates and dead bytes can remain."],
+        ["Mergen", "Lift x64 instructions", "LLVM IR", "Valid IR can silently miscompute."],
+        ["Ordinary LLVM O2", "Optimize retained or lifted IR", "Optimized IR", "Cannot repair an unsound lift."]
+      ],
+      "takeaway": "Ask two questions: what representation was recovered, and how was its correctness checked?",
+      "note": "PE = Windows Portable Executable. The Mergen test harness is not a rewritten original PE.",
+      "sources": ["tables/deobfuscators.json"]
+    },
+    {
+      "id": "07_end_to_end_results",
+      "title": "From obfuscated code to a working rewrite",
+      "subtitle": "All eight inputs below are runnable originals; the output claims differ sharply.",
+      "columns": ["Case", "Recovered / demonstrated", "Rewritten original PE", "Qualification"],
+      "widths": [0.23, 0.28, 0.23, 0.26],
+      "rows": [
+        ["OLLVM SUB", "Selected local expressions", {"text":"NOT PRODUCED", "tone":"neutral"}, "msynth recovery is not binary rewriting."],
+        ["Polaris MBA", "Local recovery; passing Mergen lift", {"text":"NOT PRODUCED", "tone":"neutral"}, "Substantial MBA remains in lifted IR."],
+        ["OLLVM BCF O0", "22 proved gates patched", {"text":"PASS", "tone":"pass"}, "Predicates and dead clone bytes remain."],
+        ["Polaris BCF O0", "16 proved gates patched", {"text":"PASS", "tone":"pass"}, "Same generic proof workflow transfers."],
+        ["OLLVM FLA O0", "25/25 successor pairs", {"text":"PASS", "tone":"pass"}, "Graph need not match clean exactly."],
+        ["Hikari FLA O0", "28/28 successor pairs", {"text":"PASS", "tone":"pass"}, "O0 success does not extend to O2 here."],
+        ["Polaris FLA O0", "14/22 true pairs + 1 false pair", {"text":"WRONG SEMANTICS", "tone":"fail"}, "Legitimate switch cases collapse."],
+        ["Tigress Flatten O0", "Stock discovery incomplete", {"text":"NO OUTPUT", "tone":"partial"}, "Fails before symbolic successor analysis."]
+      ],
+      "takeaway": "A semantic result is not automatically a working executable, and a valid PE is not automatically correct.",
+      "note": "PASS refers to retained validation. Successor-pair scores are not universal proofs of program equivalence.",
+      "sources": ["tables/end_to_end_results.json", "tables/selected_metrics.md"]
+    },
+    {
+      "id": "08_bcf_proof_to_patch",
+      "title": "BCF: proof becomes a working PE patch",
+      "subtitle": "The same generic proof-and-patch workflow worked across two implementations.",
+      "columns": ["O0 target", "Proved / patched gates", "Reachable CFG blocks", "Retained validation"],
+      "widths": [0.20, 0.23, 0.29, 0.28],
+      "rows": [
+        ["OLLVM BCF", {"text":"22 / 22", "tone":"pass"}, "11 clean\n70 original\n37 rewritten", {"text":"PASS\n4,591 triples; 0 mismatches", "tone":"pass"}],
+        ["Polaris BCF", {"text":"16 / 16", "tone":"pass"}, "11 clean\n54 original\n30 rewritten", {"text":"PASS\n4,598 triples; 0 mismatches", "tone":"pass"}]
+      ],
+      "takeaway": "JNE becomes JMP + NOP. Reachable flow shrinks; predicate arithmetic and dead bytes stay in the PE.",
+      "note": "A triple compares clean/original/rewrite. Dedicated PE CFG audit: calls do not split blocks; RET is terminal.",
+      "sources": ["tables/selected_metrics.md", "manual_analysis/03_ollvm_bcf/evidence/validation.json", "manual_analysis/04_polaris_bcf/evidence/validation.json"]
+    },
+    {
+      "id": "09_unflattening_outcomes",
+      "title": "Unflattening: the smaller graph can be wrong",
+      "subtitle": "Stock ollvm-unflattener results on four O0 implementations.",
+      "columns": ["Input", "Block counts", "What happened?", "Outcome"],
+      "widths": [0.20, 0.26, 0.32, 0.22],
+      "rows": [
+        ["OLLVM FLA", "60 flattened\n17 rewritten", "25/25 semantic successor pairs recovered", {"text":"PASS\nWorking rewrite", "tone":"pass"}],
+        ["Hikari FLA", "66 flattened\n20 rewritten", "28/28 semantic successor pairs recovered", {"text":"PASS\nWorking rewrite", "tone":"pass"}],
+        ["Polaris FLA", "56 flattened\n10 rewritten", "Multiple legitimate switch cases now run sequentially", {"text":"FAIL\nWrong result", "tone":"fail"}],
+        ["Tigress Flatten", "38 actual\n6 stock-discovered", "Indirect jump-table discovery is incomplete", {"text":"BLOCKED\nNo rewrite", "tone":"partial"}]
+      ],
+      "takeaway": "Visual simplification is not proof of correct deobfuscation.",
+      "note": "Miasm CFG counts split at calls. Tigress numbers compare reference vs discovery, NOT a before/after rewrite.",
+      "sources": ["tables/selected_metrics.md", "tables/end_to_end_results.json"]
+    },
+    {
+      "id": "10_correctness_traps",
+      "title": "Four tempting conclusions to avoid",
+      "subtitle": "Keep visual appearance, representation validity and semantic correctness separate.",
+      "columns": ["Tempting conclusion", "Retained counterexample", "What the evidence says"],
+      "widths": [0.28, 0.31, 0.41],
+      "rows": [
+        ["Smaller CFG = correct", "Polaris FLA: 56 to 10 blocks", {"text":"WRONG\nF9CD8332 instead of DBEFFCE7; exit 1.", "tone":"fail"}],
+        ["Valid IR = faithful lift", "Mergen on valid OLLVM SUB input", {"text":"WRONG\n3,917 / 4,118 mismatches in every lifted stage.", "tone":"fail"}],
+        ["Six discovered blocks = six actual blocks", "Tigress Flatten", {"text":"INCOMPLETE\nThe jump-table-aware reference has 38 blocks.", "tone":"partial"}],
+        ["Matching PDB ID = valid instruction map", "Rewritten BCF / FLA PEs", {"text":"STALE METADATA\nOld RSDS references survive. Use exports / RVAs.", "tone":"partial"}]
+      ],
+      "takeaway": "Validate the output at the level of the claim: expression, CFG, lifted function or complete executable.",
+      "note": "Original OLLVM SUB passes native checks. FLA whole-function rewriting moves internal instructions.",
+      "sources": ["tables/selected_metrics.md", "IDA_WALKTHROUGH.md", "reference/research_docs/mergen_validation.md"]
+    },
+    {
+      "id": "11_reproducibility",
+      "title": "A seed is not always a reconstruction key",
+      "subtitle": "Archive what actually ran, not only the command that was meant to reproduce it.",
+      "columns": ["Tested lane", "Repeat observation", "What to retain"],
+      "widths": [0.26, 0.39, 0.35],
+      "rows": [
+        ["OLLVM / Hikari SUB", {"text":"REPEATED IDENTICALLY\nSeeded IR in the retained probe", "tone":"info"}, "Exact flags, compiler identity, IR and PE hashes."],
+        ["Polaris selected IR passes", {"text":"REPEATED IDENTICALLY\nSUB/BCF/FLA/indirection/gvenc smoke variants", "tone":"info"}, "Exact artifacts; not a universal seed guarantee."],
+        ["Polaris MBA / backend", {"text":"VARIED\nSame requested RNG seed was insufficient", "tone":"partial"}, "The exact generated artifact is the specimen."],
+        ["Tigress", {"text":"WHOLE FILES VARIED\nIdentifier salts / ordering were not pinned", "tone":"partial"}, "Exact generated C, then reuse it across optimization levels."],
+        ["BinProtect", {"text":"NO EXPOSED SEED\nOutputs varied", "tone":"partial"}, "Exact PE for static analysis; validity failed here."]
+      ],
+      "takeaway": "Reproducibility has several levels: same source, same generated representation and same executable bytes.",
+      "note": "Tigress target bodies were more stable than whole generated files; whole-file variation is not proof of semantic variation.",
+      "sources": ["tables/obfuscators.json", "reference/research_docs/polaris_validation.md", "reference/research_docs/tigress_validation.md"]
+    },
+    {
+      "id": "12_manual_analysis_examples",
+      "title": "Six examples worth opening in IDA",
+      "subtitle": "Use the evidence-pack walkthrough for exact binaries, hashes and RVAs.",
+      "columns": ["Story", "Target", "What to compare", "Teaching point"],
+      "widths": [0.24, 0.19, 0.28, 0.29],
+      "rows": [
+        ["01 - OLLVM SUB", "Substitution", "Clean vs SUB; native code vs IR", "Backend canonicalization can undo apparent complexity."],
+        ["02 - Polaris MBA", "Substitution", "115 vs 678 native instructions", "Large arithmetic expansion without many CFG blocks."],
+        ["03 - OLLVM BCF", "Bogus control flow", "Clean / original / Triton rewrite", "Proof-driven removal of impossible edges."],
+        ["04 - Polaris BCF", "Bogus control flow", "Same workflow, another implementation", "Semantic transfer is stronger than one signature match."],
+        ["05 - OLLVM FLA", "Flattening", "Dispatcher vs working stock rewrite", "Recovered semantics need not reproduce the clean graph."],
+        ["06 - Polaris FLA", "Flattening", "Original vs explicitly marked wrong rewrite", "A cleaner-looking graph can compute the wrong answer."]
+      ],
+      "takeaway": "Start with matched clean binaries. For every rewrite, navigate by export / RVA and distrust old PDB mappings.",
+      "note": "Export names: demo_substitution, demo_bogus_control_flow, demo_flattening. Story 06 rewrite is failure evidence.",
+      "sources": ["tables/best_course_examples.md", "IDA_WALKTHROUGH.md"]
+    }
+  ]
+}

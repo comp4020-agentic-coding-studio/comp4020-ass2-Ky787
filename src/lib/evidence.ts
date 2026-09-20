@@ -173,8 +173,3 @@ export function formatBytes(bytes: number): string {
   if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} kB`;
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
-
-/** First 12 hex digits of the artefact's SHA-256, for inline provenance. */
-export function shortHash(id: string): string {
-  return evidenceInfo(id).sha256.slice(0, 12);
-}

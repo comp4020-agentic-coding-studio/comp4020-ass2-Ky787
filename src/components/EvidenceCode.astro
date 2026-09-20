@@ -1,8 +1,13 @@
 ---
 // A code excerpt sliced out of a published research artefact while the site
-// builds. The pane foot states the file, the line range and the file's
-// SHA-256, and links the verbatim original — so a reader can check that the
-// listing above was not retyped, trimmed misleadingly, or invented.
+// builds. The pane foot gives the line range and links the verbatim original,
+// so a reader can see at a glance how much of the file they are being shown
+// and go and read the rest of it.
+//
+// It does not print a hash. That was the first version, and a dozen hex digits
+// a reader cannot check by eye is furniture, not provenance — the copy's
+// identity is asserted against the original in spec/evidence-integrity.test.ts
+// and stated once, where it means something, on /evidence/.
 import Code from "astro-theme-university/components/Code.astro";
 import {
   evidenceInfo,
@@ -10,7 +15,6 @@ import {
   evidenceUrl,
   excerpt,
   formatBytes,
-  shortHash,
   type ExcerptOptions,
 } from "../lib/evidence";
 
@@ -44,7 +48,6 @@ const range = text.partial
   </div>
   <figcaption class="sc-pane__foot">
     <span>{range}</span>
-    <span>sha256 {shortHash(id)}…</span>
     <span>
       <a href={evidenceUrl(id)}>
         open {evidenceName(id)}

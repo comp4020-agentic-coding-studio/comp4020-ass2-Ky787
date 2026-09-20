@@ -11,9 +11,9 @@ question: If the source, the IR and the machine code disagree about how complica
 teachers:
   - rasha-oyelaran
 spec:
-  - you can read `showcase.c` and predict what `demo_substitution(0x1337)` returns
-  - you can name what `mov`, `add`, `xor` and `sub` do to a 32-bit register
-  - you have the course evidence bundle open in an editor, not a browser tab
+  - you can read a short C function and predict what it returns
+  - you can say what a 32-bit register is, and what `+`, `^` and `-` do to one
+  - nothing else — every representation in this course is introduced on this page or the two after it
 related:
   - lectures/spine-01
 ---
@@ -25,6 +25,7 @@ import FileList from "../../components/FileList.astro";
 import LectureTable from "../../components/LectureTable.astro";
 import Ledger from "../../components/Ledger.astro";
 import Numbers from "../../components/Numbers.astro";
+import Primer from "../../components/Primer.astro";
 import Screenshot from "../../components/Screenshot.astro";
 import Specimen from "../../components/Specimen.astro";
 
@@ -32,76 +33,147 @@ Nothing is obfuscated this week. That is deliberate: you cannot tell what an
 obfuscator did to a program until you can tell what a *compiler* did to it,
 and the compiler already did a great deal.
 
-We will spend the whole semester on one small C file. It is worth meeting it
-properly.
+This page also hands you the vocabulary the rest of the course runs on. If you
+have read compiler output before, you will skim the grey boxes. If you have
+not, they are the page.
+
+<section class="sc-section">
+
+## Start with the program
+
+We spend the whole semester on one small C file. Here is the function this
+week is about, in the form its author wrote it:
+
+<EvidenceCode
+  id="assets/source/showcase.c"
+  lang="c"
+  title="showcase.c — demo_substitution, the first eight sites"
+  note="what the author wrote"
+  fromMatch={/^    value\[0\] = input \+ 0x01010101u;$/}
+  take={8}
+  dedent={4}
+/>
+
+Eight array slots, each getting the argument plus a different constant. Later
+in the same function each slot is XORed with `0x12345678`, then has `0x1337`
+added, then has `0x1111` subtracted, and finally all eight are XORed together
+into the return value. No loops, no branches, no calls. You could work out what
+it returns on paper.
+
+That is the whole point of it. Everything this course shows you happens to a
+function you could have written in a first-year lab.
 
 <Specimen
   title="The frozen showcase"
   fields={[
-    ["Source", "<code>showcase.c</code>, 483 lines, frozen before any build"],
-    ["SHA-256", "<code>39FEF0BB…906B99D2</code>, re-checked before every build in the matrix"],
-    ["Targets", "six exported, non-inlined functions; this week's is <code>demo_substitution</code>"],
+    ["Source", "<code>showcase.c</code>, 483 lines, six functions, frozen before any build"],
+    ["Frozen", "its SHA-256 was recorded once and re-checked before every one of the 68 builds"],
+    ["This week", "<code>demo_substitution</code> — the one above"],
     ["Compiler", "OLLVM-16 (Clang 16.0.6), <code>-O0</code>, no obfuscation passes enabled"],
-    ["Platform", "Windows x64 PE. Reading works anywhere; running needs the lab image"],
+    ["Platform", "Windows x64. Reading works anywhere; running needs the lab image"],
   ]}
   verdict={{ tone: "pass", text: "runtime PASS", label: "retained runtime status" }}
 />
 
+"Frozen" is doing real work in that table. Because the source was fixed before
+anything was built from it, no difference between two of this course's binaries
+can be a difference in the program. When the machine code changes, something
+changed it — and that is the only explanation available. You will not get that
+luxury on real software.
+
+</section>
+
 <section class="sc-section">
 
-## One addition, three ways
+## The compiler's own version
 
-Here is a single line of the program, and the same line after the front end has
-had it. Read them as two descriptions of one event, not as an original and a
-copy.
+A compiler does not go straight from C to machine code. It first rewrites the
+program into an **intermediate representation** — a form that is still
+structured and typed, but much closer to what a machine does. Clang's is called
+LLVM IR, and it is the thing every obfuscator in this course except one acts
+on.
+
+Before you read any: four words.
+
+<Primer
+  terms={[
+    { term: "%0, %4, %5", gloss: "Values, not variables. Each one is <em>assigned exactly once</em> and never changes — a discipline called SSA. So <code>%5</code> is not a box; it is the name of one particular result." },
+    { term: "alloca", gloss: "Reserve space on the stack, and give me a pointer to it. An array or an address-taken local becomes one of these." },
+    { term: "getelementptr", gloss: "Compute the address of an element inside that space. It only does the arithmetic on the pointer — no memory is touched." },
+    { term: "store volatile", gloss: "Write to memory, and <em>do not optimise this away</em>. The source declares the array <code>volatile</code> on purpose, so the compiler cannot collapse the whole function into its answer." },
+  ]}
+/>
+
+Now the same two source lines, as the compiler restated them:
 
 <CodePair>
   <EvidenceCode
     id="assets/source/showcase.c"
     lang="c"
-    title="showcase.c — demo_substitution, first eight sites"
-    note="what the author wrote"
+    title="the source again"
+    note="two sites"
     fromMatch={/^    value\[0\] = input \+ 0x01010101u;$/}
-    take={8}
+    take={2}
     dedent={4}
   />
   <EvidenceCode
     id="assets/ir/baselines/ollvm16/demo_substitution.ll"
     lang="llvm"
-    title="clean LLVM IR — the same first two sites"
+    title="clean LLVM IR — the same two sites"
     note="what the front end emitted"
     from={2}
     to={13}
   />
   <span slot="caption">
-    Two lines of C became a stack allocation, a load, an `add`, a
-    `getelementptr` and a `store volatile` — per site. The IR is not more
-    complicated because anything was hidden; it is more complicated because it
-    is more explicit. `volatile` is the reason the stores survive at all: the
-    source declares `value[8]` volatile precisely so the optimiser cannot fold
-    the whole function into its answer.
+    Read the right pane as five steps per line of C: load the argument, add the
+    constant, work out the address of the slot, store into it. The IR is not
+    more complicated because anything was hidden — it is more complicated
+    because it is more *explicit*. Everything the C left implied is now
+    written down.
   </span>
 </CodePair>
 
-Now the third description. The same eight additions, after instruction
-selection, in the linked executable:
+</section>
+
+<section class="sc-section">
+
+## What the machine actually gets
+
+One more step down. The **back end** turns IR into instructions for a specific
+processor — choosing which machine instruction implements each IR operation,
+a step called **instruction selection** — and a disassembler turns the
+resulting bytes back into something readable.
+
+Four more words, then the listing.
+
+<Primer
+  title="How to read a disassembly listing"
+  terms={[
+    { term: "140001030:", gloss: "The address this instruction lives at when the program is loaded. The left-hand column of every listing in this course." },
+    { term: "05 01 01 01 01", gloss: "The actual bytes. This is the program — everything to the right of it is the disassembler being helpful." },
+    { term: "immediate", gloss: "A constant baked into the instruction itself rather than fetched from memory. <code>0x1010101</code> here is an immediate, and it is stored least-significant byte first." },
+    { term: "RVA", gloss: "The same address with the load address subtracted off — so <code>0x140001030</code> becomes RVA <code>0x1030</code>. Two runs of a program can load it in different places; the RVA does not move, which is why every specimen in this course is navigated by one." },
+  ]}
+/>
 
 <EvidenceCode
   id="assets/evidence/baselines/ollvm16/demo_substitution_disassembly.txt"
   lang="asm"
-  title="clean x64 — demo_substitution at RVA 0x1030"
+  title="clean x64 — demo_substitution, starting at address 0x140001030"
   note="what the machine will execute"
   fromMatch={/<demo_substitution>:/}
   take={10}
   class="sc-wide"
 />
 
-Each site is three instructions: reload the argument, add the immediate, store
-the slot. The constant you wrote is sitting in the instruction stream in
-little-endian order — `05 01 01 01 01` is `add eax, 0x01010101` — and that is
-the first useful fact about machine code for an analyst. Constants are
-landmarks. They are how you find the same computation again after someone has
-rearranged everything around it.
+Each site is three instructions: reload the argument from the stack, add the
+constant, store it back into the slot. Notice `05 01 01 01 01` — that is
+`add eax, 0x01010101`, with the constant you wrote sitting in the instruction
+stream, backwards.
+
+That is the first useful fact about machine code for an analyst. **Constants
+are landmarks.** They are how you find the same computation again after
+somebody has rearranged everything around it.
 
 :::warning[A landmark is not a proof]
 Finding `0x12345678` in a binary tells you where to look. It does not tell you
@@ -113,29 +185,54 @@ onward it frequently will not be.
 
 <section class="sc-section">
 
+## The fourth description, and the last two words
+
+There is one more way to describe this function, and it is the one the second
+half of the course lives in.
+
+<Primer
+  title="The vocabulary weeks 6 to 10 are built on"
+  terms={[
+    { term: "basic block", gloss: "A run of instructions with one way in and no branching in the middle: once it starts, all of it runs. A block ends where control can go somewhere else." },
+    { term: "control-flow graph", gloss: "Blocks as nodes, possible jumps as arrows. It is the picture of <em>what can run after what</em> — and it is <em>recovered</em> by a tool, not stored in the file." },
+  ]}
+/>
+
+`demo_substitution` has no branches at all, so its control-flow graph is a
+single basic block with nothing pointing out of it. That is unusual and it is
+why this week starts here: with the graph out of the way, the only thing that
+can change between two versions of this function is the arithmetic.
+
+From week 6 the reverse is true — the arithmetic barely moves and the graph
+explodes. Holding those two apart is most of the skill.
+
+</section>
+
+<section class="sc-section">
+
 ## The counts do not agree, and that is the point
 
-The same target function, measured three ways in the retained matrix:
+The same function, measured three ways in the retained build matrix:
 
 <Numbers
   items={[
     { value: "155", label: "LLVM IR instructions in the clean target", source: "showcase_matrix_v1 — O0 comparison table" },
     { value: "115", label: "x64 machine instructions in the same function", source: "showcase_matrix_v1 — O0 comparison table" },
-    { value: "467", label: "bytes of machine code, prologue to return", source: "showcase_matrix_v1 — O0 comparison table" },
-    { value: "51", label: "machine instructions for the same function at O1", sourceId: "assets/reports/optimization_survival.md" },
+    { value: "467", label: "bytes of machine code, first byte to last", source: "showcase_matrix_v1 — O0 comparison table" },
+    { value: "51", label: "machine instructions for the same function at -O1", sourceId: "assets/reports/optimization_survival.md" },
   ]}
 />
 
 One function; four numbers, all correct. The IR count is higher than the
 machine count because IR spells out addressing that one x64 instruction does
-for free. The O1 count is less than half the O0 count because at `-O0` the
-compiler reloads the argument from the stack for every single site and at `-O1`
-it stops.
+for free. The `-O1` count is less than half the `-O0` count because at `-O0`
+the compiler reloads the argument from the stack for every single site, and at
+`-O1` it stops bothering.
 
 This is the measurement discipline the rest of the course depends on. Whenever
-you see a number about a program, three questions come before believing it:
-which representation, which convention, and against which comparator at which
-optimisation level.
+you meet a number about a program, three questions come before believing it:
+**which representation, which counting convention, and against which
+comparator at which optimisation level.**
 
 </section>
 
@@ -143,16 +240,16 @@ optimisation level.
 
 ## Where an obfuscator can get in
 
-Four places, and the choice determines what happens to the transformation
-afterwards.
+You now have all four descriptions, which means you can be told the shape of
+the whole course. An obfuscator picks one of them to change:
 
 <LectureTable id="01_transformation_layers" class="sc-wide" />
 
 The last column is the one to hold on to. A source-level transformation has to
 survive the entire compiler after it; an IR-level transformation has to survive
-instruction selection; a post-link transformation has no optimiser after it at
-all. In week 5 we will find that this difference decides whether some
-transformations exist in the final binary.
+the back end; a post-link transformation has no optimiser after it at all. In
+week 5 we will find that this difference decides whether some transformations
+exist in the final binary at all.
 
 </section>
 
@@ -164,27 +261,27 @@ transformations exist in the final binary.
   id="assets/ida/demo_substitution1_2.jpg"
   alt="A side-by-side disassembler diff. The left pane shows a regular sequence of add instructions with the immediates 0x1010101 through 0x8080808 and repeated xor 12345678h. The right pane shows a longer, irregular sequence containing cancelling constants, negations and subtractions."
 >
-  Left pane: the clean `demo_substitution` you have been reading, in a graph
-  view. Ignore the right pane for now — it is next week's material, and this
-  week it is here only so you can see what "the same function" can look like.
+  Left pane: the clean `demo_substitution` you have been reading, in a tool
+  built for this. Ignore the right pane for now — it is next week's material,
+  and this week it is here only so you can see what "the same function" can
+  look like.
 </Screenshot>
 
-Use the left pane. Find the eight `add` instructions, find the eight
-`xor 12345678h`, and notice that they are as regular in the disassembler as
-they were in the source. A clean `-O0` build is nearly a transliteration of the
-C, which is exactly why it makes a usable comparator and a poor model of real
-software.
+Use the left pane. Find the eight `add` instructions and the eight
+`xor 12345678h`, and notice that they are as regular on screen as they were in
+the source. A clean `-O0` build is nearly a transliteration of the C, which is
+exactly why it makes a usable comparator and a poor model of real software.
 
 </section>
 
 <Ledger
   establishes={[
-    "One compiled function has several descriptions — source, IR, machine code — that differ in size and in shape while describing the same computation.",
+    "One compiled function has several descriptions — source, IR, machine code, recovered graph — that differ in size and shape while describing the same computation.",
     "The clean <code>-O0</code> target for <code>demo_substitution</code> is 155 IR instructions and 115 machine instructions, measured in the retained matrix with the conventions it states.",
     "Memorable constants survive clean compilation into the instruction stream and can be used to navigate.",
   ]}
   withholds={[
-    "That IR instruction counts and machine instruction counts can be compared to each other, or that either is a measure of how hard a function is to understand.",
+    "That IR instruction counts and machine instruction counts can be compared to each other, or that either measures how hard a function is to understand.",
     "That a constant found in a binary is still doing the job the source gave it.",
     "Anything at all about obfuscation, which has not happened yet.",
   ]}
@@ -203,7 +300,7 @@ Working from the four files below, and nothing else:
 1. Pick one of the eight XOR sites. Locate it in the C, in the IR, and in the
    disassembly. Write down the line or address of each.
 2. Say what the compiler added around it that the author did not write, and why
-   each addition is there.
+   each addition is there. The grey boxes above are enough to answer this.
 3. `demo_substitution` contains more than twenty-four operations. Twenty-four
    of them are the repeated sites the corpus was designed around; the rest are
    setup and the final reduction. Mark which is which, and say how you decided.
@@ -211,13 +308,13 @@ Working from the four files below, and nothing else:
    my answer to step 1 to be wrong?*
 
 Bring the answers to step 3 and step 4. Step 3 is where people disagree, and
-the disagreement is the useful part — the corpus documentation says "twenty-four
-sites" and does not mean "twenty-four instructions".
+the disagreement is the useful part — the corpus documentation says
+"twenty-four sites" and does not mean "twenty-four instructions".
 
 <FileList
   items={[
-    { id: "assets/source/showcase.c", what: "the frozen source, all six targets" },
-    { id: "assets/ir/baselines/ollvm16/demo_substitution.ll", what: "clean LLVM IR for this week's target" },
+    { id: "assets/source/showcase.c", what: "the frozen source, all six functions" },
+    { id: "assets/ir/baselines/ollvm16/demo_substitution.ll", what: "clean LLVM IR for this week's function" },
     { id: "assets/evidence/baselines/ollvm16/demo_substitution_disassembly.txt", what: "clean x64 disassembly of the same function" },
     { id: "assets/evidence/baselines/ollvm16/run_stdout.txt", what: "what the clean executable prints — the six canonical answers" },
   ]}
