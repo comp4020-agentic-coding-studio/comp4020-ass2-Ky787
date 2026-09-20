@@ -1,6 +1,5 @@
 import { defineSiteConfig } from "astro-theme-university/types";
 import { slopBranding } from "astro-theme-slop";
-import { courseMeta } from "./course-config";
 
 // The collection and URL stay `sessions`; these are the words students see.
 // Each entry is one of the twelve teaching weeks, so that is what it is called.
@@ -35,10 +34,6 @@ export const siteConfig = defineSiteConfig({
     { text: "Course information", href: "/policies/" },
   ],
 
-  contact: {
-    description: `${courseMeta.code} · course enquiries`,
-    email: "seeing-through@slop.university",
-  },
 
   licence: "CC-BY-NC-SA-4.0",
   socialImage: "/src/assets/images/card.png",
@@ -51,7 +46,7 @@ export const siteConfig = defineSiteConfig({
 // legal URLs there. These are internal pages, so the layout applies the base
 // path to them rather than shipping links that work only on localhost.
 export const footerLinks = [
-  { text: "Course information and policies", href: "/policies/" },
+  { text: "Course information", href: "/policies/" },
   { text: "Evidence and provenance", href: "/evidence/" },
   { text: "What we do and do not claim", href: "/claims/" },
   { text: "Glossary", href: "/glossary/" },

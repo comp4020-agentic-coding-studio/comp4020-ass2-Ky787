@@ -199,12 +199,22 @@ describe("no invented personnel", () => {
     }
   });
 
-  // Contact still has to work. Role-based is the whole point: it tells a
-  // reader who to email without inventing a person to be.
-  it("still says who to approach, by role", () => {
-    const policies = text(page("/policies/").html);
-    expect(policies).toMatch(/convenor|tutor/i);
-    expect(policies).toMatch(/extension/i);
+  // Removing the cast list must not take the useful page with it: course
+  // information still has to answer what a student needs before week 1 and
+  // what they may run.
+  it("keeps the course information a student actually needs", () => {
+    const info = text(page("/policies/").html);
+    expect(info).toMatch(/Assumed before week 1|prerequisite/i);
+    expect(info).toMatch(/read-only route/i);
+    expect(info).toMatch(/Accessibility/i);
+  });
+
+  it("invents no contact address", () => {
+    for (const sitePage of pages()) {
+      expect(sitePage.html, `${sitePage.route} publishes an invented mailbox`).not.toMatch(
+        /mailto:/,
+      );
+    }
   });
 });
 

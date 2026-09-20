@@ -76,6 +76,17 @@ artefacts, and two results that look like successes and are not.
 - The `people` collection stays declared in `src/content.config.ts`, because
   the starter fixes the four graph collections, and stays empty. The one
   build warning about it is the truth, not a defect.
+- No invented institutional furniture either: no faculty or school names, no
+  contact addresses, no consultation hours. If a detail exists only to make
+  the fiction look furnished, it is furniture.
+- **Course information, not Policies.** The page answers what a student needs
+  to use the course — prerequisites, teaching format, the lab rules and the
+  read-only route, accessibility, and a one-line assessment summary. Generic
+  administration (extensions, remarking, turnaround, appeals) belongs to a
+  real institution and is not written here.
+- The route stays `/policies/` because `courseApiCollections` maps that
+  directory to the API's policy node, which the starter fixes. Every visible
+  label says "Course information".
 - Removing invented material means removing it. Do not backfill the space
   with filler.
 

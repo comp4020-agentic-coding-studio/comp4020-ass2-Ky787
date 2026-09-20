@@ -87,11 +87,23 @@ describe("the evidence page", () => {
 });
 
 describe("course information", () => {
-  it("publishes the prerequisites, the lab rule and the read-only route", () => {
+  // Five things this page exists to answer. Generic administration —
+  // extensions, remarking, turnaround — is deliberately not among them.
+  it("answers what a student needs to use the course", () => {
     const content = text(page("/policies/").html);
-    expect(content).toMatch(/Assumed before week 1|prerequisite/i);
-    expect(content).toMatch(/read-only route/i);
-    expect(content).toMatch(/endpoint protection/i);
-    expect(content).toMatch(/extension/i);
+    expect(content, "no prerequisites").toMatch(/Assumed before week 1|prerequisite/i);
+    expect(content, "no teaching format").toMatch(/stud(io|ios)|lecture/i);
+    expect(content, "no read-only route").toMatch(/read-only route/i);
+    expect(content, "no lab safety rule").toMatch(/endpoint protection/i);
+    expect(content, "no accessibility guidance").toMatch(/Accessibility/i);
+    expect(content, "no assessment summary").toMatch(/25%|assessment/i);
+  });
+
+  it("is labelled course information everywhere it is linked", () => {
+    for (const route of ["/", "/sessions/", "/assessments/"]) {
+      const html = page(route).html;
+      if (!html.includes('href="') || !html.includes("/policies/")) continue;
+      expect(text(html), `${route} still calls it Policies`).not.toMatch(/\bPolicies\b/);
+    }
   });
 });
