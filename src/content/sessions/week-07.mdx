@@ -157,8 +157,8 @@ The same harness, with no per-implementation pattern, on four `-O0` lanes:
 
 <Numbers
   items={[
-    { value: "22 / 22", label: "injected gates proved one-sided in the first implementation", sourceId: "assets/evidence/triton_summaries/family_results.json" },
-    { value: "16 / 16", label: "injected gates proved in a second, unrelated implementation", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "22 / 22", label: "OLLVM-16 O0 injected gates proved one-sided", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+    { value: "16 / 16", label: "Polaris O0 injected gates proved one-sided", sourceId: "assets/evidence/triton_summaries/family_results.json" },
     { value: "16", label: "genuine source branches across the lanes, every one of them two-sided", sourceId: "assets/evidence/triton_summaries/aggregate_accuracy.json" },
     { value: "0", label: "false positives — no genuine branch was ever classified as opaque", sourceId: "assets/evidence/triton_summaries/aggregate_accuracy.json" },
   ]}
@@ -237,7 +237,7 @@ support.
 <Ledger
   establishes={[
     "For the frozen gate at RVA <code>0x1667</code>, with two globals symbolic and an empty path prefix, the taken direction is SAT with a recorded model and the fall-through is UNSAT.",
-    "Across two unrelated <code>-O0</code> implementations, a generic harness proved all 38 injected gates one-sided while leaving all 16 genuine source branches two-sided, with zero false positives.",
+    "Across the OLLVM-16 and Polaris <code>-O0</code> implementations, a generic harness proved all 38 injected gates one-sided while leaving all 16 genuine source branches two-sided, with zero false positives.",
     "For the state-dependent implementation, the generic yield is 0 of 3 and the yield under one captured initialised state is 3 of 3, with the function arguments symbolic in both.",
   ]}
   withholds={[

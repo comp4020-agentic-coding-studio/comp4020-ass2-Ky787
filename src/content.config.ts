@@ -90,8 +90,6 @@ export const collections = {
   // Declared but unpopulated, on purpose. The starter is explicit that the
   // four graph collections are part of the fixed platform, so the collection
   // and its schema stay; this course simply does not invent a teaching team.
-  // Contact is handled by role in the course-information page, which is what
-  // a reader actually needs.
   people: defineCollection({
     loader: courseNodeLoader("people"),
     schema: ({ image }) =>

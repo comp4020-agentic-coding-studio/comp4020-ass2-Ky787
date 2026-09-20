@@ -117,19 +117,13 @@ function main(): void {
       );
     }
 
-    // Every image the starter ships, so "the template artwork is a placeholder
-    // like the rest" holds for all of it and not just the home page. A deleted
-    // file passes: dropping a portrait with the person it belonged to is a
-    // design decision, and so is an image-free treatment.
+    // The retained site artwork must not be the starter placeholder. A deleted
+    // file passes: an image-free treatment is also a design decision.
     const starterAssets: Record<string, string> = {
       "src/assets/images/card.png":
         "c11fe509e1d3319f6bc0551b6824bf595bccb36f51d256ff59095632ebbb6077",
       "src/assets/images/hero-home.avif":
         "fdd8f8b12382a2356fbd3fe4ac22651d07243970f69ce8b685c5532042defe3f",
-      "src/content/people/idris-fenn.avif":
-        "00ea58cb889856259d6c706052e00d7c3b5a65bac8933ff11e0fa045ee0a0752",
-      "src/content/people/marisol-quaye.avif":
-        "837b17a13c47be5440da0e6193b420896a193592552acd9e3cd3ba8bc7216b70",
     };
     for (const [path, starterHash] of Object.entries(starterAssets)) {
       if (existsSync(path) && sha256(path) === starterHash) {

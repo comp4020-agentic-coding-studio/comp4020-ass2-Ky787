@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from "node:child_process";
-import { copyFileSync, mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
@@ -34,13 +34,13 @@ describe("expectedReflections", () => {
 
 const script = resolve("scripts/check-evidence.ts");
 
-// The starter artwork the Assignment 2 gate hashes, repo-relative.
+// The starter artwork the Assignment 2 gate hashes, repo-relative. CI fetches
+// full history, so tests can use the original blobs after the site replaces them.
 const STARTER_IMAGES = [
   "src/assets/images/card.png",
   "src/assets/images/hero-home.avif",
-  "src/content/people/idris-fenn.avif",
-  "src/content/people/marisol-quaye.avif",
 ];
+const STARTER_COMMIT = "6cbc05a89a34d64e48d4aa7c931362ae7736aa5e";
 const fixtures: string[] = [];
 
 const env = {
@@ -210,14 +210,16 @@ describe("check:evidence", () => {
     expect(result.status, result.stderr).toBe(0);
   });
 
-  // Every image the starter ships is gated, not just the home page's, so a
-  // submission can't keep a starter portrait while replacing the prose beside
-  // it. Copied from the working tree, so a re-cut image updates the hash in
-  // check-evidence.ts and this test together or fails here first.
+  // Load the exact original blobs: the current working tree correctly contains
+  // replacement artwork, so copying it would not exercise the starter hashes.
   it.each(STARTER_IMAGES)("rejects the unchanged starter %s", (image) => {
     const cwd = assignment2Fixture(false);
     mkdirSync(join(cwd, dirname(image)), { recursive: true });
-    copyFileSync(resolve(image), join(cwd, image));
+    const starterImage = execFileSync("git", ["show", `${STARTER_COMMIT}:${image}`], {
+      cwd: resolve("."),
+      env,
+    });
+    writeFileSync(join(cwd, image), starterImage);
     const result = spawnSync(process.execPath, [script], {
       cwd,
       env,

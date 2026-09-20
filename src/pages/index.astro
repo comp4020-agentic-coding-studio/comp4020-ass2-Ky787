@@ -135,7 +135,7 @@ import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
     <Numbers
       items={[
         { value: "68 / 68", label: "build conditions from one frozen source that linked, ran and passed their own checks", sourceId: "assets/reports/showcase_matrix_v1.md" },
-        { value: "38", label: "injected opaque gates proved one-sided across two unrelated obfuscators", sourceId: "assets/evidence/triton_summaries/family_results.json" },
+        { value: "38", label: "injected opaque gates proved one-sided across two different obfuscator implementations", sourceId: "assets/evidence/triton_summaries/family_results.json" },
         { value: "9,189", label: "differential test triples on the rewritten binaries, with zero mismatches", sourceId: "assets/evidence/s03_ollvm_bcf/validation.json" },
         { value: "3,917", label: "of 4,118 inputs miscomputed by a lift whose LLVM IR verifies cleanly", sourceId: "assets/evidence/s01_ollvm_sub/mergen/semantic_result.json" },
       ]}
@@ -144,7 +144,7 @@ import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
       title="What this corpus is and is not"
       establishes={[
         "Bounded, reproducible results about twenty-one specimens built from one frozen 483-line program, each with a matched clean comparator at a stated optimisation level.",
-        "Two transfers that worked across unrelated implementations, and two failures that were caught only by execution.",
+        "Two transfers that worked across different implementations, and two failures that were caught only by execution.",
         "A complete evidence trail: every number on this site resolves to a published file with a recorded hash.",
       ]}
       withholds={[
@@ -176,7 +176,7 @@ import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
           <p>What each tool produces, and whether it ever produced a working rewritten binary here.</p>
         </Card>
         <Card title="Course information" href="/policies/">
-          <p>Prerequisites, the lab rules, the read-only route, and how marking works.</p>
+          <p>Prerequisites, the lab rules, the read-only route, and the assessment summary.</p>
         </Card>
       </CardGrid>
     </div>
