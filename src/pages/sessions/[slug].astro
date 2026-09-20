@@ -3,10 +3,10 @@ import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
 import RelatedContent from "astro-course-university/components/RelatedContent.astro";
 import SpecList from "astro-course-university/components/SpecList.astro";
-import TeachingTeam from "../../components/TeachingTeam.astro";
 import WeekHeader from "../../components/WeekHeader.astro";
 import WeekRail from "../../components/WeekRail.astro";
 import CourseLayout from "../../layouts/CourseLayout.astro";
+import { relatedCollections } from "../../site-config";
 import { blockForWeek } from "../../lib/course";
 
 export async function getStaticPaths() {
@@ -33,7 +33,6 @@ const extra = session.data as { question?: string; mode?: string };
     The studio assumes you have done these. Each is written so you can tell
     whether you have, without asking.
   </SpecList>
-  <TeachingTeam teachers={session.data.teachers} />
-  <RelatedContent entry={session} collections={["sessions", "assessments", "lectures", "people"]} />
+  <RelatedContent entry={session} collections={relatedCollections} />
   <WeekRail current={week} />
 </CourseLayout>

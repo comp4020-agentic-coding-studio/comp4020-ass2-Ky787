@@ -6,7 +6,7 @@
 // specific to this course — twelve weeks that are not twelve copies of one
 // page.
 import { describe, expect, it } from "vitest";
-import { api, exists, nodesOfType, page, sitePages, text, weekPages } from "./site";
+import { api, exists, nodesOfType, page, pages, sitePages, text, weekPages } from "./site";
 
 const sessions = nodesOfType("sessions");
 const lectures = nodesOfType("lectures");
@@ -170,6 +170,41 @@ describe("lectures and decks", () => {
         1200,
       );
     }
+  });
+});
+
+// A course site that invents a teaching team is doing the one thing this
+// course spends twelve weeks arguing against: presenting something fabricated
+// in the register of something established. The lectures and decks are real
+// teaching material; nobody fictional is credited with them.
+describe("no invented personnel", () => {
+  it("publishes no cast list", () => {
+    expect(nodesOfType("people")).toEqual([]);
+  });
+
+  it("links no person page from anywhere on the site", () => {
+    for (const sitePage of sitePages()) {
+      expect(sitePage.html.includes("/people/"), `${sitePage.route} links a person page`).toBe(
+        false,
+      );
+    }
+  });
+
+  it("attributes no teaching material to a named individual", () => {
+    for (const sitePage of pages()) {
+      const content = text(sitePage.html);
+      expect(content, `${sitePage.route} renders a teaching-team block`).not.toContain(
+        "Teaching team",
+      );
+    }
+  });
+
+  // Contact still has to work. Role-based is the whole point: it tells a
+  // reader who to email without inventing a person to be.
+  it("still says who to approach, by role", () => {
+    const policies = text(page("/policies/").html);
+    expect(policies).toMatch(/convenor|tutor/i);
+    expect(policies).toMatch(/extension/i);
   });
 });
 

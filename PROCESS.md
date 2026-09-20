@@ -8,16 +8,18 @@ This course is about explaining the actual effects on assembly code by obfuscati
 
 From a single C source file I was able to generate hundreds of binaries, each with different compilation techniques and flags which I then got another model to automate verifiable results (e.g. did the deobfuscated binary run, how many blocks were added/deleted, did the obfuscation work correctly etc), after which I also opened various binaries in IDA Pro and performed diff's against binaries of interest, captured screenshots and gave all relevant info to claude. With all this work Claude was able to make the site using real data from my experiments instead of just prompting the model to write what it thinks obfuscated/deobfuscated code might look like. 
 
-The corpus and the analysis landed in [`2955b2f`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/2955b2f). What makes the site use it rather than paraphrase it is [`978a080`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/978a080): every artefact a page may cite is named in a manifest, published byte-for-byte, and sliced into the page at build time, so a listing that drifts from its source fails the build.
+[`2955b2f`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/2955b2f). 
+[`978a080`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/978a080): every artefact a page may cite is named in a manifest, published byte-for-byte, and sliced into the page at build time, so a listing that drifts from its source fails the build.
 
 ## Tailored first few weeks for better reading
 
 Previously Claude created the first few lectures with assuming the reader had domain knowledge, this lead to a confusing read especially when I asked other friends to check the site and give feedback. I asked claude to trim unnesseccary stuff (e.g. hashes for various things) and reword various paragraphs to include explanatory content. 
 
-[`9097a48`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/9097a48) built the ramp into weeks 1 to 3 and dropped the hashes; [`43a3f90`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/43a3f90) did the same for the home page, which was hitting visitors with the Polaris failure before defining a basic block.
+[`9097a48`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/9097a48) 
+[`43a3f90`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/43a3f90) 
 
-## Added curated graphics
+## Removed visually demoting fake content 
 
-When I was running the experiments I was manually opening various binaries in IDA and performing diffs, I took screenshots of these and provided them to claude to help break out the text in the lectures. I also asked Codex to summarise and generate nice graphics for claude to use. These were then included in the handoff and I 
+After I gave my first prompt to claude with my dataset it generated the website with additional AI furniture content such as fake teaching staff, policies and addresses. I asked claude to remove it which make the site feel more authentic. This change was also reflected in the CLAUDE.md harness. 
 
-The screenshots go to work across the twelve weeks in [`3e07c2f`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/3e07c2f), which also renders all twelve Codex tables — from their shared `tables.json` rather than as images, so they stay selectable, searchable and legible in dark mode and at 390px. The authoring project behind them, with its printable PDF, arrived later in [`9097a48`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/9097a48).
+> Commit here please

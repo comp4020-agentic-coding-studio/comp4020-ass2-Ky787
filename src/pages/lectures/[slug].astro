@@ -3,9 +3,9 @@ import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
 import RelatedContent from "astro-course-university/components/RelatedContent.astro";
 import { withBase } from "astro-theme-university/url";
-import TeachingTeam from "../../components/TeachingTeam.astro";
 import WeekRail from "../../components/WeekRail.astro";
 import CourseLayout from "../../layouts/CourseLayout.astro";
+import { relatedCollections } from "../../site-config";
 import { BLOCKS } from "../../lib/course";
 import { formatCourseDate } from "../../lib/dates";
 
@@ -61,7 +61,6 @@ const covered = lecture.data.covers
     )
   }
 
-  <TeachingTeam teachers={lecture.data.teachers} />
-  <RelatedContent entry={lecture} collections={["sessions", "assessments", "lectures", "people"]} />
+  <RelatedContent entry={lecture} collections={relatedCollections} />
   <WeekRail current={lecture.data.week} />
 </CourseLayout>

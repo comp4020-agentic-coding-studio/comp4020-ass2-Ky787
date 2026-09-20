@@ -1,4 +1,4 @@
-import { defineCollection, reference } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { courseNodeSchema } from "astro-course-university/schemas";
@@ -6,7 +6,6 @@ import { courseNodeSchema } from "astro-course-university/schemas";
 const weekSchema = z.coerce.number().int().min(1).max(12);
 const courseNodeLoader = (dir: string) =>
   glob({ pattern: ["**/*.{md,mdx}", "!**/CLAUDE.md"], base: `src/content/${dir}` });
-const teacherRefs = z.array(reference("people")).min(1);
 
 const weightedMarking = z
   .object({
@@ -47,7 +46,6 @@ export const collections = {
       .extend({
         week: weekSchema,
         date: z.coerce.date(),
-        teachers: teacherRefs.optional(),
         question: z.string().trim().min(20).max(220),
         mode: z.string().trim().min(3).max(44),
       })
@@ -80,7 +78,6 @@ export const collections = {
       .extend({
         week: weekSchema,
         date: z.coerce.date(),
-        teachers: teacherRefs.optional(),
         block: z.coerce.number().int().min(1).max(4),
         covers: z.array(weekSchema).min(1),
         slides: z
@@ -90,6 +87,11 @@ export const collections = {
       .loose(),
   }),
 
+  // Declared but unpopulated, on purpose. The starter is explicit that the
+  // four graph collections are part of the fixed platform, so the collection
+  // and its schema stay; this course simply does not invent a teaching team.
+  // Contact is handled by role in the course-information page, which is what
+  // a reader actually needs.
   people: defineCollection({
     loader: courseNodeLoader("people"),
     schema: ({ image }) =>

@@ -64,6 +64,21 @@ artefacts, and two results that look like successes and are not.
 - Core teaching content lives on the website, not only in PDFs or decks.
 - Assessment must total 100%.
 
+## No invented people
+
+- **Do not invent a teaching team.** No named lecturers, biographies,
+  credentials, photographs, office locations or consultation hours. A course
+  that spends twelve weeks on the difference between something established and
+  something that merely looks established cannot open with a fabricated cast.
+- Where a reference is structurally necessary — extensions, lab access,
+  remarking — use the **role**: "the convenor", "the tutor". That tells a
+  reader who to approach without inventing a person to be.
+- The `people` collection stays declared in `src/content.config.ts`, because
+  the starter fixes the four graph collections, and stays empty. The one
+  build warning about it is the truth, not a defect.
+- Removing invented material means removing it. Do not backfill the space
+  with filler.
+
 ## Site quality
 
 - Preserve all assignment/starter SLOP requirements.

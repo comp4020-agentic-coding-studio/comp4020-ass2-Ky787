@@ -11,6 +11,11 @@ export const sessionLabels = {
 
 export const graphCollections = ["sessions", "assessments", "lectures", "people"];
 
+// The subset that actually has entries. `people` stays in the graph and in the
+// API because the starter fixes those four, but this course populates no cast
+// list, and asking Astro for an empty collection warns once per rendered page.
+export const relatedCollections = ["sessions", "assessments", "lectures"];
+
 export const courseApiCollections = [
   ...graphCollections.map((key) => ({ key })),
   { key: "policies", dir: "pages/policies" },
@@ -27,11 +32,11 @@ export const siteConfig = defineSiteConfig({
     { text: "Evidence", href: "/evidence/" },
     { text: "Tools", href: "/tools/" },
     { text: "Glossary", href: "/glossary/" },
-    { text: "People", href: "/people/" },
+    { text: "Course information", href: "/policies/" },
   ],
 
   contact: {
-    description: `${courseMeta.code} · School of Invented Disciplines`,
+    description: `${courseMeta.code} · course enquiries`,
     email: "seeing-through@slop.university",
   },
 

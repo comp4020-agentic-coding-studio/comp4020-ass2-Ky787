@@ -1,0 +1,10 @@
+This course has no cast list.
+
+The `people` collection stays declared in src/content.config.ts because the
+starter is explicit that the four graph collections are part of the fixed
+platform. It is deliberately empty: inventing named lecturers, biographies and
+office hours would be furniture, and the thing a reader actually needs —
+who to email about an extension — is answered by role on the course
+information page.
+
+This file exists so the glob loader has a directory to find.
