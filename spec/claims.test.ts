@@ -139,12 +139,25 @@ describe("counts carry their convention", () => {
   // The corpus uses two control-flow-graph conventions and they are not
   // interchangeable. Any page quoting a block count from the unflattening
   // study has to say so.
+  // Matched on the numbers rather than on a phrase. The first version of this
+  // test looked for the literal "56 blocks to 10", and a later rewording to
+  // "56 blocks down to 10" slipped straight past it — a check that only fires
+  // on one phrasing is a check you have to remember, which is the opposite of
+  // the point.
+  const claimsFlatteningCounts = (content: string): boolean =>
+    content
+      .split(/(?<=[.:;])\s+/)
+      .some(
+        (sentence) =>
+          /\b56\b/.test(sentence) && /\b10\b/.test(sentence) && /block/i.test(sentence),
+      );
+
   it("names a convention wherever the flattening block counts appear, slides included", () => {
-    for (const candidate of pages()) {
-      const content = text(candidate.html);
-      if (!/56 (?:blocks )?(?:→|to) 10|56 flattened/.test(content)) continue;
+    const quoting = pages().filter((candidate) => claimsFlatteningCounts(text(candidate.html)));
+    expect(quoting.length, "the 56-to-10 result is not stated anywhere").toBeGreaterThan(0);
+    for (const candidate of quoting) {
       expect(
-        /Miasm|convention|split(?:s)? (?:at|blocks at) calls/i.test(content),
+        /Miasm|convention|split(?:s)? (?:at|blocks at) calls/i.test(text(candidate.html)),
         `${candidate.route} quotes flattening block counts without naming the convention`,
       ).toBe(true);
     }

@@ -7,6 +7,7 @@ import EvidenceCode from "../components/EvidenceCode.astro";
 import Ledger from "../components/Ledger.astro";
 import Numbers from "../components/Numbers.astro";
 import Outcomes from "../components/Outcomes.astro";
+import Primer from "../components/Primer.astro";
 import CourseLayout from "../layouts/CourseLayout.astro";
 import heroImage from "../assets/images/hero-home.svg";
 import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
@@ -43,15 +44,44 @@ import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
 
   <p><strong>The question, for twelve weeks:</strong> {courseQuestion}</p>
 
+  {/* Unnumbered on purpose: this is the way in, not a step in the argument,
+      so it takes no section ordinal. It exists because the example below is
+      one of the best results in the corpus and was arriving before a visitor
+      had been given a single word to read it with. */}
+  <section class="sc-orient" aria-labelledby="new-here">
+    <h2 id="new-here">New to reverse engineering?</h2>
+    <p>
+      You do not need prior reverse-engineering experience for this course. You
+      should already be comfortable with C, hexadecimal numbers, registers,
+      memory and branches.
+    </p>
+    <Primer
+      title="Three terms are enough to read this page"
+      terms={[
+        { term: "basic block", gloss: "A straight-line sequence of machine instructions." },
+        { term: "control-flow graph", gloss: "A map of which blocks can execute next." },
+        { term: "deobfuscation", gloss: "Recovering a more useful representation of deliberately obscured code." },
+      ]}
+      glossary={false}
+    />
+    <p>
+      <a href={withBase("/sessions/week-01/")}>Week 1</a> teaches the remaining
+      representations from the beginning, and the{" "}
+      <a href={withBase("/glossary/")}>glossary</a> carries every term with the
+      qualification that matters later.
+    </p>
+  </section>
+
   <section class="sc-section">
     <h2>The thing you will keep meeting</h2>
     <p>
-      A stock unflattener was pointed at a flattened function. It exited zero,
-      wrote a valid executable, and took the function's control-flow graph —
-      the map of which piece of code can run after which — from 56 blocks down
-      to 10. That is the largest simplification anywhere in this corpus. (Both
-      figures under the same Miasm counting convention, which matters more than
-      it sounds and is week 9's problem.)
+      An off-the-shelf <em>unflattener</em> — a tool that undoes one particular
+      trick, where code is rearranged until no block any longer says which
+      block runs next — was pointed at a function that had been through it. The
+      tool exited zero, wrote a valid executable, and took the function's
+      control-flow graph from 56 blocks down to 10: the largest simplification
+      anywhere in this corpus. (Both figures under the same Miasm counting
+      convention, which matters more than it sounds and is week 9's problem.)
     </p>
     <EvidenceCode
       id="assets/evidence/s05_polaris_fla_wrong/output_runtime_stdout.txt"
@@ -62,9 +92,9 @@ import { courseMeta, courseQuestion, courseSubtitle } from "../course-config";
     />
     <p>
       Four legitimate <code>switch</code> alternatives from the original C were
-      grouped under one incoming state and emitted one after another, so all
-      four now run. Nothing about the graph says so. Nothing about the file
-      says so. One test vector says so immediately.
+      grouped together and emitted one after another, so all four now run,
+      every time. Nothing about the graph says so. Nothing about the file says
+      so. One test vector says so immediately.
     </p>
     <p>
       <a href={withBase("/sessions/week-10/")}>Week 10 takes it apart.</a>

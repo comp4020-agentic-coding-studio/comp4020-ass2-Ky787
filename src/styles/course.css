@@ -288,6 +288,33 @@
   text-wrap: pretty;
 }
 
+/* --- orientation ------------------------------------------------------- */
+
+/* The way in, for a visitor who has not done this before. Set apart from the
+   numbered argument sections: no ordinal, and a rule down the side so it reads
+   as an aside the experienced reader can step over. */
+.sc-orient {
+  /* No bottom margin: these are grid siblings, so margins do not collapse and
+     the following section's own top margin is already the gap we want. */
+  margin-block: var(--at-spacing-2xl) 0;
+  padding-inline-start: var(--at-spacing-md);
+  border-inline-start: 3px solid var(--at-primary);
+}
+
+.sc-orient > h2 {
+  margin-block: 0 var(--at-spacing-sm);
+  font-size: var(--at-font-size-h3);
+}
+
+.sc-orient > p {
+  max-width: var(--sc-measure);
+}
+
+.sc-orient .sc-primer {
+  border-block-end: 0;
+  padding-block-end: 0;
+}
+
 /* --- primer ------------------------------------------------------------- */
 
 /* Vocabulary handed over at the point of difficulty. Deliberately quieter than
