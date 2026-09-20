@@ -20,6 +20,7 @@ Previously Claude created the first few lectures with assuming the reader had do
 
 ## Removed visually demoting fake content 
 
-After I gave my first prompt to claude with my dataset it generated the website with additional AI furniture content such as fake teaching staff, policies and addresses. I asked claude to remove it which make the site feel more authentic. This change was also reflected in the CLAUDE.md harness. 
+After I gave my first prompt to claude with my dataset it generated the website with additional AI furniture content such as fake teaching staff and addresses. I asked claude to remove it which make the site feel more authentic. This change was also reflected in the CLAUDE.md harness. After verification I realised that claude had included stale links which were now 404s, so I got the agent to create tests to ensure it would not happen again (‎spec/reference-pages.test.ts) 
 
-[`18b3e02`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/18b3e02) removed it, and four checks in `spec/` now hold the line: no people in the generated API, no page linking a person route, no teaching-team block, and the course-information page still naming who to approach by role.
+[`18b3e02`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/18b3e02) 
+[`6e584ab`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-Ky787/commit/6e584ab) 
